@@ -1,0 +1,7990 @@
+{
+ "protocol_sha256": "7b881fa70db278f80667cf326654bd257fc1494a8728e49983e5ec5ef6a33ea9",
+ "selection": {
+  "sched": {
+   "chosen": "sched-pi",
+   "city": "city_1_losangeles_28",
+   "validation_mean_goodput": {
+    "sched": 1.92864,
+    "sched-pi": 2.19716
+   }
+  },
+  "sched-noreorder": {
+   "chosen": "sched-noreorder",
+   "city": "city_1_losangeles_28",
+   "validation_mean_goodput": {
+    "sched-noreorder": 2.20284,
+    "sched-noreorder-pi": 2.13913
+   }
+  },
+  "sched-nocompute": {
+   "chosen": "sched-nocompute-pi",
+   "city": "city_1_losangeles_28",
+   "validation_mean_goodput": {
+    "sched-nocompute": 1.90144,
+    "sched-nocompute-pi": 1.93188
+   }
+  },
+  "osla": {
+   "chosen": "osla",
+   "city": "city_1_losangeles_28",
+   "validation_mean_goodput": {
+    "osla": 0.84386,
+    "osla-pi": 0.73653
+   }
+  },
+  "sched-costblind": {
+   "chosen": "sched-costblind-pi",
+   "city": "city_1_losangeles_28",
+   "validation_mean_goodput": {
+    "sched-costblind": 1.83952,
+    "sched-costblind-pi": 2.16764
+   }
+  },
+  "sched-1exit": {
+   "chosen": "sched-1exit-pi",
+   "city": "city_1_losangeles_28",
+   "validation_mean_goodput": {
+    "sched-1exit": 1.23487,
+    "sched-1exit-pi": 2.02278
+   }
+  },
+  "blinkered": {
+   "chosen": "blinkered-pi",
+   "city": "city_1_losangeles_28",
+   "validation_mean_goodput": {
+    "blinkered": 2.11914,
+    "blinkered-pi": 2.13683
+   }
+  },
+  "with_compute": {
+   "chosen": "sched-pi",
+   "city": "city_1_losangeles_28",
+   "matched_estimation_rule": "estimation suffix chosen by the strongest baseline, then both arms take that suffix",
+   "validation_mean_goodput": {
+    "sched": 1.92864,
+    "sched-pi": 2.19716,
+    "sched-noreorder": 2.20284,
+    "sched-noreorder-pi": 2.13913
+   }
+  },
+  "without_compute": {
+   "chosen": "sched-nocompute-pi",
+   "city": "city_1_losangeles_28",
+   "validation_mean_goodput": {
+    "sched-nocompute": 1.90144,
+    "sched-nocompute-pi": 1.93188
+   }
+  }
+ },
+ "grid_us": [
+  250,
+  350,
+  500,
+  700,
+  1000,
+  1400,
+  2000,
+  2800,
+  4000,
+  5600,
+  8000,
+  10000
+ ],
+ "gate_controller": "sched-pi",
+ "headline_controller": "sched-pi",
+ "nocompute_controller": "sched-nocompute-pi",
+ "sites": [
+  {
+   "site": "city_2_chicago_28",
+   "n": 10451,
+   "n_blocks": 15,
+   "oracle_se": 5.123,
+   "strata_frac": [
+    0.4887,
+    0.0998,
+    0.047,
+    0.3646
+   ],
+   "strata_counts": [
+    5107,
+    1043,
+    491,
+    3810
+   ],
+   "rows": [
+    {
+     "T_us": 250,
+     "best_fixed": "topk2",
+     "best_fixed_mean": 3.1548,
+     "sched": 3.12198,
+     "sched_gate": 3.12198,
+     "sched_nocompute": 3.22486,
+     "sched_noreorder": 3.1721,
+     "osla": 0.66587,
+     "blinkered": 3.13171,
+     "zhang": 2.50408,
+     "bound_stopping": 3.32451,
+     "deployable": "topk2",
+     "deployable_mean": 3.1548,
+     "paired_diff": -0.03282,
+     "ci95": [
+      -0.13776,
+      0.11951
+     ],
+     "rel_to_oracle": -0.00641
+    },
+    {
+     "T_us": 350,
+     "best_fixed": "topk2",
+     "best_fixed_mean": 3.32997,
+     "sched": 3.34321,
+     "sched_gate": 3.34321,
+     "sched_nocompute": 3.44084,
+     "sched_noreorder": 3.37294,
+     "osla": 0.79862,
+     "blinkered": 3.41531,
+     "zhang": 2.66124,
+     "bound_stopping": 3.56047,
+     "deployable": "topk2",
+     "deployable_mean": 3.32997,
+     "paired_diff": 0.01324,
+     "ci95": [
+      -0.09873,
+      0.17257
+     ],
+     "rel_to_oracle": 0.00259
+    },
+    {
+     "T_us": 500,
+     "best_fixed": "topk2",
+     "best_fixed_mean": 3.46134,
+     "sched": 3.54685,
+     "sched_gate": 3.54685,
+     "sched_nocompute": 3.61132,
+     "sched_noreorder": 3.54992,
+     "osla": 0.87542,
+     "blinkered": 3.63441,
+     "zhang": 2.8646,
+     "bound_stopping": 3.78184,
+     "deployable": "fc4",
+     "deployable_mean": 3.32257,
+     "paired_diff": 0.08551,
+     "ci95": [
+      -0.06391,
+      0.29426
+     ],
+     "rel_to_oracle": 0.01669
+    },
+    {
+     "T_us": 700,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 3.56694,
+     "sched": 3.74214,
+     "sched_gate": 3.74214,
+     "sched_nocompute": 3.74789,
+     "sched_noreorder": 3.69827,
+     "osla": 0.88244,
+     "blinkered": 3.82219,
+     "zhang": 2.94715,
+     "bound_stopping": 3.97222,
+     "deployable": "fc4",
+     "deployable_mean": 3.56694,
+     "paired_diff": 0.1752,
+     "ci95": [
+      -0.0577,
+      0.36774
+     ],
+     "rel_to_oracle": 0.0342
+    },
+    {
+     "T_us": 1000,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 3.75022,
+     "sched": 3.91426,
+     "sched_gate": 3.91426,
+     "sched_nocompute": 3.86448,
+     "sched_noreorder": 3.83683,
+     "osla": 0.88771,
+     "blinkered": 3.96786,
+     "zhang": 3.20369,
+     "bound_stopping": 4.15401,
+     "deployable": "hier3",
+     "deployable_mean": 3.15951,
+     "paired_diff": 0.16404,
+     "ci95": [
+      -0.03414,
+      0.33183
+     ],
+     "rel_to_oracle": 0.03202
+    },
+    {
+     "T_us": 1400,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 3.87241,
+     "sched": 3.28918,
+     "sched_gate": 3.28918,
+     "sched_nocompute": 3.95602,
+     "sched_noreorder": 3.96214,
+     "osla": 0.89122,
+     "blinkered": 4.07396,
+     "zhang": 3.50318,
+     "bound_stopping": 4.31375,
+     "deployable": "fc8",
+     "deployable_mean": 3.65331,
+     "paired_diff": -0.58323,
+     "ci95": [
+      -1.18762,
+      0.08805
+     ],
+     "rel_to_oracle": -0.11384
+    },
+    {
+     "T_us": 2000,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 3.96405,
+     "sched": 3.64676,
+     "sched_gate": 3.64676,
+     "sched_nocompute": 4.04243,
+     "sched_noreorder": 4.11996,
+     "osla": 1.01706,
+     "blinkered": 4.19638,
+     "zhang": 3.7283,
+     "bound_stopping": 4.47358,
+     "deployable": "fc8",
+     "deployable_mean": 3.8189,
+     "paired_diff": -0.31728,
+     "ci95": [
+      -0.86758,
+      0.24319
+     ],
+     "rel_to_oracle": -0.06193
+    },
+    {
+     "T_us": 2800,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 4.02514,
+     "sched": 3.78034,
+     "sched_gate": 3.78034,
+     "sched_nocompute": 4.11029,
+     "sched_noreorder": 4.2981,
+     "osla": 1.40386,
+     "blinkered": 4.27522,
+     "zhang": 3.87837,
+     "bound_stopping": 4.60937,
+     "deployable": "cnn16",
+     "deployable_mean": 3.71227,
+     "paired_diff": -0.2448,
+     "ci95": [
+      -0.82958,
+      0.35261
+     ],
+     "rel_to_oracle": -0.04778
+    },
+    {
+     "T_us": 4000,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 4.07096,
+     "sched": 4.0642,
+     "sched_gate": 4.0642,
+     "sched_nocompute": 4.16572,
+     "sched_noreorder": 4.48786,
+     "osla": 2.13318,
+     "blinkered": 4.32823,
+     "zhang": 3.99103,
+     "bound_stopping": 4.73462,
+     "deployable": "topk32",
+     "deployable_mean": 3.98723,
+     "paired_diff": -0.00676,
+     "ci95": [
+      -0.53145,
+      0.56722
+     ],
+     "rel_to_oracle": -0.00132
+    },
+    {
+     "T_us": 5600,
+     "best_fixed": "topk32",
+     "best_fixed_mean": 4.20861,
+     "sched": 4.25096,
+     "sched_gate": 4.25096,
+     "sched_nocompute": 4.20488,
+     "sched_noreorder": 4.60156,
+     "osla": 2.33822,
+     "blinkered": 4.37842,
+     "zhang": 4.0661,
+     "bound_stopping": 4.8325,
+     "deployable": "sweep64",
+     "deployable_mean": 3.9307,
+     "paired_diff": 0.04234,
+     "ci95": [
+      -0.12594,
+      0.23397
+     ],
+     "rel_to_oracle": 0.00826
+    },
+    {
+     "T_us": 8000,
+     "best_fixed": "topk32",
+     "best_fixed_mean": 4.37465,
+     "sched": 4.45245,
+     "sched_gate": 4.45245,
+     "sched_nocompute": 4.23431,
+     "sched_noreorder": 4.71478,
+     "osla": 2.39027,
+     "blinkered": 4.4096,
+     "zhang": 4.12235,
+     "bound_stopping": 4.91364,
+     "deployable": "sweep64",
+     "deployable_mean": 4.28781,
+     "paired_diff": 0.0778,
+     "ci95": [
+      -0.06796,
+      0.25598
+     ],
+     "rel_to_oracle": 0.01519
+    },
+    {
+     "T_us": 10000,
+     "best_fixed": "sweep64",
+     "best_fixed_mean": 4.45446,
+     "sched": 4.54744,
+     "sched_gate": 4.54744,
+     "sched_nocompute": 4.24739,
+     "sched_noreorder": 4.76,
+     "osla": 2.43468,
+     "blinkered": 4.43511,
+     "zhang": 4.14864,
+     "bound_stopping": 4.95323,
+     "deployable": "sweep64",
+     "deployable_mean": 4.45446,
+     "paired_diff": 0.09297,
+     "ci95": [
+      0.00727,
+      0.18458
+     ],
+     "rel_to_oracle": 0.01815
+    }
+   ],
+   "gate_all_variants": {
+    "sched": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 5,
+     "worst_rel_oracle": -0.34626,
+     "mean_goodput": 3.10058
+    },
+    "sched-pi": {
+     "wins": [
+      10000
+     ],
+     "n_wins": 1,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.11384,
+     "mean_goodput": 3.80831
+    },
+    "sched-noreorder": {
+     "wins": [
+      1400,
+      2000,
+      2800,
+      4000,
+      5600,
+      8000,
+      10000
+     ],
+     "n_wins": 7,
+     "n_losses": 0,
+     "worst_rel_oracle": 0.00338,
+     "mean_goodput": 4.04787
+    },
+    "sched-noreorder-pi": {
+     "wins": [
+      1400,
+      2000,
+      2800,
+      4000,
+      5600,
+      8000
+     ],
+     "n_wins": 6,
+     "n_losses": 0,
+     "worst_rel_oracle": 0.00161,
+     "mean_goodput": 3.98202
+    },
+    "sched-nocompute": {
+     "wins": [
+      350,
+      500
+     ],
+     "n_wins": 2,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.06897,
+     "mean_goodput": 3.84134
+    },
+    "sched-nocompute-pi": {
+     "wins": [
+      500,
+      4000
+     ],
+     "n_wins": 2,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.04042,
+     "mean_goodput": 3.9042
+    },
+    "osla": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 12,
+     "worst_rel_oracle": -0.58192,
+     "mean_goodput": 1.39321
+    },
+    "osla-pi": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 12,
+     "worst_rel_oracle": -0.53909,
+     "mean_goodput": 1.27464
+    },
+    "sched-costblind": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 6,
+     "worst_rel_oracle": -0.40226,
+     "mean_goodput": 2.91918
+    },
+    "sched-costblind-pi": {
+     "wins": [
+      10000
+     ],
+     "n_wins": 1,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.08617,
+     "mean_goodput": 3.75373
+    },
+    "sched-1exit": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 11,
+     "worst_rel_oracle": -0.42235,
+     "mean_goodput": 2.20532
+    },
+    "sched-1exit-pi": {
+     "wins": [
+      2800,
+      4000
+     ],
+     "n_wins": 2,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.02878,
+     "mean_goodput": 3.88656
+    },
+    "blinkered": {
+     "wins": [
+      700,
+      1000,
+      1400,
+      2000,
+      2800,
+      4000
+     ],
+     "n_wins": 6,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.00892,
+     "mean_goodput": 3.99908
+    },
+    "blinkered-pi": {
+     "wins": [
+      500,
+      700,
+      1000,
+      1400,
+      2000,
+      2800,
+      4000
+     ],
+     "n_wins": 7,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.00451,
+     "mean_goodput": 4.0057
+    },
+    "sched-rep1": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 5,
+     "worst_rel_oracle": -0.34495,
+     "mean_goodput": 3.0806
+    },
+    "sched-rep1-pi": {
+     "wins": [
+      1000,
+      10000
+     ],
+     "n_wins": 2,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.04946,
+     "mean_goodput": 3.83557
+    },
+    "sched-deep1": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 2,
+     "worst_rel_oracle": -0.23064,
+     "mean_goodput": 3.48796
+    },
+    "sched-deep1-pi": {
+     "wins": [
+      2000,
+      2800,
+      4000,
+      5600,
+      8000,
+      10000
+     ],
+     "n_wins": 6,
+     "n_losses": 1,
+     "worst_rel_oracle": -0.12589,
+     "mean_goodput": 3.86512
+    },
+    "sched-anyr": {
+     "wins": [
+      1000,
+      1400,
+      2000,
+      2800,
+      4000,
+      5600,
+      8000,
+      10000
+     ],
+     "n_wins": 8,
+     "n_losses": 0,
+     "worst_rel_oracle": 0.0129,
+     "mean_goodput": 4.0915
+    },
+    "sched-anyr-pi": {
+     "wins": [
+      700,
+      1000,
+      1400,
+      2000,
+      2800,
+      4000,
+      5600,
+      8000,
+      10000
+     ],
+     "n_wins": 9,
+     "n_losses": 0,
+     "worst_rel_oracle": 0.01266,
+     "mean_goodput": 4.06584
+    },
+    "sched-fcc": {
+     "wins": [
+      700,
+      1000,
+      1400,
+      2000,
+      2800,
+      4000
+     ],
+     "n_wins": 6,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.00394,
+     "mean_goodput": 4.01424
+    },
+    "sched-fcc-pi": {
+     "wins": [
+      700,
+      1000,
+      1400,
+      2000,
+      2800,
+      4000
+     ],
+     "n_wins": 6,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.00117,
+     "mean_goodput": 3.99854
+    },
+    "sched-cnnc": {
+     "wins": [
+      1400,
+      2000,
+      2800,
+      4000
+     ],
+     "n_wins": 4,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.00096,
+     "mean_goodput": 3.98406
+    },
+    "sched-cnnc-pi": {
+     "wins": [
+      1400,
+      2000,
+      2800,
+      4000
+     ],
+     "n_wins": 4,
+     "n_losses": 0,
+     "worst_rel_oracle": 0.00131,
+     "mean_goodput": 3.95784
+    }
+   },
+   "gate": {
+    "controller": "sched-pi",
+    "wins": [
+     10000
+    ],
+    "n_wins": 1,
+    "n_losses": 0,
+    "worst_loss_rel_oracle": -0.11384,
+    "guard_ok": false,
+    "post_hoc_baseline": true
+   },
+   "compute_pays": {
+    "with": "sched-pi",
+    "without": "sched-nocompute-pi",
+    "matched_estimation": true,
+    "mean_with": 3.80831,
+    "mean_without": 3.9042,
+    "mean_gain_rel": -0.02456,
+    "n_wins_holm": 0,
+    "wins_holm": [],
+    "n_losses_holm": 3,
+    "losses_holm": [
+     250,
+     350,
+     500
+    ],
+    "n_wins_uncorrected": 0,
+    "n_losses_uncorrected": 3,
+    "rows": [
+     {
+      "T_us": 250,
+      "diff": -0.10288,
+      "ci95": [
+       -0.16144,
+       -0.04723
+      ],
+      "p": 0.0001,
+      "with": 3.12198,
+      "without": 3.22486
+     },
+     {
+      "T_us": 350,
+      "diff": -0.09763,
+      "ci95": [
+       -0.15591,
+       -0.04437
+      ],
+      "p": 5e-05,
+      "with": 3.34321,
+      "without": 3.44084
+     },
+     {
+      "T_us": 500,
+      "diff": -0.06447,
+      "ci95": [
+       -0.11971,
+       -0.02221
+      ],
+      "p": 0.0007,
+      "with": 3.54685,
+      "without": 3.61132
+     },
+     {
+      "T_us": 700,
+      "diff": -0.00575,
+      "ci95": [
+       -0.10942,
+       0.09292
+      ],
+      "p": 0.8691,
+      "with": 3.74214,
+      "without": 3.74789
+     },
+     {
+      "T_us": 1000,
+      "diff": 0.04978,
+      "ci95": [
+       -0.06645,
+       0.18427
+      ],
+      "p": 0.4731,
+      "with": 3.91426,
+      "without": 3.86448
+     },
+     {
+      "T_us": 1400,
+      "diff": -0.66684,
+      "ci95": [
+       -1.34096,
+       0.03355
+      ],
+      "p": 0.0673,
+      "with": 3.28918,
+      "without": 3.95602
+     },
+     {
+      "T_us": 2000,
+      "diff": -0.39566,
+      "ci95": [
+       -1.02316,
+       0.20973
+      ],
+      "p": 0.2509,
+      "with": 3.64676,
+      "without": 4.04243
+     },
+     {
+      "T_us": 2800,
+      "diff": -0.32995,
+      "ci95": [
+       -0.96129,
+       0.29952
+      ],
+      "p": 0.3596,
+      "with": 3.78034,
+      "without": 4.11029
+     },
+     {
+      "T_us": 4000,
+      "diff": -0.10151,
+      "ci95": [
+       -0.66277,
+       0.50029
+      ],
+      "p": 0.7859,
+      "with": 4.0642,
+      "without": 4.16572
+     },
+     {
+      "T_us": 5600,
+      "diff": 0.04608,
+      "ci95": [
+       -0.4749,
+       0.64561
+      ],
+      "p": 0.8538,
+      "with": 4.25096,
+      "without": 4.20488
+     },
+     {
+      "T_us": 8000,
+      "diff": 0.21815,
+      "ci95": [
+       -0.25656,
+       0.80527
+      ],
+      "p": 0.409,
+      "with": 4.45245,
+      "without": 4.23431
+     },
+     {
+      "T_us": 10000,
+      "diff": 0.30005,
+      "ci95": [
+       -0.17057,
+       0.8958
+      ],
+      "p": 0.2476,
+      "with": 4.54744,
+      "without": 4.24739
+     }
+    ]
+   },
+   "vs_deployable": {
+    "n_wins_holm": 1,
+    "wins_holm": [
+     1000
+    ],
+    "n_losses_holm": 0,
+    "losses_holm": [],
+    "n_wins_uncorrected": 4,
+    "n_losses_uncorrected": 0,
+    "rows": [
+     {
+      "T_us": 250,
+      "baseline": "topk2",
+      "baseline_mean": 3.1548,
+      "sched_mean": 3.12198,
+      "diff": -0.03282,
+      "ci95": [
+       -0.13839,
+       0.12154
+      ],
+      "p": 0.5954
+     },
+     {
+      "T_us": 350,
+      "baseline": "topk2",
+      "baseline_mean": 3.32997,
+      "sched_mean": 3.34321,
+      "diff": 0.01324,
+      "ci95": [
+       -0.09968,
+       0.17174
+      ],
+      "p": 0.8762
+     },
+     {
+      "T_us": 500,
+      "baseline": "fc4",
+      "baseline_mean": 3.32257,
+      "sched_mean": 3.54685,
+      "diff": 0.22428,
+      "ci95": [
+       -0.05021,
+       0.50314
+      ],
+      "p": 0.1257
+     },
+     {
+      "T_us": 700,
+      "baseline": "fc4",
+      "baseline_mean": 3.56694,
+      "sched_mean": 3.74214,
+      "diff": 0.1752,
+      "ci95": [
+       -0.05377,
+       0.36702
+      ],
+      "p": 0.1232
+     },
+     {
+      "T_us": 1000,
+      "baseline": "hier3",
+      "baseline_mean": 3.15951,
+      "sched_mean": 3.91426,
+      "diff": 0.75476,
+      "ci95": [
+       0.16594,
+       1.39169
+      ],
+      "p": 0.0018
+     },
+     {
+      "T_us": 1400,
+      "baseline": "fc8",
+      "baseline_mean": 3.65331,
+      "sched_mean": 3.28918,
+      "diff": -0.36414,
+      "ci95": [
+       -0.83411,
+       0.13112
+      ],
+      "p": 0.1726
+     },
+     {
+      "T_us": 2000,
+      "baseline": "fc8",
+      "baseline_mean": 3.8189,
+      "sched_mean": 3.64676,
+      "diff": -0.17214,
+      "ci95": [
+       -0.6592,
+       0.3165
+      ],
+      "p": 0.5439
+     },
+     {
+      "T_us": 2800,
+      "baseline": "cnn16",
+      "baseline_mean": 3.71227,
+      "sched_mean": 3.78034,
+      "diff": 0.06807,
+      "ci95": [
+       -0.30206,
+       0.48178
+      ],
+      "p": 0.7457
+     },
+     {
+      "T_us": 4000,
+      "baseline": "topk32",
+      "baseline_mean": 3.98723,
+      "sched_mean": 4.0642,
+      "diff": 0.07697,
+      "ci95": [
+       -0.10253,
+       0.28349
+      ],
+      "p": 0.4586
+     },
+     {
+      "T_us": 5600,
+      "baseline": "sweep64",
+      "baseline_mean": 3.9307,
+      "sched_mean": 4.25096,
+      "diff": 0.32026,
+      "ci95": [
+       0.05966,
+       0.56178
+      ],
+      "p": 0.0077
+     },
+     {
+      "T_us": 8000,
+      "baseline": "sweep64",
+      "baseline_mean": 4.28781,
+      "sched_mean": 4.45245,
+      "diff": 0.16464,
+      "ci95": [
+       0.03078,
+       0.28769
+      ],
+      "p": 0.0144
+     },
+     {
+      "T_us": 10000,
+      "baseline": "sweep64",
+      "baseline_mean": 4.45446,
+      "sched_mean": 4.54744,
+      "diff": 0.09297,
+      "ci95": [
+       0.00849,
+       0.1833
+      ],
+      "p": 0.0285
+     }
+    ]
+   },
+   "rank_inversions_endpoint_7menu": [
+    [
+     "sweep64",
+     "hier6"
+    ],
+    [
+     "sweep64",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "hier6",
+     "topk8"
+    ],
+    [
+     "hier6",
+     "topk16"
+    ],
+    [
+     "hier6",
+     "cnn16"
+    ],
+    [
+     "hier6",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk8",
+     "topk16"
+    ],
+    [
+     "topk8",
+     "fc16"
+    ],
+    [
+     "topk8",
+     "cnn16"
+    ],
+    [
+     "topk16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "cnn16",
+     "zhang-AHTBS+AHIBS"
+    ]
+   ],
+   "order_at_250us": [
+    "zhang-AHTBS+AHIBS",
+    "topk8",
+    "hier6",
+    "sweep64",
+    "topk16",
+    "fc16",
+    "cnn16"
+   ],
+   "order_at_10ms": [
+    "sweep64",
+    "topk16",
+    "cnn16",
+    "hier6",
+    "zhang-AHTBS+AHIBS",
+    "fc16",
+    "topk8"
+   ],
+   "t_star": [
+    {
+     "method": "topk8",
+     "cost_us": 162.712,
+     "eta": 0.6415,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.8121,
+     "predicted_T_us": 3342.6,
+     "measured_T_us": [
+      6319.6
+     ],
+     "ratio": 1.891
+    },
+    {
+     "method": "topk16",
+     "cost_us": 325.424,
+     "eta": 0.7014,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.8637,
+     "predicted_T_us": 3598.8,
+     "measured_T_us": [
+      7570.8
+     ],
+     "ratio": 2.104
+    },
+    {
+     "method": "fc16",
+     "cost_us": 346.259,
+     "eta": 0.7369,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.8326,
+     "predicted_T_us": 3982.8,
+     "measured_T_us": [
+      6135.8
+     ],
+     "ratio": 1.541
+    },
+    {
+     "method": "cnn16",
+     "cost_us": 428.926,
+     "eta": 0.7674,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.8557,
+     "predicted_T_us": 4187.4,
+     "measured_T_us": [
+      6593.1
+     ],
+     "ratio": 1.575
+    },
+    {
+     "method": "hier6",
+     "cost_us": 244.068,
+     "eta": 0.6331,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.8301,
+     "predicted_T_us": 3129.2,
+     "measured_T_us": [
+      6583.5
+     ],
+     "ratio": 2.104
+    },
+    {
+     "method": "ee1k8",
+     "cost_us": 176.847,
+     "eta": 0.6301,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.7705,
+     "predicted_T_us": 3220.4,
+     "measured_T_us": [
+      5142.3
+     ],
+     "ratio": 1.597
+    }
+   ],
+   "envelope": {
+    "hull": [
+     [
+      20.3,
+      49.3,
+      "topk1",
+      0.1521,
+      20.34
+     ],
+     [
+      49.3,
+      377.4,
+      "topk2",
+      0.5123,
+      40.68
+     ],
+     [
+      377.4,
+      893.2,
+      "fc4",
+      0.6272,
+      102.36
+     ],
+     [
+      893.2,
+      1133.5,
+      "hier3",
+      0.6432,
+      122.03
+     ],
+     [
+      1133.5,
+      2467.0,
+      "fc8",
+      0.685,
+      183.76
+     ],
+     [
+      2467.0,
+      2868.3,
+      "cnn16",
+      0.7674,
+      428.93
+     ],
+     [
+      2868.3,
+      4839.7,
+      "topk32",
+      0.8442,
+      650.85
+     ],
+     [
+      4839.7,
+      null,
+      "sweep64",
+      0.9995,
+      1301.7
+     ]
+    ],
+    "predicted_best": [
+     "topk2",
+     "topk2",
+     "fc4",
+     "fc4",
+     "hier3",
+     "fc8",
+     "fc8",
+     "cnn16",
+     "topk32",
+     "sweep64",
+     "sweep64",
+     "sweep64"
+    ],
+    "measured_best": [
+     "topk2",
+     "topk2",
+     "topk2",
+     "fc4",
+     "fc4",
+     "fc4",
+     "fc4",
+     "fc4",
+     "fc4",
+     "topk32",
+     "topk32",
+     "sweep64"
+    ],
+    "agreement": "4/12"
+   },
+   "allocation": {
+    "250": [
+     [
+      9.316,
+      1.297,
+      20.837
+     ],
+     [
+      8.065,
+      1.159,
+      17.714
+     ],
+     [
+      8.088,
+      1.159,
+      17.901
+     ],
+     [
+      2.494,
+      0.132,
+      1.866
+     ]
+    ],
+    "350": [
+     [
+      12.122,
+      1.705,
+      30.11
+     ],
+     [
+      10.443,
+      1.44,
+      24.07
+     ],
+     [
+      10.457,
+      1.608,
+      28.121
+     ],
+     [
+      3.828,
+      0.374,
+      5.549
+     ]
+    ],
+    "500": [
+     [
+      15.376,
+      2.197,
+      42.568
+     ],
+     [
+      12.205,
+      1.838,
+      33.705
+     ],
+     [
+      12.182,
+      2.092,
+      40.041
+     ],
+     [
+      8.321,
+      1.285,
+      21.257
+     ]
+    ],
+    "700": [
+     [
+      23.583,
+      2.842,
+      60.577
+     ],
+     [
+      14.184,
+      2.23,
+      43.938
+     ],
+     [
+      13.609,
+      2.378,
+      47.744
+     ],
+     [
+      10.226,
+      1.78,
+      32.422
+     ]
+    ],
+    "1000": [
+     [
+      34.301,
+      2.951,
+      63.603
+     ],
+     [
+      16.418,
+      2.447,
+      49.479
+     ],
+     [
+      15.035,
+      2.544,
+      52.242
+     ],
+     [
+      12.826,
+      2.165,
+      42.432
+     ]
+    ],
+    "1400": [
+     [
+      43.664,
+      2.981,
+      64.481
+     ],
+     [
+      19.918,
+      2.678,
+      55.979
+     ],
+     [
+      17.106,
+      2.698,
+      56.585
+     ],
+     [
+      16.414,
+      2.397,
+      48.713
+     ]
+    ],
+    "2000": [
+     [
+      55.8,
+      2.989,
+      64.689
+     ],
+     [
+      23.535,
+      2.811,
+      59.693
+     ],
+     [
+      19.841,
+      2.804,
+      59.533
+     ],
+     [
+      20.494,
+      2.527,
+      52.172
+     ]
+    ],
+    "2800": [
+     [
+      57.304,
+      2.998,
+      64.957
+     ],
+     [
+      27.892,
+      2.922,
+      62.826
+     ],
+     [
+      22.4,
+      2.861,
+      61.129
+     ],
+     [
+      23.007,
+      2.6,
+      54.105
+     ]
+    ],
+    "4000": [
+     [
+      58.997,
+      2.999,
+      64.98
+     ],
+     [
+      32.207,
+      2.968,
+      64.101
+     ],
+     [
+      25.855,
+      2.909,
+      62.441
+     ],
+     [
+      26.489,
+      2.683,
+      56.316
+     ]
+    ],
+    "5600": [
+     [
+      60.432,
+      2.999,
+      64.981
+     ],
+     [
+      36.577,
+      2.986,
+      64.606
+     ],
+     [
+      29.537,
+      2.947,
+      63.502
+     ],
+     [
+      28.793,
+      2.733,
+      57.617
+     ]
+    ],
+    "8000": [
+     [
+      62.208,
+      2.999,
+      64.981
+     ],
+     [
+      44.328,
+      2.995,
+      64.86
+     ],
+     [
+      40.05,
+      2.973,
+      64.228
+     ],
+     [
+      30.237,
+      2.754,
+      58.125
+     ]
+    ],
+    "10000": [
+     [
+      62.988,
+      2.999,
+      64.981
+     ],
+     [
+      53.461,
+      2.998,
+      64.937
+     ],
+     [
+      49.06,
+      2.989,
+      64.698
+     ],
+     [
+      32.392,
+      2.788,
+      59.101
+     ]
+    ]
+   },
+   "diagnostics": {
+    "zhang-AHIBS@250": [
+     6.831,
+     3.416
+    ],
+    "zhang-AHTBS@250": [
+     22.431,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@250": [
+     7.995,
+     2.012
+    ],
+    "sched@250": [
+     6.646,
+     0.852,
+     0.123,
+     13.472,
+     0.681,
+     135.178
+    ],
+    "sched-pi@250": [
+     4.83,
+     0.763,
+     0.392,
+     12.098,
+     0.604,
+     98.242
+    ],
+    "sched-noreorder@250": [
+     4.37,
+     0.807,
+     0.611,
+     12.944,
+     0.616,
+     88.877
+    ],
+    "sched-noreorder-pi@250": [
+     4.289,
+     0.869,
+     0.614,
+     14.508,
+     0.621,
+     87.235
+    ],
+    "sched-nocompute@250": [
+     5.808,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     118.139
+    ],
+    "sched-nocompute-pi@250": [
+     5.906,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     120.127
+    ],
+    "osla@250": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "osla-pi@250": [
+     0.0,
+     0.2,
+     0.2,
+     2.827,
+     0.2,
+     0.0
+    ],
+    "sched-costblind@250": [
+     7.507,
+     1.754,
+     0.552,
+     33.871,
+     0.801,
+     152.693
+    ],
+    "sched-costblind-pi@250": [
+     6.249,
+     1.68,
+     0.237,
+     34.437,
+     0.715,
+     127.09
+    ],
+    "sched-1exit@250": [
+     6.722,
+     0.681,
+     0.022,
+     9.631,
+     0.681,
+     136.719
+    ],
+    "sched-1exit-pi@250": [
+     4.942,
+     0.598,
+     0.381,
+     8.448,
+     0.598,
+     100.505
+    ],
+    "blinkered@250": [
+     5.633,
+     0.708,
+     0.197,
+     10.747,
+     0.617,
+     114.562
+    ],
+    "blinkered-pi@250": [
+     5.457,
+     0.65,
+     0.15,
+     9.543,
+     0.607,
+     110.996
+    ],
+    "sched-rep1@250": [
+     6.64,
+     0.915,
+     0.162,
+     12.93,
+     0.682,
+     135.043
+    ],
+    "sched-rep1-pi@250": [
+     5.029,
+     1.035,
+     0.358,
+     14.633,
+     0.638,
+     102.291
+    ],
+    "sched-deep1@250": [
+     4.514,
+     0.572,
+     0.458,
+     16.56,
+     0.572,
+     91.817
+    ],
+    "sched-deep1-pi@250": [
+     5.971,
+     0.658,
+     0.092,
+     19.054,
+     0.658,
+     121.445
+    ],
+    "sched-anyr@250": [
+     4.644,
+     0.465,
+     0.465,
+     13.449,
+     0.465,
+     94.447
+    ],
+    "sched-anyr-pi@250": [
+     4.241,
+     0.483,
+     0.48,
+     13.968,
+     0.483,
+     86.252
+    ],
+    "sched-fcc@250": [
+     4.844,
+     0.679,
+     0.678,
+     14.75,
+     0.679,
+     98.527
+    ],
+    "sched-fcc-pi@250": [
+     4.682,
+     0.67,
+     0.668,
+     14.569,
+     0.67,
+     95.236
+    ],
+    "sched-cnnc@250": [
+     5.887,
+     0.007,
+     0.007,
+     0.717,
+     0.007,
+     119.732
+    ],
+    "sched-cnnc-pi@250": [
+     5.886,
+     0.017,
+     0.017,
+     1.729,
+     0.017,
+     119.711
+    ],
+    "zhang-AHIBS@350": [
+     8.511,
+     4.255
+    ],
+    "zhang-AHTBS@350": [
+     22.417,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@350": [
+     10.91,
+     2.77
+    ],
+    "sched@350": [
+     8.853,
+     1.189,
+     0.156,
+     20.46,
+     0.76,
+     180.054
+    ],
+    "sched-pi@350": [
+     6.569,
+     1.045,
+     0.287,
+     18.82,
+     0.633,
+     133.602
+    ],
+    "sched-noreorder@350": [
+     6.082,
+     1.216,
+     0.609,
+     22.239,
+     0.646,
+     123.708
+    ],
+    "sched-noreorder-pi@350": [
+     5.77,
+     1.162,
+     0.63,
+     21.004,
+     0.663,
+     117.348
+    ],
+    "sched-nocompute@350": [
+     6.295,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     128.028
+    ],
+    "sched-nocompute-pi@350": [
+     7.37,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     149.891
+    ],
+    "osla@350": [
+     0.0,
+     0.6,
+     0.6,
+     8.481,
+     0.6,
+     0.0
+    ],
+    "osla-pi@350": [
+     0.364,
+     0.481,
+     0.361,
+     7.427,
+     0.4,
+     7.413
+    ],
+    "sched-costblind@350": [
+     10.849,
+     2.233,
+     0.268,
+     44.333,
+     0.978,
+     220.651
+    ],
+    "sched-costblind-pi@350": [
+     8.044,
+     1.794,
+     0.199,
+     37.067,
+     0.745,
+     163.604
+    ],
+    "sched-1exit@350": [
+     8.969,
+     0.759,
+     0.006,
+     10.729,
+     0.759,
+     182.427
+    ],
+    "sched-1exit-pi@350": [
+     6.666,
+     0.62,
+     0.3,
+     8.757,
+     0.62,
+     135.58
+    ],
+    "blinkered@350": [
+     7.009,
+     0.711,
+     0.216,
+     11.152,
+     0.575,
+     142.566
+    ],
+    "blinkered-pi@350": [
+     7.341,
+     0.63,
+     0.132,
+     9.241,
+     0.589,
+     149.313
+    ],
+    "sched-rep1@350": [
+     9.11,
+     1.249,
+     0.102,
+     17.651,
+     0.76,
+     185.284
+    ],
+    "sched-rep1-pi@350": [
+     6.925,
+     1.153,
+     0.256,
+     16.301,
+     0.63,
+     140.844
+    ],
+    "sched-deep1@350": [
+     5.907,
+     0.577,
+     0.434,
+     16.687,
+     0.577,
+     120.141
+    ],
+    "sched-deep1-pi@350": [
+     8.721,
+     0.694,
+     0.05,
+     20.092,
+     0.694,
+     177.375
+    ],
+    "sched-anyr@350": [
+     6.879,
+     0.336,
+     0.335,
+     9.727,
+     0.336,
+     139.91
+    ],
+    "sched-anyr-pi@350": [
+     6.456,
+     0.409,
+     0.403,
+     11.829,
+     0.409,
+     131.315
+    ],
+    "sched-fcc@350": [
+     5.713,
+     0.681,
+     0.678,
+     14.787,
+     0.681,
+     116.188
+    ],
+    "sched-fcc-pi@350": [
+     5.421,
+     0.691,
+     0.684,
+     15.016,
+     0.691,
+     110.26
+    ],
+    "sched-cnnc@350": [
+     6.725,
+     0.268,
+     0.268,
+     27.756,
+     0.268,
+     136.771
+    ],
+    "sched-cnnc-pi@350": [
+     6.71,
+     0.278,
+     0.278,
+     28.812,
+     0.278,
+     136.466
+    ],
+    "zhang-AHIBS@500": [
+     9.534,
+     4.767
+    ],
+    "zhang-AHTBS@500": [
+     22.43,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@500": [
+     15.208,
+     3.961
+    ],
+    "sched@500": [
+     12.337,
+     1.823,
+     0.086,
+     33.796,
+     0.975,
+     250.929
+    ],
+    "sched-pi@500": [
+     9.483,
+     1.435,
+     0.18,
+     28.435,
+     0.67,
+     192.871
+    ],
+    "sched-noreorder@500": [
+     7.626,
+     1.466,
+     0.564,
+     28.529,
+     0.666,
+     155.103
+    ],
+    "sched-noreorder-pi@500": [
+     7.492,
+     1.552,
+     0.568,
+     30.107,
+     0.727,
+     152.386
+    ],
+    "sched-nocompute@500": [
+     6.548,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     133.172
+    ],
+    "sched-nocompute-pi@500": [
+     7.78,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     158.239
+    ],
+    "osla@500": [
+     0.0,
+     0.9,
+     0.9,
+     12.722,
+     0.9,
+     0.0
+    ],
+    "osla-pi@500": [
+     0.775,
+     1.011,
+     0.838,
+     15.376,
+     0.9,
+     15.765
+    ],
+    "sched-costblind@500": [
+     14.388,
+     2.557,
+     0.123,
+     53.024,
+     0.982,
+     292.643
+    ],
+    "sched-costblind-pi@500": [
+     11.472,
+     2.024,
+     0.126,
+     42.283,
+     0.799,
+     233.322
+    ],
+    "sched-1exit@500": [
+     10.59,
+     0.975,
+     0.0,
+     13.778,
+     0.975,
+     215.399
+    ],
+    "sched-1exit-pi@500": [
+     8.243,
+     0.656,
+     0.248,
+     9.269,
+     0.656,
+     167.653
+    ],
+    "blinkered@500": [
+     7.961,
+     0.693,
+     0.109,
+     10.714,
+     0.583,
+     161.927
+    ],
+    "blinkered-pi@500": [
+     8.787,
+     0.631,
+     0.063,
+     9.128,
+     0.607,
+     178.724
+    ],
+    "sched-rep1@500": [
+     13.456,
+     2.07,
+     0.047,
+     29.265,
+     0.975,
+     273.69
+    ],
+    "sched-rep1-pi@500": [
+     10.048,
+     1.566,
+     0.154,
+     22.139,
+     0.676,
+     204.358
+    ],
+    "sched-deep1@500": [
+     8.687,
+     0.648,
+     0.32,
+     18.748,
+     0.648,
+     176.682
+    ],
+    "sched-deep1-pi@500": [
+     12.566,
+     0.779,
+     0.04,
+     22.542,
+     0.779,
+     255.573
+    ],
+    "sched-anyr@500": [
+     9.241,
+     0.6,
+     0.598,
+     17.372,
+     0.6,
+     187.961
+    ],
+    "sched-anyr-pi@500": [
+     9.218,
+     0.608,
+     0.6,
+     17.605,
+     0.608,
+     187.495
+    ],
+    "sched-fcc@500": [
+     8.815,
+     0.715,
+     0.713,
+     15.543,
+     0.715,
+     179.29
+    ],
+    "sched-fcc-pi@500": [
+     8.331,
+     0.723,
+     0.714,
+     15.701,
+     0.723,
+     169.446
+    ],
+    "sched-cnnc@500": [
+     8.901,
+     0.445,
+     0.444,
+     46.068,
+     0.445,
+     181.043
+    ],
+    "sched-cnnc-pi@500": [
+     8.915,
+     0.437,
+     0.436,
+     45.23,
+     0.437,
+     181.324
+    ],
+    "zhang-AHIBS@700": [
+     11.448,
+     5.724
+    ],
+    "zhang-AHTBS@700": [
+     22.431,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@700": [
+     20.745,
+     5.537
+    ],
+    "sched@700": [
+     17.307,
+     2.372,
+     0.049,
+     48.05,
+     1.0,
+     352.011
+    ],
+    "sched-pi@700": [
+     13.409,
+     1.744,
+     0.121,
+     36.115,
+     0.712,
+     272.734
+    ],
+    "sched-noreorder@700": [
+     9.84,
+     1.746,
+     0.526,
+     35.783,
+     0.695,
+     200.132
+    ],
+    "sched-noreorder-pi@700": [
+     10.222,
+     1.799,
+     0.503,
+     37.079,
+     0.719,
+     207.915
+    ],
+    "sched-nocompute@700": [
+     6.79,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     138.098
+    ],
+    "sched-nocompute-pi@700": [
+     8.14,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     165.553
+    ],
+    "osla@700": [
+     0.0,
+     0.9,
+     0.9,
+     12.722,
+     0.9,
+     0.0
+    ],
+    "osla-pi@700": [
+     0.0,
+     0.9,
+     0.9,
+     12.722,
+     0.9,
+     0.0
+    ],
+    "sched-costblind@700": [
+     19.112,
+     2.701,
+     0.075,
+     56.693,
+     1.0,
+     388.716
+    ],
+    "sched-costblind-pi@700": [
+     15.501,
+     2.244,
+     0.064,
+     47.586,
+     0.83,
+     315.265
+    ],
+    "sched-1exit@700": [
+     10.783,
+     0.979,
+     0.0,
+     13.841,
+     0.979,
+     219.312
+    ],
+    "sched-1exit-pi@700": [
+     8.745,
+     0.69,
+     0.228,
+     9.75,
+     0.69,
+     177.87
+    ],
+    "blinkered@700": [
+     8.36,
+     0.71,
+     0.08,
+     11.235,
+     0.57,
+     170.028
+    ],
+    "blinkered-pi@700": [
+     9.26,
+     0.647,
+     0.054,
+     9.522,
+     0.603,
+     188.33
+    ],
+    "sched-rep1@700": [
+     18.0,
+     2.469,
+     0.023,
+     34.893,
+     1.0,
+     366.1
+    ],
+    "sched-rep1-pi@700": [
+     13.991,
+     1.837,
+     0.093,
+     25.967,
+     0.714,
+     284.554
+    ],
+    "sched-deep1@700": [
+     13.37,
+     0.702,
+     0.18,
+     20.318,
+     0.702,
+     271.932
+    ],
+    "sched-deep1-pi@700": [
+     16.12,
+     0.844,
+     0.072,
+     24.433,
+     0.844,
+     327.858
+    ],
+    "sched-anyr@700": [
+     12.729,
+     0.564,
+     0.561,
+     16.332,
+     0.564,
+     258.896
+    ],
+    "sched-anyr-pi@700": [
+     12.587,
+     0.593,
+     0.566,
+     17.168,
+     0.593,
+     256.012
+    ],
+    "sched-fcc@700": [
+     12.446,
+     0.659,
+     0.655,
+     14.318,
+     0.659,
+     253.147
+    ],
+    "sched-fcc-pi@700": [
+     12.217,
+     0.703,
+     0.693,
+     15.269,
+     0.703,
+     248.475
+    ],
+    "sched-cnnc@700": [
+     12.081,
+     0.491,
+     0.49,
+     50.785,
+     0.491,
+     245.723
+    ],
+    "sched-cnnc-pi@700": [
+     11.882,
+     0.493,
+     0.492,
+     51.002,
+     0.493,
+     241.673
+    ],
+    "zhang-AHIBS@1000": [
+     11.999,
+     6.0
+    ],
+    "zhang-AHTBS@1000": [
+     22.42,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@1000": [
+     22.425,
+     6.0
+    ],
+    "sched@1000": [
+     23.782,
+     2.595,
+     0.018,
+     53.942,
+     1.0,
+     483.706
+    ],
+    "sched-pi@1000": [
+     19.367,
+     2.028,
+     0.046,
+     42.824,
+     0.757,
+     393.896
+    ],
+    "sched-noreorder@1000": [
+     13.962,
+     1.901,
+     0.434,
+     39.739,
+     0.718,
+     283.971
+    ],
+    "sched-noreorder-pi@1000": [
+     15.161,
+     2.013,
+     0.392,
+     41.975,
+     0.77,
+     308.362
+    ],
+    "sched-nocompute@1000": [
+     7.068,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     143.751
+    ],
+    "sched-nocompute-pi@1000": [
+     8.578,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     174.475
+    ],
+    "osla@1000": [
+     0.0,
+     0.9,
+     0.9,
+     12.722,
+     0.9,
+     0.0
+    ],
+    "osla-pi@1000": [
+     0.694,
+     1.217,
+     0.958,
+     19.124,
+     1.0,
+     14.108
+    ],
+    "sched-costblind@1000": [
+     24.986,
+     2.789,
+     0.025,
+     59.137,
+     1.0,
+     508.199
+    ],
+    "sched-costblind-pi@1000": [
+     21.161,
+     2.454,
+     0.026,
+     52.449,
+     0.868,
+     430.388
+    ],
+    "sched-1exit@1000": [
+     10.992,
+     0.985,
+     0.0,
+     13.928,
+     0.985,
+     223.559
+    ],
+    "sched-1exit-pi@1000": [
+     9.38,
+     0.724,
+     0.195,
+     10.237,
+     0.724,
+     190.79
+    ],
+    "blinkered@1000": [
+     8.767,
+     0.739,
+     0.072,
+     11.939,
+     0.57,
+     178.318
+    ],
+    "blinkered-pi@1000": [
+     9.832,
+     0.723,
+     0.064,
+     10.779,
+     0.659,
+     199.971
+    ],
+    "sched-rep1@1000": [
+     24.311,
+     2.636,
+     0.017,
+     37.26,
+     1.0,
+     494.459
+    ],
+    "sched-rep1-pi@1000": [
+     19.552,
+     2.068,
+     0.043,
+     29.229,
+     0.756,
+     397.662
+    ],
+    "sched-deep1@1000": [
+     22.615,
+     0.901,
+     0.023,
+     26.062,
+     0.901,
+     459.976
+    ],
+    "sched-deep1-pi@1000": [
+     18.187,
+     0.746,
+     0.157,
+     21.593,
+     0.746,
+     369.903
+    ],
+    "sched-anyr@1000": [
+     16.775,
+     0.642,
+     0.639,
+     18.588,
+     0.642,
+     341.186
+    ],
+    "sched-anyr-pi@1000": [
+     16.81,
+     0.646,
+     0.628,
+     18.699,
+     0.646,
+     341.908
+    ],
+    "sched-fcc@1000": [
+     16.589,
+     0.732,
+     0.73,
+     15.909,
+     0.732,
+     337.401
+    ],
+    "sched-fcc-pi@1000": [
+     15.966,
+     0.744,
+     0.741,
+     16.17,
+     0.744,
+     324.727
+    ],
+    "sched-cnnc@1000": [
+     16.884,
+     0.637,
+     0.635,
+     65.913,
+     0.637,
+     343.409
+    ],
+    "sched-cnnc-pi@1000": [
+     16.087,
+     0.662,
+     0.659,
+     68.499,
+     0.662,
+     327.196
+    ],
+    "zhang-AHIBS@1400": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@1400": [
+     22.425,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@1400": [
+     22.427,
+     6.0
+    ],
+    "sched@1400": [
+     30.112,
+     2.725,
+     0.009,
+     57.513,
+     1.0,
+     612.456
+    ],
+    "sched-pi@1400": [
+     26.496,
+     2.565,
+     0.007,
+     54.548,
+     0.919,
+     538.909
+    ],
+    "sched-noreorder@1400": [
+     21.591,
+     1.993,
+     0.323,
+     41.961,
+     0.738,
+     439.136
+    ],
+    "sched-noreorder-pi@1400": [
+     22.199,
+     2.013,
+     0.349,
+     41.902,
+     0.774,
+     451.5
+    ],
+    "sched-nocompute@1400": [
+     7.233,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     147.122
+    ],
+    "sched-nocompute-pi@1400": [
+     8.903,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     181.068
+    ],
+    "osla@1400": [
+     0.0,
+     0.9,
+     0.9,
+     12.722,
+     0.9,
+     0.0
+    ],
+    "osla-pi@1400": [
+     5.415,
+     1.651,
+     0.564,
+     31.201,
+     0.9,
+     110.134
+    ],
+    "sched-costblind@1400": [
+     30.898,
+     2.836,
+     0.009,
+     60.47,
+     1.0,
+     628.434
+    ],
+    "sched-costblind-pi@1400": [
+     26.163,
+     2.608,
+     0.013,
+     55.73,
+     0.922,
+     532.128
+    ],
+    "sched-1exit@1400": [
+     11.161,
+     0.986,
+     0.0,
+     13.938,
+     0.986,
+     226.998
+    ],
+    "sched-1exit-pi@1400": [
+     9.839,
+     0.775,
+     0.173,
+     10.958,
+     0.775,
+     200.114
+    ],
+    "blinkered@1400": [
+     9.182,
+     0.756,
+     0.067,
+     12.318,
+     0.573,
+     186.754
+    ],
+    "blinkered-pi@1400": [
+     10.304,
+     0.74,
+     0.065,
+     11.22,
+     0.657,
+     209.568
+    ],
+    "sched-rep1@1400": [
+     30.901,
+     2.743,
+     0.013,
+     38.774,
+     1.0,
+     628.488
+    ],
+    "sched-rep1-pi@1400": [
+     25.555,
+     2.423,
+     0.013,
+     34.253,
+     0.87,
+     519.773
+    ],
+    "sched-deep1@1400": [
+     30.68,
+     0.983,
+     0.003,
+     28.458,
+     0.983,
+     623.994
+    ],
+    "sched-deep1-pi@1400": [
+     25.262,
+     0.766,
+     0.077,
+     22.169,
+     0.766,
+     513.806
+    ],
+    "sched-anyr@1400": [
+     23.365,
+     0.517,
+     0.503,
+     14.969,
+     0.517,
+     475.226
+    ],
+    "sched-anyr-pi@1400": [
+     21.851,
+     0.618,
+     0.513,
+     17.892,
+     0.618,
+     444.431
+    ],
+    "sched-fcc@1400": [
+     21.564,
+     0.7,
+     0.687,
+     15.216,
+     0.7,
+     438.597
+    ],
+    "sched-fcc-pi@1400": [
+     19.897,
+     0.743,
+     0.65,
+     16.147,
+     0.743,
+     404.681
+    ],
+    "sched-cnnc@1400": [
+     22.686,
+     0.534,
+     0.531,
+     55.23,
+     0.534,
+     461.411
+    ],
+    "sched-cnnc-pi@1400": [
+     21.225,
+     0.559,
+     0.556,
+     57.832,
+     0.559,
+     431.695
+    ],
+    "zhang-AHIBS@2000": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@2000": [
+     22.436,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@2000": [
+     22.426,
+     6.0
+    ],
+    "sched@2000": [
+     38.019,
+     2.794,
+     0.005,
+     59.385,
+     1.0,
+     773.273
+    ],
+    "sched-pi@2000": [
+     35.378,
+     2.61,
+     0.005,
+     55.653,
+     0.929,
+     719.548
+    ],
+    "sched-noreorder@2000": [
+     31.823,
+     2.109,
+     0.174,
+     44.813,
+     0.761,
+     647.256
+    ],
+    "sched-noreorder-pi@2000": [
+     29.959,
+     2.155,
+     0.257,
+     45.266,
+     0.808,
+     609.333
+    ],
+    "sched-nocompute@2000": [
+     7.357,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     149.624
+    ],
+    "sched-nocompute-pi@2000": [
+     9.174,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     186.583
+    ],
+    "osla@2000": [
+     1.771,
+     1.035,
+     0.81,
+     15.921,
+     0.9,
+     36.016
+    ],
+    "osla-pi@2000": [
+     2.552,
+     1.586,
+     0.808,
+     28.149,
+     0.975,
+     51.905
+    ],
+    "sched-costblind@2000": [
+     38.357,
+     2.871,
+     0.002,
+     61.456,
+     1.0,
+     780.137
+    ],
+    "sched-costblind-pi@2000": [
+     36.256,
+     2.835,
+     0.01,
+     60.966,
+     0.973,
+     737.409
+    ],
+    "sched-1exit@2000": [
+     11.413,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     232.119
+    ],
+    "sched-1exit-pi@2000": [
+     10.35,
+     0.816,
+     0.15,
+     11.529,
+     0.816,
+     210.512
+    ],
+    "blinkered@2000": [
+     9.588,
+     0.773,
+     0.065,
+     12.661,
+     0.578,
+     195.012
+    ],
+    "blinkered-pi@2000": [
+     10.734,
+     0.771,
+     0.055,
+     11.777,
+     0.675,
+     218.321
+    ],
+    "sched-rep1@2000": [
+     39.037,
+     2.818,
+     0.002,
+     39.832,
+     1.0,
+     793.983
+    ],
+    "sched-rep1-pi@2000": [
+     35.253,
+     2.621,
+     0.005,
+     37.054,
+     0.926,
+     717.006
+    ],
+    "sched-deep1@2000": [
+     34.689,
+     0.985,
+     0.0,
+     28.517,
+     0.985,
+     705.549
+    ],
+    "sched-deep1-pi@2000": [
+     28.826,
+     0.788,
+     0.022,
+     22.798,
+     0.788,
+     586.285
+    ],
+    "sched-anyr@2000": [
+     33.638,
+     0.521,
+     0.465,
+     15.068,
+     0.521,
+     684.156
+    ],
+    "sched-anyr-pi@2000": [
+     34.401,
+     0.588,
+     0.362,
+     17.025,
+     0.588,
+     699.672
+    ],
+    "sched-fcc@2000": [
+     31.516,
+     0.677,
+     0.629,
+     14.712,
+     0.677,
+     640.999
+    ],
+    "sched-fcc-pi@2000": [
+     31.542,
+     0.692,
+     0.6,
+     15.037,
+     0.692,
+     641.535
+    ],
+    "sched-cnnc@2000": [
+     30.834,
+     0.661,
+     0.659,
+     68.463,
+     0.661,
+     627.137
+    ],
+    "sched-cnnc-pi@2000": [
+     29.773,
+     0.663,
+     0.638,
+     68.625,
+     0.663,
+     605.544
+    ],
+    "zhang-AHIBS@2800": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@2800": [
+     22.423,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@2800": [
+     22.449,
+     6.0
+    ],
+    "sched@2800": [
+     40.225,
+     2.839,
+     0.002,
+     60.608,
+     1.0,
+     818.145
+    ],
+    "sched-pi@2800": [
+     38.035,
+     2.762,
+     0.002,
+     59.182,
+     0.965,
+     773.586
+    ],
+    "sched-noreorder@2800": [
+     35.719,
+     2.167,
+     0.102,
+     46.18,
+     0.776,
+     726.479
+    ],
+    "sched-noreorder-pi@2800": [
+     32.658,
+     2.218,
+     0.211,
+     46.636,
+     0.833,
+     664.228
+    ],
+    "sched-nocompute@2800": [
+     7.465,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     151.834
+    ],
+    "sched-nocompute-pi@2800": [
+     9.413,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     191.443
+    ],
+    "osla@2800": [
+     4.122,
+     1.253,
+     0.658,
+     20.837,
+     0.9,
+     83.842
+    ],
+    "osla-pi@2800": [
+     3.013,
+     1.534,
+     0.793,
+     27.102,
+     0.976,
+     61.276
+    ],
+    "sched-costblind@2800": [
+     40.422,
+     2.889,
+     0.002,
+     61.924,
+     1.0,
+     822.14
+    ],
+    "sched-costblind-pi@2800": [
+     38.325,
+     2.848,
+     0.004,
+     61.265,
+     0.979,
+     779.486
+    ],
+    "sched-1exit@2800": [
+     11.476,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     233.405
+    ],
+    "sched-1exit-pi@2800": [
+     10.759,
+     0.833,
+     0.137,
+     11.774,
+     0.833,
+     218.826
+    ],
+    "blinkered@2800": [
+     9.857,
+     0.781,
+     0.057,
+     12.798,
+     0.583,
+     200.476
+    ],
+    "blinkered-pi@2800": [
+     11.047,
+     0.777,
+     0.042,
+     12.035,
+     0.663,
+     224.681
+    ],
+    "sched-rep1@2800": [
+     41.621,
+     2.86,
+     0.002,
+     40.428,
+     1.0,
+     846.538
+    ],
+    "sched-rep1-pi@2800": [
+     39.456,
+     2.793,
+     0.002,
+     39.481,
+     0.964,
+     802.49
+    ],
+    "sched-deep1@2800": [
+     37.667,
+     1.0,
+     0.0,
+     28.938,
+     1.0,
+     766.11
+    ],
+    "sched-deep1-pi@2800": [
+     32.023,
+     0.852,
+     0.013,
+     24.655,
+     0.852,
+     651.306
+    ],
+    "sched-anyr@2800": [
+     36.362,
+     0.513,
+     0.387,
+     14.831,
+     0.513,
+     739.569
+    ],
+    "sched-anyr-pi@2800": [
+     38.169,
+     0.628,
+     0.224,
+     18.176,
+     0.628,
+     776.329
+    ],
+    "sched-fcc@2800": [
+     34.481,
+     0.641,
+     0.565,
+     13.935,
+     0.641,
+     701.31
+    ],
+    "sched-fcc-pi@2800": [
+     35.712,
+     0.728,
+     0.443,
+     15.822,
+     0.728,
+     726.346
+    ],
+    "sched-cnnc@2800": [
+     34.061,
+     0.605,
+     0.598,
+     62.587,
+     0.605,
+     692.776
+    ],
+    "sched-cnnc-pi@2800": [
+     34.124,
+     0.695,
+     0.515,
+     71.942,
+     0.695,
+     694.046
+    ],
+    "zhang-AHIBS@4000": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@4000": [
+     22.444,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@4000": [
+     22.425,
+     6.0
+    ],
+    "sched@4000": [
+     42.915,
+     2.877,
+     0.0,
+     61.614,
+     1.0,
+     872.85
+    ],
+    "sched-pi@4000": [
+     41.88,
+     2.837,
+     0.001,
+     60.901,
+     0.985,
+     851.793
+    ],
+    "sched-noreorder@4000": [
+     40.836,
+     2.272,
+     0.046,
+     48.4,
+     0.818,
+     830.558
+    ],
+    "sched-noreorder-pi@4000": [
+     38.104,
+     2.383,
+     0.157,
+     50.282,
+     0.886,
+     774.992
+    ],
+    "sched-nocompute@4000": [
+     7.539,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     153.333
+    ],
+    "sched-nocompute-pi@4000": [
+     9.627,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     195.804
+    ],
+    "osla@4000": [
+     9.906,
+     1.701,
+     0.397,
+     31.454,
+     0.9,
+     201.486
+    ],
+    "osla-pi@4000": [
+     1.773,
+     1.435,
+     0.878,
+     24.927,
+     0.976,
+     36.053
+    ],
+    "sched-costblind@4000": [
+     43.201,
+     2.921,
+     0.002,
+     62.819,
+     1.0,
+     878.661
+    ],
+    "sched-costblind-pi@4000": [
+     42.085,
+     2.891,
+     0.002,
+     62.295,
+     0.989,
+     855.962
+    ],
+    "sched-1exit@4000": [
+     11.524,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     234.395
+    ],
+    "sched-1exit-pi@4000": [
+     11.025,
+     0.863,
+     0.141,
+     12.203,
+     0.863,
+     224.244
+    ],
+    "blinkered@4000": [
+     10.198,
+     0.805,
+     0.056,
+     13.229,
+     0.597,
+     207.407
+    ],
+    "blinkered-pi@4000": [
+     11.352,
+     0.788,
+     0.035,
+     12.185,
+     0.674,
+     230.889
+    ],
+    "sched-rep1@4000": [
+     44.404,
+     2.9,
+     0.002,
+     40.998,
+     1.0,
+     903.13
+    ],
+    "sched-rep1-pi@4000": [
+     43.011,
+     2.868,
+     0.004,
+     40.544,
+     0.985,
+     874.807
+    ],
+    "sched-deep1@4000": [
+     40.654,
+     1.0,
+     0.0,
+     28.938,
+     1.0,
+     826.857
+    ],
+    "sched-deep1-pi@4000": [
+     35.117,
+     0.892,
+     0.009,
+     25.811,
+     0.892,
+     714.235
+    ],
+    "sched-anyr@4000": [
+     40.172,
+     0.517,
+     0.292,
+     14.966,
+     0.517,
+     817.06
+    ],
+    "sched-anyr-pi@4000": [
+     42.513,
+     0.682,
+     0.166,
+     19.726,
+     0.682,
+     864.682
+    ],
+    "sched-fcc@4000": [
+     37.265,
+     0.638,
+     0.525,
+     13.853,
+     0.638,
+     757.934
+    ],
+    "sched-fcc-pi@4000": [
+     38.735,
+     0.74,
+     0.377,
+     16.075,
+     0.74,
+     787.821
+    ],
+    "sched-cnnc@4000": [
+     37.007,
+     0.582,
+     0.548,
+     60.268,
+     0.582,
+     752.692
+    ],
+    "sched-cnnc-pi@4000": [
+     38.062,
+     0.714,
+     0.432,
+     73.927,
+     0.714,
+     774.151
+    ],
+    "zhang-AHIBS@5600": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@5600": [
+     22.43,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@5600": [
+     22.423,
+     6.0
+    ],
+    "sched@5600": [
+     45.066,
+     2.898,
+     0.0,
+     62.189,
+     1.0,
+     916.588
+    ],
+    "sched-pi@5600": [
+     44.935,
+     2.906,
+     0.001,
+     62.637,
+     0.989,
+     913.933
+    ],
+    "sched-noreorder@5600": [
+     43.654,
+     2.378,
+     0.027,
+     50.488,
+     0.865,
+     887.88
+    ],
+    "sched-noreorder-pi@5600": [
+     43.582,
+     2.592,
+     0.093,
+     55.347,
+     0.919,
+     886.424
+    ],
+    "sched-nocompute@5600": [
+     7.663,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     155.852
+    ],
+    "sched-nocompute-pi@5600": [
+     9.749,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     198.283
+    ],
+    "osla@5600": [
+     10.794,
+     1.787,
+     0.355,
+     33.383,
+     0.9,
+     219.539
+    ],
+    "osla-pi@5600": [
+     1.837,
+     1.44,
+     0.878,
+     25.05,
+     0.976,
+     37.37
+    ],
+    "sched-costblind@5600": [
+     45.121,
+     2.924,
+     0.003,
+     62.868,
+     1.0,
+     917.721
+    ],
+    "sched-costblind-pi@5600": [
+     45.111,
+     2.935,
+     0.003,
+     63.336,
+     0.994,
+     917.518
+    ],
+    "sched-1exit@5600": [
+     11.574,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     235.407
+    ],
+    "sched-1exit-pi@5600": [
+     11.311,
+     0.869,
+     0.136,
+     12.286,
+     0.869,
+     230.06
+    ],
+    "blinkered@5600": [
+     10.757,
+     0.84,
+     0.047,
+     13.791,
+     0.625,
+     218.789
+    ],
+    "blinkered-pi@5600": [
+     11.613,
+     0.816,
+     0.04,
+     12.645,
+     0.693,
+     236.189
+    ],
+    "sched-rep1@5600": [
+     46.515,
+     2.921,
+     0.0,
+     41.281,
+     1.0,
+     946.063
+    ],
+    "sched-rep1-pi@5600": [
+     46.368,
+     2.933,
+     0.001,
+     41.458,
+     0.99,
+     943.08
+    ],
+    "sched-deep1@5600": [
+     42.824,
+     1.0,
+     0.0,
+     28.938,
+     1.0,
+     870.996
+    ],
+    "sched-deep1-pi@5600": [
+     38.297,
+     0.934,
+     0.005,
+     27.019,
+     0.934,
+     778.914
+    ],
+    "sched-anyr@5600": [
+     43.062,
+     0.549,
+     0.204,
+     15.886,
+     0.549,
+     875.838
+    ],
+    "sched-anyr-pi@5600": [
+     46.048,
+     0.697,
+     0.133,
+     20.156,
+     0.697,
+     936.569
+    ],
+    "sched-fcc@5600": [
+     41.122,
+     0.643,
+     0.445,
+     13.979,
+     0.643,
+     836.379
+    ],
+    "sched-fcc-pi@5600": [
+     42.381,
+     0.79,
+     0.323,
+     17.172,
+     0.79,
+     861.979
+    ],
+    "sched-cnnc@5600": [
+     39.745,
+     0.596,
+     0.512,
+     61.681,
+     0.596,
+     808.382
+    ],
+    "sched-cnnc-pi@5600": [
+     41.622,
+     0.744,
+     0.385,
+     76.97,
+     0.744,
+     846.55
+    ],
+    "zhang-AHIBS@8000": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@8000": [
+     22.423,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@8000": [
+     22.429,
+     6.0
+    ],
+    "sched@8000": [
+     47.728,
+     2.908,
+     0.0,
+     62.434,
+     1.0,
+     970.73
+    ],
+    "sched-pi@8000": [
+     47.938,
+     2.935,
+     0.001,
+     63.35,
+     0.994,
+     975.002
+    ],
+    "sched-noreorder@8000": [
+     45.912,
+     2.562,
+     0.016,
+     54.668,
+     0.91,
+     933.803
+    ],
+    "sched-noreorder-pi@8000": [
+     46.424,
+     2.686,
+     0.09,
+     57.28,
+     0.956,
+     944.214
+    ],
+    "sched-nocompute@8000": [
+     7.81,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     158.855
+    ],
+    "sched-nocompute-pi@8000": [
+     9.886,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     201.075
+    ],
+    "osla@8000": [
+     11.011,
+     1.798,
+     0.357,
+     33.666,
+     0.9,
+     223.954
+    ],
+    "osla-pi@8000": [
+     4.51,
+     1.603,
+     0.782,
+     29.048,
+     0.977,
+     91.72
+    ],
+    "sched-costblind@8000": [
+     47.901,
+     2.932,
+     0.0,
+     63.097,
+     1.0,
+     974.26
+    ],
+    "sched-costblind-pi@8000": [
+     48.063,
+     2.951,
+     0.001,
+     63.761,
+     0.995,
+     977.554
+    ],
+    "sched-1exit@8000": [
+     11.602,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     235.969
+    ],
+    "sched-1exit-pi@8000": [
+     11.658,
+     0.904,
+     0.14,
+     12.782,
+     0.904,
+     237.121
+    ],
+    "blinkered@8000": [
+     11.35,
+     0.88,
+     0.047,
+     14.417,
+     0.659,
+     230.841
+    ],
+    "blinkered-pi@8000": [
+     12.041,
+     0.842,
+     0.044,
+     13.067,
+     0.714,
+     244.893
+    ],
+    "sched-rep1@8000": [
+     49.58,
+     2.932,
+     0.0,
+     41.438,
+     1.0,
+     1008.403
+    ],
+    "sched-rep1-pi@8000": [
+     49.498,
+     2.955,
+     0.001,
+     41.773,
+     0.997,
+     1006.746
+    ],
+    "sched-deep1@8000": [
+     44.356,
+     1.0,
+     0.0,
+     28.938,
+     1.0,
+     902.157
+    ],
+    "sched-deep1-pi@8000": [
+     41.892,
+     0.965,
+     0.004,
+     27.914,
+     0.965,
+     852.039
+    ],
+    "sched-anyr@8000": [
+     45.71,
+     0.622,
+     0.191,
+     18.014,
+     0.622,
+     929.696
+    ],
+    "sched-anyr-pi@8000": [
+     48.97,
+     0.785,
+     0.137,
+     22.725,
+     0.785,
+     996.008
+    ],
+    "sched-fcc@8000": [
+     44.787,
+     0.702,
+     0.434,
+     15.264,
+     0.702,
+     910.923
+    ],
+    "sched-fcc-pi@8000": [
+     46.093,
+     0.819,
+     0.332,
+     17.798,
+     0.819,
+     937.486
+    ],
+    "sched-cnnc@8000": [
+     43.542,
+     0.635,
+     0.511,
+     65.708,
+     0.635,
+     885.593
+    ],
+    "sched-cnnc-pi@8000": [
+     45.005,
+     0.809,
+     0.319,
+     83.764,
+     0.809,
+     915.353
+    ],
+    "zhang-AHIBS@10000": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@10000": [
+     22.43,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@10000": [
+     22.43,
+     6.0
+    ],
+    "sched@10000": [
+     50.229,
+     2.922,
+     0.0,
+     62.82,
+     1.0,
+     1021.608
+    ],
+    "sched-pi@10000": [
+     50.221,
+     2.953,
+     0.001,
+     63.803,
+     0.996,
+     1021.435
+    ],
+    "sched-noreorder@10000": [
+     47.295,
+     2.663,
+     0.015,
+     56.935,
+     0.938,
+     961.937
+    ],
+    "sched-noreorder-pi@10000": [
+     48.509,
+     2.799,
+     0.074,
+     59.995,
+     0.974,
+     986.617
+    ],
+    "sched-nocompute@10000": [
+     7.918,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     161.037
+    ],
+    "sched-nocompute-pi@10000": [
+     10.06,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     204.607
+    ],
+    "osla@10000": [
+     11.231,
+     1.804,
+     0.357,
+     33.833,
+     0.9,
+     228.435
+    ],
+    "osla-pi@10000": [
+     4.676,
+     1.611,
+     0.785,
+     29.242,
+     0.978,
+     95.114
+    ],
+    "sched-costblind@10000": [
+     50.293,
+     2.935,
+     0.0,
+     63.179,
+     1.0,
+     1022.9
+    ],
+    "sched-costblind-pi@10000": [
+     50.311,
+     2.964,
+     0.001,
+     64.054,
+     0.997,
+     1023.27
+    ],
+    "sched-1exit@10000": [
+     11.62,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     236.345
+    ],
+    "sched-1exit-pi@10000": [
+     11.853,
+     0.928,
+     0.135,
+     13.117,
+     0.928,
+     241.08
+    ],
+    "blinkered@10000": [
+     11.627,
+     0.892,
+     0.044,
+     14.664,
+     0.662,
+     236.49
+    ],
+    "blinkered-pi@10000": [
+     12.338,
+     0.85,
+     0.045,
+     13.23,
+     0.718,
+     250.94
+    ],
+    "sched-rep1@10000": [
+     51.172,
+     2.933,
+     0.0,
+     41.458,
+     1.0,
+     1040.791
+    ],
+    "sched-rep1-pi@10000": [
+     51.505,
+     2.96,
+     0.0,
+     41.836,
+     0.997,
+     1047.568
+    ],
+    "sched-deep1@10000": [
+     45.763,
+     1.0,
+     0.0,
+     28.938,
+     1.0,
+     930.775
+    ],
+    "sched-deep1-pi@10000": [
+     44.171,
+     0.978,
+     0.006,
+     28.296,
+     0.978,
+     898.389
+    ],
+    "sched-anyr@10000": [
+     47.227,
+     0.654,
+     0.183,
+     18.915,
+     0.654,
+     960.546
+    ],
+    "sched-anyr-pi@10000": [
+     50.695,
+     0.792,
+     0.138,
+     22.922,
+     0.792,
+     1031.091
+    ],
+    "sched-fcc@10000": [
+     45.73,
+     0.708,
+     0.421,
+     15.379,
+     0.708,
+     930.109
+    ],
+    "sched-fcc-pi@10000": [
+     47.917,
+     0.835,
+     0.297,
+     18.149,
+     0.835,
+     974.575
+    ],
+    "sched-cnnc@10000": [
+     44.576,
+     0.673,
+     0.51,
+     69.668,
+     0.673,
+     906.624
+    ],
+    "sched-cnnc-pi@10000": [
+     46.982,
+     0.812,
+     0.303,
+     84.013,
+     0.812,
+     955.558
+    ],
+    "zhang-NP2@250": [
+     9.038,
+     2.562,
+     1.889,
+     0.601,
+     0.052,
+     0.347,
+     0.149
+    ],
+    "zhang-NP2@350": [
+     11.064,
+     3.314,
+     1.857,
+     0.626,
+     0.072,
+     0.301,
+     0.12
+    ],
+    "zhang-NP2@500": [
+     12.9,
+     4.029,
+     1.849,
+     0.662,
+     0.067,
+     0.271,
+     0.0
+    ],
+    "zhang-NP2@700": [
+     13.969,
+     4.564,
+     1.849,
+     0.702,
+     0.059,
+     0.239,
+     0.0
+    ],
+    "zhang-NP2@1000": [
+     14.167,
+     4.663,
+     1.849,
+     0.708,
+     0.058,
+     0.234,
+     0.0
+    ],
+    "zhang-NP2@1400": [
+     14.167,
+     4.663,
+     1.849,
+     0.708,
+     0.058,
+     0.234,
+     0.0
+    ],
+    "zhang-NP2@2000": [
+     14.167,
+     4.663,
+     1.849,
+     0.708,
+     0.058,
+     0.234,
+     0.0
+    ],
+    "zhang-NP2@2800": [
+     14.167,
+     4.663,
+     1.849,
+     0.708,
+     0.058,
+     0.234,
+     0.0
+    ],
+    "zhang-NP2@4000": [
+     14.167,
+     4.663,
+     1.849,
+     0.708,
+     0.058,
+     0.234,
+     0.0
+    ],
+    "zhang-NP2@5600": [
+     14.167,
+     4.663,
+     1.849,
+     0.708,
+     0.058,
+     0.234,
+     0.0
+    ],
+    "zhang-NP2@8000": [
+     14.167,
+     4.663,
+     1.849,
+     0.708,
+     0.058,
+     0.234,
+     0.0
+    ],
+    "zhang-NP2@10000": [
+     14.167,
+     4.663,
+     1.849,
+     0.708,
+     0.058,
+     0.234,
+     0.0
+    ]
+   },
+   "osla_loss_rel": [
+    0.7867,
+    0.7611,
+    0.7532,
+    0.7642,
+    0.7732,
+    0.729,
+    0.7211,
+    0.6286,
+    0.4751,
+    0.45,
+    0.4632,
+    0.4646
+   ],
+   "blinkered_loss_rel": [
+    -0.0031,
+    -0.0216,
+    -0.0247,
+    -0.0214,
+    -0.0137,
+    -0.2386,
+    -0.1507,
+    -0.1309,
+    -0.065,
+    -0.03,
+    0.0096,
+    0.0247
+   ],
+   "blinkered_beats_myopic": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "site": "city_3_houston_28",
+   "n": 19379,
+   "n_blocks": 22,
+   "oracle_se": 4.6293,
+   "strata_frac": [
+    0.5333,
+    0.1048,
+    0.0359,
+    0.3261
+   ],
+   "strata_counts": [
+    10334,
+    2030,
+    695,
+    6320
+   ],
+   "rows": [
+    {
+     "T_us": 250,
+     "best_fixed": "topk2",
+     "best_fixed_mean": 2.19022,
+     "sched": 2.24857,
+     "sched_gate": 2.24857,
+     "sched_nocompute": 2.30893,
+     "sched_noreorder": 2.26373,
+     "osla": 1.0453,
+     "blinkered": 2.2693,
+     "zhang": 2.2822,
+     "bound_stopping": 2.42854,
+     "deployable": "topk2",
+     "deployable_mean": 2.19022,
+     "paired_diff": 0.05835,
+     "ci95": [
+      -0.05434,
+      0.25155
+     ],
+     "rel_to_oracle": 0.0126
+    },
+    {
+     "T_us": 350,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 2.39498,
+     "sched": 2.42424,
+     "sched_gate": 2.42424,
+     "sched_nocompute": 2.4758,
+     "sched_noreorder": 2.40169,
+     "osla": 0.80662,
+     "blinkered": 2.48621,
+     "zhang": 2.41788,
+     "bound_stopping": 2.61046,
+     "deployable": "topk2",
+     "deployable_mean": 2.31183,
+     "paired_diff": 0.02926,
+     "ci95": [
+      -0.24975,
+      0.3244
+     ],
+     "rel_to_oracle": 0.00632
+    },
+    {
+     "T_us": 500,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 2.69197,
+     "sched": 2.57788,
+     "sched_gate": 2.57788,
+     "sched_nocompute": 2.61034,
+     "sched_noreorder": 2.52756,
+     "osla": 0.69481,
+     "blinkered": 2.65993,
+     "zhang": 2.45752,
+     "bound_stopping": 2.80487,
+     "deployable": "fc4",
+     "deployable_mean": 2.69197,
+     "paired_diff": -0.11409,
+     "ci95": [
+      -0.41582,
+      0.16524
+     ],
+     "rel_to_oracle": -0.02464
+    },
+    {
+     "T_us": 700,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 2.88996,
+     "sched": 2.78912,
+     "sched_gate": 2.78912,
+     "sched_nocompute": 2.71184,
+     "sched_noreorder": 2.63676,
+     "osla": 0.69994,
+     "blinkered": 2.83209,
+     "zhang": 2.21745,
+     "bound_stopping": 2.98977,
+     "deployable": "fc4",
+     "deployable_mean": 2.88996,
+     "paired_diff": -0.10085,
+     "ci95": [
+      -0.3989,
+      0.14371
+     ],
+     "rel_to_oracle": -0.02178
+    },
+    {
+     "T_us": 1000,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 3.03846,
+     "sched": 3.07717,
+     "sched_gate": 3.07717,
+     "sched_nocompute": 2.80465,
+     "sched_noreorder": 2.78956,
+     "osla": 0.7038,
+     "blinkered": 3.02256,
+     "zhang": 2.37427,
+     "bound_stopping": 3.20737,
+     "deployable": "hier3",
+     "deployable_mean": 2.76905,
+     "paired_diff": 0.03871,
+     "ci95": [
+      -0.17186,
+      0.18213
+     ],
+     "rel_to_oracle": 0.00836
+    },
+    {
+     "T_us": 1400,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 3.13746,
+     "sched": 2.71742,
+     "sched_gate": 2.71742,
+     "sched_nocompute": 2.89464,
+     "sched_noreorder": 2.93288,
+     "osla": 0.70636,
+     "blinkered": 3.16895,
+     "zhang": 2.59734,
+     "bound_stopping": 3.42057,
+     "deployable": "fc8",
+     "deployable_mean": 2.89725,
+     "paired_diff": -0.42004,
+     "ci95": [
+      -0.92117,
+      -0.00034
+     ],
+     "rel_to_oracle": -0.09073
+    },
+    {
+     "T_us": 2000,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 3.21171,
+     "sched": 3.07849,
+     "sched_gate": 3.07849,
+     "sched_nocompute": 2.96517,
+     "sched_noreorder": 3.1447,
+     "osla": 0.81485,
+     "blinkered": 3.32004,
+     "zhang": 2.76476,
+     "bound_stopping": 3.65325,
+     "deployable": "fc8",
+     "deployable_mean": 3.02857,
+     "paired_diff": -0.13321,
+     "ci95": [
+      -0.56329,
+      0.21458
+     ],
+     "rel_to_oracle": -0.02878
+    },
+    {
+     "T_us": 2800,
+     "best_fixed": "fc4",
+     "best_fixed_mean": 3.2612,
+     "sched": 3.27157,
+     "sched_gate": 3.27157,
+     "sched_nocompute": 3.02122,
+     "sched_noreorder": 3.40625,
+     "osla": 1.14229,
+     "blinkered": 3.41463,
+     "zhang": 2.87634,
+     "bound_stopping": 3.86348,
+     "deployable": "cnn16",
+     "deployable_mean": 3.15604,
+     "paired_diff": 0.01037,
+     "ci95": [
+      -0.44682,
+      0.37203
+     ],
+     "rel_to_oracle": 0.00224
+    },
+    {
+     "T_us": 4000,
+     "best_fixed": "fc16",
+     "best_fixed_mean": 3.35525,
+     "sched": 3.58448,
+     "sched_gate": 3.58448,
+     "sched_nocompute": 3.07087,
+     "sched_noreorder": 3.72637,
+     "osla": 1.70748,
+     "blinkered": 3.48866,
+     "zhang": 2.96,
+     "bound_stopping": 4.05839,
+     "deployable": "topk32",
+     "deployable_mean": 3.32472,
+     "paired_diff": 0.22923,
+     "ci95": [
+      -0.06948,
+      0.46853
+     ],
+     "rel_to_oracle": 0.04952
+    },
+    {
+     "T_us": 5600,
+     "best_fixed": "cnn32",
+     "best_fixed_mean": 3.55402,
+     "sched": 3.80733,
+     "sched_gate": 3.80733,
+     "sched_nocompute": 3.10651,
+     "sched_noreorder": 3.93369,
+     "osla": 1.88447,
+     "blinkered": 3.55588,
+     "zhang": 3.0158,
+     "bound_stopping": 4.20658,
+     "deployable": "sweep64",
+     "deployable_mean": 3.552,
+     "paired_diff": 0.25331,
+     "ci95": [
+      0.09131,
+      0.39005
+     ],
+     "rel_to_oracle": 0.05472
+    },
+    {
+     "T_us": 8000,
+     "best_fixed": "sweep64",
+     "best_fixed_mean": 3.8747,
+     "sched": 3.99757,
+     "sched_gate": 3.99757,
+     "sched_nocompute": 3.13197,
+     "sched_noreorder": 4.09281,
+     "osla": 1.93248,
+     "blinkered": 3.58912,
+     "zhang": 3.05768,
+     "bound_stopping": 4.32592,
+     "deployable": "sweep64",
+     "deployable_mean": 3.8747,
+     "paired_diff": 0.12287,
+     "ci95": [
+      0.0459,
+      0.20863
+     ],
+     "rel_to_oracle": 0.02654
+    },
+    {
+     "T_us": 10000,
+     "best_fixed": "sweep64",
+     "best_fixed_mean": 4.0253,
+     "sched": 4.08436,
+     "sched_gate": 4.08436,
+     "sched_nocompute": 3.14396,
+     "sched_noreorder": 4.17133,
+     "osla": 1.96347,
+     "blinkered": 3.62257,
+     "zhang": 3.07726,
+     "bound_stopping": 4.38375,
+     "deployable": "sweep64",
+     "deployable_mean": 4.0253,
+     "paired_diff": 0.05907,
+     "ci95": [
+      0.01781,
+      0.10339
+     ],
+     "rel_to_oracle": 0.01276
+    }
+   ],
+   "gate_all_variants": {
+    "sched": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 6,
+     "worst_rel_oracle": -0.30818,
+     "mean_goodput": 2.61716
+    },
+    "sched-pi": {
+     "wins": [
+      5600,
+      8000,
+      10000
+     ],
+     "n_wins": 3,
+     "n_losses": 1,
+     "worst_rel_oracle": -0.09073,
+     "mean_goodput": 3.13818
+    },
+    "sched-noreorder": {
+     "wins": [
+      2800,
+      4000,
+      5600,
+      8000,
+      10000
+     ],
+     "n_wins": 5,
+     "n_losses": 2,
+     "worst_rel_oracle": -0.0547,
+     "mean_goodput": 3.16894
+    },
+    "sched-noreorder-pi": {
+     "wins": [
+      2800,
+      4000,
+      5600
+     ],
+     "n_wins": 3,
+     "n_losses": 2,
+     "worst_rel_oracle": -0.05395,
+     "mean_goodput": 3.11453
+    },
+    "sched-nocompute": {
+     "wins": [
+      250
+     ],
+     "n_wins": 1,
+     "n_losses": 6,
+     "worst_rel_oracle": -0.2125,
+     "mean_goodput": 2.80671
+    },
+    "sched-nocompute-pi": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 6,
+     "worst_rel_oracle": -0.19038,
+     "mean_goodput": 2.85382
+    },
+    "osla": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 12,
+     "worst_rel_oracle": -0.52516,
+     "mean_goodput": 1.17516
+    },
+    "osla-pi": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 12,
+     "worst_rel_oracle": -0.58508,
+     "mean_goodput": 1.0426
+    },
+    "sched-costblind": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 7,
+     "worst_rel_oracle": -0.31507,
+     "mean_goodput": 2.47264
+    },
+    "sched-costblind-pi": {
+     "wins": [
+      5600,
+      8000,
+      10000
+     ],
+     "n_wins": 3,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.05048,
+     "mean_goodput": 3.09559
+    },
+    "sched-1exit": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 11,
+     "worst_rel_oracle": -0.46957,
+     "mean_goodput": 1.75298
+    },
+    "sched-1exit-pi": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 2,
+     "worst_rel_oracle": -0.09777,
+     "mean_goodput": 3.03206
+    },
+    "blinkered": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 1,
+     "worst_rel_oracle": -0.10423,
+     "mean_goodput": 3.07486
+    },
+    "blinkered-pi": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 1,
+     "worst_rel_oracle": -0.087,
+     "mean_goodput": 3.11916
+    },
+    "sched-rep1": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 5,
+     "worst_rel_oracle": -0.30178,
+     "mean_goodput": 2.63093
+    },
+    "sched-rep1-pi": {
+     "wins": [
+      5600,
+      8000,
+      10000
+     ],
+     "n_wins": 3,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.02181,
+     "mean_goodput": 3.18273
+    },
+    "sched-deep1": {
+     "wins": [],
+     "n_wins": 0,
+     "n_losses": 3,
+     "worst_rel_oracle": -0.18027,
+     "mean_goodput": 2.88261
+    },
+    "sched-deep1-pi": {
+     "wins": [
+      2000,
+      2800,
+      4000,
+      5600,
+      8000,
+      10000
+     ],
+     "n_wins": 6,
+     "n_losses": 2,
+     "worst_rel_oracle": -0.13735,
+     "mean_goodput": 3.21324
+    },
+    "sched-anyr": {
+     "wins": [
+      2800,
+      4000,
+      5600,
+      8000,
+      10000
+     ],
+     "n_wins": 5,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.03955,
+     "mean_goodput": 3.23344
+    },
+    "sched-anyr-pi": {
+     "wins": [
+      2800,
+      4000,
+      5600,
+      8000,
+      10000
+     ],
+     "n_wins": 5,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.04097,
+     "mean_goodput": 3.22203
+    },
+    "sched-fcc": {
+     "wins": [
+      250,
+      350,
+      500,
+      4000
+     ],
+     "n_wins": 4,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.02165,
+     "mean_goodput": 3.22298
+    },
+    "sched-fcc-pi": {
+     "wins": [
+      250,
+      350,
+      500,
+      4000
+     ],
+     "n_wins": 4,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.02577,
+     "mean_goodput": 3.21545
+    },
+    "sched-cnnc": {
+     "wins": [
+      4000
+     ],
+     "n_wins": 1,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.0301,
+     "mean_goodput": 3.13667
+    },
+    "sched-cnnc-pi": {
+     "wins": [
+      4000
+     ],
+     "n_wins": 1,
+     "n_losses": 0,
+     "worst_rel_oracle": -0.03095,
+     "mean_goodput": 3.12128
+    }
+   },
+   "gate": {
+    "controller": "sched-pi",
+    "wins": [
+     5600,
+     8000,
+     10000
+    ],
+    "n_wins": 3,
+    "n_losses": 1,
+    "worst_loss_rel_oracle": -0.09073,
+    "guard_ok": false,
+    "post_hoc_baseline": true
+   },
+   "compute_pays": {
+    "with": "sched-pi",
+    "without": "sched-nocompute-pi",
+    "matched_estimation": true,
+    "mean_with": 3.13818,
+    "mean_without": 2.85382,
+    "mean_gain_rel": 0.09964,
+    "n_wins_holm": 3,
+    "wins_holm": [
+     1000,
+     8000,
+     10000
+    ],
+    "n_losses_holm": 2,
+    "losses_holm": [
+     250,
+     350
+    ],
+    "n_wins_uncorrected": 5,
+    "n_losses_uncorrected": 2,
+    "rows": [
+     {
+      "T_us": 250,
+      "diff": -0.06036,
+      "ci95": [
+       -0.10986,
+       -0.01715
+      ],
+      "p": 0.0018,
+      "with": 2.24857,
+      "without": 2.30893
+     },
+     {
+      "T_us": 350,
+      "diff": -0.05157,
+      "ci95": [
+       -0.09499,
+       -0.01304
+      ],
+      "p": 0.0046,
+      "with": 2.42424,
+      "without": 2.4758
+     },
+     {
+      "T_us": 500,
+      "diff": -0.03246,
+      "ci95": [
+       -0.07709,
+       0.00588
+      ],
+      "p": 0.1033,
+      "with": 2.57788,
+      "without": 2.61034
+     },
+     {
+      "T_us": 700,
+      "diff": 0.07728,
+      "ci95": [
+       0.00123,
+       0.14923
+      ],
+      "p": 0.0458,
+      "with": 2.78912,
+      "without": 2.71184
+     },
+     {
+      "T_us": 1000,
+      "diff": 0.27251,
+      "ci95": [
+       0.11839,
+       0.42097
+      ],
+      "p": 0.0001,
+      "with": 3.07717,
+      "without": 2.80465
+     },
+     {
+      "T_us": 1400,
+      "diff": -0.17722,
+      "ci95": [
+       -0.70899,
+       0.19123
+      ],
+      "p": 0.4674,
+      "with": 2.71742,
+      "without": 2.89464
+     },
+     {
+      "T_us": 2000,
+      "diff": 0.11332,
+      "ci95": [
+       -0.39762,
+       0.48312
+      ],
+      "p": 0.5921,
+      "with": 3.07849,
+      "without": 2.96517
+     },
+     {
+      "T_us": 2800,
+      "diff": 0.25035,
+      "ci95": [
+       -0.31156,
+       0.67549
+      ],
+      "p": 0.3345,
+      "with": 3.27157,
+      "without": 3.02122
+     },
+     {
+      "T_us": 4000,
+      "diff": 0.5136,
+      "ci95": [
+       -0.0336,
+       0.98868
+      ],
+      "p": 0.0645,
+      "with": 3.58448,
+      "without": 3.07087
+     },
+     {
+      "T_us": 5600,
+      "diff": 0.70082,
+      "ci95": [
+       0.14568,
+       1.2247
+      ],
+      "p": 0.0111,
+      "with": 3.80733,
+      "without": 3.10651
+     },
+     {
+      "T_us": 8000,
+      "diff": 0.86561,
+      "ci95": [
+       0.29214,
+       1.43874
+      ],
+      "p": 0.0011,
+      "with": 3.99757,
+      "without": 3.13197
+     },
+     {
+      "T_us": 10000,
+      "diff": 0.94041,
+      "ci95": [
+       0.35668,
+       1.53269
+      ],
+      "p": 0.0004,
+      "with": 4.08436,
+      "without": 3.14396
+     }
+    ]
+   },
+   "vs_deployable": {
+    "n_wins_holm": 3,
+    "wins_holm": [
+     5600,
+     8000,
+     10000
+    ],
+    "n_losses_holm": 0,
+    "losses_holm": [],
+    "n_wins_uncorrected": 5,
+    "n_losses_uncorrected": 0,
+    "rows": [
+     {
+      "T_us": 250,
+      "baseline": "topk2",
+      "baseline_mean": 2.19022,
+      "sched_mean": 2.24857,
+      "diff": 0.05835,
+      "ci95": [
+       -0.05483,
+       0.2547
+      ],
+      "p": 0.609
+     },
+     {
+      "T_us": 350,
+      "baseline": "topk2",
+      "baseline_mean": 2.31183,
+      "sched_mean": 2.42424,
+      "diff": 0.11241,
+      "ci95": [
+       -0.03439,
+       0.39273
+      ],
+      "p": 0.4448
+     },
+     {
+      "T_us": 500,
+      "baseline": "fc4",
+      "baseline_mean": 2.69197,
+      "sched_mean": 2.57788,
+      "diff": -0.11409,
+      "ci95": [
+       -0.42564,
+       0.16931
+      ],
+      "p": 0.4411
+     },
+     {
+      "T_us": 700,
+      "baseline": "fc4",
+      "baseline_mean": 2.88996,
+      "sched_mean": 2.78912,
+      "diff": -0.10085,
+      "ci95": [
+       -0.40643,
+       0.14628
+      ],
+      "p": 0.478
+     },
+     {
+      "T_us": 1000,
+      "baseline": "hier3",
+      "baseline_mean": 2.76905,
+      "sched_mean": 3.07717,
+      "diff": 0.30811,
+      "ci95": [
+       0.00592,
+       0.72252
+      ],
+      "p": 0.0428
+     },
+     {
+      "T_us": 1400,
+      "baseline": "fc8",
+      "baseline_mean": 2.89725,
+      "sched_mean": 2.71742,
+      "diff": -0.17983,
+      "ci95": [
+       -0.70411,
+       0.2709
+      ],
+      "p": 0.4732
+     },
+     {
+      "T_us": 2000,
+      "baseline": "fc8",
+      "baseline_mean": 3.02857,
+      "sched_mean": 3.07849,
+      "diff": 0.04993,
+      "ci95": [
+       -0.41791,
+       0.45522
+      ],
+      "p": 0.8233
+     },
+     {
+      "T_us": 2800,
+      "baseline": "cnn16",
+      "baseline_mean": 3.15604,
+      "sched_mean": 3.27157,
+      "diff": 0.11554,
+      "ci95": [
+       -0.21794,
+       0.37678
+      ],
+      "p": 0.451
+     },
+     {
+      "T_us": 4000,
+      "baseline": "topk32",
+      "baseline_mean": 3.32472,
+      "sched_mean": 3.58448,
+      "diff": 0.25976,
+      "ci95": [
+       0.03099,
+       0.47874
+      ],
+      "p": 0.0252
+     },
+     {
+      "T_us": 5600,
+      "baseline": "sweep64",
+      "baseline_mean": 3.552,
+      "sched_mean": 3.80733,
+      "diff": 0.25533,
+      "ci95": [
+       0.09433,
+       0.43564
+      ],
+      "p": 5e-05
+     },
+     {
+      "T_us": 8000,
+      "baseline": "sweep64",
+      "baseline_mean": 3.8747,
+      "sched_mean": 3.99757,
+      "diff": 0.12287,
+      "ci95": [
+       0.04492,
+       0.21027
+      ],
+      "p": 5e-05
+     },
+     {
+      "T_us": 10000,
+      "baseline": "sweep64",
+      "baseline_mean": 4.0253,
+      "sched_mean": 4.08436,
+      "diff": 0.05907,
+      "ci95": [
+       0.0175,
+       0.10344
+      ],
+      "p": 0.0021
+     }
+    ]
+   },
+   "rank_inversions_endpoint_7menu": [
+    [
+     "sweep64",
+     "hier6"
+    ],
+    [
+     "sweep64",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "hier6",
+     "topk8"
+    ],
+    [
+     "hier6",
+     "topk16"
+    ],
+    [
+     "hier6",
+     "fc16"
+    ],
+    [
+     "hier6",
+     "cnn16"
+    ],
+    [
+     "topk8",
+     "topk16"
+    ],
+    [
+     "topk8",
+     "fc16"
+    ],
+    [
+     "topk8",
+     "cnn16"
+    ],
+    [
+     "topk16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "fc16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "cnn16",
+     "zhang-AHTBS+AHIBS"
+    ]
+   ],
+   "order_at_250us": [
+    "zhang-AHTBS+AHIBS",
+    "topk8",
+    "hier6",
+    "sweep64",
+    "topk16",
+    "fc16",
+    "cnn16"
+   ],
+   "order_at_10ms": [
+    "sweep64",
+    "cnn16",
+    "fc16",
+    "topk16",
+    "zhang-AHTBS+AHIBS",
+    "hier6",
+    "topk8"
+   ],
+   "t_star": [
+    {
+     "method": "topk8",
+     "cost_us": 162.712,
+     "eta": 0.6415,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.6612,
+     "predicted_T_us": 3342.6,
+     "measured_T_us": [
+      3577.5
+     ],
+     "ratio": 1.07
+    },
+    {
+     "method": "topk16",
+     "cost_us": 325.424,
+     "eta": 0.7014,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.7414,
+     "predicted_T_us": 3598.8,
+     "measured_T_us": [
+      4121.7
+     ],
+     "ratio": 1.145
+    },
+    {
+     "method": "fc16",
+     "cost_us": 346.259,
+     "eta": 0.7369,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.7935,
+     "predicted_T_us": 3982.8,
+     "measured_T_us": [
+      5041.9
+     ],
+     "ratio": 1.266
+    },
+    {
+     "method": "cnn16",
+     "cost_us": 428.926,
+     "eta": 0.7674,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.8051,
+     "predicted_T_us": 4187.4,
+     "measured_T_us": [
+      4978.6
+     ],
+     "ratio": 1.189
+    },
+    {
+     "method": "hier6",
+     "cost_us": 244.068,
+     "eta": 0.6331,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.6813,
+     "predicted_T_us": 3129.2,
+     "measured_T_us": [
+      3613.7
+     ],
+     "ratio": 1.155
+    },
+    {
+     "method": "ee1k8",
+     "cost_us": 176.847,
+     "eta": 0.6301,
+     "eta_source": "city_1_losangeles_28",
+     "eta_test_site": 0.6299,
+     "predicted_T_us": 3220.4,
+     "measured_T_us": [
+      3268.0
+     ],
+     "ratio": 1.015
+    }
+   ],
+   "envelope": {
+    "hull": [
+     [
+      20.3,
+      49.3,
+      "topk1",
+      0.1521,
+      20.34
+     ],
+     [
+      49.3,
+      377.4,
+      "topk2",
+      0.5123,
+      40.68
+     ],
+     [
+      377.4,
+      893.2,
+      "fc4",
+      0.6272,
+      102.36
+     ],
+     [
+      893.2,
+      1133.5,
+      "hier3",
+      0.6432,
+      122.03
+     ],
+     [
+      1133.5,
+      2467.0,
+      "fc8",
+      0.685,
+      183.76
+     ],
+     [
+      2467.0,
+      2868.3,
+      "cnn16",
+      0.7674,
+      428.93
+     ],
+     [
+      2868.3,
+      4839.7,
+      "topk32",
+      0.8442,
+      650.85
+     ],
+     [
+      4839.7,
+      null,
+      "sweep64",
+      0.9995,
+      1301.7
+     ]
+    ],
+    "predicted_best": [
+     "topk2",
+     "topk2",
+     "fc4",
+     "fc4",
+     "hier3",
+     "fc8",
+     "fc8",
+     "cnn16",
+     "topk32",
+     "sweep64",
+     "sweep64",
+     "sweep64"
+    ],
+    "measured_best": [
+     "topk2",
+     "fc4",
+     "fc4",
+     "fc4",
+     "fc4",
+     "fc4",
+     "fc4",
+     "fc4",
+     "fc16",
+     "cnn32",
+     "sweep64",
+     "sweep64"
+    ],
+    "agreement": "5/12"
+   },
+   "allocation": {
+    "250": [
+     [
+      9.295,
+      1.288,
+      20.606
+     ],
+     [
+      7.845,
+      1.129,
+      17.04
+     ],
+     [
+      6.953,
+      1.071,
+      15.8
+     ],
+     [
+      2.74,
+      0.24,
+      3.407
+     ]
+    ],
+    "350": [
+     [
+      12.109,
+      1.696,
+      29.882
+     ],
+     [
+      10.481,
+      1.418,
+      23.579
+     ],
+     [
+      9.242,
+      1.317,
+      21.327
+     ],
+     [
+      4.643,
+      0.542,
+      8.131
+     ]
+    ],
+    "500": [
+     [
+      15.159,
+      2.193,
+      42.454
+     ],
+     [
+      12.374,
+      1.911,
+      35.582
+     ],
+     [
+      10.704,
+      1.678,
+      30.012
+     ],
+     [
+      9.055,
+      1.456,
+      25.241
+     ]
+    ],
+    "700": [
+     [
+      22.281,
+      2.843,
+      60.575
+     ],
+     [
+      14.156,
+      2.31,
+      46.101
+     ],
+     [
+      11.947,
+      1.982,
+      37.547
+     ],
+     [
+      11.313,
+      1.973,
+      37.357
+     ]
+    ],
+    "1000": [
+     [
+      31.893,
+      2.947,
+      63.52
+     ],
+     [
+      16.328,
+      2.498,
+      51.055
+     ],
+     [
+      13.267,
+      2.201,
+      43.083
+     ],
+     [
+      14.8,
+      2.354,
+      47.512
+     ]
+    ],
+    "1400": [
+     [
+      39.806,
+      2.977,
+      64.353
+     ],
+     [
+      19.464,
+      2.683,
+      56.197
+     ],
+     [
+      15.403,
+      2.469,
+      50.457
+     ],
+     [
+      19.84,
+      2.549,
+      52.869
+     ]
+    ],
+    "2000": [
+     [
+      49.162,
+      2.987,
+      64.65
+     ],
+     [
+      23.221,
+      2.803,
+      59.564
+     ],
+     [
+      18.506,
+      2.68,
+      56.211
+     ],
+     [
+      24.79,
+      2.67,
+      56.118
+     ]
+    ],
+    "2800": [
+     [
+      51.192,
+      2.994,
+      64.84
+     ],
+     [
+      27.104,
+      2.913,
+      62.568
+     ],
+     [
+      22.256,
+      2.812,
+      59.793
+     ],
+     [
+      27.499,
+      2.73,
+      57.724
+     ]
+    ],
+    "4000": [
+     [
+      54.77,
+      2.999,
+      64.978
+     ],
+     [
+      31.894,
+      2.967,
+      64.065
+     ],
+     [
+      27.267,
+      2.888,
+      61.87
+     ],
+     [
+      30.185,
+      2.782,
+      59.124
+     ]
+    ],
+    "5600": [
+     [
+      57.398,
+      2.999,
+      64.983
+     ],
+     [
+      37.012,
+      2.98,
+      64.432
+     ],
+     [
+      31.688,
+      2.941,
+      63.355
+     ],
+     [
+      32.248,
+      2.812,
+      59.899
+     ]
+    ],
+    "8000": [
+     [
+      60.935,
+      2.999,
+      64.983
+     ],
+     [
+      42.822,
+      2.992,
+      64.774
+     ],
+     [
+      43.632,
+      2.966,
+      64.054
+     ],
+     [
+      33.307,
+      2.831,
+      60.358
+     ]
+    ],
+    "10000": [
+     [
+      62.415,
+      2.999,
+      64.983
+     ],
+     [
+      51.317,
+      2.996,
+      64.897
+     ],
+     [
+      49.679,
+      2.984,
+      64.573
+     ],
+     [
+      34.752,
+      2.843,
+      60.677
+     ]
+    ]
+   },
+   "diagnostics": {
+    "zhang-AHIBS@250": [
+     7.049,
+     3.524
+    ],
+    "zhang-AHTBS@250": [
+     20.642,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@250": [
+     7.9,
+     2.148
+    ],
+    "sched@250": [
+     6.921,
+     0.922,
+     0.181,
+     14.451,
+     0.75,
+     140.773
+    ],
+    "sched-pi@250": [
+     5.402,
+     0.909,
+     0.477,
+     14.365,
+     0.723,
+     109.87
+    ],
+    "sched-noreorder@250": [
+     4.938,
+     0.945,
+     0.714,
+     15.148,
+     0.722,
+     100.436
+    ],
+    "sched-noreorder-pi@250": [
+     4.76,
+     1.029,
+     0.719,
+     17.286,
+     0.724,
+     96.811
+    ],
+    "sched-nocompute@250": [
+     6.727,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     136.821
+    ],
+    "sched-nocompute-pi@250": [
+     6.87,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     139.723
+    ],
+    "osla@250": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "osla-pi@250": [
+     0.0,
+     0.2,
+     0.2,
+     2.827,
+     0.2,
+     0.0
+    ],
+    "sched-costblind@250": [
+     7.832,
+     1.858,
+     0.609,
+     35.655,
+     0.867,
+     159.289
+    ],
+    "sched-costblind-pi@250": [
+     6.841,
+     1.857,
+     0.294,
+     37.737,
+     0.817,
+     139.133
+    ],
+    "sched-1exit@250": [
+     7.006,
+     0.75,
+     0.072,
+     10.608,
+     0.75,
+     142.499
+    ],
+    "sched-1exit-pi@250": [
+     5.555,
+     0.714,
+     0.459,
+     10.087,
+     0.714,
+     112.976
+    ],
+    "blinkered@250": [
+     6.378,
+     0.832,
+     0.228,
+     12.667,
+     0.72,
+     129.732
+    ],
+    "blinkered-pi@250": [
+     6.184,
+     0.774,
+     0.18,
+     11.347,
+     0.725,
+     125.778
+    ],
+    "sched-rep1@250": [
+     6.902,
+     0.987,
+     0.224,
+     13.952,
+     0.751,
+     140.374
+    ],
+    "sched-rep1-pi@250": [
+     5.569,
+     1.17,
+     0.435,
+     16.536,
+     0.742,
+     113.276
+    ],
+    "sched-deep1@250": [
+     5.066,
+     0.672,
+     0.536,
+     19.457,
+     0.672,
+     103.031
+    ],
+    "sched-deep1-pi@250": [
+     6.224,
+     0.746,
+     0.175,
+     21.577,
+     0.746,
+     126.593
+    ],
+    "sched-anyr@250": [
+     5.174,
+     0.602,
+     0.602,
+     17.433,
+     0.602,
+     105.237
+    ],
+    "sched-anyr-pi@250": [
+     4.692,
+     0.63,
+     0.627,
+     18.243,
+     0.63,
+     95.43
+    ],
+    "sched-fcc@250": [
+     5.407,
+     0.816,
+     0.816,
+     17.741,
+     0.816,
+     109.982
+    ],
+    "sched-fcc-pi@250": [
+     5.187,
+     0.809,
+     0.806,
+     17.584,
+     0.809,
+     105.498
+    ],
+    "sched-cnnc@250": [
+     6.884,
+     0.017,
+     0.017,
+     1.77,
+     0.017,
+     140.008
+    ],
+    "sched-cnnc-pi@250": [
+     6.804,
+     0.036,
+     0.036,
+     3.714,
+     0.036,
+     138.393
+    ],
+    "zhang-AHIBS@350": [
+     8.897,
+     4.449
+    ],
+    "zhang-AHTBS@350": [
+     20.636,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@350": [
+     11.054,
+     3.114
+    ],
+    "sched@350": [
+     9.401,
+     1.277,
+     0.182,
+     21.822,
+     0.832,
+     191.205
+    ],
+    "sched-pi@350": [
+     7.421,
+     1.207,
+     0.346,
+     21.595,
+     0.746,
+     150.93
+    ],
+    "sched-noreorder@350": [
+     6.973,
+     1.433,
+     0.716,
+     26.228,
+     0.756,
+     141.83
+    ],
+    "sched-noreorder-pi@350": [
+     6.485,
+     1.361,
+     0.746,
+     24.665,
+     0.771,
+     131.895
+    ],
+    "sched-nocompute@350": [
+     7.31,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     148.675
+    ],
+    "sched-nocompute-pi@350": [
+     8.517,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     173.222
+    ],
+    "osla@350": [
+     0.0,
+     0.6,
+     0.6,
+     8.481,
+     0.6,
+     0.0
+    ],
+    "osla-pi@350": [
+     0.328,
+     0.485,
+     0.367,
+     7.517,
+     0.4,
+     6.676
+    ],
+    "sched-costblind@350": [
+     11.222,
+     2.28,
+     0.268,
+     45.449,
+     0.987,
+     228.254
+    ],
+    "sched-costblind-pi@350": [
+     9.171,
+     2.025,
+     0.227,
+     41.805,
+     0.847,
+     186.52
+    ],
+    "sched-1exit@350": [
+     9.565,
+     0.831,
+     0.02,
+     11.752,
+     0.831,
+     194.543
+    ],
+    "sched-1exit-pi@350": [
+     7.552,
+     0.734,
+     0.354,
+     10.378,
+     0.734,
+     153.597
+    ],
+    "blinkered@350": [
+     7.887,
+     0.824,
+     0.261,
+     12.964,
+     0.661,
+     160.41
+    ],
+    "blinkered-pi@350": [
+     8.319,
+     0.735,
+     0.164,
+     10.764,
+     0.69,
+     169.205
+    ],
+    "sched-rep1@350": [
+     9.662,
+     1.334,
+     0.122,
+     18.861,
+     0.832,
+     196.525
+    ],
+    "sched-rep1-pi@350": [
+     7.867,
+     1.342,
+     0.299,
+     18.965,
+     0.742,
+     160.008
+    ],
+    "sched-deep1@350": [
+     6.736,
+     0.69,
+     0.519,
+     19.966,
+     0.69,
+     136.997
+    ],
+    "sched-deep1-pi@350": [
+     9.121,
+     0.785,
+     0.127,
+     22.711,
+     0.785,
+     185.51
+    ],
+    "sched-anyr@350": [
+     7.716,
+     0.445,
+     0.444,
+     12.88,
+     0.445,
+     156.942
+    ],
+    "sched-anyr-pi@350": [
+     7.134,
+     0.542,
+     0.537,
+     15.697,
+     0.542,
+     145.092
+    ],
+    "sched-fcc@350": [
+     6.449,
+     0.811,
+     0.81,
+     17.621,
+     0.811,
+     131.172
+    ],
+    "sched-fcc-pi@350": [
+     6.109,
+     0.822,
+     0.815,
+     17.856,
+     0.822,
+     124.255
+    ],
+    "sched-cnnc@350": [
+     7.597,
+     0.356,
+     0.355,
+     36.81,
+     0.356,
+     154.516
+    ],
+    "sched-cnnc-pi@350": [
+     7.502,
+     0.378,
+     0.378,
+     39.124,
+     0.378,
+     152.591
+    ],
+    "zhang-AHIBS@500": [
+     9.937,
+     4.969
+    ],
+    "zhang-AHTBS@500": [
+     20.636,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@500": [
+     15.191,
+     4.371
+    ],
+    "sched@500": [
+     12.717,
+     1.905,
+     0.09,
+     35.674,
+     0.984,
+     258.643
+    ],
+    "sched-pi@500": [
+     10.95,
+     1.682,
+     0.21,
+     33.357,
+     0.79,
+     222.717
+    ],
+    "sched-noreorder@500": [
+     8.713,
+     1.756,
+     0.684,
+     34.34,
+     0.787,
+     177.213
+    ],
+    "sched-noreorder-pi@500": [
+     8.388,
+     1.814,
+     0.695,
+     35.647,
+     0.824,
+     170.596
+    ],
+    "sched-nocompute@500": [
+     7.543,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     153.411
+    ],
+    "sched-nocompute-pi@500": [
+     8.974,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     182.532
+    ],
+    "osla@500": [
+     0.0,
+     0.9,
+     0.9,
+     12.722,
+     0.9,
+     0.0
+    ],
+    "osla-pi@500": [
+     0.802,
+     1.015,
+     0.837,
+     15.469,
+     0.9,
+     16.308
+    ],
+    "sched-costblind@500": [
+     14.688,
+     2.598,
+     0.111,
+     54.059,
+     0.99,
+     298.74
+    ],
+    "sched-costblind-pi@500": [
+     12.833,
+     2.241,
+     0.153,
+     46.756,
+     0.89,
+     261.02
+    ],
+    "sched-1exit@500": [
+     10.912,
+     0.984,
+     0.001,
+     13.909,
+     0.984,
+     221.942
+    ],
+    "sched-1exit-pi@500": [
+     9.615,
+     0.785,
+     0.29,
+     11.1,
+     0.785,
+     195.563
+    ],
+    "blinkered@500": [
+     8.847,
+     0.793,
+     0.139,
+     12.296,
+     0.666,
+     179.929
+    ],
+    "blinkered-pi@500": [
+     9.914,
+     0.729,
+     0.092,
+     10.548,
+     0.7,
+     201.635
+    ],
+    "sched-rep1@500": [
+     13.784,
+     2.167,
+     0.049,
+     30.628,
+     0.984,
+     280.351
+    ],
+    "sched-rep1-pi@500": [
+     11.455,
+     1.816,
+     0.182,
+     25.674,
+     0.792,
+     232.976
+    ],
+    "sched-deep1@500": [
+     9.859,
+     0.776,
+     0.401,
+     22.45,
+     0.776,
+     200.521
+    ],
+    "sched-deep1-pi@500": [
+     13.208,
+     0.858,
+     0.084,
+     24.838,
+     0.858,
+     268.646
+    ],
+    "sched-anyr@500": [
+     10.576,
+     0.737,
+     0.736,
+     21.332,
+     0.737,
+     215.106
+    ],
+    "sched-anyr-pi@500": [
+     10.528,
+     0.75,
+     0.742,
+     21.71,
+     0.75,
+     214.135
+    ],
+    "sched-fcc@500": [
+     9.816,
+     0.844,
+     0.843,
+     18.343,
+     0.844,
+     199.65
+    ],
+    "sched-fcc-pi@500": [
+     9.263,
+     0.85,
+     0.842,
+     18.467,
+     0.85,
+     188.395
+    ],
+    "sched-cnnc@500": [
+     9.56,
+     0.581,
+     0.58,
+     60.095,
+     0.581,
+     194.448
+    ],
+    "sched-cnnc-pi@500": [
+     9.586,
+     0.573,
+     0.573,
+     59.319,
+     0.573,
+     194.974
+    ],
+    "zhang-AHIBS@700": [
+     11.591,
+     5.795
+    ],
+    "zhang-AHTBS@700": [
+     20.635,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@700": [
+     19.562,
+     5.687
+    ],
+    "sched@700": [
+     17.482,
+     2.473,
+     0.05,
+     50.661,
+     1.0,
+     355.573
+    ],
+    "sched-pi@700": [
+     15.086,
+     1.993,
+     0.138,
+     41.189,
+     0.821,
+     306.836
+    ],
+    "sched-noreorder@700": [
+     10.928,
+     2.078,
+     0.657,
+     42.72,
+     0.817,
+     222.258
+    ],
+    "sched-noreorder-pi@700": [
+     11.31,
+     2.123,
+     0.625,
+     44.005,
+     0.828,
+     230.038
+    ],
+    "sched-nocompute@700": [
+     7.782,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     158.281
+    ],
+    "sched-nocompute-pi@700": [
+     9.348,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     190.122
+    ],
+    "osla@700": [
+     0.0,
+     0.9,
+     0.9,
+     12.722,
+     0.9,
+     0.0
+    ],
+    "osla-pi@700": [
+     0.0,
+     0.9,
+     0.9,
+     12.722,
+     0.9,
+     0.0
+    ],
+    "sched-costblind@700": [
+     19.236,
+     2.742,
+     0.069,
+     57.839,
+     1.0,
+     391.247
+    ],
+    "sched-costblind-pi@700": [
+     17.096,
+     2.465,
+     0.079,
+     52.234,
+     0.915,
+     347.711
+    ],
+    "sched-1exit@700": [
+     11.064,
+     0.988,
+     0.0,
+     13.965,
+     0.988,
+     225.023
+    ],
+    "sched-1exit-pi@700": [
+     10.112,
+     0.814,
+     0.268,
+     11.506,
+     0.814,
+     205.666
+    ],
+    "blinkered@700": [
+     9.288,
+     0.821,
+     0.107,
+     12.977,
+     0.661,
+     188.916
+    ],
+    "blinkered-pi@700": [
+     10.441,
+     0.759,
+     0.08,
+     11.181,
+     0.708,
+     212.35
+    ],
+    "sched-rep1@700": [
+     18.098,
+     2.575,
+     0.022,
+     36.402,
+     1.0,
+     368.089
+    ],
+    "sched-rep1-pi@700": [
+     15.46,
+     2.096,
+     0.111,
+     29.633,
+     0.824,
+     314.442
+    ],
+    "sched-deep1@700": [
+     14.544,
+     0.82,
+     0.245,
+     23.72,
+     0.82,
+     295.803
+    ],
+    "sched-deep1-pi@700": [
+     16.987,
+     0.911,
+     0.098,
+     26.359,
+     0.911,
+     345.495
+    ],
+    "sched-anyr@700": [
+     13.863,
+     0.661,
+     0.659,
+     19.12,
+     0.661,
+     281.957
+    ],
+    "sched-anyr-pi@700": [
+     13.884,
+     0.698,
+     0.675,
+     20.204,
+     0.698,
+     282.386
+    ],
+    "sched-fcc@700": [
+     13.416,
+     0.751,
+     0.748,
+     16.323,
+     0.751,
+     272.866
+    ],
+    "sched-fcc-pi@700": [
+     13.119,
+     0.788,
+     0.781,
+     17.128,
+     0.788,
+     266.825
+    ],
+    "sched-cnnc@700": [
+     13.242,
+     0.625,
+     0.624,
+     64.719,
+     0.625,
+     269.338
+    ],
+    "sched-cnnc-pi@700": [
+     12.908,
+     0.631,
+     0.63,
+     65.35,
+     0.631,
+     262.532
+    ],
+    "zhang-AHIBS@1000": [
+     11.999,
+     6.0
+    ],
+    "zhang-AHTBS@1000": [
+     20.635,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@1000": [
+     20.632,
+     6.0
+    ],
+    "sched@1000": [
+     24.02,
+     2.68,
+     0.018,
+     56.261,
+     1.0,
+     488.544
+    ],
+    "sched-pi@1000": [
+     21.008,
+     2.308,
+     0.054,
+     48.681,
+     0.866,
+     427.288
+    ],
+    "sched-noreorder@1000": [
+     14.586,
+     2.258,
+     0.566,
+     47.38,
+     0.839,
+     296.661
+    ],
+    "sched-noreorder-pi@1000": [
+     15.872,
+     2.302,
+     0.506,
+     48.11,
+     0.869,
+     322.813
+    ],
+    "sched-nocompute@1000": [
+     8.094,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     164.625
+    ],
+    "sched-nocompute-pi@1000": [
+     9.75,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     198.302
+    ],
+    "osla@1000": [
+     0.0,
+     0.9,
+     0.9,
+     12.722,
+     0.9,
+     0.0
+    ],
+    "osla-pi@1000": [
+     0.683,
+     1.221,
+     0.96,
+     19.234,
+     1.0,
+     13.896
+    ],
+    "sched-costblind@1000": [
+     25.225,
+     2.823,
+     0.024,
+     60.106,
+     1.0,
+     513.049
+    ],
+    "sched-costblind-pi@1000": [
+     22.749,
+     2.659,
+     0.033,
+     56.863,
+     0.94,
+     462.687
+    ],
+    "sched-1exit@1000": [
+     11.234,
+     0.993,
+     0.0,
+     14.03,
+     0.993,
+     228.484
+    ],
+    "sched-1exit-pi@1000": [
+     10.754,
+     0.846,
+     0.233,
+     11.952,
+     0.846,
+     218.724
+    ],
+    "blinkered@1000": [
+     9.828,
+     0.867,
+     0.091,
+     13.988,
+     0.672,
+     199.887
+    ],
+    "blinkered-pi@1000": [
+     11.041,
+     0.846,
+     0.085,
+     12.627,
+     0.771,
+     224.559
+    ],
+    "sched-rep1@1000": [
+     24.066,
+     2.714,
+     0.016,
+     38.369,
+     1.0,
+     489.486
+    ],
+    "sched-rep1-pi@1000": [
+     20.91,
+     2.353,
+     0.054,
+     33.258,
+     0.866,
+     425.279
+    ],
+    "sched-deep1@1000": [
+     22.899,
+     0.943,
+     0.046,
+     27.294,
+     0.943,
+     465.751
+    ],
+    "sched-deep1-pi@1000": [
+     19.643,
+     0.857,
+     0.195,
+     24.791,
+     0.857,
+     399.51
+    ],
+    "sched-anyr@1000": [
+     18.592,
+     0.773,
+     0.771,
+     22.373,
+     0.773,
+     378.141
+    ],
+    "sched-anyr-pi@1000": [
+     18.582,
+     0.777,
+     0.761,
+     22.475,
+     0.777,
+     377.935
+    ],
+    "sched-fcc@1000": [
+     18.011,
+     0.855,
+     0.854,
+     18.587,
+     0.855,
+     366.332
+    ],
+    "sched-fcc-pi@1000": [
+     17.551,
+     0.859,
+     0.857,
+     18.676,
+     0.859,
+     356.976
+    ],
+    "sched-cnnc@1000": [
+     18.026,
+     0.785,
+     0.784,
+     81.242,
+     0.785,
+     366.629
+    ],
+    "sched-cnnc-pi@1000": [
+     17.546,
+     0.8,
+     0.797,
+     82.774,
+     0.8,
+     356.876
+    ],
+    "zhang-AHIBS@1400": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@1400": [
+     20.633,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@1400": [
+     20.628,
+     6.0
+    ],
+    "sched@1400": [
+     30.288,
+     2.788,
+     0.01,
+     59.255,
+     1.0,
+     616.036
+    ],
+    "sched-pi@1400": [
+     27.282,
+     2.71,
+     0.008,
+     57.859,
+     0.958,
+     554.893
+    ],
+    "sched-noreorder@1400": [
+     21.96,
+     2.343,
+     0.448,
+     49.486,
+     0.853,
+     446.651
+    ],
+    "sched-noreorder-pi@1400": [
+     23.366,
+     2.328,
+     0.456,
+     48.669,
+     0.877,
+     475.238
+    ],
+    "sched-nocompute@1400": [
+     8.277,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     168.341
+    ],
+    "sched-nocompute-pi@1400": [
+     10.023,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     203.856
+    ],
+    "osla@1400": [
+     0.0,
+     0.9,
+     0.9,
+     12.722,
+     0.9,
+     0.0
+    ],
+    "osla-pi@1400": [
+     5.353,
+     1.659,
+     0.574,
+     31.392,
+     0.9,
+     108.867
+    ],
+    "sched-costblind@1400": [
+     31.077,
+     2.87,
+     0.009,
+     61.417,
+     1.0,
+     632.071
+    ],
+    "sched-costblind-pi@1400": [
+     27.41,
+     2.767,
+     0.014,
+     59.343,
+     0.964,
+     557.494
+    ],
+    "sched-1exit@1400": [
+     11.359,
+     0.993,
+     0.0,
+     14.035,
+     0.993,
+     231.038
+    ],
+    "sched-1exit-pi@1400": [
+     11.191,
+     0.882,
+     0.204,
+     12.471,
+     0.882,
+     227.606
+    ],
+    "blinkered@1400": [
+     10.369,
+     0.899,
+     0.081,
+     14.649,
+     0.682,
+     210.898
+    ],
+    "blinkered-pi@1400": [
+     11.494,
+     0.871,
+     0.084,
+     13.228,
+     0.772,
+     233.769
+    ],
+    "sched-rep1@1400": [
+     31.317,
+     2.801,
+     0.012,
+     39.594,
+     1.0,
+     636.96
+    ],
+    "sched-rep1-pi@1400": [
+     26.614,
+     2.64,
+     0.015,
+     37.315,
+     0.934,
+     541.299
+    ],
+    "sched-deep1@1400": [
+     30.887,
+     0.991,
+     0.005,
+     28.666,
+     0.991,
+     628.218
+    ],
+    "sched-deep1-pi@1400": [
+     27.073,
+     0.875,
+     0.094,
+     25.316,
+     0.875,
+     550.632
+    ],
+    "sched-anyr@1400": [
+     24.117,
+     0.658,
+     0.648,
+     19.045,
+     0.658,
+     490.509
+    ],
+    "sched-anyr-pi@1400": [
+     22.717,
+     0.741,
+     0.662,
+     21.443,
+     0.741,
+     462.035
+    ],
+    "sched-fcc@1400": [
+     22.274,
+     0.808,
+     0.799,
+     17.556,
+     0.808,
+     453.026
+    ],
+    "sched-fcc-pi@1400": [
+     20.312,
+     0.853,
+     0.789,
+     18.542,
+     0.853,
+     413.119
+    ],
+    "sched-cnnc@1400": [
+     22.505,
+     0.699,
+     0.697,
+     72.364,
+     0.699,
+     457.727
+    ],
+    "sched-cnnc-pi@1400": [
+     21.084,
+     0.717,
+     0.715,
+     74.261,
+     0.717,
+     428.82
+    ],
+    "zhang-AHIBS@2000": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@2000": [
+     20.623,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@2000": [
+     20.631,
+     6.0
+    ],
+    "sched@2000": [
+     37.397,
+     2.853,
+     0.003,
+     61.032,
+     1.0,
+     760.618
+    ],
+    "sched-pi@2000": [
+     34.759,
+     2.766,
+     0.006,
+     59.275,
+     0.965,
+     706.971
+    ],
+    "sched-noreorder@2000": [
+     32.617,
+     2.443,
+     0.264,
+     52.061,
+     0.866,
+     663.394
+    ],
+    "sched-noreorder-pi@2000": [
+     32.125,
+     2.477,
+     0.322,
+     52.452,
+     0.899,
+     653.388
+    ],
+    "sched-nocompute@2000": [
+     8.381,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     170.464
+    ],
+    "sched-nocompute-pi@2000": [
+     10.289,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     209.268
+    ],
+    "osla@2000": [
+     1.761,
+     1.037,
+     0.811,
+     15.995,
+     0.9,
+     35.809
+    ],
+    "osla-pi@2000": [
+     2.583,
+     1.611,
+     0.823,
+     28.669,
+     0.984,
+     52.526
+    ],
+    "sched-costblind@2000": [
+     37.826,
+     2.903,
+     0.002,
+     62.349,
+     1.0,
+     769.347
+    ],
+    "sched-costblind-pi@2000": [
+     35.561,
+     2.904,
+     0.008,
+     62.594,
+     0.989,
+     723.268
+    ],
+    "sched-1exit@2000": [
+     11.526,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     234.436
+    ],
+    "sched-1exit-pi@2000": [
+     11.668,
+     0.905,
+     0.173,
+     12.787,
+     0.905,
+     237.324
+    ],
+    "blinkered@2000": [
+     10.791,
+     0.924,
+     0.079,
+     15.182,
+     0.688,
+     219.474
+    ],
+    "blinkered-pi@2000": [
+     11.966,
+     0.911,
+     0.071,
+     14.003,
+     0.788,
+     243.373
+    ],
+    "sched-rep1@2000": [
+     38.035,
+     2.866,
+     0.001,
+     40.508,
+     1.0,
+     773.586
+    ],
+    "sched-rep1-pi@2000": [
+     34.476,
+     2.779,
+     0.006,
+     39.283,
+     0.963,
+     701.208
+    ],
+    "sched-deep1@2000": [
+     34.781,
+     0.992,
+     0.002,
+     28.717,
+     0.992,
+     707.418
+    ],
+    "sched-deep1-pi@2000": [
+     30.908,
+     0.89,
+     0.027,
+     25.759,
+     0.89,
+     628.637
+    ],
+    "sched-anyr@2000": [
+     34.741,
+     0.476,
+     0.411,
+     13.766,
+     0.476,
+     706.594
+    ],
+    "sched-anyr-pi@2000": [
+     35.887,
+     0.572,
+     0.309,
+     16.543,
+     0.572,
+     729.91
+    ],
+    "sched-fcc@2000": [
+     31.466,
+     0.68,
+     0.631,
+     14.78,
+     0.68,
+     639.993
+    ],
+    "sched-fcc-pi@2000": [
+     31.78,
+     0.648,
+     0.546,
+     14.079,
+     0.648,
+     646.368
+    ],
+    "sched-cnnc@2000": [
+     30.524,
+     0.667,
+     0.664,
+     69.008,
+     0.667,
+     620.826
+    ],
+    "sched-cnnc-pi@2000": [
+     29.751,
+     0.628,
+     0.609,
+     65.019,
+     0.628,
+     605.109
+    ],
+    "zhang-AHIBS@2800": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@2800": [
+     20.632,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@2800": [
+     20.633,
+     6.0
+    ],
+    "sched@2800": [
+     39.904,
+     2.893,
+     0.001,
+     62.1,
+     1.0,
+     811.614
+    ],
+    "sched-pi@2800": [
+     37.522,
+     2.856,
+     0.003,
+     61.423,
+     0.984,
+     763.163
+    ],
+    "sched-noreorder@2800": [
+     38.51,
+     2.495,
+     0.162,
+     53.373,
+     0.875,
+     783.262
+    ],
+    "sched-noreorder-pi@2800": [
+     36.776,
+     2.527,
+     0.251,
+     53.608,
+     0.915,
+     747.982
+    ],
+    "sched-nocompute@2800": [
+     8.469,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     172.254
+    ],
+    "sched-nocompute-pi@2800": [
+     10.511,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     213.775
+    ],
+    "osla@2800": [
+     3.986,
+     1.273,
+     0.673,
+     21.283,
+     0.9,
+     81.075
+    ],
+    "osla-pi@2800": [
+     3.021,
+     1.563,
+     0.807,
+     27.78,
+     0.984,
+     61.45
+    ],
+    "sched-costblind@2800": [
+     40.145,
+     2.923,
+     0.002,
+     62.895,
+     1.0,
+     816.518
+    ],
+    "sched-costblind-pi@2800": [
+     37.744,
+     2.91,
+     0.005,
+     62.729,
+     0.991,
+     767.682
+    ],
+    "sched-1exit@2800": [
+     11.566,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     235.241
+    ],
+    "sched-1exit-pi@2800": [
+     11.992,
+     0.917,
+     0.157,
+     12.956,
+     0.917,
+     243.896
+    ],
+    "blinkered@2800": [
+     11.089,
+     0.934,
+     0.071,
+     15.391,
+     0.693,
+     225.548
+    ],
+    "blinkered-pi@2800": [
+     12.354,
+     0.937,
+     0.063,
+     14.622,
+     0.79,
+     251.265
+    ],
+    "sched-rep1@2800": [
+     40.826,
+     2.902,
+     0.0,
+     41.013,
+     1.0,
+     830.353
+    ],
+    "sched-rep1-pi@2800": [
+     39.093,
+     2.876,
+     0.001,
+     40.651,
+     0.982,
+     795.105
+    ],
+    "sched-deep1@2800": [
+     38.143,
+     1.0,
+     0.0,
+     28.938,
+     1.0,
+     775.793
+    ],
+    "sched-deep1-pi@2800": [
+     33.897,
+     0.927,
+     0.019,
+     26.823,
+     0.927,
+     689.437
+    ],
+    "sched-anyr@2800": [
+     39.449,
+     0.451,
+     0.297,
+     13.051,
+     0.451,
+     802.359
+    ],
+    "sched-anyr-pi@2800": [
+     41.492,
+     0.621,
+     0.162,
+     17.97,
+     0.621,
+     843.914
+    ],
+    "sched-fcc@2800": [
+     36.349,
+     0.604,
+     0.495,
+     13.135,
+     0.604,
+     739.309
+    ],
+    "sched-fcc-pi@2800": [
+     37.229,
+     0.714,
+     0.388,
+     15.508,
+     0.714,
+     757.195
+    ],
+    "sched-cnnc@2800": [
+     35.593,
+     0.548,
+     0.537,
+     56.728,
+     0.548,
+     723.918
+    ],
+    "sched-cnnc-pi@2800": [
+     34.848,
+     0.667,
+     0.482,
+     69.023,
+     0.667,
+     708.781
+    ],
+    "zhang-AHIBS@4000": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@4000": [
+     20.627,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@4000": [
+     20.626,
+     6.0
+    ],
+    "sched@4000": [
+     43.37,
+     2.921,
+     0.0,
+     62.862,
+     1.0,
+     882.096
+    ],
+    "sched-pi@4000": [
+     42.254,
+     2.899,
+     0.001,
+     62.395,
+     0.994,
+     859.412
+    ],
+    "sched-noreorder@4000": [
+     45.097,
+     2.57,
+     0.073,
+     55.035,
+     0.901,
+     917.221
+    ],
+    "sched-noreorder-pi@4000": [
+     43.279,
+     2.622,
+     0.172,
+     55.778,
+     0.942,
+     880.26
+    ],
+    "sched-nocompute@4000": [
+     8.543,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     173.758
+    ],
+    "sched-nocompute-pi@4000": [
+     10.709,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     217.809
+    ],
+    "osla@4000": [
+     9.866,
+     1.736,
+     0.417,
+     32.282,
+     0.9,
+     200.671
+    ],
+    "osla-pi@4000": [
+     1.788,
+     1.46,
+     0.891,
+     25.482,
+     0.984,
+     36.373
+    ],
+    "sched-costblind@4000": [
+     43.592,
+     2.946,
+     0.001,
+     63.522,
+     1.0,
+     886.625
+    ],
+    "sched-costblind-pi@4000": [
+     42.439,
+     2.934,
+     0.002,
+     63.329,
+     0.997,
+     863.17
+    ],
+    "sched-1exit@4000": [
+     11.598,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     235.889
+    ],
+    "sched-1exit-pi@4000": [
+     12.214,
+     0.932,
+     0.154,
+     13.173,
+     0.932,
+     248.422
+    ],
+    "blinkered@4000": [
+     11.495,
+     0.959,
+     0.07,
+     15.851,
+     0.706,
+     233.804
+    ],
+    "blinkered-pi@4000": [
+     12.622,
+     0.949,
+     0.057,
+     14.82,
+     0.796,
+     256.711
+    ],
+    "sched-rep1@4000": [
+     44.325,
+     2.928,
+     0.0,
+     41.391,
+     1.0,
+     901.532
+    ],
+    "sched-rep1-pi@4000": [
+     43.53,
+     2.919,
+     0.002,
+     41.253,
+     0.994,
+     885.363
+    ],
+    "sched-deep1@4000": [
+     41.029,
+     1.0,
+     0.0,
+     28.938,
+     1.0,
+     834.492
+    ],
+    "sched-deep1-pi@4000": [
+     36.856,
+     0.948,
+     0.012,
+     27.43,
+     0.948,
+     749.605
+    ],
+    "sched-anyr@4000": [
+     44.854,
+     0.464,
+     0.192,
+     13.427,
+     0.464,
+     912.29
+    ],
+    "sched-anyr-pi@4000": [
+     46.628,
+     0.662,
+     0.103,
+     19.148,
+     0.662,
+     948.363
+    ],
+    "sched-fcc@4000": [
+     39.989,
+     0.598,
+     0.445,
+     12.997,
+     0.598,
+     813.334
+    ],
+    "sched-fcc-pi@4000": [
+     41.054,
+     0.761,
+     0.34,
+     16.532,
+     0.761,
+     834.996
+    ],
+    "sched-cnnc@4000": [
+     39.731,
+     0.504,
+     0.454,
+     52.178,
+     0.504,
+     808.095
+    ],
+    "sched-cnnc-pi@4000": [
+     40.214,
+     0.703,
+     0.384,
+     72.769,
+     0.703,
+     817.916
+    ],
+    "zhang-AHIBS@5600": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@5600": [
+     20.637,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@5600": [
+     20.628,
+     6.0
+    ],
+    "sched@5600": [
+     46.138,
+     2.934,
+     0.0,
+     63.209,
+     1.0,
+     938.405
+    ],
+    "sched-pi@5600": [
+     45.604,
+     2.935,
+     0.001,
+     63.303,
+     0.996,
+     927.534
+    ],
+    "sched-noreorder@5600": [
+     47.985,
+     2.632,
+     0.038,
+     56.279,
+     0.927,
+     975.957
+    ],
+    "sched-noreorder-pi@5600": [
+     47.694,
+     2.714,
+     0.101,
+     58.138,
+     0.948,
+     970.039
+    ],
+    "sched-nocompute@5600": [
+     8.63,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     175.529
+    ],
+    "sched-nocompute-pi@5600": [
+     10.831,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     220.284
+    ],
+    "osla@5600": [
+     10.747,
+     1.827,
+     0.379,
+     34.324,
+     0.9,
+     218.577
+    ],
+    "osla-pi@5600": [
+     1.849,
+     1.464,
+     0.89,
+     25.557,
+     0.984,
+     37.609
+    ],
+    "sched-costblind@5600": [
+     46.224,
+     2.95,
+     0.001,
+     63.635,
+     1.0,
+     940.153
+    ],
+    "sched-costblind-pi@5600": [
+     45.718,
+     2.957,
+     0.003,
+     63.862,
+     0.998,
+     929.852
+    ],
+    "sched-1exit@5600": [
+     11.636,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     236.672
+    ],
+    "sched-1exit-pi@5600": [
+     12.429,
+     0.935,
+     0.149,
+     13.215,
+     0.935,
+     252.786
+    ],
+    "blinkered@5600": [
+     12.004,
+     0.988,
+     0.056,
+     16.381,
+     0.723,
+     244.15
+    ],
+    "blinkered-pi@5600": [
+     12.91,
+     0.977,
+     0.057,
+     15.34,
+     0.811,
+     262.579
+    ],
+    "sched-rep1@5600": [
+     47.137,
+     2.94,
+     0.0,
+     41.554,
+     1.0,
+     958.713
+    ],
+    "sched-rep1-pi@5600": [
+     46.75,
+     2.951,
+     0.001,
+     41.717,
+     0.996,
+     950.848
+    ],
+    "sched-deep1@5600": [
+     43.208,
+     1.0,
+     0.0,
+     28.938,
+     1.0,
+     878.816
+    ],
+    "sched-deep1-pi@5600": [
+     39.534,
+     0.964,
+     0.009,
+     27.902,
+     0.964,
+     804.075
+    ],
+    "sched-anyr@5600": [
+     48.008,
+     0.513,
+     0.111,
+     14.832,
+     0.513,
+     976.435
+    ],
+    "sched-anyr-pi@5600": [
+     49.791,
+     0.707,
+     0.076,
+     20.449,
+     0.707,
+     1012.69
+    ],
+    "sched-fcc@5600": [
+     43.215,
+     0.627,
+     0.38,
+     13.629,
+     0.627,
+     878.946
+    ],
+    "sched-fcc-pi@5600": [
+     44.3,
+     0.805,
+     0.302,
+     17.497,
+     0.805,
+     901.027
+    ],
+    "sched-cnnc@5600": [
+     41.859,
+     0.551,
+     0.441,
+     57.074,
+     0.551,
+     851.379
+    ],
+    "sched-cnnc-pi@5600": [
+     43.753,
+     0.758,
+     0.351,
+     78.465,
+     0.758,
+     889.886
+    ],
+    "zhang-AHIBS@8000": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@8000": [
+     20.633,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@8000": [
+     20.641,
+     6.0
+    ],
+    "sched@8000": [
+     49.407,
+     2.943,
+     0.0,
+     63.42,
+     1.0,
+     1004.88
+    ],
+    "sched-pi@8000": [
+     48.595,
+     2.952,
+     0.001,
+     63.741,
+     0.997,
+     988.38
+    ],
+    "sched-noreorder@8000": [
+     49.958,
+     2.724,
+     0.024,
+     58.434,
+     0.947,
+     1016.089
+    ],
+    "sched-noreorder-pi@8000": [
+     49.986,
+     2.795,
+     0.089,
+     59.93,
+     0.974,
+     1016.669
+    ],
+    "sched-nocompute@8000": [
+     8.731,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     177.583
+    ],
+    "sched-nocompute-pi@8000": [
+     10.929,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     222.286
+    ],
+    "osla@8000": [
+     10.996,
+     1.835,
+     0.38,
+     34.535,
+     0.9,
+     223.648
+    ],
+    "osla-pi@8000": [
+     4.446,
+     1.626,
+     0.794,
+     29.527,
+     0.985,
+     90.423
+    ],
+    "sched-costblind@8000": [
+     49.503,
+     2.956,
+     0.0,
+     63.782,
+     1.0,
+     1006.834
+    ],
+    "sched-costblind-pi@8000": [
+     48.712,
+     2.965,
+     0.001,
+     64.074,
+     0.998,
+     990.752
+    ],
+    "sched-1exit@8000": [
+     11.656,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     237.076
+    ],
+    "sched-1exit-pi@8000": [
+     12.661,
+     0.953,
+     0.149,
+     13.464,
+     0.953,
+     257.511
+    ],
+    "blinkered@8000": [
+     12.571,
+     1.015,
+     0.053,
+     16.813,
+     0.744,
+     255.675
+    ],
+    "blinkered-pi@8000": [
+     13.282,
+     0.993,
+     0.059,
+     15.643,
+     0.818,
+     270.138
+    ],
+    "sched-rep1@8000": [
+     50.562,
+     2.948,
+     0.0,
+     41.668,
+     1.0,
+     1028.371
+    ],
+    "sched-rep1-pi@8000": [
+     50.274,
+     2.966,
+     0.0,
+     41.925,
+     0.999,
+     1022.532
+    ],
+    "sched-deep1@8000": [
+     44.913,
+     1.0,
+     0.0,
+     28.938,
+     1.0,
+     913.483
+    ],
+    "sched-deep1-pi@8000": [
+     42.804,
+     0.981,
+     0.005,
+     28.386,
+     0.981,
+     870.587
+    ],
+    "sched-anyr@8000": [
+     50.213,
+     0.591,
+     0.093,
+     17.097,
+     0.591,
+     1021.283
+    ],
+    "sched-anyr-pi@8000": [
+     52.319,
+     0.769,
+     0.07,
+     22.239,
+     0.769,
+     1064.124
+    ],
+    "sched-fcc@8000": [
+     46.794,
+     0.665,
+     0.341,
+     14.459,
+     0.665,
+     951.733
+    ],
+    "sched-fcc-pi@8000": [
+     47.629,
+     0.783,
+     0.272,
+     17.017,
+     0.783,
+     968.721
+    ],
+    "sched-cnnc@8000": [
+     44.668,
+     0.585,
+     0.435,
+     60.58,
+     0.585,
+     908.506
+    ],
+    "sched-cnnc-pi@8000": [
+     46.676,
+     0.827,
+     0.319,
+     85.579,
+     0.827,
+     949.341
+    ],
+    "zhang-AHIBS@10000": [
+     12.0,
+     6.0
+    ],
+    "zhang-AHTBS@10000": [
+     20.637,
+     6.0
+    ],
+    "zhang-AHTBS+AHIBS@10000": [
+     20.627,
+     6.0
+    ],
+    "sched@10000": [
+     51.774,
+     2.948,
+     0.0,
+     63.555,
+     1.0,
+     1053.028
+    ],
+    "sched-pi@10000": [
+     50.979,
+     2.963,
+     0.001,
+     64.015,
+     0.998,
+     1036.857
+    ],
+    "sched-noreorder@10000": [
+     51.101,
+     2.781,
+     0.02,
+     59.691,
+     0.964,
+     1039.352
+    ],
+    "sched-noreorder-pi@10000": [
+     51.55,
+     2.86,
+     0.071,
+     61.517,
+     0.983,
+     1048.47
+    ],
+    "sched-nocompute@10000": [
+     8.796,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     178.897
+    ],
+    "sched-nocompute-pi@10000": [
+     11.029,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     224.327
+    ],
+    "osla@10000": [
+     11.199,
+     1.838,
+     0.38,
+     34.638,
+     0.9,
+     227.779
+    ],
+    "osla-pi@10000": [
+     4.652,
+     1.631,
+     0.795,
+     29.663,
+     0.986,
+     94.615
+    ],
+    "sched-costblind@10000": [
+     51.813,
+     2.956,
+     0.0,
+     63.768,
+     1.0,
+     1053.834
+    ],
+    "sched-costblind-pi@10000": [
+     51.083,
+     2.971,
+     0.001,
+     64.223,
+     0.999,
+     1038.975
+    ],
+    "sched-1exit@10000": [
+     11.668,
+     1.0,
+     0.0,
+     14.135,
+     1.0,
+     237.317
+    ],
+    "sched-1exit-pi@10000": [
+     12.824,
+     0.967,
+     0.146,
+     13.672,
+     0.967,
+     260.819
+    ],
+    "blinkered@10000": [
+     12.891,
+     1.026,
+     0.051,
+     17.031,
+     0.748,
+     262.191
+    ],
+    "blinkered-pi@10000": [
+     13.576,
+     1.007,
+     0.06,
+     15.941,
+     0.824,
+     276.125
+    ],
+    "sched-rep1@10000": [
+     52.521,
+     2.949,
+     0.0,
+     41.689,
+     1.0,
+     1068.222
+    ],
+    "sched-rep1-pi@10000": [
+     52.548,
+     2.968,
+     0.0,
+     41.957,
+     0.999,
+     1068.775
+    ],
+    "sched-deep1@10000": [
+     46.175,
+     1.0,
+     0.0,
+     28.938,
+     1.0,
+     939.158
+    ],
+    "sched-deep1-pi@10000": [
+     44.853,
+     0.987,
+     0.007,
+     28.573,
+     0.987,
+     912.268
+    ],
+    "sched-anyr@10000": [
+     51.154,
+     0.633,
+     0.087,
+     18.33,
+     0.633,
+     1040.419
+    ],
+    "sched-anyr-pi@10000": [
+     53.471,
+     0.783,
+     0.068,
+     22.658,
+     0.783,
+     1087.548
+    ],
+    "sched-fcc@10000": [
+     48.141,
+     0.676,
+     0.315,
+     14.679,
+     0.676,
+     979.143
+    ],
+    "sched-fcc-pi@10000": [
+     49.253,
+     0.808,
+     0.245,
+     17.568,
+     0.808,
+     1001.747
+    ],
+    "sched-cnnc@10000": [
+     45.949,
+     0.614,
+     0.423,
+     63.535,
+     0.614,
+     934.551
+    ],
+    "sched-cnnc-pi@10000": [
+     48.276,
+     0.832,
+     0.294,
+     86.139,
+     0.832,
+     981.877
+    ],
+    "zhang-NP2@250": [
+     11.825,
+     3.161,
+     1.848,
+     0.596,
+     0.021,
+     0.383,
+     0.31
+    ],
+    "zhang-NP2@350": [
+     14.744,
+     4.12,
+     1.795,
+     0.624,
+     0.036,
+     0.34,
+     0.24
+    ],
+    "zhang-NP2@500": [
+     16.985,
+     4.901,
+     1.775,
+     0.641,
+     0.046,
+     0.313,
+     0.0
+    ],
+    "zhang-NP2@700": [
+     17.982,
+     5.4,
+     1.775,
+     0.675,
+     0.041,
+     0.284,
+     0.0
+    ],
+    "zhang-NP2@1000": [
+     18.126,
+     5.471,
+     1.775,
+     0.679,
+     0.041,
+     0.28,
+     0.0
+    ],
+    "zhang-NP2@1400": [
+     18.126,
+     5.471,
+     1.775,
+     0.679,
+     0.041,
+     0.28,
+     0.0
+    ],
+    "zhang-NP2@2000": [
+     18.126,
+     5.471,
+     1.775,
+     0.679,
+     0.041,
+     0.28,
+     0.0
+    ],
+    "zhang-NP2@2800": [
+     18.126,
+     5.471,
+     1.775,
+     0.679,
+     0.041,
+     0.28,
+     0.0
+    ],
+    "zhang-NP2@4000": [
+     18.126,
+     5.471,
+     1.775,
+     0.679,
+     0.041,
+     0.28,
+     0.0
+    ],
+    "zhang-NP2@5600": [
+     18.126,
+     5.471,
+     1.775,
+     0.679,
+     0.041,
+     0.28,
+     0.0
+    ],
+    "zhang-NP2@8000": [
+     18.126,
+     5.471,
+     1.775,
+     0.679,
+     0.041,
+     0.28,
+     0.0
+    ],
+    "zhang-NP2@10000": [
+     18.126,
+     5.471,
+     1.775,
+     0.679,
+     0.041,
+     0.28,
+     0.0
+    ]
+   },
+   "osla_loss_rel": [
+    0.5351,
+    0.6673,
+    0.7305,
+    0.749,
+    0.7713,
+    0.7401,
+    0.7353,
+    0.6508,
+    0.5236,
+    0.505,
+    0.5166,
+    0.5193
+   ],
+   "blinkered_loss_rel": [
+    -0.0092,
+    -0.0256,
+    -0.0318,
+    -0.0154,
+    0.0177,
+    -0.1662,
+    -0.0785,
+    -0.0437,
+    0.0267,
+    0.066,
+    0.1022,
+    0.1131
+   ],
+   "blinkered_beats_myopic": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  }
+ ],
+ "controller_cost": {
+  "table_bytes_per_deadline": 208000,
+  "deadlines": 12,
+  "total_table_bytes": 2496000,
+  "consult_us": 0.296,
+  "note": "one table per deadline; a deployment interpolating over a coarser grid would hold fewer. The consult is charged on every decision."
+ },
+ "multiplicity": {
+  "gate_cis_computed": 576,
+  "note": "the gate table reports uncorrected 95% CIs over every variant and deadline; the two PRE-SPECIFIED comparisons (compute pays, versus the deployable fixed baseline) are Holm-corrected across the twelve deadlines and use a single controller chosen on validation"
+ }
+}

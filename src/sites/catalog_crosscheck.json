@@ -1,0 +1,87 @@
+{
+ "check": "R2 eligibility vs catalog active-point count",
+ "identity": "catalog numRx - numTx == eligible receivers at the highest tx_set_id",
+ "all_match": true,
+ "rows": [
+  {
+   "scenario": "city_0_newyork_28",
+   "catalog_numRx": 17340,
+   "catalog_numTx": 3,
+   "catalog_active_implied": 17337,
+   "highest_tx_set_id": 3,
+   "eligible_at_highest_tx": 17337,
+   "match": true,
+   "tx_sets_loaded": 3
+  },
+  {
+   "scenario": "city_1_losangeles_28",
+   "catalog_numRx": 18280,
+   "catalog_numTx": 3,
+   "catalog_active_implied": 18277,
+   "highest_tx_set_id": 3,
+   "eligible_at_highest_tx": 18277,
+   "match": true,
+   "tx_sets_loaded": 3
+  },
+  {
+   "scenario": "city_2_chicago_28",
+   "catalog_numRx": 7070,
+   "catalog_numTx": 2,
+   "catalog_active_implied": 7068,
+   "highest_tx_set_id": 3,
+   "eligible_at_highest_tx": 7068,
+   "match": true,
+   "tx_sets_loaded": 3
+  },
+  {
+   "scenario": "city_3_houston_28",
+   "catalog_numRx": 24800,
+   "catalog_numTx": 3,
+   "catalog_active_implied": 24797,
+   "highest_tx_set_id": 3,
+   "eligible_at_highest_tx": 24797,
+   "match": true,
+   "tx_sets_loaded": 3
+  },
+  {
+   "scenario": "city_4_phoenix_28",
+   "catalog_numRx": 24715,
+   "catalog_numTx": 3,
+   "catalog_active_implied": 24712,
+   "highest_tx_set_id": 3,
+   "eligible_at_highest_tx": 24712,
+   "match": true,
+   "tx_sets_loaded": 3
+  },
+  {
+   "scenario": "city_5_philadelphia_28",
+   "catalog_numRx": 11931,
+   "catalog_numTx": 3,
+   "catalog_active_implied": 11928,
+   "highest_tx_set_id": 3,
+   "eligible_at_highest_tx": 11928,
+   "match": true,
+   "tx_sets_loaded": 3
+  },
+  {
+   "scenario": "city_6_miami_28",
+   "catalog_numRx": 27609,
+   "catalog_numTx": 3,
+   "catalog_active_implied": 27606,
+   "highest_tx_set_id": 3,
+   "eligible_at_highest_tx": 27606,
+   "match": true,
+   "tx_sets_loaded": 3
+  },
+  {
+   "scenario": "city_7_sandiego_28",
+   "catalog_numRx": 22135,
+   "catalog_numTx": 3,
+   "catalog_active_implied": 22132,
+   "highest_tx_set_id": 3,
+   "eligible_at_highest_tx": 22132,
+   "match": true,
+   "tx_sets_loaded": 3
+  }
+ ]
+}

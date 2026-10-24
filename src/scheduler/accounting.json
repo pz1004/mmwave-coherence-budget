@@ -1,0 +1,1916 @@
+{
+ "accounting_joint": "joint",
+ "accounting_free": "probe-only (Graff Eq. 34)",
+ "grid_us": [
+  250,
+  350,
+  500,
+  700,
+  1000,
+  1400,
+  2000,
+  2800,
+  4000,
+  5600,
+  8000,
+  10000
+ ],
+ "sites": [
+  {
+   "feasibility_flips": [
+    {
+     "method": "cnn16",
+     "T_ms": 0.35,
+     "free_rate": 0.3078,
+     "cost_free_us": 325.4,
+     "cost_joint_us": 428.9
+    },
+    {
+     "method": "cnn32",
+     "T_ms": 0.7,
+     "free_rate": 0.3212,
+     "cost_free_us": 650.8,
+     "cost_joint_us": 754.4
+    }
+   ],
+   "n_feasibility_flips": 2,
+   "site": "city_2_chicago_28",
+   "sweep_infeasible_below_ms": 1.0,
+   "winner_free": [
+    "zhang-AHTBS+AHIBS",
+    "zhang-AHTBS+AHIBS",
+    "zhang-AHTBS+AHIBS",
+    "topk8",
+    "topk8",
+    "topk8",
+    "topk8",
+    "topk8",
+    "topk16",
+    "topk32",
+    "topk32",
+    "sweep64"
+   ],
+   "winner_joint": [
+    "zhang-AHTBS+AHIBS",
+    "zhang-AHTBS+AHIBS",
+    "zhang-AHTBS+AHIBS",
+    "topk8",
+    "topk8",
+    "topk8",
+    "topk8",
+    "topk8",
+    "topk16",
+    "topk32",
+    "topk32",
+    "sweep64"
+   ],
+   "winner_changes": [],
+   "inversions_under_their_accounting": [
+    [
+     "cnn16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "cnn32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "hier6",
+     "cnn16"
+    ],
+    [
+     "hier6",
+     "cnn32"
+    ],
+    [
+     "hier6",
+     "topk16"
+    ],
+    [
+     "hier6",
+     "topk32"
+    ],
+    [
+     "hier6",
+     "topk8"
+    ],
+    [
+     "hier6",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "sweep64",
+     "hier6"
+    ],
+    [
+     "sweep64",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk8",
+     "cnn16"
+    ],
+    [
+     "topk8",
+     "cnn32"
+    ],
+    [
+     "topk8",
+     "fc16"
+    ],
+    [
+     "topk8",
+     "fc32"
+    ],
+    [
+     "topk8",
+     "topk16"
+    ],
+    [
+     "topk8",
+     "topk32"
+    ]
+   ],
+   "inversions_under_joint": [
+    [
+     "cnn16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "cnn32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "hier6",
+     "cnn16"
+    ],
+    [
+     "hier6",
+     "cnn32"
+    ],
+    [
+     "hier6",
+     "topk16"
+    ],
+    [
+     "hier6",
+     "topk32"
+    ],
+    [
+     "hier6",
+     "topk8"
+    ],
+    [
+     "hier6",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "sweep64",
+     "hier6"
+    ],
+    [
+     "sweep64",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk8",
+     "cnn16"
+    ],
+    [
+     "topk8",
+     "cnn32"
+    ],
+    [
+     "topk8",
+     "fc16"
+    ],
+    [
+     "topk8",
+     "fc32"
+    ],
+    [
+     "topk8",
+     "topk16"
+    ],
+    [
+     "topk8",
+     "topk32"
+    ]
+   ],
+   "inversions_needing_compute": [],
+   "inversions_removed_by_compute": [],
+   "inversion_definition_endpoint": "sign flip between T = 0.25 ms and T = 10 ms",
+   "inversions_anywhere_their": [
+    [
+     "cnn16",
+     "cnn32"
+    ],
+    [
+     "cnn16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "cnn32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "fc16",
+     "cnn32"
+    ],
+    [
+     "hier6",
+     "cnn16"
+    ],
+    [
+     "hier6",
+     "cnn32"
+    ],
+    [
+     "hier6",
+     "topk16"
+    ],
+    [
+     "hier6",
+     "topk32"
+    ],
+    [
+     "hier6",
+     "topk8"
+    ],
+    [
+     "hier6",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "sweep64",
+     "cnn16"
+    ],
+    [
+     "sweep64",
+     "cnn32"
+    ],
+    [
+     "sweep64",
+     "fc16"
+    ],
+    [
+     "sweep64",
+     "fc32"
+    ],
+    [
+     "sweep64",
+     "hier6"
+    ],
+    [
+     "sweep64",
+     "topk16"
+    ],
+    [
+     "sweep64",
+     "topk32"
+    ],
+    [
+     "sweep64",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk16",
+     "topk32"
+    ],
+    [
+     "topk16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk32",
+     "cnn16"
+    ],
+    [
+     "topk32",
+     "fc16"
+    ],
+    [
+     "topk32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk8",
+     "cnn16"
+    ],
+    [
+     "topk8",
+     "cnn32"
+    ],
+    [
+     "topk8",
+     "fc16"
+    ],
+    [
+     "topk8",
+     "fc32"
+    ],
+    [
+     "topk8",
+     "topk16"
+    ],
+    [
+     "topk8",
+     "topk32"
+    ],
+    [
+     "topk8",
+     "zhang-AHTBS+AHIBS"
+    ]
+   ],
+   "inversions_anywhere_joint": [
+    [
+     "cnn16",
+     "cnn32"
+    ],
+    [
+     "cnn16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "cnn32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "fc16",
+     "cnn16"
+    ],
+    [
+     "fc16",
+     "cnn32"
+    ],
+    [
+     "fc32",
+     "cnn32"
+    ],
+    [
+     "hier6",
+     "cnn16"
+    ],
+    [
+     "hier6",
+     "cnn32"
+    ],
+    [
+     "hier6",
+     "topk16"
+    ],
+    [
+     "hier6",
+     "topk32"
+    ],
+    [
+     "hier6",
+     "topk8"
+    ],
+    [
+     "hier6",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "sweep64",
+     "cnn16"
+    ],
+    [
+     "sweep64",
+     "cnn32"
+    ],
+    [
+     "sweep64",
+     "fc16"
+    ],
+    [
+     "sweep64",
+     "fc32"
+    ],
+    [
+     "sweep64",
+     "hier6"
+    ],
+    [
+     "sweep64",
+     "topk16"
+    ],
+    [
+     "sweep64",
+     "topk32"
+    ],
+    [
+     "sweep64",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk16",
+     "topk32"
+    ],
+    [
+     "topk16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk32",
+     "cnn16"
+    ],
+    [
+     "topk32",
+     "fc16"
+    ],
+    [
+     "topk32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk8",
+     "cnn16"
+    ],
+    [
+     "topk8",
+     "cnn32"
+    ],
+    [
+     "topk8",
+     "fc16"
+    ],
+    [
+     "topk8",
+     "fc32"
+    ],
+    [
+     "topk8",
+     "topk16"
+    ],
+    [
+     "topk8",
+     "topk32"
+    ],
+    [
+     "topk8",
+     "zhang-AHTBS+AHIBS"
+    ]
+   ],
+   "inversions_anywhere_created_by_compute": [
+    [
+     "fc16",
+     "cnn16"
+    ],
+    [
+     "fc32",
+     "cnn32"
+    ]
+   ],
+   "inversions_anywhere_removed_by_compute": [],
+   "reversal_cells": [
+    {
+     "pair": [
+      "hier6",
+      "cnn16"
+     ],
+     "T_us": 4000
+    },
+    {
+     "pair": [
+      "hier6",
+      "cnn16"
+     ],
+     "T_us": 5600
+    },
+    {
+     "pair": [
+      "topk8",
+      "cnn16"
+     ],
+     "T_us": 4000
+    },
+    {
+     "pair": [
+      "topk8",
+      "cnn32"
+     ],
+     "T_us": 5600
+    },
+    {
+     "pair": [
+      "topk8",
+      "zhang-AHTBS+AHIBS"
+     ],
+     "T_us": 4000
+    },
+    {
+     "pair": [
+      "topk32",
+      "cnn16"
+     ],
+     "T_us": 4000
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 350
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 500
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 700
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 1000
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 1400
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 2000
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 2800
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn32"
+     ],
+     "T_us": 5600
+    },
+    {
+     "pair": [
+      "fc32",
+      "cnn32"
+     ],
+     "T_us": 700
+    },
+    {
+     "pair": [
+      "fc32",
+      "cnn32"
+     ],
+     "T_us": 1000
+    },
+    {
+     "pair": [
+      "fc32",
+      "cnn32"
+     ],
+     "T_us": 1400
+    },
+    {
+     "pair": [
+      "fc32",
+      "cnn32"
+     ],
+     "T_us": 2000
+    },
+    {
+     "pair": [
+      "fc32",
+      "cnn32"
+     ],
+     "T_us": 2800
+    },
+    {
+     "pair": [
+      "cnn16",
+      "zhang-AHTBS+AHIBS"
+     ],
+     "T_us": 4000
+    },
+    {
+     "pair": [
+      "cnn16",
+      "zhang-AHTBS+AHIBS"
+     ],
+     "T_us": 5600
+    }
+   ],
+   "n_reversal_cells": 21,
+   "n_pair_deadline_cells": 540,
+   "reversals_by_deadline": {
+    "250": 0,
+    "350": 1,
+    "500": 1,
+    "700": 2,
+    "1000": 2,
+    "1400": 2,
+    "2000": 2,
+    "2800": 2,
+    "4000": 5,
+    "5600": 4,
+    "8000": 0,
+    "10000": 0
+   },
+   "zero_at_tightest_under_both": [
+    "sweep64",
+    "topk16",
+    "topk32",
+    "fc16",
+    "fc32",
+    "cnn16",
+    "cnn32"
+   ],
+   "t_star": [
+    {
+     "method": "topk8",
+     "tau_us": 0.0,
+     "T_star_free_us": 6234.9,
+     "T_star_joint_us": 6234.9,
+     "shift_pct": 0.0
+    },
+    {
+     "method": "topk16",
+     "tau_us": 0.0,
+     "T_star_free_us": 7506.3,
+     "T_star_joint_us": 7506.3,
+     "shift_pct": 0.0
+    },
+    {
+     "method": "topk32",
+     "tau_us": 0.0,
+     "T_star_free_us": 9931.7,
+     "T_star_joint_us": 9931.7,
+     "shift_pct": 0.0
+    },
+    {
+     "method": "fc16",
+     "tau_us": 20.84,
+     "T_star_free_us": 6169.0,
+     "T_star_joint_us": 6065.2,
+     "shift_pct": -1.68
+    },
+    {
+     "method": "fc32",
+     "tau_us": 21.21,
+     "T_star_free_us": 5324.6,
+     "T_star_joint_us": 5193.5,
+     "shift_pct": -2.46
+    },
+    {
+     "method": "cnn16",
+     "tau_us": 103.5,
+     "T_star_free_us": 7107.1,
+     "T_star_joint_us": 6491.6,
+     "shift_pct": -8.66
+    },
+    {
+     "method": "cnn32",
+     "tau_us": 103.5,
+     "T_star_free_us": 6748.2,
+     "T_star_joint_us": 5882.1,
+     "shift_pct": -12.84
+    },
+    {
+     "method": "hier6",
+     "tau_us": 0.0,
+     "T_star_free_us": 6481.3,
+     "T_star_joint_us": 6481.3,
+     "shift_pct": 0.0
+    }
+   ],
+   "gap": [
+    {
+     "T_us": 250,
+     "worst_method": "zhang-AHTBS+AHIBS",
+     "free": 2.5058,
+     "joint": 2.5041,
+     "loss_pct": 0.07,
+     "winner_free": "zhang-AHTBS+AHIBS",
+     "winner_joint": "zhang-AHTBS+AHIBS"
+    },
+    {
+     "T_us": 350,
+     "worst_method": "cnn16",
+     "free": 0.3078,
+     "joint": 0.0,
+     "loss_pct": 100.0,
+     "winner_free": "zhang-AHTBS+AHIBS",
+     "winner_joint": "zhang-AHTBS+AHIBS"
+    },
+    {
+     "T_us": 500,
+     "worst_method": "cnn16",
+     "free": 1.5306,
+     "joint": 0.6232,
+     "loss_pct": 59.29,
+     "winner_free": "zhang-AHTBS+AHIBS",
+     "winner_joint": "zhang-AHTBS+AHIBS"
+    },
+    {
+     "T_us": 700,
+     "worst_method": "cnn16",
+     "free": 2.3458,
+     "joint": 1.6976,
+     "loss_pct": 27.63,
+     "winner_free": "topk8",
+     "winner_joint": "topk8"
+    },
+    {
+     "T_us": 1000,
+     "worst_method": "cnn32",
+     "free": 1.5971,
+     "joint": 1.1237,
+     "loss_pct": 29.64,
+     "winner_free": "topk8",
+     "winner_joint": "topk8"
+    },
+    {
+     "T_us": 1400,
+     "worst_method": "cnn32",
+     "free": 2.4478,
+     "joint": 2.1096,
+     "loss_pct": 13.82,
+     "winner_free": "topk8",
+     "winner_joint": "topk8"
+    },
+    {
+     "T_us": 2000,
+     "worst_method": "cnn32",
+     "free": 3.0857,
+     "joint": 2.849,
+     "loss_pct": 7.67,
+     "winner_free": "topk8",
+     "winner_joint": "topk8"
+    },
+    {
+     "T_us": 2800,
+     "worst_method": "cnn32",
+     "free": 3.511,
+     "joint": 3.3419,
+     "loss_pct": 4.82,
+     "winner_free": "topk8",
+     "winner_joint": "topk8"
+    },
+    {
+     "T_us": 4000,
+     "worst_method": "cnn32",
+     "free": 3.83,
+     "joint": 3.7116,
+     "loss_pct": 3.09,
+     "winner_free": "topk16",
+     "winner_joint": "topk16"
+    },
+    {
+     "T_us": 5600,
+     "worst_method": "cnn32",
+     "free": 4.0427,
+     "joint": 3.9581,
+     "loss_pct": 2.09,
+     "winner_free": "topk32",
+     "winner_joint": "topk32"
+    },
+    {
+     "T_us": 8000,
+     "worst_method": "cnn32",
+     "free": 4.2022,
+     "joint": 4.143,
+     "loss_pct": 1.41,
+     "winner_free": "topk32",
+     "winner_joint": "topk32"
+    },
+    {
+     "T_us": 10000,
+     "worst_method": "cnn32",
+     "free": 4.2766,
+     "joint": 4.2292,
+     "loss_pct": 1.11,
+     "winner_free": "sweep64",
+     "winner_joint": "sweep64"
+    }
+   ]
+  },
+  {
+   "feasibility_flips": [
+    {
+     "method": "cnn16",
+     "T_ms": 0.35,
+     "free_rate": 0.2617,
+     "cost_free_us": 325.4,
+     "cost_joint_us": 428.9
+    },
+    {
+     "method": "cnn32",
+     "T_ms": 0.7,
+     "free_rate": 0.2884,
+     "cost_free_us": 650.8,
+     "cost_joint_us": 754.4
+    }
+   ],
+   "n_feasibility_flips": 2,
+   "site": "city_3_houston_28",
+   "sweep_infeasible_below_ms": 1.0,
+   "winner_free": [
+    "zhang-AHTBS+AHIBS",
+    "zhang-AHTBS+AHIBS",
+    "zhang-AHTBS+AHIBS",
+    "topk8",
+    "topk8",
+    "cnn16",
+    "cnn16",
+    "cnn16",
+    "cnn32",
+    "cnn32",
+    "sweep64",
+    "sweep64"
+   ],
+   "winner_joint": [
+    "zhang-AHTBS+AHIBS",
+    "zhang-AHTBS+AHIBS",
+    "zhang-AHTBS+AHIBS",
+    "topk8",
+    "topk8",
+    "fc16",
+    "fc16",
+    "fc16",
+    "fc16",
+    "cnn32",
+    "sweep64",
+    "sweep64"
+   ],
+   "winner_changes": [
+    {
+     "T_ms": 1.4,
+     "free": "cnn16",
+     "joint": "fc16"
+    },
+    {
+     "T_ms": 2.0,
+     "free": "cnn16",
+     "joint": "fc16"
+    },
+    {
+     "T_ms": 2.8,
+     "free": "cnn16",
+     "joint": "fc16"
+    },
+    {
+     "T_ms": 4.0,
+     "free": "cnn32",
+     "joint": "fc16"
+    }
+   ],
+   "inversions_under_their_accounting": [
+    [
+     "cnn16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "cnn32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "fc16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "fc32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "hier6",
+     "cnn16"
+    ],
+    [
+     "hier6",
+     "cnn32"
+    ],
+    [
+     "hier6",
+     "fc16"
+    ],
+    [
+     "hier6",
+     "fc32"
+    ],
+    [
+     "hier6",
+     "topk16"
+    ],
+    [
+     "hier6",
+     "topk32"
+    ],
+    [
+     "hier6",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "hier6"
+    ],
+    [
+     "sweep64",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk8",
+     "cnn16"
+    ],
+    [
+     "topk8",
+     "cnn32"
+    ],
+    [
+     "topk8",
+     "fc16"
+    ],
+    [
+     "topk8",
+     "fc32"
+    ],
+    [
+     "topk8",
+     "topk16"
+    ],
+    [
+     "topk8",
+     "topk32"
+    ]
+   ],
+   "inversions_under_joint": [
+    [
+     "cnn16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "cnn32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "fc16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "fc32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "hier6",
+     "cnn16"
+    ],
+    [
+     "hier6",
+     "cnn32"
+    ],
+    [
+     "hier6",
+     "fc16"
+    ],
+    [
+     "hier6",
+     "fc32"
+    ],
+    [
+     "hier6",
+     "topk16"
+    ],
+    [
+     "hier6",
+     "topk32"
+    ],
+    [
+     "hier6",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "hier6"
+    ],
+    [
+     "sweep64",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk8",
+     "cnn16"
+    ],
+    [
+     "topk8",
+     "cnn32"
+    ],
+    [
+     "topk8",
+     "fc16"
+    ],
+    [
+     "topk8",
+     "fc32"
+    ],
+    [
+     "topk8",
+     "topk16"
+    ],
+    [
+     "topk8",
+     "topk32"
+    ]
+   ],
+   "inversions_needing_compute": [],
+   "inversions_removed_by_compute": [],
+   "inversion_definition_endpoint": "sign flip between T = 0.25 ms and T = 10 ms",
+   "inversions_anywhere_their": [
+    [
+     "cnn16",
+     "cnn32"
+    ],
+    [
+     "cnn16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "cnn32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "fc16",
+     "cnn32"
+    ],
+    [
+     "fc16",
+     "fc32"
+    ],
+    [
+     "fc16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "fc32",
+     "cnn16"
+    ],
+    [
+     "fc32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "hier6",
+     "cnn16"
+    ],
+    [
+     "hier6",
+     "cnn32"
+    ],
+    [
+     "hier6",
+     "fc16"
+    ],
+    [
+     "hier6",
+     "fc32"
+    ],
+    [
+     "hier6",
+     "topk16"
+    ],
+    [
+     "hier6",
+     "topk32"
+    ],
+    [
+     "hier6",
+     "topk8"
+    ],
+    [
+     "hier6",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "sweep64",
+     "cnn16"
+    ],
+    [
+     "sweep64",
+     "cnn32"
+    ],
+    [
+     "sweep64",
+     "fc16"
+    ],
+    [
+     "sweep64",
+     "fc32"
+    ],
+    [
+     "sweep64",
+     "hier6"
+    ],
+    [
+     "sweep64",
+     "topk16"
+    ],
+    [
+     "sweep64",
+     "topk32"
+    ],
+    [
+     "sweep64",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk16",
+     "cnn32"
+    ],
+    [
+     "topk16",
+     "fc32"
+    ],
+    [
+     "topk16",
+     "topk32"
+    ],
+    [
+     "topk16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk32",
+     "cnn16"
+    ],
+    [
+     "topk32",
+     "fc16"
+    ],
+    [
+     "topk32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk8",
+     "cnn16"
+    ],
+    [
+     "topk8",
+     "cnn32"
+    ],
+    [
+     "topk8",
+     "fc16"
+    ],
+    [
+     "topk8",
+     "fc32"
+    ],
+    [
+     "topk8",
+     "topk16"
+    ],
+    [
+     "topk8",
+     "topk32"
+    ],
+    [
+     "topk8",
+     "zhang-AHTBS+AHIBS"
+    ]
+   ],
+   "inversions_anywhere_joint": [
+    [
+     "cnn16",
+     "cnn32"
+    ],
+    [
+     "cnn16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "cnn32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "fc16",
+     "cnn16"
+    ],
+    [
+     "fc16",
+     "cnn32"
+    ],
+    [
+     "fc16",
+     "fc32"
+    ],
+    [
+     "fc16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "fc32",
+     "cnn16"
+    ],
+    [
+     "fc32",
+     "cnn32"
+    ],
+    [
+     "fc32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "hier6",
+     "cnn16"
+    ],
+    [
+     "hier6",
+     "cnn32"
+    ],
+    [
+     "hier6",
+     "fc16"
+    ],
+    [
+     "hier6",
+     "fc32"
+    ],
+    [
+     "hier6",
+     "topk16"
+    ],
+    [
+     "hier6",
+     "topk32"
+    ],
+    [
+     "hier6",
+     "topk8"
+    ],
+    [
+     "hier6",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "sweep64",
+     "cnn16"
+    ],
+    [
+     "sweep64",
+     "cnn32"
+    ],
+    [
+     "sweep64",
+     "fc16"
+    ],
+    [
+     "sweep64",
+     "fc32"
+    ],
+    [
+     "sweep64",
+     "hier6"
+    ],
+    [
+     "sweep64",
+     "topk16"
+    ],
+    [
+     "sweep64",
+     "topk32"
+    ],
+    [
+     "sweep64",
+     "topk8"
+    ],
+    [
+     "sweep64",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk16",
+     "cnn16"
+    ],
+    [
+     "topk16",
+     "cnn32"
+    ],
+    [
+     "topk16",
+     "fc16"
+    ],
+    [
+     "topk16",
+     "fc32"
+    ],
+    [
+     "topk16",
+     "topk32"
+    ],
+    [
+     "topk16",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk32",
+     "cnn16"
+    ],
+    [
+     "topk32",
+     "cnn32"
+    ],
+    [
+     "topk32",
+     "fc16"
+    ],
+    [
+     "topk32",
+     "zhang-AHTBS+AHIBS"
+    ],
+    [
+     "topk8",
+     "cnn16"
+    ],
+    [
+     "topk8",
+     "cnn32"
+    ],
+    [
+     "topk8",
+     "fc16"
+    ],
+    [
+     "topk8",
+     "fc32"
+    ],
+    [
+     "topk8",
+     "topk16"
+    ],
+    [
+     "topk8",
+     "topk32"
+    ],
+    [
+     "topk8",
+     "zhang-AHTBS+AHIBS"
+    ]
+   ],
+   "inversions_anywhere_created_by_compute": [
+    [
+     "fc16",
+     "cnn16"
+    ],
+    [
+     "fc32",
+     "cnn32"
+    ],
+    [
+     "topk16",
+     "cnn16"
+    ],
+    [
+     "topk16",
+     "fc16"
+    ],
+    [
+     "topk32",
+     "cnn32"
+    ]
+   ],
+   "inversions_anywhere_removed_by_compute": [],
+   "reversal_cells": [
+    {
+     "pair": [
+      "hier6",
+      "cnn16"
+     ],
+     "T_us": 1000
+    },
+    {
+     "pair": [
+      "hier6",
+      "cnn16"
+     ],
+     "T_us": 1400
+    },
+    {
+     "pair": [
+      "hier6",
+      "cnn32"
+     ],
+     "T_us": 2000
+    },
+    {
+     "pair": [
+      "topk8",
+      "cnn16"
+     ],
+     "T_us": 1400
+    },
+    {
+     "pair": [
+      "topk16",
+      "fc16"
+     ],
+     "T_us": 350
+    },
+    {
+     "pair": [
+      "topk16",
+      "fc16"
+     ],
+     "T_us": 500
+    },
+    {
+     "pair": [
+      "topk16",
+      "fc32"
+     ],
+     "T_us": 2800
+    },
+    {
+     "pair": [
+      "topk16",
+      "cnn16"
+     ],
+     "T_us": 350
+    },
+    {
+     "pair": [
+      "topk16",
+      "cnn16"
+     ],
+     "T_us": 500
+    },
+    {
+     "pair": [
+      "topk16",
+      "cnn16"
+     ],
+     "T_us": 700
+    },
+    {
+     "pair": [
+      "topk16",
+      "cnn16"
+     ],
+     "T_us": 1000
+    },
+    {
+     "pair": [
+      "topk16",
+      "cnn16"
+     ],
+     "T_us": 1400
+    },
+    {
+     "pair": [
+      "topk16",
+      "cnn32"
+     ],
+     "T_us": 2800
+    },
+    {
+     "pair": [
+      "topk32",
+      "cnn16"
+     ],
+     "T_us": 5600
+    },
+    {
+     "pair": [
+      "topk32",
+      "cnn32"
+     ],
+     "T_us": 700
+    },
+    {
+     "pair": [
+      "topk32",
+      "cnn32"
+     ],
+     "T_us": 1000
+    },
+    {
+     "pair": [
+      "topk32",
+      "cnn32"
+     ],
+     "T_us": 1400
+    },
+    {
+     "pair": [
+      "topk32",
+      "cnn32"
+     ],
+     "T_us": 2000
+    },
+    {
+     "pair": [
+      "topk32",
+      "cnn32"
+     ],
+     "T_us": 2800
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 350
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 500
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 700
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 1000
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 1400
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 2000
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 2800
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 4000
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn16"
+     ],
+     "T_us": 5600
+    },
+    {
+     "pair": [
+      "fc16",
+      "cnn32"
+     ],
+     "T_us": 4000
+    },
+    {
+     "pair": [
+      "fc32",
+      "cnn16"
+     ],
+     "T_us": 5600
+    },
+    {
+     "pair": [
+      "fc32",
+      "cnn32"
+     ],
+     "T_us": 700
+    },
+    {
+     "pair": [
+      "fc32",
+      "cnn32"
+     ],
+     "T_us": 1000
+    },
+    {
+     "pair": [
+      "fc32",
+      "cnn32"
+     ],
+     "T_us": 1400
+    },
+    {
+     "pair": [
+      "fc32",
+      "cnn32"
+     ],
+     "T_us": 2000
+    },
+    {
+     "pair": [
+      "fc32",
+      "cnn32"
+     ],
+     "T_us": 2800
+    },
+    {
+     "pair": [
+      "cnn16",
+      "zhang-AHTBS+AHIBS"
+     ],
+     "T_us": 1000
+    },
+    {
+     "pair": [
+      "cnn16",
+      "zhang-AHTBS+AHIBS"
+     ],
+     "T_us": 1400
+    },
+    {
+     "pair": [
+      "cnn32",
+      "zhang-AHTBS+AHIBS"
+     ],
+     "T_us": 2000
+    }
+   ],
+   "n_reversal_cells": 38,
+   "n_pair_deadline_cells": 540,
+   "reversals_by_deadline": {
+    "250": 0,
+    "350": 3,
+    "500": 3,
+    "700": 4,
+    "1000": 6,
+    "1400": 7,
+    "2000": 5,
+    "2800": 5,
+    "4000": 2,
+    "5600": 3,
+    "8000": 0,
+    "10000": 0
+   },
+   "zero_at_tightest_under_both": [
+    "sweep64",
+    "topk16",
+    "topk32",
+    "fc16",
+    "fc32",
+    "cnn16",
+    "cnn32"
+   ],
+   "t_star": [
+    {
+     "method": "topk8",
+     "tau_us": 0.0,
+     "T_star_free_us": 3526.5,
+     "T_star_joint_us": 3526.5,
+     "shift_pct": 0.0
+    },
+    {
+     "method": "topk16",
+     "tau_us": 0.0,
+     "T_star_free_us": 4103.9,
+     "T_star_joint_us": 4103.9,
+     "shift_pct": 0.0
+    },
+    {
+     "method": "topk32",
+     "tau_us": 0.0,
+     "T_star_free_us": 5236.1,
+     "T_star_joint_us": 5236.1,
+     "shift_pct": 0.0
+    },
+    {
+     "method": "fc16",
+     "tau_us": 20.84,
+     "T_star_free_us": 5058.6,
+     "T_star_joint_us": 4978.4,
+     "shift_pct": -1.58
+    },
+    {
+     "method": "fc32",
+     "tau_us": 21.21,
+     "T_star_free_us": 5153.6,
+     "T_star_joint_us": 5028.1,
+     "shift_pct": -2.44
+    },
+    {
+     "method": "cnn16",
+     "tau_us": 103.5,
+     "T_star_free_us": 5340.7,
+     "T_star_joint_us": 4912.5,
+     "shift_pct": -8.02
+    },
+    {
+     "method": "cnn32",
+     "tau_us": 103.5,
+     "T_star_free_us": 6434.4,
+     "T_star_joint_us": 5618.2,
+     "shift_pct": -12.69
+    },
+    {
+     "method": "hier6",
+     "tau_us": 0.0,
+     "T_star_free_us": 3564.8,
+     "T_star_joint_us": 3564.8,
+     "shift_pct": 0.0
+    }
+   ],
+   "gap": [
+    {
+     "T_us": 250,
+     "worst_method": "zhang-AHTBS+AHIBS",
+     "free": 2.2838,
+     "joint": 2.2822,
+     "loss_pct": 0.07,
+     "winner_free": "zhang-AHTBS+AHIBS",
+     "winner_joint": "zhang-AHTBS+AHIBS"
+    },
+    {
+     "T_us": 350,
+     "worst_method": "cnn16",
+     "free": 0.2617,
+     "joint": 0.0,
+     "loss_pct": 100.0,
+     "winner_free": "zhang-AHTBS+AHIBS",
+     "winner_joint": "zhang-AHTBS+AHIBS"
+    },
+    {
+     "T_us": 500,
+     "worst_method": "cnn16",
+     "free": 1.3013,
+     "joint": 0.5298,
+     "loss_pct": 59.29,
+     "winner_free": "zhang-AHTBS+AHIBS",
+     "winner_joint": "zhang-AHTBS+AHIBS"
+    },
+    {
+     "T_us": 700,
+     "worst_method": "cnn16",
+     "free": 1.9943,
+     "joint": 1.4433,
+     "loss_pct": 27.63,
+     "winner_free": "topk8",
+     "winner_joint": "topk8"
+    },
+    {
+     "T_us": 1000,
+     "worst_method": "cnn32",
+     "free": 1.4341,
+     "joint": 1.009,
+     "loss_pct": 29.64,
+     "winner_free": "topk8",
+     "winner_joint": "topk8"
+    },
+    {
+     "T_us": 1400,
+     "worst_method": "cnn32",
+     "free": 2.1978,
+     "joint": 1.8942,
+     "loss_pct": 13.82,
+     "winner_free": "cnn16",
+     "winner_joint": "fc16"
+    },
+    {
+     "T_us": 2000,
+     "worst_method": "cnn32",
+     "free": 2.7707,
+     "joint": 2.5581,
+     "loss_pct": 7.67,
+     "winner_free": "cnn16",
+     "winner_joint": "fc16"
+    },
+    {
+     "T_us": 2800,
+     "worst_method": "cnn32",
+     "free": 3.1526,
+     "joint": 3.0008,
+     "loss_pct": 4.82,
+     "winner_free": "cnn16",
+     "winner_joint": "fc16"
+    },
+    {
+     "T_us": 4000,
+     "worst_method": "cnn32",
+     "free": 3.439,
+     "joint": 3.3327,
+     "loss_pct": 3.09,
+     "winner_free": "cnn32",
+     "winner_joint": "fc16"
+    },
+    {
+     "T_us": 5600,
+     "worst_method": "cnn32",
+     "free": 3.6299,
+     "joint": 3.554,
+     "loss_pct": 2.09,
+     "winner_free": "cnn32",
+     "winner_joint": "cnn32"
+    },
+    {
+     "T_us": 8000,
+     "worst_method": "cnn32",
+     "free": 3.7731,
+     "joint": 3.72,
+     "loss_pct": 1.41,
+     "winner_free": "sweep64",
+     "winner_joint": "sweep64"
+    },
+    {
+     "T_us": 10000,
+     "worst_method": "cnn32",
+     "free": 3.84,
+     "joint": 3.7975,
+     "loss_pct": 1.11,
+     "winner_free": "sweep64",
+     "winner_joint": "sweep64"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,283 @@
+{
+  "env": {
+    "profile": "cpu-1t-ecore",
+    "cpu": "Intel(R) Core(TM) i9-14900KF",
+    "governor": "powersave",
+    "affinity": [
+      24
+    ],
+    "torch_threads": 1,
+    "requested_threads": 1,
+    "torch": "2.12.0+cu130",
+    "python": "3.13.12",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "numpy": "1.26.4",
+    "gpu": "Quadro RTX 8000",
+    "omp": "1",
+    "timestamp": "2026-09-15T19:14:33+0900"
+  },
+  "runtime": "torchscript-frozen",
+  "rows": [
+    {
+      "component": "graff_eig",
+      "charge_ns": 88525,
+      "charge_us": 88.525,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 88251,
+          "median_ns": 85493
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 88525,
+          "median_ns": 85737
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 88488,
+          "median_ns": 85648
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "graff_col",
+      "charge_ns": 57019,
+      "charge_us": 57.019,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 57019,
+          "median_ns": 54807
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 57010,
+          "median_ns": 54824
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 56891,
+          "median_ns": 54531
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "graff_aps",
+      "charge_ns": 83435,
+      "charge_us": 83.435,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 83435,
+          "median_ns": 80925
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 83286,
+          "median_ns": 80760
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 83234,
+          "median_ns": 80654
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "beam_mlp",
+      "charge_ns": 31698,
+      "charge_us": 31.698,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 31462,
+          "median_ns": 31145
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 31698,
+          "median_ns": 31381
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 31365,
+          "median_ns": 31036
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "beam_cnn",
+      "charge_ns": 152007,
+      "charge_us": 152.007,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 152007,
+          "median_ns": 148584
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 150587,
+          "median_ns": 147167
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 151453,
+          "median_ns": 147897
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "transformer_small",
+      "charge_ns": 2560462,
+      "charge_us": 2560.462,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 2559474,
+          "median_ns": 2551398
+        },
+        {
+          "seed": 29,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 2560462,
+          "median_ns": 2550916
+        },
+        {
+          "seed": 43,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 2559514,
+          "median_ns": 2549662
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "resnet18_vision",
+      "charge_ns": 64222020,
+      "charge_us": 64222.02,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 20,
+          "n_timed": 200,
+          "p95_ns": 63851407,
+          "median_ns": 63337904
+        },
+        {
+          "seed": 29,
+          "n_warmup": 20,
+          "n_timed": 200,
+          "p95_ns": 64222020,
+          "median_ns": 63559745
+        },
+        {
+          "seed": 43,
+          "n_warmup": 20,
+          "n_timed": 200,
+          "p95_ns": 63399980,
+          "median_ns": 63197404
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "vit_b16_vision",
+      "charge_ns": 649755407,
+      "charge_us": 649755.407,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 5,
+          "n_timed": 50,
+          "p95_ns": 649755407,
+          "median_ns": 648124242
+        },
+        {
+          "seed": 29,
+          "n_warmup": 5,
+          "n_timed": 50,
+          "p95_ns": 646129527,
+          "median_ns": 645570631
+        },
+        {
+          "seed": 43,
+          "n_warmup": 5,
+          "n_timed": 50,
+          "p95_ns": 648674132,
+          "median_ns": 648243495
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "s1_q_nets",
+      "charge_ns": 51228,
+      "charge_us": 51.228,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 51228,
+          "median_ns": 49287
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 51154,
+          "median_ns": 48700
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 50928,
+          "median_ns": 48970
+        }
+      ],
+      "reduced_n": false
+    }
+  ]
+}

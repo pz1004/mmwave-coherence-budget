@@ -1,0 +1,944 @@
+{
+ "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R21, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
+ "amendments": [
+  {
+   "changes": "predictor.input",
+   "from": "64 log-power measurements (masked) + 64 probed-mask bits (128)",
+   "id": "A1",
+   "reason": "Phase 1 measured the early-exit network at n_in = 194 under the G3 timing protocol (13.754 / 20.224 / 27.143 us on cpu-1t-pcore). Training a 128-input network would mean charging it a latency measured for a different network.  The input must be the one that was timed, or the timing must be redone; keeping 194 keeps Phase 1's frozen charges applicable verbatim, and the extra features are free at the same shape.",
+   "state_when_made": "dataset built; no model trained, no result computed",
+   "to": "the 194-dimensional G3 feature vector: 64 masked log-SNR/20, 64 probed-mask bits, 64 one-hot of the current best measured beam, and 2 scalars (probes taken / 64, best measured SNR dB / 20)",
+   "utc": "2026-09-15T15:14:21Z"
+  },
+  {
+   "changes": "disambiguation only, no change of substance",
+   "from": "'oracle band-averaged best narrow beam' used for two purposes",
+   "id": "A2",
+   "reason": "the original wording did not distinguish power from delivered rate",
+   "state_when_made": "dataset built; no model trained, no result computed",
+   "to": "the classification target and the oracle upper bound use argmax_m se[u,m] (the beam that delivers the most rate); the stratification variable uses 10log10(P_tx max_m pbar[u,m]/sigma_d^2) (the strongest beam's SNR).  Both are frozen channel properties computed before any policy exists; neither depends on a method.",
+   "utc": "2026-09-15T15:14:21Z"
+  },
+  {
+   "changes": "predictor feature encoding and training distribution",
+   "from": "unprobed beams encoded as 0.0, i.e. numerically identical to a beam measured at 0 dB; training probe counts uniform on 1..16; the final round trained only on prefixes the model itself ordered",
+   "id": "A3",
+   "reason": "Found on the VALIDATION city, which is the split designated for model selection; no test city informed it.  Three defects, all in the predictor rather than in the controller: (1) the zero sentinel made 'not measured' indistinguishable from 'measured at 0 dB', which is inside the informative range; (2) the controller probes up to 64 beams but the predictor never saw more than 16 in training; (3) the final round saw only model-ordered prefixes while the fixed-K baselines feed it frozen-order ones, so the published-architecture comparison was evaluating it off its own training distribution.  Symptom: at K >= 8 the anytime predictor was WORSE than taking the best measured beam with no network at all (eta 0.477 against 0.642 at K=8), and worse than the FC and CNN comparators trained on the same data.",
+   "state_when_made": "validation numbers seen; test numbers from the defective predictor were also computed and are superseded, and the superseded gate outcome is reported alongside the final one",
+   "to": "unprobed beams encoded at the sentinel -40 dB (the clip floor); training probe counts uniform on 1..48; the final round trained on a 50/50 mixture of frozen-order and model-ordered prefixes",
+   "utc": "2026-09-15T15:49:38Z"
+  }
+ ],
+ "analyses": [
+  {
+   "analyses": {
+    "R5_exclusion": "for each (heavy model, profile): every measured runtime -- eager at the Phase-1 counts (atlas.json), eager at the full counts on the GPU (p_gpu_heavy_full.json), TorchScript whole decision (o2_*.json); TorchScript network-only (o_*.json) reported, not charged; tau* = (M-K) t_p with M = 64, K = 4 and t_p the profile's own probe charge (20 us + its probe_update); admission over M in {16,32,64,128,256}, K in {4,8,16}, probe air time {as measured, 50, 125, 250} us; M > 64 is accounting only: near field and beam squint, which this channel model omits, matter there",
+    "aging": "per-path Doppler nu_l = (v/lambda) u_aoa.h over fixed geometry within a period, lambda at 28 GHz for every sub-band, u_aoa from aoa_el (polar) and aoa_az pointing from the receiver toward the incoming path, heading h uniform on [0, 2 pi) per receiver from stable_seed('aging-heading', site); speeds 0 (regression), 3, 30, 60, 120 km/h; probe i of the spread order at i t_p, hierarchical codeword (l, b) at (2(l-1) + b mod 2) t_p, the channel frozen within a pilot; evaluate.py's noise draws with the noncentrality at the probe time; anchoring pbar(t) = pbar P(t)/P(0), se(t) = max(0, se + S(t) - S(0)) to the float32 build; payload integrated over [d, T] by trapezoid on a t_p/4 grid with every charge, probe time and deadline exact; fixed menu only; not modelled: departure-angle drift, Doppler spread across sub-bands, blockage.  The DeepMIMO wheel's _compute_doppler negates the angles rather than the vector, which reflects the x component: nu_wheel(phi) = nu_here(pi - phi); under a uniform heading no distribution changes, and the sign here matches the line-of-sight range rate",
+    "complexity": "solve, solve_osla and solve_blinkered timed per deadline on the GPU and on one pinned CPU core, on the model estimated for seed 17, plus the explore calls they share; writes complexity.json only",
+    "predictor_quality": "sim.oracle_mix: with probability q per (receiver, seed), one draw from default_rng(crc32('oq', site, seed)) nested in q and shared by every exit and probe count, the anytime predictor's logits rank the rate-optimal beam first; applied wherever the anytime predictor runs (the controller, its twins, the one-shot ee baselines); the FC and CNN networks untouched; charges unchanged; conditions oq0.125, oq0.25, oq0.5, oq1, variants dp, blind, noc; output predq.json; sweeps.json untouched"
+   },
+   "criteria": {
+    "beam_aging_loss_threshold": 0.01,
+    "dominance_tolerance_bps_hz": 1e-06,
+    "q0_identity": "bit-identical to the committed artifacts",
+    "quadrature_tolerance_bps_hz": 0.0001,
+    "v0_regression": "committed beams identical; means within 1e-5"
+   },
+   "declared": "2026-10-01",
+   "files_sha256": {
+    "../latency/o2_cpu1t_ecore.json": "2a89e86f691c2a0b49161d993a2916192b7f2e90c006fc6b6d8a8af78cff00a2",
+    "../latency/o2_cpu1t_pcore.json": "fb55ba7313349606acaff79e9b0e5ee07d5bdf45e793c50d9e17641139d4a6c3",
+    "../latency/o2_gpu.json": "a98277aae319e16ffd501b0945c083fe8365427f1e1ee8c786e857f46fd7a39e",
+    "../latency/o_cpu1t_ecore.json": "974f78dc22b44ec6e6b5308206f50e001742b64aacb5a9630bdf050a2ab38c26",
+    "../latency/o_cpu1t_pcore.json": "c59e748168baed68990e0a5642bbd36041a480f168880e0e4a6c21f6b66dc38f",
+    "../latency/o_gpu.json": "43694a46ee9d8f34ecd3876de43a9d5592e5a02d4f14a7cf53ede1716249adc7",
+    "aging.json": "53f7431a9e7ab69bd821987d3014ae2ba44a9fedb96ef3877eb0754a5dd50acb",
+    "complexity.json": "3ba1a73d8bdb6928037902a2a95d50d827e93ea1c0b6457fa48528ca29cf0616",
+    "predq.json": "7e7c2fd16574a45dc1d8a3cddff890963ff628019c1ffb14a2b321548d7bc164",
+    "rules.json": "7a26065948dd267cd109b917c1c42056f91018e982fc145407a6b62cf74345d8"
+   },
+   "framing_policy": "R5-R7 decide wording only; never R1's framing, the gate or the selection",
+   "guard": "evaluate.check_charge invariant 6 (planner and executor run the same predictor quality); aging.py asserts the v = 0 regression on every site before writing; reading_rules.py computes R5-R7; protocol.py checks the timing files",
+   "key": "aging_quality_cost",
+   "rules": [
+    "R5",
+    "R6",
+    "R7"
+   ],
+   "scripts": [
+    "aging.py",
+    "complexity.py",
+    "reading_rules.py",
+    "sweeps.py"
+   ],
+   "scripts_sha256": {
+    "aging.py": "1a2249411395639cc709d332dd03d16d70935e7c37d27df5f7691def294034d0",
+    "complexity.py": "70dd02f7a3356bc568f6b554b6c3b8a5d0e35c85fdd78f81e87e7e339f42dbdf",
+    "reading_rules.py": "80994bd3baae0ea5e18c2c158a2c56b8ac01a5d212838724d3c9f63e6a5f4c3d"
+   },
+   "state": "declared before it ran; none of its outputs existed; rule R5 was applied to timings that already existed",
+   "title": "channel aging, predictor quality, solver cost and the exclusion rule"
+  },
+  {
+   "analyses": {
+    "ten_method_winners": "Table I was built from aging.json's nine fixed methods, and make_draft.py checked the published comparator in the held-out sites with its rate under (2) only.  The point-estimate winners are recomputed over all ten methods under both accountings; if that moves a printed winner, Table I is reprinted from the ten methods and the change is recorded",
+    "winner_uncertainty": "the per-receiver, per-seed rates of the ten methods of accounting.PUBS under the published accounting (1), probe airtime only (evaluate.charges with free_compute), and with inference latency included (2), at the 12 deadlines, in the six evaluation sites, recomputed by replicating evaluate.py's seed loop on the stored checkpoints (the ten seeds): the measurements from stable_seed(site, seed); the published comparator from a fresh stable_seed(site, seed, 'r') stream per seed and per accounting, consumed as evaluate.py consumes it (deadlines in grid order; AHIBS, AHTBS, AHTBS+AHIBS), on CUDA; nothing trained or timed.  Reproduction gate before any resampling: the means under (2) within 5e-6 of results.json and heldout.json (their 5-decimal rounding); under (1) within 5e-6 of results_freecompute.json in the two test sites and within 1e-5 of aging.json at 0 km/h for the nine fixed methods in all six; the nine-method winners equal to aging.json's and the ten-method winners to accounting.json's in the test sites.  The published comparator under (1) in the held-out sites has no stored value; its code path is the one the test sites validate.  Resampling: the seed-by-block bootstrap of evaluate.paired_bootstrap_hier, 20,000 replicates, each resampling the ten seeds once, shared by the six sites (default_rng(stable_seed('winner', 'seeds'))), and each site's 50 m blocks once, shared by every method, accounting and deadline (default_rng(stable_seed('winner', 'blocks', site))).  Family: every pairwise difference in mean rate among the ten methods, under both accountings, at every deadline, in every site (6,480), less the identically zero ones (both methods infeasible), which are counted.  Simultaneous 95% intervals in the two versions the paper uses: (i) bootstrap, D +/- q SE*, with q the 0.95 quantile (numpy, linear) over replicates of the maximum over the family of |D* - D|/SE*; (ii) t, D +/- q_t SE_t, with SE_t = (s_seed^2/S + SE_block^2)^(1/2) as in paired_bootstrap_hier and q_t the t_(S-1) quantile at the per-comparison level 2(1 - Phi(q)) that q implies; a difference is established when both exclude zero.  Reported descriptively besides: per point-estimate change, the rate lost 1 - R2(w1)/R2(w2) with its marginal seed-by-block and t intervals, scaled by the point estimate of R2(w2), and its simultaneous lower bound; both contrasts; the candidate sets; the shares of replicates with the same change and with any change; and the replicate distribution of the number of changes among the 72 pairs"
+   },
+   "criteria": {
+    "alpha": 0.05,
+    "block_m": 50,
+    "family": "45 pairs x 2 accountings x 12 deadlines x 6 sites = 6,480 contrasts",
+    "n_boot": 20000,
+    "reproduction_aging_json": "|mean - aging.json| <= 1e-5 (aging.py's v = 0 tolerance)",
+    "reproduction_stored_means": "|mean - stored| <= 5e-6 + 1e-12 (5-decimal rounding)"
+   },
+   "declared": "2026-10-06",
+   "files_sha256": {
+    "winner_uncertainty.json": "6de6c29cd1e3b63d0c3ee508ed896dd59ab57c657a23e51380203aabb08656c0"
+   },
+   "framing_policy": "R8 decides wording only; never R1's framing, the gate, the selection or R1-R7",
+   "key": "winner_uncertainty",
+   "rules": [
+    "R8"
+   ],
+   "scripts": [
+    "winner_uncertainty.py"
+   ],
+   "scripts_sha256": {
+    "winner_uncertainty.py": "a306eab1491987bbebd3ca845ff960080a91aef9a461cb724585267c53354a65"
+   },
+   "state": "declared before it ran; none of its outputs existed",
+   "title": "uncertainty of the changes of the best method"
+  },
+  {
+   "analyses": {
+    "aging_bound": "aging.run_site is re-run for the six evaluation scenarios at 0, 3, 30, 60 and 120 km/h with the ten seeds and the P-core latencies, exactly as aging.py's main calls it, with aging.summarize wrapped so that G(t) = ba[1] (summed over users of the largest held-beam rate over the 64 layer-6 beams, divided by their number) and r_S(t) (the seed mean of sweep64's held-beam curve) are kept on aging.py's grid, t_p/4 plus every breakpoint, before the original summarize runs.  Per (scenario, speed): the shortfall int_{d_S}^{T_max} (G - r_S) and the slack, the least d_L - d_S with int_{d_S}^{d_L} G >= that shortfall, with d_S the sweep's completion time (64 t_p) and T_max = 10 ms.  Per exclusion of rules.json R5: tau - tau* at the fastest runtime, with tau* that profile's own, against the largest slack over the six scenarios at each speed"
+   },
+   "criteria": {
+    "criterion": "an exclusion of R5 holds under aging at a speed if its tau - tau* exceeds the largest slack over the six scenarios at that speed.  The slack is computed at the P-core per-probe time, the aging simulation's; the other profiles' per-probe times differ from it by at most 0.63 us, and the paper states the margin by which each exclusion clears the slack",
+    "gate": "every row the re-run returns reproduces aging.json: each numeric leaf within 1e-5 (aging.py's v = 0 tolerance), each boolean and string equal",
+    "integrals": "trapezoid sums on aging.py's grid; the slack is inverted exactly on the piecewise-linear G the trapezoid rule assumes",
+    "reading": "a certificate on sampled curves, not a continuous-time guarantee and not tight: the best beam may change within the period, which no fixed beam follows.  It does not cover blockage, angular drift or the controller",
+    "v0": "at 0 km/h the slack equals Proposition 1(b)'s (1 - eta_S)(T_max - d_S), with eta_S as results.json and heldout.json store it, to that value's 4-decimal rounding (5e-5 (T_max - d_S))"
+   },
+   "declared": "2026-10-10",
+   "files_sha256": {
+    "aging_bound.json": "66145d82b88f84802e4b8164fce4542d65e830635303d85ea5cc52cb9e4b763b"
+   },
+   "key": "aging_bound",
+   "rules": [],
+   "scripts": [
+    "aging_bound.py"
+   ],
+   "scripts_sha256": {
+    "aging_bound.py": "88e61cbe81b34661001a33641bb3944121418c9391b935335d60c1e9e4e76021"
+   },
+   "state": "declared before it ran; none of its outputs existed",
+   "title": "Proposition 1(c) on the aging channels"
+  },
+  {
+   "analyses": {
+    "ahtbs_false_alarm": "rerank.false_alarms(): the reimplementation's realized per-look false-alarm probability on noise-only looks, 2,000,000 draws from default_rng(23), its own thresholds (the 0.8 quantile of chi-square(32 r)) applied to the running mean of clipped reports, and of unclipped ones for reference; written to rerank.json",
+    "rerank_charge": "c_rank = the sweep_select charge of lat_cpu1t_pcore.json, a masked argmax over 64 entries timed by the stage-4 protocol: 1.060 us.  sim.elapsed_us adds c_rank * k * 1[i >= 1] to d(i, k) = k t_p + tau_i + (k + i + 1) c_lookup, charging every probe of a decision sequence that has invoked the predictor, those before the first call included: an overcharge that keeps d a function of (i, k), so one backward-induction pass per T stays exact and the table's shape and its timed lookup (0.296 us) are unchanged.  It applies in the planner (solve, solve_blinkered, solve_osla: the variants dp, osla, blind, one, blnk, rep1, deep1) and in the executor (methods.scheduled when reorder is true); dpn, anyr, fcc and cnnc never re-rank and noc never infers, so they are charged nothing.  The latency-unaware planner is given c_rank, like every other non-inference charge, so aware against unaware still isolates the awareness of tau.  c_rank is not scaled by rho (it is controller logic, like the lookup and the per-probe processing) and is zero under airtime-only accounting.  evaluate.check_charge asserts that the planner and the executor charge the same c_rank",
+    "reruns": "sched.py --rank-charge --out-suffix _rr (10 seeds, every family); evaluate.py --rank-charge --tables-suffix _rr [--zhang-np2] for validation_rr.json (Los Angeles), results_rr.json (test) and heldout_rr.json (held out), both with --validation validation_rr.json, and with --seeds 17 29 43 for the three-seed files; analyze.py --suffix _rr and _rr_3seed; the ten sensitivity conditions (rho 0.1/0.3/3, probe airtime 50/125/250 us, q 0.125/0.25/0.5/1) by sweeps.build with TAG _rr and EXTRA --rank-charge, summarized into sweeps_rr.json and predq_rr.json; selection_stability.py, interleave.py and rules_suffix.py (the pinned reading_rules.py, wrapped) with _rr; rerank.json",
+    "zhang_np2": "methods.zhang_np2_descent and zhang_np2, Zhang et al.'s Algorithms 1-2 and eqs. (13)-(17), (24) in this measurement model, as variant 'zhang-NP2'.  Per receiver and layer k = 1..6 the two children of the previous winner are trained.  Look 1 is the raw statistic behind y (sim.measure_chi2: measure()'s draws before the floor and the clip; the receiver detects); looks 2.. are (Z + sqrt(lam))^2 + Q from an array drawn once per (scenario, seed) by default_rng(stable_seed(name, seed, 'zf')), Z standard normal and Q chi-square(31), shape (users, 126, 4), indexed (receiver, codeword, look - 2): common to every T and every variant, and independent of y, gen and gen2.  After each look, the log-likelihood ratio of the running energy sum, H0 noise only and H1 a single Rayleigh path of known variance sigma_a^2 in the codeword's sector (gain C_k = 2^(k-1), Zhang's -3 dB rule): ln LR = -ln(1 + n m) + ln 1F1(1; 16 n; S n m / (2(1 + n m))), m = 16 P sigma_a^2 C_k / sigma_p^2; H1 at ln LR >= ln 4.75, H0 at ln LR <= ln 0.0625 (Pa = 0.2, Pm = 0.05), otherwise another look, at most 3.  The child with the larger mean energy wins whatever the test decided (Algorithm 2).  A codeword costs t_p for its first look (pilot, feedback and the per-probe processing) and 10 us of pilot for each further look (Zhang's per-pair T_E + T_f: one feedback), plus C_DEC = 0.142 us per look and per layer, which undercharges the likelihood test.  The layer rule looks back: R_k = (1 - D_k/T)+ G_k with G_k eq. (24)'s expected rate given the first look's detection threshold, stopping at the first k where R_k > R_(k-1) and k < 6 fails and outputting layer k.  sigma_a^2 is each receiver's own mean channel power over the 64 DFT beams, which favours the baseline; there is no budget rule, as in the paper, so a descent that overruns T delivers nothing and its share is recorded.  Its contrasts with sched-pi and sched are added to evaluate.py's mechanism pairs, keyed by pair"
+   },
+   "criteria": {
+    "a_validation": "the modified evaluator, c_rank = 0 and zhang-NP2 off, on the recorded tables, reproduces validation.json in every leaf but seconds, code_commit and protocol_sha256; if bit identity fails, every numeric leaf within 1e-5",
+    "b_resolve": "a zero-charge re-solve of seed 17 (sched.py --seeds 17 --out-suffix _gate) leaves at most 1% of the visited cells' actions different from tables_17.npz",
+    "c_first_look": "zhang-NP2's first look reproduces y exactly: report_of(measure_chi2) equals measure() under the same seed (asserted in every --zhang-np2 run)",
+    "selftest": "rerank.py --selftest: elapsed_us at c_rank = 0 equals the old formula and adds c_rank k 1[i >= 1] otherwise; ln LR matches a numerical Rayleigh mixture within 1e-5; the 1F1 table matches the exact form within 1e-6 relative; t0 puts a noise-free first look on the upper threshold; eq. (24)'s rate matches its integral"
+   },
+   "declared": "2026-10-11",
+   "description": "two changes to the experiment, declared before they run.  (1) The controller's choice of the next codeword after an inference call, a masked argmax over the exit's 64 output scores on every probe, was in no timed component and so charged nowhere; it is charged from now on, in the planner and the executor, and every controller result is re-solved and re-evaluated with it.  (2) The adaptive baseline was a simplified reimplementation of Zhang et al.; their algorithm as published is added beside it.  No model is retrained and nothing is timed; every output carries the suffix _rr, and no recorded file is written",
+   "files_sha256": {
+    "heldout_rr.json": "d346ebc58f281e6692fa1a007e7f5fa4a9a6ec6be55bfdc05707a487eae9f09f",
+    "heldout_rr_3seed.json": "2f5af06e19eee1d89fa60e6597aed0aaaa34700b62d81af9c22760b024a09cef",
+    "interleave_rr.json": "6da0924c8e7ee3f72215ca075f4c7822ca9ad540db34acc90db22e4ab1a294dc",
+    "predq_rr.json": "a2ec62549da86cddbdd8f4a2918ea621981280fd9dca2b3c4a0d4aeeec199d26",
+    "report_rr.json": "d82a7f34c6579ff590f1c95a341f03cb434e61af88e9258fab469a8d243fe6f9",
+    "report_rr_3seed.json": "4e9c143b958c66f5255d3108278a184aadcdc9538e3e1e75dba5fbfd18b1ebec",
+    "rerank.json": "9a109ac8508573df9154cf8d42d04c08830650aeca450c66dade5c8d553c6af6",
+    "results_rr.json": "c1d092aa3b7d699a8fcd069b580ca2de8c35ab646c825e6d6f9f1506c36a42fb",
+    "results_rr_3seed.json": "e1ef6c64b90f90e6d5136d13f4a9376d690a5c64b6805dac8cd4027cb74936c4",
+    "rules_rr.json": "2d8156d957fcb2d086e85f17c51bd82e0f946100163ba14ba33549cee92c9ef8",
+    "scheduler_rr.json": "97f2046557e7ed152906b9dbb81244123a3231325393ef68216379d26eab2711",
+    "selection_stability_rr.json": "1d796f95dfe4190d9b3cb5066774803ae341666ff64d0f8c88013fc284d597ec",
+    "sweeps_rr.json": "befd25ebe09e3aed07102c9a2d7c3f2affb373dfafe40c57b03c24906c9fd49c",
+    "validation_rr.json": "be435f5fe6cf5b0e74ef789e5068ef54cf887d8d142390693460163d2c2412f4",
+    "validation_rr_3seed.json": "ed197487a3c586b6392b7d0e3f95519d90fb7d00748709376969f5f354f5ba64"
+   },
+   "key": "rerank",
+   "rules": [
+    "R9"
+   ],
+   "scripts": [
+    "rerank.py",
+    "sched.py",
+    "evaluate.py",
+    "sim.py",
+    "methods.py"
+   ],
+   "scripts_sha256": {
+    "analyze.py": "a6fc40efdd934cab7a404e61a8dd009d55a9df83a7de8996cd6af2acf5d6c73c",
+    "evaluate.py": "d6e12c8cb27b0958fd2eb5a1d8f53e82a20f7219d3382c5fa709ed78b7764963",
+    "interleave.py": "22850c9ec49d985ed540051d217150813808b3cfc24b9ac3ebc5f5806bbe37ed",
+    "methods.py": "574b4119230f70abf9485c709fb91ab09bf5d928507103c9347363b8f04bc232",
+    "rerank.py": "72ffb6351ac72fc49e97876594293c7ec604b1dd988ebfd109236f75f4e03216",
+    "rules_suffix.py": "32aff415727cbe22728baa8d204d1b0504c37993532ab17570f08430c0aab1ca",
+    "sched.py": "90232f9405bdd73e4ab8f975192e6536ea5d6f3dffdc39a32b8ab04fd4f6bd4a",
+    "selection_stability.py": "3df38af61cc9b6948541a74bf8ad55d29f67eca570ae521b7486003272f480fc",
+    "sim.py": "863a4e7cbcc49c2244e4218fb838fcc86661e1c4de1a62107996ce0398bf82a5",
+    "sweeps.py": "512f868450483a647b5f26bed5916eb134008be3cbb3407eafd18e5938643f85"
+   },
+   "state": "declared before it ran; none of its outputs existed",
+   "title": "the time of choosing the next codeword, and the adaptive baseline as published"
+  },
+  {
+   "analyses": {
+    "guarded_baselines": "methods.zhang_guarded (the reimplementation, AHTBS+AHIBS form) and methods.zhang_np2_guarded (the published descent), reported as zhang-G and zhang-NP2-G beside the unguarded forms.  Before every look the elapsed time plus that look, the check and the layer decision that may follow must stay below T, the controller's own feasibility rule; a check costs c_guard = 0.142 us (np_test, a threshold comparison; 0 under airtime-only accounting) whether it passes or not.  The first look that cannot fit ends the descent (no later look is cheaper); a test the guard cuts short keeps its looks; a layer is complete when both children have a first look, and the beam is the winner of the deepest complete layer (none, and zero rate, if layer 1 is incomplete).  The detection tests, the hierarchy and the layer rules are each form's own.  Common random numbers: the published form runs on the same first looks and repeat arrays; the reimplementation's guarded call draws its repeats from a generator set to gen2's state just before the unguarded call at the same T, drawing every look slot for every user in the same order, so its draws are a prefix of the unguarded call's, and gen2's own stream is untouched.  The unguarded reimplementation's overrun share is recorded beside it.  Contrasts sched-pi and sched against each guarded form join evaluate.py's mechanism pairs, keyed by pair",
+    "lookup_timing": "exact.py --pilot solves dp alone with --rank-exact and the 0.296 us lookup charge for seeds 17/29/43 (tables moved out of the tree); exact.py --time-lookup, pinned to one P-core (OMP_NUM_THREADS=1 taskset -c 2) on a quiet machine, replays the deployed controller's consults of the 1 ms headline table on the validation city (2,000 users, in decision order), each consult computing the bucket and class and indexing the first-call block, and times them as the lookup charge was timed: 1,000 warm-up and 10,000 timed calls per seed, per call (charged) and in batches of 100, each timed twice; the nearest-rank 95th percentile, the largest of the three seeds, rounded to 3 decimals, is the charge (lat_lookup_aug.json).  The original tables are re-timed in the same session by the same code as a check: if that falls more than 10% from the recorded 0.296 us, or the contention rule fails, nothing is written and the run stops.  The charge applies to the variants on the augmented table in every _rx run, the pilot's 0.296 us assumption notwithstanding; it is measured once and never re-timed",
+    "rank_exact": "sim.elapsed_exact_us: d(i, k, kappa) = k t_p + tau_i + (k + i + 1) c_lookup + 1[i >= 1] (k - kappa) c_rank, with kappa the probe count at the first inference call and c_rank the re-ranking charge, 1.060 us (sweep_select).  sched.solve_exact, solve_osla_exact and solve_blinkered_exact carry kappa for i >= 1, all 65 values at once, so each backward-induction pass stays exact for the estimated model; the compute action from i = 0 at k probes lands in (1, kappa = k, k); the estimated primitives over (i, k, b, c) are unchanged.  The deployed table is kappa-major, [kappa, i, k, b, c, fresh], 65 blocks of the original (4, 65, 40, 10, 2) shape (13.52 MB): the controller consults block 0 until its first call and block kappa after it.  sched.py --rank-exact solves the variants that re-rank (dp, osla, blind, one, blnk, rep1, deep1) this way and charges them the augmented table's consult; dpn, noc, anyr, fcc and cnnc keep the original shape, the 0.296 us lookup and no ranking charge.  The on-policy estimation passes and methods.scheduled track kappa; evaluate.check_charge asserts that planner and executor use the same ranking mode and the same augmented lookup.  sim.elapsed_us, solve, solve_osla and solve_blinkered are untouched, so every earlier table and result reproduces",
+    "reference_screen": "the same condition against a fast fixed reference j (Appendix A.1): an implementation that selects among the M beams cannot outperform j at any T <= T_max if d_L >= (1 - eta_j_lower) T_max + eta_j_lower d_j, so it is excluded for every horizon up to T_max*(j) = (d_L - eta_j_lower d_j)/(1 - eta_j_lower).  References Top-8, Top-16, Top-32 and Hier-6 (no trained model); eta_j_lower the lowest of the seven non-training scenarios' recorded eta (validation.json, results.json, heldout.json).  For each Table I implementation the largest such horizon and the reference giving it.  Computed in make_draft.py",
+    "reruns": "exact.py --run: sched.py --rank-exact --out-suffix _rx (10 seeds, every family); evaluate.py --rank-exact --zhang-np2 --zhang-guard --tables-suffix _rx for validation_rx.json, results_rx.json and heldout_rx.json (--validation validation_rx.json), and without the baselines' flags for the three-seed files (_rx_3seed); analyze.py --suffix _rx and _rx_3seed; the ten sensitivity conditions by sweeps.build with TAG _rx and EXTRA --rank-exact, summarized into sweeps_rx.json and predq_rx.json; selection_stability.py, interleave.py and rules_suffix.py with _rx; exact.json (the gates, the charges, every table's sha256, the step times, and the augmented solver's cost on seed 17's model, timed as complexity.py times the original).  The augmented tables are left untracked; exact.json records their hashes",
+    "selector": "selector.py: selectors frozen on Los Angeles from its 10-seed means, a(T) the fixed method with the highest airtime-only rate (inference, the lookup and the test decision free; the probe time as always) and b(T) the one with the highest rate with latency included, over two candidate sets, S9 (Table II's nine fixed methods, aging.PUBS) and S36 (the 36 fixed methods every deployable choice is made from); on each of the six evaluation scenarios Delta_s = (1/12) sum_T [R(b(T)) - R(a(T))], both with latency included, with evaluate.paired_bootstrap_hier's seed-by-block bootstrap (20,000 replicates, a stream keyed by set and scenario) and t interval, and its value relative to the airtime-only selector's grid-mean rate.  Per-user rates are recomputed with the evaluation's code (aging.menu, the stored models and measurement noise); the recomputed means must reproduce the stored ones, rounded to five decimals, within 1e-5 in all seven scenarios, or nothing is written",
+    "worked_example": "the completion-time condition of Proposition 1(b), d_L >= d_S + (1 - eta_S_lower) (T_max - d_S), applied to an aperiodic CSI-RS beam sweep at 120 kHz (TS 38.211 V18.10.0 Table 4.3.2-1: 14 symbols per 125 us slot) with one-port, one-symbol resources (Table 7.4.1.5.3-1), repetition off (TS 38.214 V18.11.0 5.1.6.1.2), up to 64 per set (5.2.1.4.3; TS 38.331 V18.11.0), one L1-RSRP report (5.2.1.4.2; nrofReportedRS up to 4, N <= N_max of 2 or 4 by UE capability, TS 38.331) on PUSCH no earlier than Z'3 = X3 symbols after the last CSI-RS symbol (5.4, Table 5.4-2), inference at the gNB after the report (BM-Case1 NW-side, TR 38.843) and data from the next slot boundary.  T starts at the slot whose DCI triggers the set and its report.  The sweep measures 64 resources and the candidate K = 4; the report, its delay and the gNB's processing are common to both, so they cancel in d_L - d_S and, entering d_S, only shrink the allowance: the verdicts take them as zero, which is conservative.  For each Table I implementation (fastest runtime, R5's rows) and the small transformer: d_L - d_S, feasibility within T_max = 10 ms and the lowest lower bound on eta_S at which it is excluded, with the number of CSI-RS symbols per slot as the stated assumption and its sensitivity given.  Computed in make_draft.py from rules files and the clauses read"
+   },
+   "criteria": {
+    "a_rr_validation": "the modified evaluator in the re-ranking mode (--rank-charge --zhang-np2, the _rr tables) reproduces validation_rr.json in every leaf but seconds, code_commit and protocol_sha256",
+    "b_zero_charge": "seed 17's off-policy model, every period: with c_rank = 0 every reachable kappa block of solve_exact, solve_osla_exact and solve_blinkered_exact has the actions of the original solver, and its values within 1e-12 (not bit for bit: the kappa-vectorized products run as one matrix product)",
+    "c_kappa0_is_rr": "with c_rank, the kappa = 0 block at i >= 1 has the actions of the re-ranking solver and of tables_17_rr.npz's off-policy tables, values within 1e-12",
+    "d_naive": "on seed 17's model at T = 0.25, 1 and 10 ms, the vectorized solvers equal the naive ones (actions identical, values within 1e-12)",
+    "e_guard": "Chicago, seed 17, T = 10 ms: no user's beam differs between a guarded form with a free check and its unguarded form; the share that differs with the check charged is recorded",
+    "lookup_check": "The original tables re-timed in the same session within 10% of 0.296 us, and the contention rule passes, or no augmented charge is written",
+    "selector_gate": "the recomputed per-method means reproduce the stored ones within 1e-5 in all seven scenarios (selector.py --check-only, run before this entry)",
+    "selftest": "exact.py --selftest: the exact elapsed time equals elapsed_us at kappa = 0 bit for bit and ignores kappa at i = 0; the three vectorized solvers equal naive per-kappa solvers (the original solvers, one kappa at a time, plus an i = 0 pass) on random models at three periods, actions identical and values within 1e-12; the executor's elapsed time equals the planner's for every user (to 1e-3 us: the executor forms k t_p in float32, as every recorded run did); both guarded forms with a free check equal the unguarded ones when no descent can overrun, and never overrun with the check charged"
+   },
+   "declared": "2026-10-13",
+   "description": "four analyses, declared before they run.  (1) The controller's ranking time is counted on the probes after its first inference call only, the ranking operations its executor performs, instead of every probe of a sequence that invokes the predictor; the planner's state carries the probe count at the first call, the deployed table grows to one block per such count, its consult is timed on that table, and every controller result is re-solved and re-evaluated.  (2) Both forms of the adaptive baseline are also evaluated with a deadline guard.  (3) A selector analysis, post hoc.  (4) A worked example of the completion-time condition under a 5G NR procedure, and the condition against fast fixed reference strategies, both arithmetic on recorded outputs.  No model is retrained; the only timing is the augmented table's consult; every output carries the suffix _rx or is new (lat_lookup_aug.json, exact.json, selector.json), and no recorded file is written",
+   "files_sha256": {
+    "exact.json": "37415766bf27ed8993b8c9fa9178332b748132d6b26de9537b0652d9aeb8ad32",
+    "heldout_rx.json": "182fb85a30daf6a7229c43a2490e442f46cc403fc1eb99b2b8f8fae5c1b11c3c",
+    "heldout_rx_3seed.json": "f1463512d983e1d3965868d8afbaa3c8826338ebab6086a090b59d0c31945f61",
+    "interleave_rx.json": "14c9d3b0913168abf0bc0ed9fa7c126a463629131dc6ccb3e7ed505a3ce56993",
+    "lat_lookup_aug.json": "cc76e3cede6a1052c20b27a8382d45fb5d7242e8dbaebc5ff71faa154abda1b4",
+    "predq_rx.json": "41557bf5a57af1af50978fece5de90164132adc864f72b82361d54550efebd57",
+    "report_rx.json": "b144222e660440f677e0b4776fb58822b44feadd173cd73b4dc60c778e756b4f",
+    "report_rx_3seed.json": "b627058161f111cd7014d301c6fddf5b7f4ec336c0e165bb40b225fa428e46cc",
+    "results_rx.json": "46db30ca99e883fbc7144cf84a898ccdb8d62c8ded74391013d3dd124ee2da53",
+    "results_rx_3seed.json": "9303ee1b6b1577808fa77849ea35ec09e34e677b7abdb1b41124559fd2e10b53",
+    "rules_rx.json": "e58e2b9f6dfaafda8ee4a3cabbb7d349a9e0e21a32cd5fa5e28676d8a115e6c7",
+    "scheduler_rx.json": "23732cdd83e0a510f059b10f7aef64f83e0febae264c1f141e7d76154e5cd67e",
+    "selection_stability_rx.json": "50db822c8b8407f2cc78c17eb04a762dcbc55ce5d93f07a3f017504775fba6f9",
+    "selector.json": "536f960026a38443a4520bbdf235014c80f18580417ae4c861dd512a9ba36b25",
+    "sweeps_rx.json": "c6e2f29f5f90fadc0935e1402ce962e3b2eb716df746a25891a4ef72631c2284",
+    "validation_rx.json": "e6ff7ce703ea844d87d097e8d1b253854cd0340bef11cd1dba3400a653c76e31",
+    "validation_rx_3seed.json": "5baeabb2b1796a6b0d0598bae201ffba1b019e5c08dbd4698baa523924b98e2b"
+   },
+   "key": "exact",
+   "post_hoc": [
+    "selector"
+   ],
+   "rules": [
+    "R10",
+    "R11"
+   ],
+   "scripts": [
+    "exact.py",
+    "selector.py",
+    "sched.py",
+    "evaluate.py",
+    "sim.py",
+    "methods.py"
+   ],
+   "scripts_sha256": {
+    "analyze.py": "f65d212d4c74a3b90617719d2d02e8bff59b2f14c0d1dea5580a3c76f74f2a3d",
+    "evaluate.py": "658540074de6e31d9b0ed6214e37eeb78f68632902b0bc05cfdafb55eee85efc",
+    "exact.py": "87e9392c6313aed8c716058cdd022f30a0a37eab749f6af5f3b8868ce25edc43",
+    "interleave.py": "5ac478313786ef2344b694086f218d6152c0d53aaf8f23a03eeb3be24ec6d947",
+    "methods.py": "db7cd4d194d6fd7f48804da546fb79af04856a71f4f063ce985917e20efb69f5",
+    "rerank.py": "72ffb6351ac72fc49e97876594293c7ec604b1dd988ebfd109236f75f4e03216",
+    "rules_suffix.py": "32aff415727cbe22728baa8d204d1b0504c37993532ab17570f08430c0aab1ca",
+    "sched.py": "5bef7a23f56a1430f910731ef6db1d13147feaa0e9922b094d8b4f20dc7f0653",
+    "selection_stability.py": "3df38af61cc9b6948541a74bf8ad55d29f67eca570ae521b7486003272f480fc",
+    "selector.py": "f4b61488d67f39f29d72ffa07b0b759b466c53b0d32a6313de76ea49537a9645",
+    "sim.py": "442f2393b4659a64415d511b452809822236f5f9d241795e224f4153a02dd238",
+    "sweeps.py": "512f868450483a647b5f26bed5916eb134008be3cbb3407eafd18e5938643f85"
+   },
+   "state": "declared before it ran; none of its outputs existed; the selector's point estimates had been seen, so that analysis is post hoc",
+   "title": "the exact count of ranking operations, guarded baselines, a validation-frozen selector, an NR worked example and fast references"
+  },
+  {
+   "amended": {
+    "changed": "csirs.py's lower bound eta_lb and R12's t version use the delta-method standard error of the efficiency instead of the t interval of the contrast mean(se_selected - e se_genie) at each e; the bootstrap version is kept.  eta_lb, one-sided at level 0.05/7, is the smaller of e_boot, the largest e at which at most 0.05/7 of the crossed bootstrap's replicates of the contrast are at or below zero (with that bootstrap's 95% interval above zero), by the same scan and bisection on one bootstrap stream, and e_t = eta - t_9(1 - 0.05/7) se_lin.  R12's test at the threshold keeps the contrast's bootstrap p-value and 95% interval and replaces the t part by p_t = 2 P(t_9 > (eta - threshold)/se_lin) and the interval eta - t_9(0.975) se_lin above the threshold; Holm across the seven scenarios as before.  se_lin^2 = s_seed^2/S + SE_block^2 of the linearized residual (se_selected - eta se_genie)/mean(se_genie), from evaluate.paired_bootstrap_hier on its own stream; its seed means are the per-seed efficiencies less eta",
+    "date": "2026-10-16",
+    "scripts_sha256": {
+     "csirs.py": "0ad075ea2dc26f21544a5b1ce1d7e32b7d0ce5d84a587132844a480ee20d4528"
+    },
+    "why": "the first run of csirs.py stopped at its own check, before writing anything: the declared t version of the bound tested a contrast whose standard error carries the between-block uncertainty of the mean rate, so it could not bound the efficiency"
+   },
+   "analyses": {
+    "calib": "d_su = mu + a_s + b_b(u) + c_s,b(u) + e_su with each evaluation scenario's own 50 m blocks and users (evaluate.block_ids) and S = 10 seeds; ten configurations fix the shares of Var(D) carried by the seed, block, interaction and user terms: seed (0.98, 0.01, 0.005, 0.005), seed_block (0.50, 0.49, 0.005, 0.005), block (0.10, 0.88, 0.01, 0.01), block_only (0.01, 0.98, 0.005, 0.005), inter_mixed (0.10, 0.50, 0.39, 0.01), inter (0.05, 0.20, 0.74, 0.01), inter_only (0.005, 0.005, 0.98, 0.01), balanced (0.33, 0.33, 0.33, 0.01), and block and block_only with block effects from a t distribution with three degrees of freedom.  evaluate.paired_bootstrap_hier itself, 20,000 replicates, mu = 0, 2,000 replications per scenario and configuration, each with its own data and bootstrap streams: the coverage of each 95% interval, the share in which both exclude zero (the rule's error rate), and the mean of SE_t^2/Var(D) beside the first-order factors k_B/sum w^2 for the block term and 1 + k_B/sum w^2 for the interaction, k_B = sum w^2 - 2 sum w^3 + (sum w^2)^2",
+    "csirs": "Measurement with N complex samples per resource, every sample at the data's SNR, from the band-averaged powers of data/<scenario>.npz (the model's 16-sub-band channel: the resource elements of a sub-band share its centre value).  coherent: sim.measure's law with N in place of 1000, (s2/2K_F) chi'^2(2K_F, 2 N g) - s2 with s2 = sigma_d^2 K_F / N, clipped at 1e-3 s2, on evaluate's own normal draws, so N = 1000 is the recorded run and every N is paired with it; N = 16, 24, 33, 48, 66, 99, 132, 198, 330, 500 and 1000 (at N = 16 = K_F it coincides with per_re).  per_re: energy detection on each element, (sigma_d^2/2N) chi'^2(2N, 2 N g) - sigma_d^2, clipped at 1e-3 sigma_d^2, on a numpy stream of its own, N = 33, 66, 198 and 1000.  The CSI-RS densities 3, 1 and 0.5 give N = 198, 66 and 33 (TS 38.211 Table 7.4.1.5.3-1, TS 38.101-2 Table 5.3.2-1), at the data's energy per element (no power offset).  The sweep selects the beam of its largest measurement, methods.topk's rule; the report's quantization cannot change that choice (TS 38.214 5.2.1.4.3).  Seven non-training scenarios, all eligible users, the 10 seeds.  Per configuration and scenario: eta, the mean selected rate over the genie-aided one; eta_lb, the largest e for which mean(se_selected - e se_genie) > 0 passes evaluate.paired_bootstrap_hier's test with both p-values below 0.05/7, by a 41-point scan of [eta - 0.25, eta] that must show one transition and bisection to 1e-6, on one bootstrap stream per scenario and configuration; and the test at the threshold, make_draft's formula for ResNet-18 on the GPU (12 resources per slot, every common delay zero, one slot in its favor), recomputed from rules_rx.json, with Holm across the seven scenarios.  Also recorded: the share of users whose beam differs from the probe model's and the share on the genie-aided beam",
+    "margins": "m = dL_lo - (1 - eta_lo) T_max - eta_lo dS_hi, the robust form of Proposition 1(b) in completion-time form, whose right side grows with d_S and, for T_max > d_S, falls with eta_S.  dL_lo = 4 x 20 us + the smallest over runtimes of a lower value for the 95th-percentile latency: for the uncompiled runtime, whose calls are stored in src/latency/p_<profile>_raw.npz, the smallest over the three timing seeds of the order statistic X_(r), r the largest rank with P(Binomial(n, 0.95) >= r) >= 1 - 0.05/3, a distribution-free 95% lower bound for calls independent within a run; for TorchScript and the full-count GPU runtime, which stored only per-seed 95th percentiles, the smallest of the three, flagged as a point value.  dS_hi = 64 (20 us + the largest per-seed 95th percentile of the per-probe processing on any profile).  eta_lo = csirs.json's eta_lb: the probe model (coherent, N = 1000) for Table I, each density for the procedure, whose d_L and d_S are make_draft's (12 resources per slot, common delays zero, one slot in the candidate's favor).  Every row of R5 (Table I and Table S-XXVI)"
+   },
+   "criteria": {
+    "calib": "self-test: with seed effects alone the t interval is exact; over 400 replications in Chicago its coverage must lie in 0.92-0.98 and the simulated Var(D) in 0.85-1.15",
+    "csirs": "before any output: (i) the coherent law at N = 1000 equals sim.measure bit for bit for every scenario and seed; (ii) the recomputed sweep at N = 1000 reproduces the stored per-period means within 1e-5 and eta to four decimals in all seven scenarios; (iii) both laws are unbiased before the clip (10^6 draws at SNR 0.01, 1 and 100 and N = 33 and 1000, within four standard errors); the scan's lowest point passes and the scan shows at most one transition",
+    "margins": "calibrate.nearest_rank_p95 of every stored raw array equals its stored per-seed 95th percentile, and every runtime's stored charge is the largest of its per-seed values and equals R5's"
+   },
+   "declared": "2026-10-16",
+   "description": "three analyses, declared before they run.  (1) csirs.py: the exhaustive sweep's efficiency under the measurement of the aperiodic CSI-RS procedure of Section VI-A, one-port resources of one OFDM symbol over the 66 resource blocks of a 100 MHz carrier at 120 kHz, at densities 3, 1 and 0.5, with lower bounds from the paper's own test and rule R12's verdict at the procedure's threshold for ResNet-18 on the GPU.  (2) margins.py: the exclusion margin of Proposition 1(b) under a lower bound on each implementation's completion time from its recorded calls, an upper bound on the sweep's and csirs.py's lower bound on the sweep's efficiency.  (3) calib.py: the coverage of the seed-by-block bootstrap interval and of the t interval, and the error rate of the rule that needs both, simulated under a crossed seed-by-block model with each evaluation scenario's own blocks, read by rule R13.  No model is retrained, nothing is re-solved or re-timed, and the three outputs (csirs.json, margins.json, calib.json) are new; no recorded file is written",
+   "files_sha256": {
+    "calib.json": "278bab887e89a33210ffd970b0633c02251658450b5080a12250d827b5306112",
+    "csirs.json": "9c89539e73082c1e01516ab54b5d4d5e07c46f7e07ea0be7f3d2246e4ea698b1",
+    "margins.json": "3f194c9eadda1407638c077c17e03109515610fa0fe41539ee6325c0cb667457"
+   },
+   "key": "csirs_margins_calib",
+   "rules": [
+    "R12",
+    "R13"
+   ],
+   "scripts": [
+    "csirs.py",
+    "margins.py",
+    "calib.py"
+   ],
+   "scripts_sha256": {
+    "calib.py": "b3321ebac7ba07ac27952bda39b701f9bf05d62733ca2686d6775b12a63fa611",
+    "csirs.py": "16b3a0a2ec389cb857e54d84077adf682bf6c5cc4c9181134e04f9efe943ee5a",
+    "margins.py": "633e3605f52e6333cf5536274c532d282915d7e08b325f2d5acefeabe865655d"
+   },
+   "sources": {
+    "Owen and Eckles 2012": "Ann. Appl. Stat. 6(3), 895-927, read as arXiv 1106.2125v3: no exact bootstrap exists for crossed random effects; resampling both factors gives a variance close to ((nu1 + 2) s1^2 + (nu2 + 2) s2^2 + 3 s12^2)/N, mildly conservative when nu_j >> 1, up to three times too large when the interaction dominates",
+    "TS 38.101-2 V18.14.0": "Table 5.3.2-1, maximum transmission bandwidth configuration: 66 resource blocks for 100 MHz at 120 kHz",
+    "TS 38.211 V18.10.0 and TS 38.214 V18.11.0": "read for the exact re-solve: one-port densities 3, 1 and 0.5 in one symbol; the largest L1-RSRP reported in seven bits, the others as four-bit differentials",
+    "TS 38.331 V18.11.0": "CSI-ReportConfig field descriptions, carrier: 'Indicates in which serving cell the CSI-ResourceConfig indicated below are to be found. If the field is absent, the resources are on the same serving cell as this report configuration.'  CSI-FrequencyOccupation, nrofRBs: 'If the configured value is larger than the width of the corresponding BWP, the UE shall assume that the actual CSI-RS bandwidth is equal to the width of the BWP.'"
+   },
+   "state": "declared before it ran; none of its outputs existed",
+   "title": "the sweep's efficiency under the CSI-RS procedure, robust exclusion margins and the coverage of the two intervals"
+  },
+  {
+   "analyses": {
+    "calib_holm": "d_su = a_s + b_b(u) + c_s,b(u) + e_su with S = 10 seeds and mu = 0, calib.py's model, at the shares of Var(D) of calib.py's ten configurations and of two more with block effects alone, normal and t3 (block_pure, block_pure_t3).  Both tests are invariant to the scale of d, so the shares and the block law are the only nuisance parameters.  Seven geometries, each with its own users and 50 m blocks (calib.blocks_of): the six evaluation scenarios and Los Angeles, which rule R12 also tests.  Per geometry, 20,000 calibration and 10,000 evaluation replications, each one call of evaluate.paired_bootstrap_hier (20,000 resamples) on one period, with common random numbers across configurations (a replication's standard draws and its bootstrap stream are shared, the configurations differing only in scale) and numpy SeedSequence spawn keys (geometry, replication, stream).  Recorded per replication: p_boot, p_t, and whether both 95% intervals exclude zero on the same side.  Stored per geometry and configuration, from the calibration replications, as counts on calib_cal.grid() (steps of 1e-5 to 0.01, 1e-4 to 0.1, 1e-3 to 1): the null distributions of max(p_boot, p_t), of the both-intervals statistic (that maximum when both exclude zero on the same side, else infinity) and of p_boot.  Reported: the sizes at 0.05/k (k = 1..7 for the both-intervals rule, 1..12 for p_boot) with binomial standard errors; the recorded six-scenario rule's strong family-wise bound from Holm's proof, the largest over k of the sum of the k largest scenario sizes at 0.05/k, per configuration and with each scenario's largest size over the configurations inside the sum; the same bound for R14's calibrated rule on the evaluation replications; the per-period bound, the largest over k of k times p_boot's size at 0.05/k; and R12's recorded and calibrated bounds across its seven scenarios"
+   },
+   "criteria": {
+    "calib_holm": "before anything is written: (1) on calib.py's own streams, this generator (the same draws and operations as calib.replicate) reproduces calib.json's summaries exactly in every scenario and configuration, 6 x 10 x 2,000 replications; (2) each geometry's users and blocks equal those of results_rx.json, heldout_rx.json and validation_rx.json; (3) every R12 contrast in csirs.json has a seed share of variance whose 99.9% upper bound (chi-square, 9 degrees of freedom, on the spread of its per-seed efficiencies) is below 10%; (4) the counts are nondecreasing, those of max(p_boot, p_t) and of p_boot reach N at the last grid point, and the calibration replications' 95% coverages of both intervals agree with calib.json's within four standard errors in all sixty cells"
+   },
+   "declared": "2026-10-17",
+   "description": "one analysis, declared before it runs, and one reading rule.  calib_holm.py simulates the paper's final tests under calib.py's crossed seed-by-block model with each scenario's own 50 m blocks, at the levels Holm's procedure uses, and stores their null distributions; calib_cal.py turns a recorded p-value into R14's calibrated p-value.  Rule R14 re-reads the established verdicts with calibrated p-values, so a verdict can lose its label but never gain one.  No model is retrained, nothing is re-solved or re-timed, and the outputs (calib_holm.json, calib_holm_null.npz) are new; no recorded file is written",
+   "files_sha256": {
+    "calib_holm.json": "d322f85c79d149ce762829f5b5fa00776067d25fdd47ad0a3ec9082c81c2952b",
+    "calib_holm_null.npz": "5fecaf9edbc70f037ed170bf9b2ec9b64ef917e6ee3df28269885e960ae58349"
+   },
+   "key": "calib_holm",
+   "rules": [
+    "R14",
+    "R15"
+   ],
+   "scripts": [
+    "calib_holm.py",
+    "calib_cal.py"
+   ],
+   "scripts_sha256": {
+    "calib_cal.py": "c0f664ceac0c035e3a679350c29a930b0fdc74c93cf811455ba446e941a549e3",
+    "calib_holm.py": "8e566ab04eaff3486fb4bd0b01fe1aea1b8a0002720620b8b46cc1e6e619c146"
+   },
+   "state": "declared before it ran; none of its outputs existed; rule R14 re-reads verdicts whose p-values had been seen and can only remove labels; rule R15 was added later, post hoc",
+   "title": "the final test at the levels Holm's procedure uses"
+  },
+  {
+   "amended": {
+    "changed": "refbounds.py and csirs_cfg.py scan [max(0, eta - 1), eta], that is [0, eta], for the transition of each lower bound (WINDOW = 1.0) instead of [eta - 0.5, eta]; refbounds.py's gate H3 asserts bound <= eta < 1 and records the references and scenarios whose bound is at or below zero, which give no horizon under rule R17, instead of stopping on a bound outside (0, eta].  The levels, streams, configurations, gates G1-G7 and H1-H2 and rules R16 and R17 are as declared",
+    "criteria": {
+     "refbounds": "H3: bound <= eta < 1 for every reference and scenario; a bound at or below zero is recorded in gate.H3_nonpositive_bounds and gives no horizon (R17); H1 and H2 as declared"
+    },
+    "date": "2026-10-18",
+    "scripts_sha256": {
+     "csirs_cfg.py": "3f6026ae55991de5075f1ca8be6e2b8b4601cf99bf073004f9c475a377b5464a",
+     "refbounds.py": "768f6ed3b90d5cf1be5cf5b46b98d9575de279e6b98ded778266e0c1f3184b35"
+    },
+    "why": "the first run of refbounds.py stopped at its own check, before writing anything: at the declared window the scan's lowest point did not pass for Hier-6 in Chicago at 0.05/28, the bootstrap's lower tail of a reference's efficiency being long where few blocks carry much of the rate; and stopping on a non-positive bound contradicted rule R17, which states a horizon only where the bound is positive"
+   },
+   "analyses": {
+    "csirs_cfg": "the sweep under the configuration of TS 38.214 and TS 38.331 (sources): its 64 one-symbol resources, 12 per 125 us slot after two control symbols (make_draft._nr_end), form six one-slot aperiodic NZP-CSI-RS resource sets of 12, 12, 12, 12, 12 and 4 resources, each measured by a cri-RSRP report setting.  The UE reports, per set, the resource with its largest measured L1-RSRP, 10 log10(y/792) + 30 dBm with y the band power in watts at the data's energy per element over 66 x 12 subcarriers, quantized to the model's 1 dB grid q = clamp(floor(L1-RSRP), -141, -44); the base station takes the set with the largest q, ties to the set winner with the lowest genie-aided rate ('worst', the lower envelope of every rule it could use) or to the earliest set ('first', descriptive).  Two assignments of beams to sets: 'spread', consecutive chunks of obs.spread_order(), the sweep's probing order and the only one in which the reduced set's four resources are the sweep's first four; and 'contiguous', beams 0-11 to 60-63.  The scenarios, seeds, 15 configurations (coherent N in csirs.COHERENT_N, per_re N in csirs.PER_RE_N), measurement streams and bootstrap streams are csirs.py's (tags '{scenario}|{config}|lin', '|lb', '|thr'), so each variant is paired with csirs.py's exact choice.  Per variant ('spread|worst', 'contiguous|worst'), configuration and scenario, in csirs.json's schema: eta, the per-seed efficiencies, csirs.lin_se, the one-sided bound at 0.05/7 (effbound.lower_bound, window 0.5), rule R12's test at the threshold (csirs.at_threshold, Holm across the seven scenarios), the shares of users whose top report is tied in range, whose six reports all fall in the bottom bin and who are served on the exact choice's beam, and the seed share of R12's contrast.  Descriptive only: the 'first' rule, and 'spread|worst' with the grid shifted by 0.25, 0.5 and 0.75 dB",
+    "refbounds": "Top-8, Top-16, Top-32 and Hier-6 (methods.topk with K = 8, 16 and 32; methods.hierarchical with six layers and no decision charge) on the evaluation's own measurements (sim.measure, generator stable_seed(scenario, seed)), in the seven non-training scenarios over the 10 seeds; per reference and scenario the efficiency, its delta-method standard error (csirs.lin_se) and the one-sided lower bound at 0.05/28, the smaller of the crossed bootstrap's (effbound.lower_bound, window 0.5) and the delta method's, so that the bounds hold together over the seven scenarios and the four references at a nominal 95%; per reference the lowest bound and the scenario that sets it, beside the lowest stored efficiency"
+   },
+   "criteria": {
+    "csirs_cfg": "before anything is written: G1 csirs.py's gates (sim.measure reproduced bit for bit at N = 1000; the stored per-period means within 1e-5 and eta to four decimals); G2 the exact choice reproduces csirs.json's per-scenario record in all 15 configurations and 7 scenarios, floats to 1e-12 and the Holm step, flags and counts exactly, effbound at 0.05/7 and window 0.25 included; G3 each assignment partitions the 64 beams as declared and the unquantized six-set choice equals methods.topk's; G4 the quantizer's unit cases and monotonicity, 0.792 W giving 0 dBm; G5 per user the 'worst' rate is at most the exact choice's and the exact winner's set is among the tied, and every 'worst' bootstrap bound is at most the exact one plus 1e-6; G6 every R12 contrast's seed share (calib_holm.gate3's formula) below 10%, the formula reproducing calib_holm.json's value on csirs.json; G7 every scan finds one transition from a passing lowest point",
+    "refbounds": "before anything is written: H1 every reference's stored efficiency (four decimals), cost (1e-3 us) and per-period means (1e-5) are reproduced in results.json, validation.json and heldout.json and their _rx versions; H2 effbound at csirs.py's level and window reproduces csirs.json's coherent|1000 bound, its two parts and its standard error in all seven scenarios; H3 0 < bound <= eta < 1 for every reference and scenario"
+   },
+   "declared": "2026-10-18",
+   "description": "two analyses, declared before they run, and two reading rules.  csirs_cfg.py recomputes the CSI-RS sweep's choice as NR configures it, six one-slot resource sets whose cri-RSRP reports the base station compares at the reports' 1 dB resolution; refbounds.py gives Top-8, Top-16, Top-32 and Hier-6 the simultaneous lower bound the paper gives the sweep.  Rules R16 and R17 say how the paper reads them.  No model is retrained, nothing is re-solved or re-timed, and the outputs (csirs_cfg.json, refbounds.json) are new; no recorded file is written",
+   "files_sha256": {
+    "csirs_cfg.json": "92ae169439095d4c2b751c4cb521c40690299b9d3579385befaefeef5baa4ee1",
+    "refbounds.json": "602a551a08882172f06142e3405909481540f042f8a7be0d31a2f67f5398c942"
+   },
+   "key": "csirs_cfg_refbounds",
+   "rules": [
+    "R16",
+    "R17"
+   ],
+   "scripts": [
+    "csirs_cfg.py",
+    "refbounds.py",
+    "effbound.py"
+   ],
+   "scripts_sha256": {
+    "csirs_cfg.py": "0a0141e7b5e3c26104a4c68f2cb93a376c0e2f5c23d36ecd9c95e0ae1d969b1c",
+    "effbound.py": "ce3e93e23632745ff3b9c464434b5349c2b13b54ce94a05160053adf280e686c",
+    "refbounds.py": "6c2bb334d31c1e01bfc352d9194667a0a156d39f977dae9e855aadec580a7321"
+   },
+   "sources": {
+    "TS 38.214 V18.11.0 (2026-09)": "read 2026-10-18 (38214-ib0.zip from the 3GPP archive, in the in-app browser): 5.2.1.5.1 ('the CSI-RS offset is configured per resource set'; 'only one of the aperiodic CSI-RS resource sets from the Resource Setting is associated with the trigger state'; one DCI with a non-zero CSI request field per slot per cell; one aperiodic CSI report request for transmission per slot per cell); 5.2.1.5.1a (offsets of 0-31 slots when the PDCCH's numerology is lower; the CSI-RS no earlier than the first CSI-RS slot starting N_csirs PDCCH symbols after the PDCCH, N_csirs = 4, 5, 10 and 14 for mu = 0-3); 5.2.1.6 (no aperiodic trigger state with more than N_CPU report settings; O_CPU = 1 for cri-RSRP; an aperiodic report occupies its CPU from after the triggering PDCCH to the end of its PUSCH, and its aperiodic CSI-RS is active over the same span); 5.2.3 (the aperiodic report on the PUSCH the triggering DCI schedules); 5.4 (Z' the largest over the triggered reports of Z'(m); (Z3, Z'3) for cri-RSRP, with Z'3 = X_mu; mu = min(mu_PDCCH, mu_CSI-RS, mu_UL)); 5.2.1.4.3 (up to 16 sets of up to 64 resources and no more than 128 resources; the largest L1-RSRP as a 7-bit value over [-140, -44] dBm in 1 dB steps, the others as 4-bit differentials in 2 dB steps within the same reporting instance; the mapping is in TS 38.133, which was not read, so the 1 dB grid is the model's)",
+    "TS 38.306 V18.11.0 (2026-09)": "read 2026-10-18 (38306-ib0.zip): beamReportTiming, 'the number of OFDM symbols between the end of the last symbol of SSB/CSI-RS and the start of the first symbol of the transmission channel containing beam report'; maxNumberAperiodicCSI-RS-Resource, 'the UE is mandated to report at least n4'; maxNumberSSB-CSI-RS-ResourceOneTx, one-port resources 'within a slot', at least 8 mandatory in FR2; maxNumberAperiodicCSI-PerBWP-ForBeamReport, 'the maximum number of aperiodic CSI report setting per BWP for beam report'; simultaneousCSI-ReportsPerCC includes the beam report",
+    "TS 38.331 V18.11.0 (2026-09)": "read 2026-10-18 (38331-ib0.zip): NZP-CSI-RS-ResourceSet aperiodicTriggeringOffset INTEGER(0..6), -r16 (0..31) and -r17 (0..124); CSI-AssociatedReportConfigInfo, one resourceSet per entry; CSI-ReportFramework maxNumberAperiodicCSI-PerBWP-ForBeamReport INTEGER (1..4) and simultaneousCSI-ReportsPerCC INTEGER (1..8); CSI-RS-IM-ReceptionForFeedback maxConfigNumberNZP-CSI-RS-PerCC and maxNumberSimultaneousNZP-CSI-RS-PerCC INTEGER (1..64); BeamManagementSSB-CSI-RS maxNumberAperiodicCSI-RS-Resource {n0, n1, n4, n8, n16, n32, n64} and maxNumberSSB-CSI-RS-ResourceOneTx {n0, n8, n16, n32, n64}; maxNumberNonGroupBeamReporting {n1, n2, n4}; beamReportTiming scs-15kHz {2, 4, 8}, scs-30kHz {4, 8, 14, 28}, scs-60kHz {8, 14, 28} and scs-120kHz {14, 28, 56} symbols"
+   },
+   "state": "declared before it ran; none of its outputs existed",
+   "title": "the CSI-RS sweep as NR configures it, and lower bounds on the fast references' efficiencies"
+  },
+  {
+   "amended": {
+    "changed": "levels.py's gate L9 corrected.  The first run failed L9 and wrote nothing: for the exact comparison, L9 compared effbound.lower_bound scanned on csirs.py's window (0.25) with levels.py's bound scanned on its own (1.0), and asked the two to be equal as floats, which two bisections started from different brackets are not.  L9 now compares the two on the window the reproduced file scanned.  No statistic, level, window, stream or threshold of the analysis changes",
+    "criteria": {
+     "levels": "L1-L9 as declared, L9 comparing levels.py's bound with effbound.lower_bound at 0.05/7 on every reproduction cell on the window the reproduced file scanned (csirs.py's 0.25 for the exact comparison, csirs_cfg.py's 1.0 for its variants), floats exactly"
+    },
+    "date": "2026-10-18",
+    "scripts_sha256": {
+     "levels.py": "7d6b074154709f8df2f3cf43f5116a7a097250d7e73f69d20704613696035d59"
+    },
+    "why": "a declared gate failed on the first run; its cause was located without computing any statistic of the analysis, and the run was repeated under a gate that tests what was declared"
+   },
+   "analyses": {
+    "levels": "on csirs_cfg.py's measurements, choices and streams (the exact choice, its 'spread|worst' and 'contiguous|worst' variants with six sets, and the same two with eight sets of eight, 'spread8|worst' and 'contiguous8|worst', csirs_cfg.choose unchanged) and refbounds.py's references: (1) per configuration of coherent and per_re at 198, 66, 33 and 1000 samples, comparison and scenario, the one-sided bound at 0.05 (the smaller of the crossed bootstrap's, at most 0.05 of the replicates at or below zero, and eta - t_9(0.95) se_lin), and per reference and scenario the same at 0.05/4; the smallest over the seven scenarios bounds the lowest efficiency at that level; (2) per comparison, configuration (all 15) and scenario, R12's test (csirs.at_threshold on the stream '|thr') at csirs.py's threshold (a reproduction), at the 12-per-slot thresholds (120 and 30 kHz) for the exact and six-set comparisons and at the 8-per-slot thresholds for the exact and eight-set ones, with Holm across the seven scenarios and the seed share of each contrast; (3) the eight-set variants' bounds at 0.05/7, as R16's at eight per slot; (4) for density 3, coherent, in Phoenix in the three six-set comparisons and for Top-8, Top-16 and Top-32 in Philadelphia and Hier-6 in Phoenix, per 50 m block its users, share of the genie-aided rate and efficiency, and the efficiency and the bootstrap bound at the declared level without it",
+    "nrtime": "the procedure of csirs_cfg.py (64 one-port, one-symbol resources, n per 125 us slot in the slot's last n symbols, one aperiodic set per slot; the sweep's sets under trigger A in control slot 0, at most four, and trigger B in control slot 1, each set one cri-RSRP report setting, A's reports on one uplink transmission and B's on another; the reduced set's four resources under trigger C at offset 0, one report) with a 120 kHz or a 30 kHz control carrier carrying the triggers (a two-symbol PDCCH) and the reports (two-symbol transmissions that do not cross a slot boundary).  With 30 kHz the CSI-RS start in the first 120 kHz slot at least N_csirs = 5 PDCCH symbols after the PDCCH (5.2.1.5.1a).  A transmission starts at the first control-carrier symbol no earlier than Z after its trigger's PDCCH and Z' after the last resource its reports cover (5.4), (Z, Z') = (min(97, X3 + KB2), X3) at mu = 3 and (33, X1) at mu = 1 (Table 5.4-2; X beamReportTiming, KB beamSwitchTiming, TS 38.331), and two aperiodic report transmissions never share a control slot (5.2.1.5.1).  d_S is the sweep's later transmission's start; d_L the reduced set's start less one target slot plus tau; the transmissions' length and the base station's decoding are common and taken as zero.  The threshold of an implementation is (T_max - d_L)/(T_max - d_S) at the declarable timing (X, KB) that makes it highest, the timing most favourable to the candidate.  For ResNet-18 on the GPU (1218.876 us), T_max = 10 ms: 0.9393066873786408 with 12 per slot and a 120 kHz control carrier (X3 = KB2 = 14; 0.8922-0.9393 over every declarable timing), 0.9480869285714285 with 30 kHz (X1 = 28), 0.97332584305835 and 0.9740620829493087 with eight per slot at 120 and 30 kHz.  Its csirs.py mode (Z' alone, X = 0) reproduces csirs.nr_threshold, 0.9496991264367816, to 1e-12.  Not modelled: the uplink data channel's preparation time (6.4), which holds only the reduced set's report later than Z does and so can only ease an exclusion, and time-division duplexing's uplink slots and timing advance, whose delay of the sweep's report the paper states against the largest an exclusion tolerates"
+   },
+   "criteria": {
+    "levels": "before anything is written: L1 csirs.py's gates (sim.measure bit for bit at N = 1000, the stored per-period means within 1e-5 and eta to four decimals); L2 the exact comparison reproduces csirs.json (eta, se_lin and R12's test at csirs.py's threshold in every configuration and scenario, the bound at 0.05/7 at 198 samples with either estimator) and L3 the six-set variants csirs_cfg.json the same way, floats to 1e-12 and flags exactly; L4 the references reproduce refbounds.json (eta, se_lin, the bound at 0.05/28); L5 nrtime's csirs.py mode reproduces csirs.nr_threshold to 1e-12 and the corrected thresholds equal those declared here; L6 the sets of eight partition the 64 beams and their unquantized choice is methods.topk's; L7 per user the 'worst' choice is never better than the exact one; L8 every R12 contrast's seed share below 10%; L9 the bound used here, whose bootstrap test asks only that at most alpha of the replicates fall at or below zero, equals effbound.lower_bound at the declared level on every reproduction cell; every scan finds one transition from a passing point"
+   },
+   "declared": "2026-10-18",
+   "description": "a timing module (nrtime.py), one analysis declared before it runs (levels.py) and two reading rules (R18, R19).  nrtime.py gives the aperiodic CSI-RS procedure's report times under both computation-time conditions of TS 38.214 5.4; levels.py gives the lower bounds at the level each claim needs, rule R12's test at the corrected thresholds, the configured sweep with eight resources per slot, and a block-by-block diagnosis of the bootstrap's lower tails.  No model is retrained, nothing is re-solved or re-timed, and the output (levels.json) is new; no recorded file is written",
+   "files_sha256": {
+    "levels.json": "d45bda930cf70492b9788e5b4c64877c49399bcbfe4df681bc792804450e0865"
+   },
+   "key": "levels",
+   "rules": [
+    "R18",
+    "R19"
+   ],
+   "scripts": [
+    "nrtime.py",
+    "levels.py"
+   ],
+   "scripts_sha256": {
+    "levels.py": "9d5f6f80dcac0b15fb3fc295e556424ba95dcd5eb8be18318b3201051b9d7885",
+    "nrtime.py": "67d7b98cc6096464f21004b31d41fd227db2db9028c1aea53deb269ec42bee0b"
+   },
+   "sources": {
+    "TS 38.214 V18.11.0 (2026-09)": "re-read 2026-10-19, 38214-ib0.zip fetched again in the in-app browser with the authors' approval (earlier notes quoted 5.4's Z' condition and elided its Z condition): 5.4, a valid report needs its first uplink symbol 'no earlier than at symbol Zref' and the n-th report's 'no earlier than at symbol Z'ref(n)', Zref being the next uplink symbol after the computation time from 'the end of the last symbol of the PDCCH triggering the CSI report(s)', T_switch applying only with Z1; Table 5.4-2 (read 2026-10-18), Z3 = 33 at mu = 1 and min(97, X3 + KB2) at mu = 3; 6.4, the uplink data channel no earlier than N2 symbols after its scheduling PDCCH, N2 = 12 at mu = 1 and 36 at mu = 3 for timing capability 1 (Table 6.4-1); 5.2.1.5.1, without minimumSchedulingOffsetK0/K2 and without qcl-Type 'typeD' in the trigger states' TCI states 'the CSI-RS triggering offset is fixed to zero', and a set whose first resource follows its trigger's PDCCH by less than the UE's beamSwitchTiming is received with a default QCL assumption",
+    "TS 38.331 and TS 38.306 V18.11.0 (2026-09)": "read 2026-10-18 (sources of the configured sweep): beamReportTiming {14, 28, 56} symbols at 120 kHz and {4, 8, 14, 28} at 30 kHz; beamSwitchTiming {14, 28, 48, 224, 336} at 120 kHz; maxNumberSSB-CSI-RS-ResourceOneTx {n0, n8, n16, n32, n64}, at least 8 mandatory in FR2"
+   },
+   "state": "declared before it ran; none of its outputs existed",
+   "title": "report times under both computation-time conditions, and the bounds at the level each claim needs"
+  },
+  {
+   "analyses": {
+    "proposition_1d": "Proposition 1, part (d), a random completion time.  Let the method select among the M beams, let its completion time D_L be random and independent of the channel, let T_max > d_S and psi(T) = E[(T - D_L)^+] - eta_S (T - d_S)^+.  It outperforms the sweep in expected rate at T only if psi(T) > 0, and a perfect predictor does exactly then.  If psi(T_max) <= 0, those periods form one interval (ess inf D_L, a) with a <= T_max, empty when D_L >= d_S almost surely; the condition then reads E[min(D_L, T_max)] >= eta_S d_S + (1 - eta_S) T_max, part (a) at the mean of the completion time capped at T_max.  Lower bounds on eta_S and on D_L and an upper bound on d_S, which D_L must then exceed, may replace them.  Proof: in each realization the selected beam's rate is at most the best beam's, and D_L is independent of the latter, so E[R_L(T)] <= (G/T) E[(T - D_L)^+], with equality for a perfect predictor; E[(T - D_L)^+] is convex and nondecreasing in T and positive exactly above ess inf D_L; the sweep delivers nothing below d_S; on [d_S, T_max] psi is convex, so psi(a) <= 0 and psi(T_max) <= 0 give psi <= 0 on [a, T_max]; psi(T_max) = T_max - E[min(D_L, T_max)] - eta_S (T_max - d_S); the bounds only raise psi; a deterministic D_L recovers part (a).  A fixed percentile of D_L is therefore neither necessary nor sufficient for an exclusion in expected rate",
+    "trace_decisive": "One process per case and run, sequential, never concurrent, interleaved run 1 A B C, run 2 A B C, run 3 A B C.  Pinning and environment as run_all.sh: taskset -c 0-15 (the eight P-cores with SMT); case A with eight threads (OMP, OpenBLAS and MKL at 8, torch.set_num_threads(8)) and no CUDA device visible; cases B and C with one thread and torch.set_num_interop_threads(1), cudnn.benchmark on; gradients off; warnings silenced as run_all.sh did, those raised while building recorded.  Runtimes: uncompiled, calibrate.build (the stored eager closures: the network and argmax, then torch.cuda.synchronize on the GPU), and TorchScript of the whole decision, calibrate_opt2.build (traced, frozen, optimize_for_inference), so the networks, weights (seeds 17, 29, 43), inputs and freezing are the stored campaign's.  Boundaries: 'host', the closure's result converted by int() inside the timed call, which on the GPU copies the index from device memory, the boundary of record; 'device', the index left in device memory as the stored GPU timings left it, for case C only, to measure the copy.  Case A: uncompiled and TorchScript at the host boundary (TorchScript on eight threads was never timed before); B: the same; C: both runtimes at both boundaries.  Per configuration and seed: 1,000 warm-up and 10,000 timed calls (the protocol's full counts; calibrate.timed, time.perf_counter_ns around each call), then the recheck with a quarter of each (250 and 2,500); drift = |recheck p95 - p95| / p95, the nearest-rank 95th percentile of calibrate.nearest_rank_p95.  Before timing, each process waits for a quiet machine: ten samples over 5 s, each with GPU utilization at most 10% and a one-minute load average at most 1.0, polled every 30 s for up to 60 min; if it never comes, the process writes r<run>_<case>_notstarted.json and the campaign stops.  The machine's state (load, governor, energy preference, turbo, the pinned CPUs' frequencies, the GPU's utilization, clocks, temperature, power, performance state and processes, the busiest CPU processes) is read from /proc, sysfs, nvidia-smi and ps before and after every configuration, never during one; calibrate.env_record once, after the last.  A configuration is contended if its drift exceeds 10% for any seed, and a process with a contended configuration is repeated once, immediately, as attempt 2; every attempt is kept.  Outputs, written once: trace_decisive/r<run>_<case>[_a2].json, per seed the counts, median, mean, quartiles, 95th and 99th percentiles, minimum, maximum, the recheck's 95th percentile, drift and lag-one autocorrelation, with the state and environment; and the .npz beside it, every timed and recheck call in nanoseconds in call order.  --smoke DIR runs every configuration with 3 warm-up and 10 timed calls (recheck 1 and 3) into a directory outside the outputs, without the declaration gate and without waiting for a quiet machine"
+   },
+   "criteria": {
+    "trace_decisive": "before timing: the sha256 of calibrate.py, calibrate_opt2.py and models.py equal source_sha256; the affinity is CPUs 0-15 and the thread counts and environment variables are the case's; CUDA is available exactly for cases B and C, on the Quadro RTX 8000; the output does not exist.  Per configuration and seed, before timing: a 'host' closure returns a Python int and a 'device' one a CUDA tensor.  After timing: the output still does not exist (no overwrite)"
+   },
+   "declared": "2026-10-22",
+   "description": "a timing campaign declared before it runs (src/latency/trace_decisive.py, driven by run_trace_decisive.sh), a reading rule (R20) and part (d) of Proposition 1, the exclusion in expected rate under a random completion time.  The campaign times again the three implementations on which the screen's verdicts turn: ResNet-18 on eight P-core threads (case A), ViT-B/16 on the GPU (B) and ResNet-18 on the GPU (C), in three runs, every call kept, with the beam index converted to a CPU integer inside the timed call.  Nothing is retrained or re-solved; no stored timing, output or verdict changes; the outputs are new",
+   "files_sha256": {
+    "../latency/trace_decisive/r1_A.json": "d9b888d01108e30807c46b8231d5da35d70506b86d9ebc776b32cbda893838c6",
+    "../latency/trace_decisive/r1_A.npz": "c84561b26edbd57537161d560ea8d65a535627aaf5272dfe299b30d22bcdddd8",
+    "../latency/trace_decisive/r1_B.json": "eeb52a6981a4b5fdaff7e50c4d7c5921c6692ca814bd867e8235dff2f61a6bb8",
+    "../latency/trace_decisive/r1_B.npz": "5fe78835883da89695aaba6c36adef48d1bb03e2e81e6f9503159b20b956cffa",
+    "../latency/trace_decisive/r1_C.json": "6c24d2bc93abf759a4a34896705ae41eea6d2bffa586ed3ea30d34f5534ff3b9",
+    "../latency/trace_decisive/r1_C.npz": "3f90e50e8fd4e05fb39468e5accf0039dbe1c04fadcad244ae736bed8792e63a",
+    "../latency/trace_decisive/r2_A.json": "4ef5b7145de805ef442df5c8df1cbdb189990d06b99fce5791d98411ff1e2e40",
+    "../latency/trace_decisive/r2_A.npz": "c4c9cd8814651340b5d329b44c9785dc314425bf1396d7082264c143f17b4c08",
+    "../latency/trace_decisive/r2_B.json": "1ac09fce1a2030836812fbaf99879e0409cbeb07c62b708caf5dedc812f2ef92",
+    "../latency/trace_decisive/r2_B.npz": "d542567043f6601cb33103c4b72e9759edaa6f43462dfa5d11c65923d6dadf31",
+    "../latency/trace_decisive/r2_C.json": "6568b17197c887a74470d22d592f9f35d5df51471d9a22ad0c7f7b9a180f5e01",
+    "../latency/trace_decisive/r2_C.npz": "7275df2cddab2eb3f551b588482ef5d149944ce1e713b8f50da719ebb8beccc6",
+    "../latency/trace_decisive/r3_A.json": "945ae18ebc16d26256b4277d94f39a3be6a248cdbb894bab06d502376510aafe",
+    "../latency/trace_decisive/r3_A.npz": "c2425b75eecd472141e70f66ecacecbb6f7d49d92cd9360f1f2ba15f0e2a9356",
+    "../latency/trace_decisive/r3_B.json": "13cd9231994ebf5b9902949eb957ba0c3a1cf4be0e6c757198364744798077cf",
+    "../latency/trace_decisive/r3_B.npz": "516d86405919f68438ba2bb29d09d60b46a988a752323fe08373ff7a36bab951",
+    "../latency/trace_decisive/r3_C.json": "4a651a286c7e8ec15134527c5271d855c5cf765e14314087415c28b54b338264",
+    "../latency/trace_decisive/r3_C.npz": "d7333d95b06aaaf2ec01c98c75d933ab08854aff2477c03229737eab9f6c76c1"
+   },
+   "key": "trace_decisive",
+   "rules": [
+    "R20"
+   ],
+   "scripts": [
+    "../latency/trace_decisive.py",
+    "../latency/run_trace_decisive.sh"
+   ],
+   "scripts_sha256": {
+    "../latency/run_trace_decisive.sh": "54d72d04f5752c3c2ab0ce8ec00e1a01805592d8960885e8253ac0e250c5f45a",
+    "../latency/trace_decisive.py": "01d9ee0a722b114a0c04b1158fbba7197eeea7b77d9464698c32f34c07bb40c9"
+   },
+   "source_sha256": {
+    "calibrate.py": "a3edd9bf45ba03f8f497a2b266c7c800625899150fe14d1b84debfd288fd6d44",
+    "calibrate_opt2.py": "fb93f5489ffaa25f3bbd0f1f603e4ef65fae806b940bc38c1689e85762728e4b",
+    "models.py": "1819703b5203e83bdce77667f27878b711c7cc585797eec2335d22d551d4d20f"
+   },
+   "state": "declared before it ran; none of its outputs existed; the stored calls had been examined",
+   "title": "repeated timing of the three implementations on which the screen's verdicts turn, and Proposition 1(d)"
+  },
+  {
+   "analyses": {
+    "reconcile": "reconcile.py rebuilds rule R5's rows (reading_rules.r5) and margins.json's rows from the stored timings and stops unless both are reproduced exactly.  For ResNet-18 on eight P-core threads, ViT-B/16 on the GPU and ResNet-18 on the GPU it then adds the repeated runs' two runtimes at the host boundary, uncompiled ('eager, repeated runs') and TorchScript ('TorchScript, repeated runs'), and recomputes every derived field with the same formulas.  A repeated runtime's charge is the largest per-seed 95th percentile of a run, the smallest over the three runs; its lower value is the smallest over the nine seed-runs of margins.py's order statistic X_(r), r = margins.rank(n, 0.05/3), 9,453 of 10,000 calls.  It records the repeated runs' fastest timed call, the rows whose inputs change and the admission entries beyond 64 beams that change.  Gates G1-G5 (its docstring): the stored rows reproduced, no verdict changed, the repeated runs' hashes, every run clean, the charges and ranks.  It refuses to overwrite reconcile.json; --check-only runs every gate and writes nothing"
+   },
+   "declared": "2026-10-22",
+   "description": "a reading rule (R21), set post hoc, and the script that applies it, declared before it runs (src/scheduler/reconcile.py): Table I, rule R5's reading, every exclusion margin and every number computed from them read every runtime measured, the stored timings and the three repeated runs at the host boundary, in place of the stored timings alone, which rule R20 (i) kept as the inputs.  Nothing is timed, retrained or re-solved; no stored file changes; reconcile.json is new",
+   "files_sha256": {
+    "reconcile.json": "3b72af550d99ac052e41d20675e37aaaf4b68c2534520bc7e59e4a311494edd4"
+   },
+   "key": "reconcile",
+   "post_hoc": [
+    "R21"
+   ],
+   "rules": [
+    "R21"
+   ],
+   "scripts": [
+    "reconcile.py"
+   ],
+   "scripts_sha256": {
+    "reconcile.py": "29fd9243d1187ca33a02039e50408fc2194c9871c33e02444a570063669d6788"
+   },
+   "state": "declared before it ran; rule R21 was set after the repeated runs and a review had been seen",
+   "title": "the timing inputs reconciled with the repeated runs"
+  }
+ ],
+ "changes": [
+  {
+   "changed": "g2_observation.measurement: the pilot noise per sub-band",
+   "date": "2026-09-18",
+   "effect": "the band-averaged measurement implied 16000 independent pilot dimensions where 1000 exist; probes were 12.04 dB cleaner than a 10 us / 100 MHz pilot can deliver.  Every reported number moves.",
+   "from": "sigma_p^2 = sigma_d^2 / 1000 = 1.995300e-15 W per sub-band",
+   "guard": "obs.py now asserts K_F == g1.N_SUBBANDS and that K_F * sigma_d^2 / sigma_p^2 == g1.PILOT_SYMBOLS, so the processing gain can never again exceed the pilot budget",
+   "inputs_sha256": {
+    "../sites/site-manifest.json": "0531a008fd37beca2e25accf19e3de0542b6f7aa2116fd3fffaa85ba2641073f",
+    "g1.py": "10e7ceeb2aa665a8aac30f2d64506c638e9715ccd59365c41d739e0c57e6e53c",
+    "obs.py": "5f7d8cc3ffe46d272331501361618c7431cbcce3b2522bde42738336f5f2b93c"
+   },
+   "not_affected": "the payoff R = max(0,1-d/T) * mean_j log2(1 + P_tx p_j / sigma_d^2): the 1/K_F in sub-band power and sub-band noise cancel, so the rate equation was already correct",
+   "to": "sigma_p^2 = sigma_d^2 / (L / K_F) = sigma_d^2 / 62.5 = 3.192480e-14 W per sub-band, with L = bandwidth * 10 us = 1000 the pilot's total complex-dimension budget",
+   "why": "The frozen G1 spec requires the 1000-symbol gain to be counted exactly once and forbids cost-free repeat averaging; charging sigma_d^2/1000 per sub-band and then averaging 16 sub-bands counts it sixteen times."
+  },
+  {
+   "changed": "latency.tau: the charge of a compute action (sim.elapsed_us)",
+   "date": "2026-09-18",
+   "effect": "the controller was charged 1.26x less than it executed at exit 2 and 1.54x less at exit 3, in the direction that flatters the compute action.  One-shot fixed strategies now pay tau_fresh_e rather than the cumulative chain, which is slightly cheaper.  Every reported number moves",
+   "exactness_preserved": "COMPUTE advances the exit index by exactly +1 and never lowers it, so each exit is reached at most once and the restart cost is a function of the exit alone.  d(e,K) remains deterministic in (e,K) and the backward induction is unchanged -- no state expansion was needed",
+   "from": "tau_cumulative_us = {'1': 14.544, '2': 28.571, '3': 42.098}, the cost of an early-exit network that resumes from the activations it already holds",
+   "guard": "evaluate.check_charge asserts that tau_restart is the running sum of the fresh invocations, that a fresh pass is cheaper than the incremental chain to the same exit (it would not be if timed against a cached activation), and that the vector the planner solved with is the vector the executor charges",
+   "not_affected": "the probe charge, the payoff, the observation law, the estimated transition model, and the predictor weights",
+   "to": "tau_restart_us = {'1': 14.135, '2': 36.062, '3': 65.0}, the sum of the fresh invocations 1..e, with tau_fresh_us = {'1': 14.135, '2': 21.927, '3': 28.938} newly measured under the same G3 protocol",
+   "why": "The executor rebuilds the feature vector and recomputes from block 0 on every compute action, because an intervening probe changes the network's input; 81-100% of multi-compute receivers interleave.  The charge must be the work performed"
+  },
+  {
+   "changed": "statistic.uncertainty and statistic.seed_aggregation; evaluate.py's resampling and reported families",
+   "date": "2026-09-20",
+   "effect": "every reported MEAN is unchanged and every policy, charge and per-receiver difference is bit-identical.  The random stream changes, so per-deadline intervals and p-values shift slightly and Holm counts may flip at the margin.  The aggregate contrasts the paper leads with can now carry an interval, which they could not before",
+   "fields_now": {
+    "statistic.seed_aggregation": "report the mean over seeds and the seed spread; seeds are averaged BEFORE the bootstrap, so no reported interval carries seed variability",
+    "statistic.uncertainty": "95% percentile bootstrap over 50 m spatial blocks, 20,000 resamples, the blocks resampled once per replicate and shared across the deadline grid; reported per deadline and as a grid-averaged aggregate"
+   },
+   "from": "95% percentile bootstrap over 50 m spatial blocks, 2000 resamples; one independent generator per (comparison, deadline), replicate means discarded; intervals reported per deadline only; no paired difference against the blinkered or myopic controllers",
+   "not_affected": "the observation law, the charges, the estimated transition model, the predictor weights, the policies, the selection rules, and every point estimate",
+   "to": "one block resample per replicate shared across the deadline grid, so the grid-averaged contrast has a bootstrap distribution; per-deadline AND aggregate intervals reported for the gate, compute-pays, mechanism and deployable families; the blinkered and myopic pairs added to mechanism",
+   "why": "The paper's headline quantities are grid averages and its intervals were per deadline, so six positive site point estimates were being read as six demonstrated improvements.  Independent per-deadline streams make an aggregate interval not merely unreported but undefined"
+  },
+  {
+   "changed": "evaluate.py's mechanism family: two pairs against the published adaptive baseline",
+   "date": "2026-09-20",
+   "effect": "no pre-existing quantity changes.  brng() keys each comparison's generator by the pair, so a new pair opens an independent stream; every number already reported is expected to reproduce bit-identical and the artifacts are diffed against pre-correction copies to confirm it",
+   "from": "the published adaptive comparator was scored at every deadline on every site and its per-deadline means were written to report.json, but no paired difference against it existed, so the one comparison against prior work was the one contrast with no interval",
+   "not_affected": "the observation law, the charges, the estimated transition model, the predictor weights, the policies, the selection rules, the resampling design, and every point estimate and interval already reported",
+   "to": "sched-pi and sched are each compared against zhang-AHTBS+AHIBS as a paired difference, carrying the same per-deadline and grid-averaged 95% intervals as every other mechanism pair (20,000 resamples, blocks resampled once per replicate and shared across the deadline grid)",
+   "why": "Every ablation of our own controller carried an interval and the single comparison against another author's method did not, which is the comparison a reader has least reason to take on trust"
+  },
+  {
+   "changed": "seeds; statistic.uncertainty (the primary analysis); splits.held_out_rule; interpretation rules R1-R4",
+   "date": "2026-09-23",
+   "extensions_descriptive": [
+    "seed SD and per-seed grid means for every method",
+    "oracle-SNR strata contrasts (block-restricted resampling, minimum 5 blocks)",
+    "block-size sensitivity at 25 m and 100 m",
+    "controller variants sched-rep1 and sched-deep1 (evidence for R2)",
+    "controller variants sched-fcc, sched-cnnc and sched-anyr (evidence for R3)",
+    "sensitivity sweeps, one variable at a time: rho in {0.1, 0.3, 3} scaling every inference charge, and t_p in {50, 125, 250} us, each with its own solve and its own validation run",
+    "coverage of the deployed policy's decisions by estimation cell, per site",
+    "a NumPy latency profile for the early-exit and FC networks",
+    "per-hardware-profile feasibility and budget margins",
+    "inversion counts by sign change anywhere on the grid and by (pair, deadline)",
+    "the Phase 2 budget checks re-run at the scheduler's charges"
+   ],
+   "files_sha256": {
+    "../latency/atlas.json": "e647c5abcad2905741247ece7847e9b7d0b6691b442dd7391d6c301644e759b6",
+    "lat_cpu1t_ecore.json": "c3aca7d4b8bb3597b967b03ceec820e0e5a8ff75ac71a39c82750d2e169ebb8c",
+    "lat_cpu1t_pcore.json": "c659caa7eb31ce7c7e1cc1dd54db1e9f82dd7d487ed8b03b9b42b7e34fb8a4ef",
+    "lat_cpu8t_pcore.json": "6a34bd62465ed8e5e649243a5a55cc7ff90e2c8a880e0471406d3bf35d0d5cd1",
+    "lat_gpu.json": "6af3196ce962b3c6de6ab8d34c304ef280b09acd80907ae278d611d04c55eeab"
+   },
+   "from": "seeds 17/29/43 averaged BEFORE a 50 m block percentile bootstrap, so no interval carried seed variability; held-out sites opened exactly once",
+   "gate_policy": "the pre-registered gate and its 1%-of-oracle guard are evaluated with the pre-registered estimator on seeds 17/29/43 of the corrected run and reported whatever the ten-seed result is; the ten-seed gate is reported as secondary",
+   "held_out": "the four held-out sites were opened once under the frozen protocol; they are reopened for the ten-seed rerun, and the numbers from the single opening remain reported",
+   "preregistered_analysis": "the full three-seed analysis is rerun on the corrected code (--seeds 17 29 43) and reported beside the ten-seed analysis in the supplementary",
+   "seeds": [
+    17,
+    29,
+    43,
+    53,
+    61,
+    71,
+    79,
+    89,
+    97,
+    107
+   ],
+   "selection": "the headline controller is re-selected on the validation city with ten seeds by the unchanged matched rule (estimation suffix chosen by the no-compute baseline); every contrast follows it.  The new variants sched-rep1, sched-deep1, sched-fcc, sched-cnnc and sched-anyr never enter selection",
+   "state": "all results computed with seeds 17/29/43; no run with the new seeds, the new variants or the sweeps existed",
+   "timing": "the latency harness's weight seeds (17/29/43) are unchanged.  The policy lookup is re-timed on the real (4,65,40,10,2) table by batched timing of the real five-dimensional index replayed from recorded trajectories, and applied whichever way it moves (recorded below, with its value).  ResNet-18 and ViT-B/16 are re-timed on the GPU-resident profile at the full G3 counts.  A timing that fails the contention check is rerun; the 10% rule is never relaxed",
+   "to": "primary analysis on the ten seeds above; 17/29/43 keep their existing checkpoints and the seven new seeds are trained under the same protocol.  Each grid-averaged paired contrast carries two intervals: (i) a seed-by-block percentile bootstrap, seeds resampled with replacement and 50 m blocks resampled once per replicate, shared across seeds and deadlines, 20,000 resamples; (ii) the t interval mean +/- t_(S-1) * sqrt(s_seed^2/S + SE_block^2).  A site counts toward a reading rule only if BOTH exclude zero after Holm correction across the six evaluation sites",
+   "why": "the controller's seed range exceeds the effects the paper reports and no interval carried it; the ten-seed analysis was made primary and the reading of the new results fixed in advance"
+  },
+  {
+   "changed": "evaluate.py: the charge of the one-shot ee{e}k{k} baselines",
+   "date": "2026-09-23",
+   "effect": "isolated three-seed diff (validation, test and held-out sites): only the ee2k* and ee3k* entries move (e.g. ee3k8 227.712 -> 191.650 us); no gate row, deployable choice, paired contrast, selection or other method changes",
+   "from": "one-shot ee{e}k{k} charged tau_restart[e], the sum of e fresh invocations (ee2: 36.062 us, ee3: 65.000 us), contrary to the stated effect of the compute-action charge above",
+   "not_affected": "every controller, every other fixed method, the charges the planner solves with, and every paper number that does not quote an ee2/ee3 one-shot method",
+   "to": "one-shot ee{e}k{k} charged tau_fresh[e], one invocation to exit e (ee2: 21.927 us, ee3: 28.938 us), as the compute-action charge above states and profile_pred.py charges",
+   "why": "validation.json and predictor_profile.json disagreed on the same methods' cost"
+  },
+  {
+   "also_measured": {
+    "gpu_full_counts_note": "pass 1 charged, pass 2 the recheck (drift 9.9% and 2.1%, under the 10% rule); the GPU was shared throughout with a desktop-session encoder at ~21% utilization; the Phase 1 atlas held 1344.5 and 6331.0 us at reduced counts",
+    "gpu_full_counts_us": {
+     "resnet18_vision": [
+      1753.783,
+      1927.007
+     ],
+     "vit_b16_vision": [
+      7691.273,
+      7529.083
+     ]
+    },
+    "numpy_profile_us": {
+     "rho_vs_pytorch_pcore": 0.35,
+     "tau_fresh": [
+      4.793,
+      7.553,
+      10.381
+     ],
+     "tau_restart": [
+      4.793,
+      12.346,
+      22.727
+     ]
+    }
+   },
+   "changed": "latency.lookup: the per-decision table-consult charge (sim.lookup_charge)",
+   "date": "2026-09-23",
+   "deviation": "The ten-seed change named batched timing; the per-call figure is charged instead because per call is how G3 times every other component, including the other sub-microsecond ones, and batching would have given the consult alone a rule excluding the timer's overhead, in the controller's favour.  Both figures are recorded",
+   "effect": "isolated three-seed diff: headline selection, deployable choice and gate verdict unchanged; controller means move by at most 0.002 bit/s/Hz; fixed methods unchanged; latency-aware over cost-blind narrows on Chicago (+0.0834 -> +0.0750), Houston (+0.0503 -> +0.0464) and Miami (+0.0397 -> +0.0357), and moves by at most 0.001 elsewhere",
+   "files_sha256": {
+    "../latency/p_gpu_heavy_full.json": "80cf63533952f51c8f15635f3dce5399c3a3db1b458869acdab580c9e448afb6",
+    "lat_cpu1t_pcore_numpy.json": "aa611b26ab229c16257e9642edbd2a432d0fe690896b26e22446f5b090263b37",
+    "lat_lookup_real.json": "b9d64f56d5b0e94e92c3ec1e4a8eecfc7fdfc972c26c39671885f08011ec6fc9"
+   },
+   "from": "0.261 us: a stand-in (4,25,40,10) table with arbitrary indexing, timed one consult per call",
+   "not_affected": "the inference charges, the probe charge, the observation law, the estimated transition model and every fixed method",
+   "to": "0.296 us: the real (4,65,40,10,2) tables of seeds 17/29/43, consults replayed in order from the deployed controller's trajectories on the validation city, timed one per call (lat_lookup_real.json); batched timing reads 0.198 us",
+   "why": "the consult was timed on a stand-in table, and it is charged K+e+1 times per receiver"
+  }
+ ],
+ "coherence_grid_us": [
+  250,
+  350,
+  500,
+  700,
+  1000,
+  1400,
+  2000,
+  2800,
+  4000,
+  5600,
+  8000,
+  10000
+ ],
+ "declared_before": "any dataset was built, any model trained, any number seen",
+ "frozen_utc": "2026-09-15T15:12:02Z",
+ "g2_observation": {
+  "bandwidth_Hz": 100000000.0,
+  "c_sel_us": 1.88,
+  "codebook": "6-layer binary sub-array hierarchy, 126 codewords; layer l has 2^l beams on the first 2^l elements (array gain 2^l); layer 6 is bit-identical to the G1 64-beam DFT codebook",
+  "measurement": "band-averaged received power under CN(0, sigma_p^2) pilot noise per sub-band; exactly (sigma_p^2/2K) chi'^2(2K, 2K S/sigma_p^2); receiver debiases by its known floor",
+  "module_sha256": "d2b17e198fee78ea522019b70a06e01d25c5750e6973f8739fb4bf00581b6940",
+  "n_subbands": 16,
+  "payoff": "R = max(0, 1 - d/T) * mean_j log2(1 + P_tx p_j / sigma_d^2), the frequency-selective average under one frequency-flat beam",
+  "probe_order_without_a_predictor": "bit-reversal permutation of 0..63, frozen",
+  "t_p_us": 20.0,
+  "why": "Phase 3 fixture F6 failed at all eight sites: coherence bandwidth 6.0-22.6 MHz against a 100 MHz pilot, and choosing the beam on the band-centre channel costs up to 2.97 dB at p95.  G1 is kept verbatim for physics and noise; only the frequency axis changes."
+ },
+ "gate": {
+  "also_tested": "the Phase 2 prediction that the myopic value-of-computation rule is strictly suboptimal, and the closed-form T* against the measured crossover",
+  "guard": "and never loses to that best fixed strategy by more than 1% of oracle goodput at any coherence time on either test site",
+  "not_required": "rank inversion among published methods is MEASURED, not required: if the published ordering never changes over 0.25-10 ms, that is reported as a negative result",
+  "primary": "the scheduler beats the best FIXED strategy in its own menu at some coherence time on BOTH test A and test B, with a paired 95% block-bootstrap CI excluding zero"
+ },
+ "inherits": {
+  "g1_observation_law": "a2bfa889b1311ae264345c5b75970de1073f40d27214931bcc0427df6822204c",
+  "phase2_dp": "91c28c57d8e8f07e8516e0918be68998f5468d4c8f8689d1b647ab4eb243723d",
+  "phase2_theory": "129518aba813c260ad373538e562b72a2321513bc48e7e94d6d719ee5a5a3b89",
+  "qualification": "376fd495fb58aaeab8222dce271706bf764be3022a4aea9c49ccf5d468bfd736",
+  "site_manifest": "64b33f9c6ee721c179082453217608eed90cf21eae437b41a5bb894495eb99bb"
+ },
+ "latency": {
+  "controller_charge": "the DP table lookup is charged on every decision",
+  "primary_profile": "cpu-1t-pcore (pinned P-core, one thread)",
+  "protocol": "G3 verbatim: 1000 warmup, 10000 timed, perf_counter_ns, nearest-rank p95, largest of seeds 17/29/43, whole decision charged",
+  "sensitivity": [
+   "cpu-1t-ecore",
+   "cpu-8t-pcore",
+   "gpu-resident"
+  ]
+ },
+ "methods": [
+  "oracle (upper bound, commits at c_sel with the true best narrow beam)",
+  "sweep64 (exhaustive 64-beam sweep)",
+  "hier-L for L in 3,4,5,6 (binary hierarchical search, 2 probes per layer)",
+  "topk-K for K in 2,4,8,16,32 (frozen spread order, argmax of measurements)",
+  "fixed-exit e at K probes (our predictor with no scheduling)",
+  "fc / cnn published architectures at their Phase 1 measured charge",
+  "zhang-HIBS and zhang-AHTBS/AHIBS (the published adaptive comparator)",
+  "osla (the myopic value-of-computation rule: Phase 2 predicts it loses)",
+  "sched (the deadline-aware DP threshold table)"
+ ],
+ "phase": 4,
+ "predictor": {
+  "body": "3 hidden blocks, width 256, ReLU",
+  "exits": {
+   "0": "no network: argmax of the measurements",
+   "1": "after block 1",
+   "2": "after block 2",
+   "3": "after block 3"
+  },
+  "input": "64 log-power measurements (masked) + 64 probed-mask bits",
+  "model_selection": "epoch chosen on the validation city, never on a test city",
+  "target": "oracle band-averaged best narrow beam, cross-entropy at each exit",
+  "training_probe_counts": "uniform on 1..16",
+  "two_round": "round 0 trained on frozen-order prefixes; round 1 (final) trained on prefixes the round-0 model itself orders"
+ },
+ "rules": {
+  "R1": {
+   "applied_to_three_seed_results": {
+    "R1": "fails: the controller beats both twins only on city_5_philadelphia_28 and city_7_sandiego_28 (2 of 6), neither a test site; it loses to the deployable fixed strategy on no test site",
+    "R2": "not computable (sched-rep1 not yet run); the sched-1exit half holds on phoenix, philadelphia and sandiego (3 of 6)",
+    "R3": "not computable (variants not yet run)",
+    "R4": "resnet18_vision: zero rate at every deadline only on the single-thread CPU profiles; cannot beat the sweep on all four profiles (GPU-resident 1344.5 us = 1.10 x tau*).  vit_b16_vision: zero rate everywhere except on the GPU-resident profile (6331.0 us); cannot beat the sweep on all four.  transformer_small: never zero everywhere; cannot beat the sweep only on the efficiency core",
+    "estimator": "block percentile, seeds averaged first (pre-registered)"
+   },
+   "post_hoc": false,
+   "set": "2026-09-23",
+   "text": "online allocation stays the first contribution only if, on >= 4 of 6 sites, the controller beats both its cost-blind and its no-compute twin on the same site, at least one such site is a test site, and it loses to the deployable fixed strategy on neither test site; otherwise the paper leads with the accounting, the accuracy-free budget and the per-profile exclusion, and reports the controller as a bounded study"
+  },
+  "R10": {
+   "post_hoc": false,
+   "set": "2026-10-13",
+   "text": "The _rx results replace the _rr results wherever the paper reports a controller result: Table V, Fig. 2, the main text, the abstract, the conclusion and the supplementary's controller appendices, including the three-seed analysis and its primary criterion, rerun on the corrected code (if its outcome differs from the _rr one, both are reported).  R1-R3 and R6-R7 are re-applied to the _rx outputs by reading_rules.py's own functions (rules_suffix.py).  Appendix I-I states each Table V entry under the _rr re-solve beside its _rx value, and the recorded value as before.  Section VII-D's comparison with adaptive acquisition uses the guarded forms; the unguarded forms remain in Appendix I-H.  If a guarded form, put in place of the reimplementation, would be the best of the ten methods at any (scenario, T) with latency included, Section VI-C says at how many.  Any printed statement whose truth value the re-solve or the guards change is reworded"
+  },
+  "R11": {
+   "note": "reads an analysis specified after its point estimates had been seen",
+   "post_hoc": false,
+   "set": "2026-10-13",
+   "text": "Delta_s of the selector analysis is established in a scenario when the seed-by-block bootstrap interval and the t interval both exclude zero and the larger p-value survives Holm correction across the six evaluation scenarios, separately for S9 and S36; both sets are reported.  The analysis is post hoc: it changes neither the primary criterion nor Table II nor R8, and a null or negative result is reported as such"
+  },
+  "R12": {
+   "amended": {
+    "date": "2026-10-16",
+    "text": "as first stated, with 'established' meaning: the contrast's bootstrap 95% interval at the threshold above zero, the delta-method t interval eta - t_9(0.975) se_lin above the threshold, and the larger of the two p-values surviving Holm across the seven scenarios",
+    "why": "the first run of csirs.py stopped at its own check: the declared t version tested a contrast whose standard error carries the between-block uncertainty of the mean rate, so it could not bound the efficiency"
+   },
+   "post_hoc": false,
+   "set": "2026-10-16",
+   "text": "Section VI-A may call ResNet-18 on the GPU excluded under the CSI-RS procedure at a density only if, with the coherent estimator, mean(se_selected - threshold se_genie) > 0 is established at that density in all seven non-training scenarios: both intervals above zero and the larger p-value surviving Holm across the seven.  Otherwise the text states the shortfall and the lowest of the seven lower bounds.  The per-element estimator's result is reported beside it, and the margin of margins.json under the procedure with it: an exclusion that holds at the charged latency but not at its robust lower bound is reported as holding only at the former"
+  },
+  "R13": {
+   "post_hoc": false,
+   "set": "2026-10-16",
+   "text": "The paper may call the t interval conservative under the crossed model only if its simulated coverage is at least 94% in every configuration and scenario of calib.py; otherwise it describes the interval as an additional sensitivity criterion beside the bootstrap, not a separately justified confidence interval, and names the configurations where coverage falls short.  The error rate of the rule that needs both intervals is reported as simulated.  No recorded verdict changes either way"
+  },
+  "R14": {
+   "post_hoc": false,
+   "set": "2026-10-17",
+   "text": "The scenario-level verdicts of Section V's rule (both intervals excluding zero on the same side and the larger p-value surviving Holm across the scenarios of its family) are re-read with calibrated p-values.  A recorded larger p-value p in scenario g has the calibrated value max(p, the largest over calib_holm.py's twelve configurations of (1 + #{P* <= p})/(N + 1)), with P* the larger p-value in that configuration's N = 20,000 calibration replications on g's own blocks, counted at calib_cal.grid()'s first point above p.  A difference is established only if the recorded rule establishes it and Holm's procedure across the same scenarios also rejects on the calibrated values, with the same sign; otherwise the paper calls it not established after calibration wherever it is counted or tabulated.  This covers the controller comparisons of the decision tables and Table IV, the sensitivity, variant, fixed-model and predictor-quality families, the re-ranking table, the statements of R1-R3 and R7 as printed, and R11's selector.  Rule R12's larger p-value is its bootstrap p-value (asserted): it is calibrated with the bootstrap p-value's null distribution over the configurations whose seed share is at most 10% (calib_holm.LOW_SEED), plus 0.001, and R12 is then read as declared, Holm across its seven scenarios; Section VI-A, the contributions, the conclusion and the abstract call ResNet-18 on the GPU excluded under the CSI-RS procedure only at the densities where R12 survives, and if at none they say that the condition holds at the simulated efficiencies, which no calibrated test establishes.  Per-period comparisons (the bootstrap alone, Holm across the 12 periods) are called nominally significant, the result of an approximate, exploratory procedure, and the paper reports their simulated sizes at Holm's levels and their family-wise bound.  Not re-read: R8's simultaneous intervals (no change of the best method is established), the strata and block-size sensitivity tables (uncorrected) and the pre-registered three-seed analysis.  The paper reports the recorded rule's sizes at Holm's levels and its family-wise bound, and the calibrated rule's on the evaluation replications, with Monte Carlo standard errors.  Labels can only be removed"
+  },
+  "R15": {
+   "post_hoc": true,
+   "set": "2026-10-17",
+   "text": "A verdict that rule R14 leaves established counts as established only if Holm's procedure across the same scenarios still rejects it when every calibrated p-value q of its family is raised by two Monte Carlo standard deviations: sqrt(p(2 - p)/N_b) for a recorded larger p-value p from N_b = 20,000 bootstrap replicates (the binomial deviation of a bootstrap p-value, which exceeds that of a t p-value whose block term the bootstrap estimates at every p below 0.05, for normal replicates), and, where the Monte Carlo p-value binds (q > p), sqrt(q(1 - q)/N + (q/p)^2 p(2 - p)/N_b) with N = 20,000 null replications.  Otherwise the paper does not count the verdict, says that it lies at Holm's threshold within Monte Carlo error where it states it, and marks it where it is tabulated.  R15 covers every family R14 covers except rule R12, whose claim on all seven scenarios R14 already leaves unsupported at every density and whose 0.001 floor the deviation does not model.  Labels can only be removed.  It was set after the verdicts it re-reads had been seen: Miami's guarded-published lead, 0.00995 against 0.01, prompted it",
+   "when": "set after the verdicts it re-reads had been seen; it can only remove labels"
+  },
+  "R16": {
+   "post_hoc": false,
+   "set": "2026-10-18",
+   "text": "The paper's statements about the CSI-RS procedure of Section VI-A (the sweep's efficiency, its simultaneous lower bound, rule R12's verdicts with R14's re-reading, the margins under CSI-RS, and the camera-only and second-report delay limits) use, per estimator and number of samples, the lowest efficiency and the lowest bound over the exact comparison (csirs.json) and csirs_cfg.json's 'spread|worst' and 'contiguous|worst' variants; R12 holds at a configuration only if it holds, after R14, in all three.  csirs.json's values are reported beside them as the idealized comparison.  The completion times are those of the exact re-solve and of csirs.py, which the configuration keeps when the triggers and reports travel on a 120 kHz carrier; with a 30 kHz carrier the second report can slip by up to one uplink slot, an unshared delay the paper reports against the largest the exclusion tolerates.  Labels can only be removed"
+  },
+  "R17": {
+   "post_hoc": false,
+   "set": "2026-10-18",
+   "text": "The screen against a fast reference (Appendix A.1's condition, with 0 <= eta_j_lower <= min(eta_j, 1)) states an exclusion horizon at the reference's lowest refbounds.json bound over the seven scenarios, one-sided at 0.05/28, so that the bounds hold together over the scenarios and the four references at a nominal 95%; it names the reference that gives the longest such horizon and reports the horizon at the lowest stored efficiency beside it, as a point value.  A horizon is stated only where 0 < bound <= eta < 1"
+  },
+  "R18": {
+   "post_hoc": true,
+   "set": "2026-10-18",
+   "text": "The paper's verdicts, labels and horizons keep the declared levels: R16's bounds (0.05/7 per scenario) for the sweep and R17's (0.05/28) for the fast references.  Beside them it reports, from levels.json, the smallest over the seven scenarios of the per-scenario bounds at 0.05 for the sweep (every comparison and configuration) and at 0.05/4 for each reference, the smaller of the bootstrap's and the delta method's, which is a bound on the lowest efficiency at the level the claims need, as a post-hoc reading that changes no verdict, label or horizon.  Set after a review had shown that the declared levels over-adjust and after the shares behind that finding had been seen",
+   "when": "set after the bootstrap shares it reflects had been seen; it changes no verdict"
+  },
+  "R19": {
+   "note": "moves rule R12's threshold for a reason in the specification, so it can add labels; that the threshold falls at 120 kHz was known when it was set",
+   "post_hoc": false,
+   "set": "2026-10-18",
+   "text": "R12, R14 and R16 read levels.json's tests at nrtime.py's threshold for the paper's procedure, 12 resources per slot with a 120 kHz control carrier at the declarable timing most favourable to ResNet-18 on the GPU (0.9393066873786408), exactly as they read csirs.json's and csirs_cfg.json's at csirs.py's 0.9496991264367816, which it supersedes.  The paper also reports R12 at the 30 kHz threshold and, with the eight-set variants in place of the six-set ones, at the 8-per-slot thresholds, as variants of the procedure.  Every CSI-RS threshold and margin the paper states is nrtime.py's at the declarable timing that gives the implementation its highest threshold.  The threshold changes for a reason in the specification, not in the data, so R19 can add labels as well as remove them; that it falls at 120 kHz was known when R19 was set"
+  },
+  "R2": {
+   "post_hoc": false,
+   "set": "2026-09-23",
+   "text": "'how deep to go' is kept only if the staged controller beats both sched-rep1 and sched-1exit on >= 4 of 6 sites; otherwise 'whether and when to invoke'.  If R2 holds, a direct compute-to-exit action is added as a further descriptive variant; if not, review point 10 is answered with the rep1/deep1 evidence"
+  },
+  "R20": {
+   "note": "set after the stored calls had been examined, before the repeated runs",
+   "post_hoc": false,
+   "set": "2026-10-22",
+   "text": "(i) The stored timings remain the inputs of Table I, of rule R5's verdicts, of every margin and of every number computed from them; the campaign is reported beside them and replaces none.  Table I's rows keep their stored categories; a row whose controlled reading below differs carries a mark, and the text gives that reading.  (ii) In each uncontended run (an attempt none of whose configurations drifted by more than 10% for any seed; an uncontended second attempt counts as its run) and at each boundary, a case is read as R5 and Table I read it, at its fastest runtime's charge, that runtime's largest per-seed 95th percentile in the run: excluded at the measured inputs if 4 t_p + charge >= (1 - eta) T_max + eta 64 t_p, with eta = 0.9993, the lowest measured sweep efficiency, t_p the profile's own per-probe time and T_max = 10 ms; and at adverse inputs if 4 x 20 us + tau_lo >= (1 - eta_lo) T_max + eta_lo d_S_hi, with eta_lo = 0.972181695575957 and d_S_hi = 1341.824 us (margins.json) and tau_lo the smallest per-seed 95th percentile over the run's runtimes at that boundary, a point value.  Each runtime's reading is reported as well, descriptively.  (iii) A case's verdict is stable if, at both sets of inputs, the stored timing and every uncontended run at the host boundary give the same; otherwise it is called unresolved, and the paper names the runs, runtimes or boundary that disagree.  A case with fewer than two uncontended runs has no controlled verdict.  (iv) For case C the paper also reports, per run at the host boundary, the CSI-RS threshold at the fastest runtime's charge (nrtime.worst, 12 resources per slot, a 120 kHz control carrier), the margin at adverse inputs at density 3's declared bound computed as for the stored timing, and, by part (d), the threshold at the mean of min(D*, T_max), D* = s_L - 125 us + tau per call, with D* >= s_S checked on every call; the stored CSI-RS reading is unchanged.  (v) Part (d) is read per case, run, runtime and boundary on D = 4 t_p + tau, one per recorded call: the share of D below 64 t_p and of D_lo = 4 x 20 us + tau below d_S_hi; psi(T_max) = T_max - m - eta (T_max - 64 t_p) at the measured inputs, m the smallest per-seed mean of min(D, T_max); and psi_lo(T_max) = T_max - m_lo - eta_lo (T_max - d_S_hi) at adverse inputs, m_lo the smallest per-seed one-sided 95% lower bound on the mean of min(D_lo, T_max) by batch means (batches of 100 consecutive calls, t with 99 degrees of freedom).  'Excluded in expected rate for every T up to T_max' is stated for a case only if, in every uncontended run, runtime and boundary, every recorded D_lo is at least d_S_hi and psi_lo(T_max) <= 0; if every recorded D is at least 64 t_p but some D_lo falls below d_S_hi, it is stated at the measured inputs only; if some recorded D falls below 64 t_p, the paper gives the periods (min D, a) at which a perfect predictor with that distribution could outperform the sweep in expected rate, a the zero of psi above 64 t_p on the run's pooled calls, and the largest advantage there as a share of the genie-aided rate.  'Every recorded call' stands in for 'almost surely' and is worded so.  (vi) Nothing else is re-timed and no stored file changes.  R20 was set after the stored traces had been examined (state_when_made) and before the campaign or its smoke test ran"
+  },
+  "R21": {
+   "post_hoc": true,
+   "set": "2026-10-22",
+   "text": "Table I, rule R5's reading, every exclusion margin, horizon and threshold, every fastest-call ratio and every number computed from them read, for each implementation, every runtime measured: the stored timings and the three repeated runs of trace_decisive.py at the host boundary, each repeated runtime entering as reconcile.py computes it.  At adverse inputs the latency's lower value is the smallest over every runtime: an order statistic where every call was kept, nominal as margins.py's are, and a point value where only percentiles were stored.  R21 replaces the first clause of R20 (i), that the stored timings remain the inputs; R20 (ii)-(vi), its stability verdicts and Table I's mark rule are unchanged and still read the stored timing against the runs.  R21 is post hoc: it was set after the repeated runs and after a review found that R20 (i) left Table I's 'every runtime measured' and the abstract's threshold short of the repeated runs' faster compiled runtime on eight threads",
+   "when": "set after the repeated runs and a review had been seen; it changes no verdict"
+  },
+  "R3": {
+   "post_hoc": false,
+   "set": "2026-09-23",
+   "text": "if sched-fcc or sched-cnnc beats sched-anyr (the anytime predictor under the same restrictions: no reordering, compute only at K in {4,8,16,32,64}, at most once) on >= 4 of 6 sites, the body states that the controller's results depend on predictor strength and reports both; the headline controller never switches"
+  },
+  "R4": {
+   "post_hoc": false,
+   "set": "2026-09-23",
+   "text": "an exclusion claim ('zero rate at every tested deadline', or 'cannot beat the exhaustive sweep at any deadline' under eta_L <= eta_S) is stated only for the hardware profiles where it holds"
+  },
+  "R5": {
+   "applied_to_existing": {
+    "consequence": "'every profile, a GPU included' is not stated for ResNet-18",
+    "resnet18_vision": "excluded on the three CPU profiles (t_p* 416.7, 1181.6, 88.2 us); NOT on the GPU: TorchScript whole decision 1218.9 us = 0.9987 tau*, eager 1.10 (Phase-1 counts) and 1.44 (full counts); at the budget; t_p* 20.31 us; first feasible deadline 1.4 ms",
+    "transformer_small": "excluded on the E-core only",
+    "vit_b16_vision": "excluded on all four profiles; GPU t_p* 105.5 us"
+   },
+   "post_hoc": true,
+   "set": "2026-10-01",
+   "text": "'cannot beat the exhaustive sweep at any deadline' is stated for a (model, profile) only if every measured runtime's charge is at least that profile's tau*; 'every profile' only if that holds on all four; every exclusion is stated with its break-even probe charge t_p* = tau_min/(M-K); a cheapest ratio within 10% of one is worded 'at the budget'",
+   "when": "applied to timings that already existed"
+  },
+  "R6": {
+   "post_hoc": false,
+   "set": "2026-10-01",
+   "text": "(a) 'tau* holds under channel aging at speed v' only if the sweep's held-beam rate dominates every fixed K-probe method's from the sweep's commit on, on every evaluation site, at v; otherwise the failures are named and the claim is stated up to the largest speed at which it holds.  (b) 'block fading is adequate within a period at v' only if the beam-aging loss (a ratio of means, as eta is) stays below 1% for every Delta up to 10 ms on every site; otherwise the largest deadline at which it stays below 1% is given per speed"
+  },
+  "R7": {
+   "post_hoc": false,
+   "set": "2026-10-01",
+   "text": "'the case study is predictor-limited' only if compute-pays is established, as R1 counts it, on at least 4 of 6 sites at some q <= 0.25; 'latency-awareness depends on predictor quality' only if aware-vs-blind is established on at least 4 of 6 sites at some q"
+  },
+  "R8": {
+   "post_hoc": false,
+   "set": "2026-10-06",
+   "text": "under each accounting at a (site, deadline), a method is a candidate for best unless another method's difference over it is established (the simultaneous intervals of winner_uncertainty.py, both versions); a change of the best method is 'established' only where no method is a candidate under both accountings.  The paper states that including inference latency changes the best method, and the rate lost by keeping the published accounting's choice as a decision cost, only at established changes; every other change is a point estimate and is worded as one wherever counts or costs appear (abstract, contributions, results, conclusion); if none is established, the abstract and the conclusion say so.  Replicate frequencies are descriptive and never decide 'established'"
+  },
+  "R9": {
+   "post_hoc": false,
+   "set": "2026-10-11",
+   "text": "The re-solved results replace the recorded controller results wherever the paper reports a controller result: Table V, Fig. 2, Fig. 3, Section VII, the abstract, the conclusion and the supplementary's controller appendices, including the three-seed analysis and its primary criterion, rerun on the corrected code (if its outcome differs from the recorded one, both are reported).  R1-R3 and R6-R7 are re-applied to the re-solved outputs by reading_rules.py's own functions.  Appendix I-I states each recorded Table V entry once, beside its re-solved value.  zhang-NP2 is reported beside the reimplementation in Section VII-D and Appendix I-H against the re-solved controller; the fixed-strategy comparison of Sections VI-B and VI-C, Table II and R8 keep the reimplementation, and if zhang-NP2 would be the best of the ten methods at any (scenario, T) with latency included, Section VI-C says so.  Any printed statement whose truth value the re-solve changes is reworded"
+  },
+  "convention": {
+   "post_hoc": false,
+   "set": "2026-09-23",
+   "text": "'A beats B at a site' means the grid-averaged paired difference has a lower bound > 0 under every interval the artifact carries (both intervals above for the ten-seed run), with its p-value surviving Holm across the six evaluation sites; 'loses' is the mirror image; the headline controller is the matched rule's choice and comparators take its suffix"
+  }
+ },
+ "seeds": {
+  "common_random_numbers": "every method sees the identical receivers and, where it probes the same codeword, the identical noise draw",
+  "controls": [
+   "pilot-noise draws",
+   "network initialisation",
+   "training minibatch order"
+  ],
+  "values": [
+   17,
+   29,
+   43
+  ]
+ },
+ "self_sha256": "5c435fd7786d32a257f3311fdcd4328602e719845fc3147881e8b31798e227f3",
+ "splits": {
+  "fit": "city_0_newyork_28",
+  "held_out": [
+   "city_4_phoenix_28",
+   "city_5_philadelphia_28",
+   "city_6_miami_28",
+   "city_7_sandiego_28"
+  ],
+  "held_out_rule": "opened exactly once, after every number on test A and test B is final, and reported whatever it shows",
+  "model_selection": "city_1_losangeles_28",
+  "roles": {
+   "test_A": "city_2_chicago_28",
+   "test_B": "city_3_houston_28",
+   "test_extra_1": "city_4_phoenix_28",
+   "test_extra_2": "city_5_philadelphia_28",
+   "test_extra_3": "city_6_miami_28",
+   "test_extra_4": "city_7_sandiego_28",
+   "training": "city_0_newyork_28",
+   "validation": "city_1_losangeles_28"
+  },
+  "source": "Phase 3 R5, catalog numerical order, outcome-blind",
+  "spatial_blocking": "fit and model-selection sets are different cities, which strictly dominates within-site spatial blocking; block bootstrap below uses 50 m tiles inside a site",
+  "test": [
+   "city_2_chicago_28",
+   "city_3_houston_28"
+  ]
+ },
+ "statistic": {
+  "pairing": "per receiver, per seed, common random numbers",
+  "primary": "mean net spectral efficiency (bit/s/Hz) over all eligible receivers",
+  "seed_aggregation": "report the mean over seeds and the seed spread",
+  "uncertainty": "95% percentile bootstrap over 50 m spatial blocks, 2000 resamples"
+ },
+ "strata": {
+  "edges_dB": [
+   -1000000000.0,
+   0,
+   10,
+   20,
+   1000000000.0
+  ],
+  "names": [
+   "below 0 dB",
+   "0-10 dB",
+   "10-20 dB",
+   "above 20 dB"
+  ],
+  "rule": "every eligible receiver stays in the denominator; strata are reported alongside the pooled number, never instead of it",
+  "variable": "oracle band-averaged best narrow-beam SNR, dB (channel property)"
+ },
+ "title": "Deadline-aware scheduler and the rank-inversion experiment"
+}

@@ -1,0 +1,664 @@
+{
+ "script_sha256": "633e3605f52e6333cf5536274c532d282915d7e08b325f2d5acefeabe865655d",
+ "alpha": 0.05,
+ "quantile": 0.95,
+ "K": 4,
+ "t_max_us": 10000,
+ "t_air_us": 20.0,
+ "probe_processing_max_us": 0.966,
+ "dS_hi_us": 1341.824,
+ "nr_dS_us": 678.5714285714286,
+ "eta_lo": {
+  "probe_model": 0.972181695575957,
+  "csirs": {
+   "3": 0.9508864573443974,
+   "1": 0.8965591695052197,
+   "0.5": 0.8318724717963311
+  }
+ },
+ "gate": {
+  "n_checks": 57,
+  "holds": true
+ },
+ "rows": [
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-1t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 29025.72,
+     "lower_us": 28755.224,
+     "seed_p95_us": [
+      28826.955,
+      29025.72,
+      29002.196
+     ],
+     "seed_lower_us": [
+      28755.224,
+      28898.491,
+      28928.151
+     ],
+     "n_timed": [
+      200,
+      200,
+      200
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 25000.433,
+     "lower_us": 24721.832,
+     "seed_p95_us": [
+      25000.433,
+      24721.832,
+      24850.857
+     ],
+     "n_timed": [
+      200,
+      200,
+      200
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "TorchScript, whole decision",
+   "tau_us": 25000.433,
+   "tau_lo_us": 24721.832,
+   "tau_lo_runtime": "TorchScript, whole decision",
+   "tau_lo_kind": "smallest seed p95 (point value)",
+   "dL_us": 25081.789,
+   "dL_lo_us": 24801.832,
+   "nr_dL_lo_us": 24650.403428571426,
+   "margin_us": 23219.152224275058,
+   "excluded_robust": true,
+   "infeasible_robust": true,
+   "nr_margin_us": {
+    "3": 23514.02362024599,
+    "1": 23007.615687173653,
+    "0.5": 22404.643254958657
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-1t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 233200.6,
+     "lower_us": 231942.238,
+     "seed_p95_us": [
+      232093.536,
+      233104.158,
+      233200.6
+     ],
+     "seed_lower_us": [
+      231942.238,
+      232657.747,
+      232744.055
+     ],
+     "n_timed": [
+      50,
+      50,
+      50
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 235577.451,
+     "lower_us": 235376.743,
+     "seed_p95_us": [
+      235574.98,
+      235376.743,
+      235577.451
+     ],
+     "n_timed": [
+      50,
+      50,
+      50
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 233200.6,
+   "tau_lo_us": 231942.238,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 233281.956,
+   "dL_lo_us": 232022.238,
+   "nr_dL_lo_us": 231870.80942857143,
+   "margin_us": 230439.55822427507,
+   "excluded_robust": true,
+   "infeasible_robust": true,
+   "nr_margin_us": {
+    "3": 230734.429620246,
+    "1": 230228.02168717366,
+    "0.5": 229625.04925495866
+   }
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-1t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 1038.357,
+     "lower_us": 1031.703,
+     "seed_p95_us": [
+      1036.296,
+      1038.357,
+      1033.276
+     ],
+     "seed_lower_us": [
+      1033.061,
+      1035.813,
+      1031.703
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 938.784,
+     "lower_us": 929.542,
+     "seed_p95_us": [
+      929.542,
+      938.784,
+      935.401
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "TorchScript, whole decision",
+   "tau_us": 938.784,
+   "tau_lo_us": 929.542,
+   "tau_lo_runtime": "TorchScript, whole decision",
+   "tau_lo_kind": "smallest seed p95 (point value)",
+   "dL_us": 1020.14,
+   "dL_lo_us": 1009.542,
+   "nr_dL_lo_us": 858.1134285714286,
+   "margin_us": -573.1377757249428,
+   "excluded_robust": false,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": -278.2663797540103,
+    "1": -784.6743128263446,
+    "0.5": -1387.6467450413425
+   }
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-1t-ecore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 70893.249,
+     "lower_us": 70754.47,
+     "seed_p95_us": [
+      70892.129,
+      70893.249,
+      70806.643
+     ],
+     "seed_lower_us": [
+      70840.902,
+      70824.299,
+      70754.47
+     ],
+     "n_timed": [
+      200,
+      200,
+      200
+     ],
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 70893.249,
+   "tau_lo_us": 70754.47,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 70977.113,
+   "dL_lo_us": 70834.47,
+   "nr_dL_lo_us": 70683.04142857144,
+   "margin_us": 69251.79022427506,
+   "excluded_robust": true,
+   "infeasible_robust": true,
+   "nr_margin_us": {
+    "3": 69546.661620246,
+    "1": 69040.25368717365,
+    "0.5": 68437.28125495867
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-1t-ecore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 650670.382,
+     "lower_us": 646147.941,
+     "seed_p95_us": [
+      648135.019,
+      650670.382,
+      646234.379
+     ],
+     "seed_lower_us": [
+      647090.29,
+      649560.129,
+      646147.941
+     ],
+     "n_timed": [
+      50,
+      50,
+      50
+     ],
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 650670.382,
+   "tau_lo_us": 646147.941,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 650754.2459999999,
+   "dL_lo_us": 646227.941,
+   "nr_dL_lo_us": 646076.5124285715,
+   "margin_us": 644645.261224275,
+   "excluded_robust": true,
+   "infeasible_robust": true,
+   "nr_margin_us": {
+    "3": 644940.132620246,
+    "1": 644433.7246871737,
+    "0.5": 643830.7522549586
+   }
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-1t-ecore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 2762.571,
+     "lower_us": 2757.588,
+     "seed_p95_us": [
+      2762.571,
+      2759.559,
+      2761.115
+     ],
+     "seed_lower_us": [
+      2758.593,
+      2757.588,
+      2757.752
+     ],
+     "n_timed": [
+      500,
+      500,
+      500
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 2573.466,
+     "lower_us": 2558.764,
+     "seed_p95_us": [
+      2573.466,
+      2558.764,
+      2562.155
+     ],
+     "n_timed": [
+      500,
+      500,
+      500
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "TorchScript, whole decision",
+   "tau_us": 2573.466,
+   "tau_lo_us": 2558.764,
+   "tau_lo_runtime": "TorchScript, whole decision",
+   "tau_lo_kind": "smallest seed p95 (point value)",
+   "dL_us": 2657.33,
+   "dL_lo_us": 2638.764,
+   "nr_dL_lo_us": 2487.3354285714286,
+   "margin_us": 1056.0842242750573,
+   "excluded_robust": true,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": 1350.9556202459896,
+    "1": 844.5476871736554,
+    "0.5": 241.57525495865752
+   }
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-8t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 5289.57,
+     "lower_us": 5255.235,
+     "seed_p95_us": [
+      5289.57,
+      5275.264,
+      5269.869
+     ],
+     "seed_lower_us": [
+      5275.726,
+      5262.555,
+      5255.235
+     ],
+     "n_timed": [
+      500,
+      500,
+      500
+     ],
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 5289.57,
+   "tau_lo_us": 5255.235,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 5370.902,
+   "dL_lo_us": 5335.235,
+   "nr_dL_lo_us": 5183.806428571428,
+   "margin_us": 3752.555224275057,
+   "excluded_robust": true,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": 4047.426620245989,
+    "1": 3541.0186871736546,
+    "0.5": 2938.046254958657
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-8t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 42602.81,
+     "lower_us": 40049.138,
+     "seed_p95_us": [
+      42602.81,
+      40124.735,
+      40364.536
+     ],
+     "seed_lower_us": [
+      42393.898,
+      40049.138,
+      40127.523
+     ],
+     "n_timed": [
+      200,
+      200,
+      200
+     ],
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 42602.81,
+   "tau_lo_us": 40049.138,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 42684.142,
+   "dL_lo_us": 40129.138,
+   "nr_dL_lo_us": 39977.70942857143,
+   "margin_us": 38546.458224275055,
+   "excluded_robust": true,
+   "infeasible_robust": true,
+   "nr_margin_us": {
+    "3": 38841.32962024598,
+    "1": 38334.92168717366,
+    "0.5": 37731.94925495866
+   }
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-8t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 436.303,
+     "lower_us": 433.399,
+     "seed_p95_us": [
+      436.303,
+      434.033,
+      433.801
+     ],
+     "seed_lower_us": [
+      435.788,
+      433.782,
+      433.399
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 436.303,
+   "tau_lo_us": 433.399,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 517.635,
+   "dL_lo_us": 513.399,
+   "nr_dL_lo_us": 361.97042857142856,
+   "margin_us": -1069.280775724943,
+   "excluded_robust": false,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": -774.4093797540104,
+    "1": -1280.8173128263447,
+    "0.5": -1883.7897450413425
+   }
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "gpu-resident",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 1344.464,
+     "lower_us": 1268.463,
+     "seed_p95_us": [
+      1269.251,
+      1316.462,
+      1344.464
+     ],
+     "seed_lower_us": [
+      1268.463,
+      1315.981,
+      1341.04
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 1218.876,
+     "lower_us": 1167.051,
+     "seed_p95_us": [
+      1167.051,
+      1189.827,
+      1218.876
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "smallest seed p95 (point value)"
+    },
+    "eager, full counts": {
+     "charged_us": 1753.783,
+     "lower_us": 1634.581,
+     "seed_p95_us": [
+      1634.581,
+      1712.28,
+      1753.783
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "TorchScript, whole decision",
+   "tau_us": 1218.876,
+   "tau_lo_us": 1167.051,
+   "tau_lo_runtime": "TorchScript, whole decision",
+   "tau_lo_kind": "smallest seed p95 (point value)",
+   "dL_us": 1300.24,
+   "dL_lo_us": 1247.051,
+   "nr_dL_lo_us": 1095.6224285714286,
+   "margin_us": -335.6287757249429,
+   "excluded_robust": false,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": -40.757379754010344,
+    "1": -547.1653128263446,
+    "0.5": -1150.1377450413424
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "gpu-resident",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 6331.027,
+     "lower_us": 6224.227,
+     "seed_p95_us": [
+      6331.027,
+      6234.566,
+      6262.323
+     ],
+     "seed_lower_us": [
+      6228.378,
+      6224.227,
+      6229.208
+     ],
+     "n_timed": [
+      500,
+      500,
+      500
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 7148.229,
+     "lower_us": 6341.786,
+     "seed_p95_us": [
+      6521.982,
+      6341.786,
+      7148.229
+     ],
+     "n_timed": [
+      500,
+      500,
+      500
+     ],
+     "kind": "smallest seed p95 (point value)"
+    },
+    "eager, full counts": {
+     "charged_us": 7691.273,
+     "lower_us": 7606.049,
+     "seed_p95_us": [
+      7691.273,
+      7669.138,
+      7606.049
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 6331.027,
+   "tau_lo_us": 6224.227,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 6412.391,
+   "dL_lo_us": 6304.227,
+   "nr_dL_lo_us": 6152.798428571428,
+   "margin_us": 4721.547224275057,
+   "excluded_robust": true,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": 5016.41862024599,
+    "1": 4510.010687173654,
+    "0.5": 3907.038254958657
+   }
+  },
+  {
+   "component": "transformer_small",
+   "profile": "gpu-resident",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 297.776,
+     "lower_us": 293.664,
+     "seed_p95_us": [
+      297.564,
+      297.776,
+      297.581
+     ],
+     "seed_lower_us": [
+      296.656,
+      296.734,
+      293.664
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 225.621,
+     "lower_us": 222.358,
+     "seed_p95_us": [
+      225.621,
+      222.927,
+      222.358
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "TorchScript, whole decision",
+   "tau_us": 225.621,
+   "tau_lo_us": 222.358,
+   "tau_lo_runtime": "TorchScript, whole decision",
+   "tau_lo_kind": "smallest seed p95 (point value)",
+   "dL_us": 306.985,
+   "dL_lo_us": 302.358,
+   "nr_dL_lo_us": 150.92942857142856,
+   "margin_us": -1280.3217757249429,
+   "excluded_robust": false,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": -985.4503797540103,
+    "1": -1491.8583128263444,
+    "0.5": -2094.830745041342
+   }
+  }
+ ]
+}

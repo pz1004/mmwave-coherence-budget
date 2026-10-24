@@ -1,0 +1,728 @@
+{
+  "env": {
+    "profile": "gpu-resident",
+    "cpu": "Intel(R) Core(TM) i9-14900KF",
+    "governor": "powersave",
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "torch_threads": 1,
+    "requested_threads": 1,
+    "torch": "2.12.0+cu130",
+    "python": "3.13.12",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "numpy": "1.26.4",
+    "gpu": "Quadro RTX 8000",
+    "omp": "1",
+    "timestamp": "2026-09-15T19:05:12+0900"
+  },
+  "protocol": {
+    "warmup_full": 1000,
+    "timed_full": 10000,
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "input_seed": 881,
+    "percentile": "nearest-rank p95",
+    "charge_rule": "max over weight seeds"
+  },
+  "rows": [
+    {
+      "component": "sweep_select",
+      "provenance": "spec",
+      "note": "exhaustive 64-beam sweep: |z|^2 and argmax, no inference",
+      "charge_ns": 1309,
+      "charge_us": 1.309,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 1292,
+          "median_ns": 1254,
+          "min_ns": 1193,
+          "max_ns": 3726,
+          "mean_ns": 1256.8828
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 1309,
+          "median_ns": 1270,
+          "min_ns": 1208,
+          "max_ns": 3865,
+          "mean_ns": 1274.0416
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 1295,
+          "median_ns": 1252,
+          "min_ns": 1192,
+          "max_ns": 3307,
+          "mean_ns": 1255.9163
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "s1_r",
+      "provenance": "spec",
+      "note": "ranker inference + sort of unmeasured order",
+      "charge_ns": 47990,
+      "charge_us": 47.99,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 47990,
+          "median_ns": 45670,
+          "min_ns": 42664,
+          "max_ns": 1381046,
+          "mean_ns": 45786.6924
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 45385,
+          "median_ns": 43617,
+          "min_ns": 42535,
+          "max_ns": 453274,
+          "mean_ns": 44163.2886
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 45472,
+          "median_ns": 43668,
+          "min_ns": 42709,
+          "max_ns": 1335478,
+          "mean_ns": 44386.1821
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "s1_u",
+      "provenance": "spec",
+      "note": "mandatory stop: buffer update + select, no nets",
+      "charge_ns": 1811,
+      "charge_us": 1.811,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 1811,
+          "median_ns": 1765,
+          "min_ns": 1710,
+          "max_ns": 3380,
+          "mean_ns": 1770.7037
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 1799,
+          "median_ns": 1749,
+          "min_ns": 1696,
+          "max_ns": 3263,
+          "mean_ns": 1755.0625
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 1793,
+          "median_ns": 1754,
+          "min_ns": 1703,
+          "max_ns": 3646,
+          "mean_ns": 1757.8894
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "s1_q",
+      "provenance": "spec",
+      "note": "optional stage decision: encode 194 feats + BOTH value nets + compare",
+      "charge_ns": 82881,
+      "charge_us": 82.881,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 82842,
+          "median_ns": 79008,
+          "min_ns": 76329,
+          "max_ns": 1335767,
+          "mean_ns": 79921.9145
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 82881,
+          "median_ns": 78773,
+          "min_ns": 76410,
+          "max_ns": 1542110,
+          "mean_ns": 80177.6362
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 82277,
+          "median_ns": 78888,
+          "min_ns": 76413,
+          "max_ns": 1387035,
+          "mean_ns": 79637.3975
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "graff_eig",
+      "provenance": "exact",
+      "note": "arXiv:2201.04657 Fig.6 eigenvector net + codebook argmax",
+      "charge_ns": 153007,
+      "charge_us": 153.007,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 153007,
+          "median_ns": 146462,
+          "min_ns": 144113,
+          "max_ns": 1381591,
+          "mean_ns": 147863.9668
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 152521,
+          "median_ns": 145935,
+          "min_ns": 143248,
+          "max_ns": 1449114,
+          "mean_ns": 147674.8828
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 151887,
+          "median_ns": 146067,
+          "min_ns": 143726,
+          "max_ns": 1448499,
+          "mean_ns": 147411.1841
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "graff_col",
+      "provenance": "exact",
+      "note": "arXiv:2201.04657 covariance-vector net + codebook argmax",
+      "charge_ns": 106011,
+      "charge_us": 106.011,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 103812,
+          "median_ns": 101635,
+          "min_ns": 99950,
+          "max_ns": 1337083,
+          "mean_ns": 102297.0758
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 105353,
+          "median_ns": 101275,
+          "min_ns": 99245,
+          "max_ns": 1371368,
+          "mean_ns": 102055.5813
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 106011,
+          "median_ns": 101412,
+          "min_ns": 99471,
+          "max_ns": 1353570,
+          "mean_ns": 102708.4646
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "graff_aps",
+      "provenance": "reconstruct",
+      "note": "arXiv:2201.04657 Fig.5 APS conv net (widths reconstructed)",
+      "charge_ns": 57029,
+      "charge_us": 57.029,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 57029,
+          "median_ns": 55928,
+          "min_ns": 55147,
+          "max_ns": 1204135,
+          "mean_ns": 56464.5062
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 56983,
+          "median_ns": 55855,
+          "min_ns": 55018,
+          "max_ns": 1180132,
+          "mean_ns": 56388.8277
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 56951,
+          "median_ns": 55824,
+          "min_ns": 54909,
+          "max_ns": 1333135,
+          "mean_ns": 56354.6941
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "beam_mlp",
+      "provenance": "reconstruct",
+      "note": "FC beam classifier 8-256-256-64",
+      "charge_ns": 36150,
+      "charge_us": 36.15,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 36109,
+          "median_ns": 34566,
+          "min_ns": 33793,
+          "max_ns": 1321214,
+          "mean_ns": 35166.4086
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 36150,
+          "median_ns": 34622,
+          "min_ns": 33908,
+          "max_ns": 1315748,
+          "mean_ns": 35285.146
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 35231,
+          "median_ns": 34559,
+          "min_ns": 33877,
+          "max_ns": 39781,
+          "mean_ns": 34622.4704
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "beam_cnn",
+      "provenance": "reconstruct",
+      "note": "CNN beam predictor over wideband CSI",
+      "charge_ns": 73710,
+      "charge_us": 73.71,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 73710,
+          "median_ns": 69434,
+          "min_ns": 67065,
+          "max_ns": 1369762,
+          "mean_ns": 70876.2284
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 72841,
+          "median_ns": 69025,
+          "min_ns": 67116,
+          "max_ns": 1363603,
+          "mean_ns": 69791.711
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 72704,
+          "median_ns": 68956,
+          "min_ns": 67066,
+          "max_ns": 1363142,
+          "mean_ns": 69731.6229
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "lstm_cached",
+      "provenance": "reconstruct",
+      "note": "LSTM tracker, one step with cached state (honest per-decision cost)",
+      "charge_ns": 121984,
+      "charge_us": 121.984,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 121412,
+          "median_ns": 120297,
+          "min_ns": 118560,
+          "max_ns": 1392972,
+          "mean_ns": 121199.0356
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 121657,
+          "median_ns": 120417,
+          "min_ns": 119026,
+          "max_ns": 1418293,
+          "mean_ns": 121315.793
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 121984,
+          "median_ns": 120597,
+          "min_ns": 119105,
+          "max_ns": 1414857,
+          "mean_ns": 121298.938
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "lstm_seq",
+      "provenance": "reconstruct",
+      "note": "LSTM tracker, full 8-step history replay",
+      "charge_ns": 160599,
+      "charge_us": 160.599,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 160599,
+          "median_ns": 158572,
+          "min_ns": 156464,
+          "max_ns": 1425765,
+          "mean_ns": 159982.7644
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 160336,
+          "median_ns": 158470,
+          "min_ns": 156419,
+          "max_ns": 1424785,
+          "mean_ns": 159775.1186
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 160368,
+          "median_ns": 158455,
+          "min_ns": 156455,
+          "max_ns": 1425165,
+          "mean_ns": 159799.0409
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "transformer_small",
+      "provenance": "reconstruct",
+      "note": "4-layer transformer encoder, d_model 128, 64 tokens",
+      "charge_ns": 297776,
+      "charge_us": 297.776,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 297564,
+          "median_ns": 287392,
+          "min_ns": 282705,
+          "max_ns": 1628483,
+          "mean_ns": 290172.1355
+        },
+        {
+          "seed": 29,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 297776,
+          "median_ns": 286878,
+          "min_ns": 283005,
+          "max_ns": 1575779,
+          "mean_ns": 289605.271
+        },
+        {
+          "seed": 43,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 297581,
+          "median_ns": 286952,
+          "min_ns": 282953,
+          "max_ns": 1619663,
+          "mean_ns": 289696.326
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "resnet18_vision",
+      "provenance": "reconstruct",
+      "note": "ResNet-18 vision-aided beam predictor, 3x224x224, network only",
+      "charge_ns": 1344464,
+      "charge_us": 1344.464,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 1269251,
+          "median_ns": 1259378,
+          "min_ns": 1203631,
+          "max_ns": 2550660,
+          "mean_ns": 1251535.2235
+        },
+        {
+          "seed": 29,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 1316462,
+          "median_ns": 1280128,
+          "min_ns": 1256646,
+          "max_ns": 2603799,
+          "mean_ns": 1290153.736
+        },
+        {
+          "seed": 43,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 1344464,
+          "median_ns": 1298794,
+          "min_ns": 1257496,
+          "max_ns": 2625303,
+          "mean_ns": 1312697.9275
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "vit_b16_vision",
+      "provenance": "reconstruct",
+      "note": "ViT-B/16 vision-aided beam predictor, 3x224x224, network only",
+      "charge_ns": 6331027,
+      "charge_us": 6331.027,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 6331027,
+          "median_ns": 5987645,
+          "min_ns": 5721679,
+          "max_ns": 8461172,
+          "mean_ns": 6023411.076
+        },
+        {
+          "seed": 29,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 6234566,
+          "median_ns": 6065277,
+          "min_ns": 5824181,
+          "max_ns": 8540229,
+          "mean_ns": 6108307.308
+        },
+        {
+          "seed": 43,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 6262323,
+          "median_ns": 6106077,
+          "min_ns": 5935108,
+          "max_ns": 8706344,
+          "mean_ns": 6162103.24
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "earlyexit_1",
+      "provenance": "spec",
+      "note": "anytime predictor, 1 of 3 blocks",
+      "charge_ns": 35292,
+      "charge_us": 35.292,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 34868,
+          "median_ns": 34116,
+          "min_ns": 33047,
+          "max_ns": 46788,
+          "mean_ns": 34151.0881
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 35292,
+          "median_ns": 33775,
+          "min_ns": 32861,
+          "max_ns": 1344104,
+          "mean_ns": 34398.6686
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 33996,
+          "median_ns": 33422,
+          "min_ns": 32765,
+          "max_ns": 49400,
+          "mean_ns": 33479.4053
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "earlyexit_2",
+      "provenance": "spec",
+      "note": "anytime predictor, 2 of 3 blocks",
+      "charge_ns": 45509,
+      "charge_us": 45.509,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 44500,
+          "median_ns": 43720,
+          "min_ns": 42639,
+          "max_ns": 75719,
+          "mean_ns": 43796.4109
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 45509,
+          "median_ns": 43578,
+          "min_ns": 42470,
+          "max_ns": 1324451,
+          "mean_ns": 44225.1795
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 45461,
+          "median_ns": 43557,
+          "min_ns": 42495,
+          "max_ns": 1345416,
+          "mean_ns": 44193.6636
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "earlyexit_3",
+      "provenance": "spec",
+      "note": "anytime predictor, all 3 blocks",
+      "charge_ns": 56208,
+      "charge_us": 56.208,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 56208,
+          "median_ns": 53980,
+          "min_ns": 52731,
+          "max_ns": 1333017,
+          "mean_ns": 54675.6766
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 56063,
+          "median_ns": 53815,
+          "min_ns": 52662,
+          "max_ns": 1329234,
+          "mean_ns": 54480.8376
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 55979,
+          "median_ns": 53771,
+          "min_ns": 52524,
+          "max_ns": 1323546,
+          "mean_ns": 54423.2692
+        }
+      ],
+      "reduced_n": false
+    }
+  ]
+}

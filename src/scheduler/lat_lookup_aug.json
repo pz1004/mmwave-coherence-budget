@@ -1,0 +1,155 @@
+{
+ "env": {
+  "profile": "cpu-1t-pcore",
+  "python": "3.13.12",
+  "numpy": "2.5.3",
+  "governor": "powersave",
+  "affinity": [
+   2
+  ],
+  "utc": "2026-10-13T08:52:19Z"
+ },
+ "method": "as for the original table: the pilot's kappa-major (65, 4, 65, 40, 10, 2) dp tables of seeds 17/29/43 at T = 1 ms, consults replayed in order from the deployed controller's trajectories on the validation city (2,000 users), each consult computing the bucket and class and indexing the first-call block; nearest-rank p95 per seed, largest of three seeds, timed per call (charged) and batched; each timed twice.  The original tables re-timed in the same session by the same code, as a check",
+ "rows": [
+  {
+   "charge_us": 0.21532,
+   "recheck_us": 0.21584,
+   "drift": 0.006535947712418307,
+   "percall_p95_us": 0.306,
+   "percall_recheck_us": 0.304,
+   "n_states": 47034,
+   "table_shape": [
+    65,
+    4,
+    65,
+    40,
+    10,
+    2
+   ],
+   "table_bytes": 13520000,
+   "seed": 17,
+   "component": "lookup_aug"
+  },
+  {
+   "charge_us": 0.21568,
+   "recheck_us": 0.21769,
+   "drift": 0.01980198019801982,
+   "percall_p95_us": 0.303,
+   "percall_recheck_us": 0.309,
+   "n_states": 51064,
+   "table_shape": [
+    65,
+    4,
+    65,
+    40,
+    10,
+    2
+   ],
+   "table_bytes": 13520000,
+   "seed": 29,
+   "component": "lookup_aug"
+  },
+  {
+   "charge_us": 0.2162,
+   "recheck_us": 0.2169,
+   "drift": 0.01612903225806453,
+   "percall_p95_us": 0.31,
+   "percall_recheck_us": 0.305,
+   "n_states": 45802,
+   "table_shape": [
+    65,
+    4,
+    65,
+    40,
+    10,
+    2
+   ],
+   "table_bytes": 13520000,
+   "seed": 43,
+   "component": "lookup_aug"
+  }
+ ],
+ "reference_rows": [
+  {
+   "charge_us": 0.20995,
+   "recheck_us": 0.20961,
+   "drift": 0.010169491525423738,
+   "percall_p95_us": 0.295,
+   "percall_recheck_us": 0.292,
+   "n_states": 48678,
+   "table_shape": [
+    4,
+    65,
+    40,
+    10,
+    2
+   ],
+   "table_bytes": 208000,
+   "seed": 17,
+   "component": "lookup_real (the original table, re-timed)"
+  },
+  {
+   "charge_us": 0.20901,
+   "recheck_us": 0.20875,
+   "drift": 0.02397260273972605,
+   "percall_p95_us": 0.292,
+   "percall_recheck_us": 0.299,
+   "n_states": 50261,
+   "table_shape": [
+    4,
+    65,
+    40,
+    10,
+    2
+   ],
+   "table_bytes": 208000,
+   "seed": 29,
+   "component": "lookup_real (the original table, re-timed)"
+  },
+  {
+   "charge_us": 0.20838,
+   "recheck_us": 0.20850000000000002,
+   "drift": 0.010238907849829362,
+   "percall_p95_us": 0.293,
+   "percall_recheck_us": 0.296,
+   "n_states": 54631,
+   "table_shape": [
+    4,
+    65,
+    40,
+    10,
+    2
+   ],
+   "table_bytes": 208000,
+   "seed": 43,
+   "component": "lookup_real (the original table, re-timed)"
+  }
+ ],
+ "contention": {
+  "loadavg": [
+   "0.64",
+   "0.69",
+   "0.56"
+  ],
+  "worst_recheck_drift": 0.024,
+  "worst_component": "lookup_real (the original table, re-timed)",
+  "contended": false,
+  "rule": "each component timed twice; >10% drift between passes means the machine was not quiet"
+ },
+ "original_table_us": 0.296,
+ "reference_percall_us": 0.295,
+ "reference_within_10pct": true,
+ "percall_us": 0.31,
+ "batched_us": 0.216,
+ "charged_rule": "per call, as the original table's consult is charged",
+ "table_shape": [
+  65,
+  4,
+  65,
+  40,
+  10,
+  2
+ ],
+ "table_bytes": 13520000,
+ "charge_us": 0.31
+}

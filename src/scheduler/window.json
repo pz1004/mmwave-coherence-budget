@@ -1,0 +1,48 @@
+{
+ "tau1_us": 14.135,
+ "t_probe_us": 20.339,
+ "boundary": "T > K*t_p + tau_e (1+g)/g",
+ "gain_denominator": "eta of topk_K on the validation city",
+ "rows": [
+  {
+   "K": 2,
+   "exit": 3,
+   "tau_e_us": 28.938,
+   "eta_gain": 0.03338,
+   "probe_cost_us": 40.678,
+   "break_even_ms": 0.937
+  },
+  {
+   "K": 4,
+   "exit": 1,
+   "tau_e_us": 14.135,
+   "eta_gain": 0.0171,
+   "probe_cost_us": 81.356,
+   "break_even_ms": 0.922
+  },
+  {
+   "K": 8,
+   "exit": 1,
+   "tau_e_us": 14.135,
+   "eta_gain": -0.01808,
+   "probe_cost_us": 162.712,
+   "break_even_ms": null
+  },
+  {
+   "K": 16,
+   "exit": 3,
+   "tau_e_us": 28.938,
+   "eta_gain": -0.06544,
+   "probe_cost_us": 325.424,
+   "break_even_ms": null
+  },
+  {
+   "K": 32,
+   "exit": 2,
+   "tau_e_us": 21.927,
+   "eta_gain": -0.06657,
+   "probe_cost_us": 650.848,
+   "break_even_ms": null
+  }
+ ]
+}

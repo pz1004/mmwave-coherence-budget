@@ -1,0 +1,3553 @@
+{
+ "script_sha256": "a306eab1491987bbebd3ca845ff960080a91aef9a461cb724585267c53354a65",
+ "protocol_amended_sha256": "421b4b6fbb8b192fbadbc6e5904cf149cde15b0cd163ef1d2d85f236e7513e9d",
+ "code_commit": "84fec4d946c925f7a766b0828969393d2862a548",
+ "seeds": [
+  17,
+  29,
+  43,
+  53,
+  61,
+  71,
+  79,
+  89,
+  97,
+  107
+ ],
+ "grid_us": [
+  250,
+  350,
+  500,
+  700,
+  1000,
+  1400,
+  2000,
+  2800,
+  4000,
+  5600,
+  8000,
+  10000
+ ],
+ "pubs": [
+  "sweep64",
+  "hier6",
+  "topk8",
+  "topk16",
+  "topk32",
+  "fc16",
+  "fc32",
+  "cnn16",
+  "cnn32",
+  "zhang-AHTBS+AHIBS"
+ ],
+ "accountings": {
+  "1": "probe airtime only (Graff Eq. 34; results_freecompute.json)",
+  "2": "inference latency included (results.json, heldout.json)"
+ },
+ "block_m": 50.0,
+ "gate": [
+  {
+   "site": "city_2_chicago_28",
+   "max_abs_joint_vs_stored": 4.829554882679332e-06,
+   "max_abs_free_vs_results_freecompute": 4.907692276123754e-06,
+   "max_abs_joint_vs_aging": 3.143249125148184e-07,
+   "max_abs_free_vs_aging": 3.143249125148184e-07,
+   "nine_method_winners_equal_aging": true,
+   "ten_method_winners_equal_accounting": true,
+   "holds": true
+  },
+  {
+   "site": "city_3_houston_28",
+   "max_abs_joint_vs_stored": 4.992943344550582e-06,
+   "max_abs_free_vs_results_freecompute": 4.804257670354417e-06,
+   "max_abs_joint_vs_aging": 2.397441620782814e-07,
+   "max_abs_free_vs_aging": 2.331001374006325e-07,
+   "nine_method_winners_equal_aging": true,
+   "ten_method_winners_equal_accounting": true,
+   "holds": true
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "max_abs_joint_vs_stored": 4.948145178929053e-06,
+   "max_abs_free_vs_results_freecompute": null,
+   "max_abs_joint_vs_aging": 1.5254665663988476e-07,
+   "max_abs_free_vs_aging": 1.1366232016002398e-07,
+   "nine_method_winners_equal_aging": true,
+   "ten_method_winners_equal_accounting": null,
+   "holds": true
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "max_abs_joint_vs_stored": 4.923853268223866e-06,
+   "max_abs_free_vs_results_freecompute": null,
+   "max_abs_joint_vs_aging": 1.8186650951879102e-07,
+   "max_abs_free_vs_aging": 1.459285009636213e-07,
+   "nine_method_winners_equal_aging": true,
+   "ten_method_winners_equal_accounting": null,
+   "holds": true
+  },
+  {
+   "site": "city_6_miami_28",
+   "max_abs_joint_vs_stored": 4.984155210330243e-06,
+   "max_abs_free_vs_results_freecompute": null,
+   "max_abs_joint_vs_aging": 2.086382995258873e-07,
+   "max_abs_free_vs_aging": 1.9038080864564044e-07,
+   "nine_method_winners_equal_aging": true,
+   "ten_method_winners_equal_accounting": null,
+   "holds": true
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "max_abs_joint_vs_stored": 4.987929346889075e-06,
+   "max_abs_free_vs_results_freecompute": null,
+   "max_abs_joint_vs_aging": 2.8622495329422293e-07,
+   "max_abs_free_vs_aging": 2.0367909887852864e-07,
+   "nine_method_winners_equal_aging": true,
+   "ten_method_winners_equal_accounting": null,
+   "holds": true
+  }
+ ],
+ "gate_tolerances": {
+  "stored_means": 5.000001000000001e-06,
+  "aging_json": 1e-05
+ },
+ "q_definition": "numpy quantile (linear) at 1 - alpha of the per-replicate maximum, over the family, of |D* - D| / SE*; q_t = t_(S-1) quantile at 1 - (per_comparison_level)/2",
+ "winner_identity": {
+  "ten_method_point_winners_equal_printed": true,
+  "moved": []
+ },
+ "n_boot": 20000,
+ "alpha": 0.05,
+ "n_seeds": 10,
+ "q": 3.936729567943416,
+ "q_t": 6.761149173576663,
+ "per_comparison_level": 8.259960077250383e-05,
+ "t_quantile_marginal": 2.262157162798205,
+ "n_contrasts": 6480,
+ "n_identically_zero": 426,
+ "scenarios": {
+  "city_2_chicago_28": {
+   "n_blocks": 15,
+   "per_T": [
+    {
+     "t": 0,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 5e-05,
+     "T_us": 250
+    },
+    {
+     "t": 1,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0003,
+     "T_us": 350
+    },
+    {
+     "t": 2,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0034,
+     "T_us": 500
+    },
+    {
+     "t": 3,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.00185,
+     "T_us": 700
+    },
+    {
+     "t": 4,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.00355,
+     "T_us": 1000
+    },
+    {
+     "t": 5,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0245,
+     "T_us": 1400
+    },
+    {
+     "t": 6,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.08375,
+     "T_us": 2000
+    },
+    {
+     "t": 7,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.13385,
+     "T_us": 2800
+    },
+    {
+     "t": 8,
+     "winner_1": 3,
+     "winner_2": 3,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.08905,
+     "T_us": 4000
+    },
+    {
+     "t": 9,
+     "winner_1": 4,
+     "winner_2": 4,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0489,
+     "T_us": 5600
+    },
+    {
+     "t": 10,
+     "winner_1": 4,
+     "winner_2": 4,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.04025,
+     "T_us": 8000
+    },
+    {
+     "t": 11,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.03755,
+     "T_us": 10000
+    }
+   ],
+   "changes": [],
+   "n_established_contrasts": 0,
+   "n_contrasts": 1009,
+   "site": "city_2_chicago_28",
+   "n": 10451
+  },
+  "city_3_houston_28": {
+   "n_blocks": 22,
+   "per_T": [
+    {
+     "t": 0,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 250
+    },
+    {
+     "t": 1,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 350
+    },
+    {
+     "t": 2,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0003,
+     "T_us": 500
+    },
+    {
+     "t": 3,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0023,
+     "T_us": 700
+    },
+    {
+     "t": 4,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.30115,
+     "T_us": 1000
+    },
+    {
+     "t": 5,
+     "winner_1": 7,
+     "winner_2": 5,
+     "change": true,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.6982,
+     "share_same_change": 0.5268,
+     "T_us": 1400
+    },
+    {
+     "t": 6,
+     "winner_1": 7,
+     "winner_2": 5,
+     "change": true,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.8193,
+     "share_same_change": 0.7128,
+     "T_us": 2000
+    },
+    {
+     "t": 7,
+     "winner_1": 7,
+     "winner_2": 5,
+     "change": true,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.87475,
+     "share_same_change": 0.7311,
+     "T_us": 2800
+    },
+    {
+     "t": 8,
+     "winner_1": 8,
+     "winner_2": 5,
+     "change": true,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.72415,
+     "share_same_change": 0.11765,
+     "T_us": 4000
+    },
+    {
+     "t": 9,
+     "winner_1": 8,
+     "winner_2": 8,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.32835,
+     "T_us": 5600
+    },
+    {
+     "t": 10,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.10805,
+     "T_us": 8000
+    },
+    {
+     "t": 11,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.015,
+     "T_us": 10000
+    }
+   ],
+   "changes": [
+    {
+     "t": 5,
+     "winner_1": 7,
+     "winner_2": 5,
+     "established": false,
+     "rate_lost": 0.06496675335566011,
+     "rate_lost_ci95_boot": [
+      0.02614021689077511,
+      0.10544034675959037
+     ],
+     "rate_lost_ci95_t": [
+      0.019341129525162842,
+      0.11059237718615739
+     ],
+     "rate_lost_sim_lower": -0.0713993903979887,
+     "best_rate_2": 2.7647286843923613,
+     "contrast_2": {
+      "diff": 0.17961544653423722,
+      "se_boot": 0.05596671137959453,
+      "se_t": 0.055762027953636044,
+      "s_seed": 0.02403614473261439,
+      "se_block": 0.05524156167362911,
+      "ci95_boot": [
+       0.07227060745416365,
+       0.2915139511785167
+      ],
+      "ci95_t": [
+       0.053472975586765725,
+       0.3057579174817087
+      ],
+      "sim_boot": [
+       -0.04071036097436781,
+       0.39994125404284225
+      ],
+      "sim_t": [
+       -0.1973999426814479,
+       0.5566308357499223
+      ],
+      "established": false
+     },
+     "contrast_1": {
+      "diff": 0.04125379097845272,
+      "se_boot": 0.023110130755936924,
+      "se_t": 0.022458008287493836,
+      "s_seed": 0.02641791054516212,
+      "se_block": 0.020846379457448314,
+      "ci95_boot": [
+       -0.0025341639196077505,
+       0.08758168404499146
+      ],
+      "ci95_t": [
+       -0.009549753331282905,
+       0.09205733528818835
+      ],
+      "sim_boot": [
+       -0.0497245440874827,
+       0.13223212604438814
+      ],
+      "sim_t": [
+       -0.11058815319471407,
+       0.1930957351516195
+      ],
+      "established": false
+     },
+     "both_contrasts_established": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "share_same_change": 0.5268,
+     "share_any_change": 0.6982,
+     "T_us": 1400
+    },
+    {
+     "t": 6,
+     "winner_1": 7,
+     "winner_2": 5,
+     "established": false,
+     "rate_lost": 0.03608715372491675,
+     "rate_lost_ci95_boot": [
+      0.013926101151141906,
+      0.05925316908779812
+     ],
+     "rate_lost_ci95_t": [
+      0.010387660636107542,
+      0.06178664681372596
+     ],
+     "rate_lost_sim_lower": -0.04072364851121487,
+     "best_rate_2": 3.0372754399714337,
+     "contrast_2": {
+      "diff": 0.10960662570716329,
+      "se_boot": 0.03493948457761219,
+      "se_t": 0.03450531221349929,
+      "s_seed": 0.027141144734499013,
+      "se_block": 0.033420837769289405,
+      "ci95_boot": [
+       0.04229740500092122,
+       0.17996819521084378
+      ],
+      "ci95_t": [
+       0.03155018652880748,
+       0.1876630648855191
+      ],
+      "sim_boot": [
+       -0.027940676318225582,
+       0.24715392773255215
+      ],
+      "sim_t": [
+       -0.12368893744914217,
+       0.34290218886346874
+      ],
+      "established": false
+     },
+     "contrast_1": {
+      "diff": 0.04500177486946688,
+      "se_boot": 0.025209729259203808,
+      "se_t": 0.024498360247625608,
+      "s_seed": 0.02881802701468144,
+      "se_block": 0.022740311931030138,
+      "ci95_boot": [
+       -0.0027643974405200653,
+       0.09553864347012009
+      ],
+      "ci95_t": [
+       -0.010417366241510191,
+       0.10042091598044395
+      ],
+      "sim_boot": [
+       -0.05424211170508901,
+       0.1442456614440228
+      ],
+      "sim_t": [
+       -0.12063529327275035,
+       0.21063884301168412
+      ],
+      "established": false
+     },
+     "both_contrasts_established": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "share_same_change": 0.7128,
+     "share_any_change": 0.8193,
+     "T_us": 2000
+    },
+    {
+     "t": 7,
+     "winner_1": 7,
+     "winner_2": 5,
+     "established": false,
+     "rate_lost": 0.019551047095679643,
+     "rate_lost_ci95_boot": [
+      0.0058826553551451916,
+      0.03418119057595969
+     ],
+     "rate_lost_ci95_t": [
+      0.0037861554587110356,
+      0.03531593873264825
+     ],
+     "rate_lost_sim_lower": -0.027567157517022666,
+     "best_rate_2": 3.2189733500044313,
+     "contrast_2": {
+      "diff": 0.06293429956567431,
+      "se_boot": 0.023210172979685403,
+      "se_t": 0.022432909118629853,
+      "s_seed": 0.029216552731460982,
+      "se_block": 0.02044198415452087,
+      "ci95_boot": [
+       0.018936110815473223,
+       0.11002834153543686
+      ],
+      "ci95_t": [
+       0.012187533520564627,
+       0.113681065610784
+      ],
+      "sim_boot": [
+       -0.02843787468053456,
+       0.15430647381188317
+      ],
+      "sim_t": [
+       -0.0887379453826703,
+       0.21460654451401892
+      ],
+      "established": false
+     },
+     "contrast_1": {
+      "diff": 0.04750042866109183,
+      "se_boot": 0.026609460398299773,
+      "se_t": 0.02585859372505852,
+      "s_seed": 0.03041810329336756,
+      "se_block": 0.024002932500864098,
+      "ci95_boot": [
+       -0.0029178863232662985,
+       0.10084327855275745
+      ],
+      "ci95_t": [
+       -0.01099577435393801,
+       0.10599663167612167
+      ],
+      "sim_boot": [
+       -0.05725382087591427,
+       0.15225467819809793
+      ],
+      "sim_t": [
+       -0.12733338093294225,
+       0.2223342382551259
+      ],
+      "established": false
+     },
+     "both_contrasts_established": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "share_same_change": 0.7311,
+     "share_any_change": 0.87475,
+     "T_us": 2800
+    },
+    {
+     "t": 8,
+     "winner_1": 8,
+     "winner_2": 5,
+     "established": false,
+     "rate_lost": 0.006716255492017604,
+     "rate_lost_ci95_boot": [
+      -0.0356811719287141,
+      0.05739127605822791
+     ],
+     "rate_lost_ci95_t": [
+      -0.0470136984253695,
+      0.06044620940940471
+     ],
+     "rate_lost_sim_lower": -0.15387215962742296,
+     "best_rate_2": 3.3552465088531256,
+     "contrast_2": {
+      "diff": 0.022534692792157696,
+      "se_boot": 0.07982372005394298,
+      "se_t": 0.07969262404348429,
+      "s_seed": 0.046293637811202624,
+      "se_block": 0.07833648088060026,
+      "ci95_boot": [
+       -0.11971912754560614,
+       0.19256187863299515
+      ],
+      "ci95_t": [
+       -0.15774254750999472,
+       0.20281193309431012
+      ],
+      "sim_boot": [
+       -0.2917097061674374,
+       0.3367790917517528
+      ],
+      "sim_t": [
+       -0.5162790263996018,
+       0.5613484119839172
+      ],
+      "established": false
+     },
+     "contrast_1": {
+      "diff": 0.06461067392513975,
+      "se_boot": 0.06595565582825196,
+      "se_t": 0.06575850818098158,
+      "s_seed": 0.04744491252100428,
+      "se_block": 0.06402405349378971,
+      "ci95_boot": [
+       -0.07682294233950851,
+       0.18126149098371225
+      ],
+      "ci95_t": [
+       -0.08414540637139209,
+       0.2133667542216716
+      ],
+      "sim_boot": [
+       -0.1950389065470392,
+       0.3242602543973187
+      ],
+      "sim_t": [
+       -0.3799924093183381,
+       0.5092137571686176
+      ],
+      "established": false
+     },
+     "both_contrasts_established": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "share_same_change": 0.11765,
+     "share_any_change": 0.72415,
+     "T_us": 4000
+    }
+   ],
+   "n_established_contrasts": 0,
+   "n_contrasts": 1009,
+   "site": "city_3_houston_28",
+   "n": 19379
+  },
+  "city_4_phoenix_28": {
+   "n_blocks": 21,
+   "per_T": [
+    {
+     "t": 0,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 250
+    },
+    {
+     "t": 1,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 350
+    },
+    {
+     "t": 2,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.02315,
+     "T_us": 500
+    },
+    {
+     "t": 3,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.03305,
+     "T_us": 700
+    },
+    {
+     "t": 4,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0307,
+     "T_us": 1000
+    },
+    {
+     "t": 5,
+     "winner_1": 3,
+     "winner_2": 3,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0268,
+     "T_us": 1400
+    },
+    {
+     "t": 6,
+     "winner_1": 3,
+     "winner_2": 3,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0191,
+     "T_us": 2000
+    },
+    {
+     "t": 7,
+     "winner_1": 4,
+     "winner_2": 4,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0154,
+     "T_us": 2800
+    },
+    {
+     "t": 8,
+     "winner_1": 4,
+     "winner_2": 4,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 4000
+    },
+    {
+     "t": 9,
+     "winner_1": 4,
+     "winner_2": 4,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 5600
+    },
+    {
+     "t": 10,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 8000
+    },
+    {
+     "t": 11,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 10000
+    }
+   ],
+   "changes": [],
+   "n_established_contrasts": 0,
+   "n_contrasts": 1009,
+   "site": "city_4_phoenix_28",
+   "n": 13489
+  },
+  "city_5_philadelphia_28": {
+   "n_blocks": 22,
+   "per_T": [
+    {
+     "t": 0,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 250
+    },
+    {
+     "t": 1,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 350
+    },
+    {
+     "t": 2,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.00015,
+     "T_us": 500
+    },
+    {
+     "t": 3,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.20845,
+     "T_us": 700
+    },
+    {
+     "t": 4,
+     "winner_1": 5,
+     "winner_2": 5,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.2966,
+     "T_us": 1000
+    },
+    {
+     "t": 5,
+     "winner_1": 5,
+     "winner_2": 5,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.16205,
+     "T_us": 1400
+    },
+    {
+     "t": 6,
+     "winner_1": 5,
+     "winner_2": 5,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.12705,
+     "T_us": 2000
+    },
+    {
+     "t": 7,
+     "winner_1": 5,
+     "winner_2": 4,
+     "change": true,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.3397,
+     "share_same_change": 0.18785,
+     "T_us": 2800
+    },
+    {
+     "t": 8,
+     "winner_1": 4,
+     "winner_2": 4,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.20415,
+     "T_us": 4000
+    },
+    {
+     "t": 9,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0468,
+     "T_us": 5600
+    },
+    {
+     "t": 10,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 8000
+    },
+    {
+     "t": 11,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 10000
+    }
+   ],
+   "changes": [
+    {
+     "t": 7,
+     "winner_1": 5,
+     "winner_2": 4,
+     "established": false,
+     "rate_lost": 0.004304152121796296,
+     "rate_lost_ci95_boot": [
+      -0.015306118470662882,
+      0.025401872230898313
+     ],
+     "rate_lost_ci95_t": [
+      -0.01859950053159072,
+      0.027207804775183312
+     ],
+     "rate_lost_sim_lower": -0.0641504251091617,
+     "best_rate_2": 2.3080991472185204,
+     "contrast_2": {
+      "diff": 0.009934409841816816,
+      "se_boot": 0.023552912647612872,
+      "se_t": 0.0233688012605106,
+      "s_seed": 0.01871547855155315,
+      "se_block": 0.02260694491991072,
+      "ci95_boot": [
+       -0.03532803898936264,
+       0.05863003963389021
+      ],
+      "ci95_t": [
+       -0.04292949131565496,
+       0.06279831099928859
+      ],
+      "sim_boot": [
+       -0.08278703778922922,
+       0.10265585747286285
+      ],
+      "sim_t": [
+       -0.1480655414881617,
+       0.16793436117179533
+      ],
+      "established": false
+     },
+     "contrast_1": {
+      "diff": 0.009579501131985246,
+      "se_boot": 0.027504870735774893,
+      "se_t": 0.027381403878449898,
+      "s_seed": 0.018874380032977384,
+      "se_block": 0.026722968700948358,
+      "ci95_boot": [
+       -0.044586862041341574,
+       0.0641683886602618
+      ],
+      "ci95_t": [
+       -0.05236153777912074,
+       0.07152054004309123
+      ],
+      "sim_boot": [
+       -0.09869973675600135,
+       0.11785873901997185
+      ],
+      "sim_t": [
+       -0.17555025507216512,
+       0.19470925733613562
+      ],
+      "established": false
+     },
+     "both_contrasts_established": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "share_same_change": 0.18785,
+     "share_any_change": 0.3397,
+     "T_us": 2800
+    }
+   ],
+   "n_established_contrasts": 0,
+   "n_contrasts": 1009,
+   "site": "city_5_philadelphia_28",
+   "n": 11302
+  },
+  "city_6_miami_28": {
+   "n_blocks": 24,
+   "per_T": [
+    {
+     "t": 0,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 250
+    },
+    {
+     "t": 1,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 350
+    },
+    {
+     "t": 2,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0084,
+     "T_us": 500
+    },
+    {
+     "t": 3,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.00145,
+     "T_us": 700
+    },
+    {
+     "t": 4,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.1171,
+     "T_us": 1000
+    },
+    {
+     "t": 5,
+     "winner_1": 7,
+     "winner_2": 2,
+     "change": true,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.52495,
+     "share_same_change": 0.2326,
+     "T_us": 1400
+    },
+    {
+     "t": 6,
+     "winner_1": 7,
+     "winner_2": 3,
+     "change": true,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.7878,
+     "share_same_change": 0.3695,
+     "T_us": 2000
+    },
+    {
+     "t": 7,
+     "winner_1": 7,
+     "winner_2": 3,
+     "change": true,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.76865,
+     "share_same_change": 0.38055,
+     "T_us": 2800
+    },
+    {
+     "t": 8,
+     "winner_1": 4,
+     "winner_2": 4,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.35275,
+     "T_us": 4000
+    },
+    {
+     "t": 9,
+     "winner_1": 4,
+     "winner_2": 4,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.06475,
+     "T_us": 5600
+    },
+    {
+     "t": 10,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0134,
+     "T_us": 8000
+    },
+    {
+     "t": 11,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.00275,
+     "T_us": 10000
+    }
+   ],
+   "changes": [
+    {
+     "t": 5,
+     "winner_1": 7,
+     "winner_2": 2,
+     "established": false,
+     "rate_lost": 0.09093557474182332,
+     "rate_lost_ci95_boot": [
+      -0.02058357416813616,
+      0.20352299920577915
+     ],
+     "rate_lost_ci95_t": [
+      -0.03849132042831758,
+      0.2203624699119642
+     ],
+     "rate_lost_sim_lower": -0.29589632169270935,
+     "best_rate_2": 2.511111929352532,
+     "contrast_2": {
+      "diff": 0.2283494065367213,
+      "se_boot": 0.14389776146200448,
+      "se_t": 0.14367057505358322,
+      "s_seed": 0.02272477281505563,
+      "se_block": 0.14349074048968352,
+      "ci95_boot": [
+       -0.05168765864231933,
+       0.5110690312032379
+      ],
+      "ci95_t": [
+       -0.09665601390407907,
+       0.5533548269775217
+      ],
+      "sim_boot": [
+       -0.33813716577162034,
+       0.794835978845063
+      ],
+      "sim_t": [
+       -0.7430287832540968,
+       1.1997275963275396
+      ],
+      "established": false
+     },
+     "contrast_1": {
+      "diff": 0.014959111950329618,
+      "se_boot": 0.14095259755350267,
+      "se_t": 0.14069683896807822,
+      "s_seed": 0.02514723481929604,
+      "se_block": 0.14047192656792193,
+      "ci95_boot": [
+       -0.2575752035427021,
+       0.2965262213400175
+      ],
+      "ci95_t": [
+       -0.3033192501043741,
+       0.33323747400503334
+      ],
+      "sim_boot": [
+       -0.5399331465169731,
+       0.5698513704176323
+      ],
+      "sim_t": [
+       -0.9363132045635413,
+       0.9662314284642005
+      ],
+      "established": false
+     },
+     "both_contrasts_established": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "share_same_change": 0.2326,
+     "share_any_change": 0.52495,
+     "T_us": 1400
+    },
+    {
+     "t": 6,
+     "winner_1": 7,
+     "winner_2": 3,
+     "established": false,
+     "rate_lost": 0.03328042603312998,
+     "rate_lost_ci95_boot": [
+      -0.021965705612640142,
+      0.08353048684646354
+     ],
+     "rate_lost_ci95_t": [
+      -0.027627978937682516,
+      0.09418883100394247
+     ],
+     "rate_lost_sim_lower": -0.1487629875300934,
+     "best_rate_2": 2.6742536468652913,
+     "contrast_2": {
+      "diff": 0.08900030068832843,
+      "se_boot": 0.07233230995109477,
+      "se_t": 0.0720040706263137,
+      "s_seed": 0.025720002768494683,
+      "se_block": 0.07154323400935993,
+      "ci95_boot": [
+       -0.0587418683405723,
+       0.22338170907358837
+      ],
+      "ci95_t": [
+       -0.07388422342961493,
+       0.2518848248062718
+      ],
+      "sim_boot": [
+       -0.19575244261379415,
+       0.373753043990451
+      ],
+      "sim_t": [
+       -0.3978299619209281,
+       0.575830563297585
+      ],
+      "established": false
+     },
+     "contrast_1": {
+      "diff": 0.08131566225260656,
+      "se_boot": 0.06831190331030679,
+      "se_t": 0.06794282263738084,
+      "s_seed": 0.027415725151701684,
+      "se_block": 0.06738742426725647,
+      "ci95_boot": [
+       -0.045677162448361695,
+       0.219571336123692
+      ],
+      "ci95_t": [
+       -0.07238168063727254,
+       0.23501300514248566
+      ],
+      "sim_boot": [
+       -0.1876098273515699,
+       0.350241151856783
+      ],
+      "sim_t": [
+       -0.3780558968725867,
+       0.5406872213777998
+      ],
+      "established": false
+     },
+     "both_contrasts_established": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "share_same_change": 0.3695,
+     "share_any_change": 0.7878,
+     "T_us": 2000
+    },
+    {
+     "t": 7,
+     "winner_1": 7,
+     "winner_2": 3,
+     "established": false,
+     "rate_lost": 0.012691109858943521,
+     "rate_lost_ci95_boot": [
+      -0.039890038739110845,
+      0.06058028266495242
+     ],
+     "rate_lost_ci95_t": [
+      -0.04558001989361068,
+      0.07096223961149772
+     ],
+     "rate_lost_sim_lower": -0.16146999939065515,
+     "best_rate_2": 2.8227374352023293,
+     "contrast_2": {
+      "diff": 0.03582367089310523,
+      "se_boot": 0.07308043922158008,
+      "se_t": 0.07271117234870023,
+      "s_seed": 0.027726710498285477,
+      "se_block": 0.07218058975110148,
+      "ci95_boot": [
+       -0.11259910564055929,
+       0.17100223171349993
+      ],
+      "ci95_t": [
+       -0.12866042845096176,
+       0.20030777023717222
+      ],
+      "sim_boot": [
+       -0.2518742550287808,
+       0.32352159681499126
+      ],
+      "sim_t": [
+       -0.4557874119420996,
+       0.5274347537283101
+      ],
+      "established": false
+     },
+     "contrast_1": {
+      "diff": 0.08583058835041957,
+      "se_boot": 0.07210481585019214,
+      "se_t": 0.07171524254501983,
+      "s_seed": 0.028937940793177356,
+      "se_block": 0.07112900654132658,
+      "ci95_boot": [
+       -0.04821331608837609,
+       0.23176269420077117
+      ],
+      "ci95_t": [
+       -0.07640056125460762,
+       0.24806173795544675
+      ],
+      "sim_boot": [
+       -0.1980265721981469,
+       0.36968774889898603
+      ],
+      "sim_t": [
+       -0.3990468645156912,
+       0.5707080412165304
+      ],
+      "established": false
+     },
+     "both_contrasts_established": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "share_same_change": 0.38055,
+     "share_any_change": 0.76865,
+     "T_us": 2800
+    }
+   ],
+   "n_established_contrasts": 0,
+   "n_contrasts": 1009,
+   "site": "city_6_miami_28",
+   "n": 27061
+  },
+  "city_7_sandiego_28": {
+   "n_blocks": 24,
+   "per_T": [
+    {
+     "t": 0,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 250
+    },
+    {
+     "t": 1,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 350
+    },
+    {
+     "t": 2,
+     "winner_1": 9,
+     "winner_2": 9,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.00195,
+     "T_us": 500
+    },
+    {
+     "t": 3,
+     "winner_1": 2,
+     "winner_2": 2,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.00385,
+     "T_us": 700
+    },
+    {
+     "t": 4,
+     "winner_1": 5,
+     "winner_2": 3,
+     "change": true,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.5719,
+     "share_same_change": 0.1347,
+     "T_us": 1000
+    },
+    {
+     "t": 5,
+     "winner_1": 5,
+     "winner_2": 3,
+     "change": true,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.43575,
+     "share_same_change": 0.1148,
+     "T_us": 1400
+    },
+    {
+     "t": 6,
+     "winner_1": 5,
+     "winner_2": 5,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.2972,
+     "T_us": 2000
+    },
+    {
+     "t": 7,
+     "winner_1": 4,
+     "winner_2": 4,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.11235,
+     "T_us": 2800
+    },
+    {
+     "t": 8,
+     "winner_1": 4,
+     "winner_2": 4,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0779,
+     "T_us": 4000
+    },
+    {
+     "t": 9,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0347,
+     "T_us": 5600
+    },
+    {
+     "t": 10,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 8000
+    },
+    {
+     "t": 11,
+     "winner_1": 0,
+     "winner_2": 0,
+     "change": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "established": false,
+     "share_any_change": 0.0,
+     "T_us": 10000
+    }
+   ],
+   "changes": [
+    {
+     "t": 4,
+     "winner_1": 5,
+     "winner_2": 3,
+     "established": false,
+     "rate_lost": 0.014160325045516868,
+     "rate_lost_ci95_boot": [
+      -0.029300254487551098,
+      0.0690320771836878
+     ],
+     "rate_lost_ci95_t": [
+      -0.04321670827980851,
+      0.07153735837084224
+     ],
+     "rate_lost_sim_lower": -0.15732850333011353,
+     "best_rate_2": 2.6522348852043214,
+     "contrast_2": {
+      "diff": 0.03755650807155231,
+      "se_boot": 0.06728865114597667,
+      "se_t": 0.067270909332719,
+      "s_seed": 0.020957800628556712,
+      "se_block": 0.0669436501972537,
+      "ci95_boot": [
+       -0.07771115709724749,
+       0.18308928330469407
+      ],
+      "ci95_t": [
+       -0.11462086132340657,
+       0.18973387746651119
+      ],
+      "sim_boot": [
+       -0.22734071448184368,
+       0.3024537306249483
+      ],
+      "sim_t": [
+       -0.41727214496911136,
+       0.492385161112216
+      ],
+      "established": false
+     },
+     "contrast_1": {
+      "diff": 0.045774318330700225,
+      "se_boot": 0.07469342346199043,
+      "se_t": 0.0746818769155304,
+      "s_seed": 0.021625711976103648,
+      "se_block": 0.074368108741443,
+      "ci95_boot": [
+       -0.10912297081317737,
+       0.18285178611570432
+      ],
+      "ci95_t": [
+       -0.12316782446498076,
+       0.2147164611263812
+      ],
+      "sim_boot": [
+       -0.24827349034303597,
+       0.3398221270044364
+      ],
+      "sim_t": [
+       -0.4591609920578922,
+       0.5507096287192926
+      ],
+      "established": false
+     },
+     "both_contrasts_established": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "share_same_change": 0.1347,
+     "share_any_change": 0.5719,
+     "T_us": 1000
+    },
+    {
+     "t": 5,
+     "winner_1": 5,
+     "winner_2": 3,
+     "established": false,
+     "rate_lost": 0.0024649073589602215,
+     "rate_lost_ci95_boot": [
+      -0.04282191701626201,
+      0.05801647935827651
+     ],
+     "rate_lost_ci95_t": [
+      -0.056397983096051915,
+      0.06132779781397236
+     ],
+     "rate_lost_sim_lower": -0.17346485989998273,
+     "best_rate_2": 3.0177982805194974,
+     "contrast_2": {
+      "diff": 0.007438593189510012,
+      "se_boot": 0.07854288270633568,
+      "se_t": 0.0785251937941454,
+      "s_seed": 0.024129351562866407,
+      "se_block": 0.07815358916725226,
+      "ci95_boot": [
+       -0.1292279075402241,
+       0.17508203164920175
+      ],
+      "ci95_t": [
+       -0.17019773641203315,
+       0.18507492279105317
+      ],
+      "sim_boot": [
+       -0.30176349551203324,
+       0.31664068189105327
+      ],
+      "sim_t": [
+       -0.5234819559367234,
+       0.5383591423157434
+      ],
+      "established": false
+     },
+     "contrast_1": {
+      "diff": 0.052083493781394985,
+      "se_boot": 0.08498858308032141,
+      "se_t": 0.08497544504784674,
+      "s_seed": 0.024606431647726527,
+      "se_block": 0.08461842951293883,
+      "ci95_boot": [
+       -0.12416363102765844,
+       0.2080546518742491
+      ],
+      "ci95_t": [
+       -0.14014431789555676,
+       0.24431130545834673
+      ],
+      "sim_boot": [
+       -0.28249357416852183,
+       0.3866605617313118
+      ],
+      "sim_t": [
+       -0.5224481662781632,
+       0.6266151538409531
+      ],
+      "established": false
+     },
+     "both_contrasts_established": false,
+     "candidates_1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "candidates_2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "share_same_change": 0.1148,
+     "share_any_change": 0.43575,
+     "T_us": 1400
+    }
+   ],
+   "n_established_contrasts": 0,
+   "n_contrasts": 1009,
+   "site": "city_7_sandiego_28",
+   "n": 22681
+  }
+ },
+ "n_changes_replicates": {
+  "mean": 10.0493,
+  "median": 10.0,
+  "p2_5": 4.0,
+  "p97_5": 16.0,
+  "hist": {
+   "0": 5,
+   "1": 14,
+   "2": 55,
+   "3": 134,
+   "4": 336,
+   "5": 624,
+   "6": 1026,
+   "7": 1533,
+   "8": 2154,
+   "9": 2708,
+   "10": 2760,
+   "11": 2610,
+   "12": 2193,
+   "13": 1603,
+   "14": 1007,
+   "15": 577,
+   "16": 315,
+   "17": 172,
+   "18": 83,
+   "19": 35,
+   "20": 30,
+   "21": 16,
+   "22": 7,
+   "23": 1,
+   "24": 1,
+   "27": 1
+  }
+ },
+ "R8": {
+  "n_point_changes": 10,
+  "n_established": 0,
+  "established": [],
+  "max_rate_lost_point": 0.09093557474182332,
+  "max_rate_lost_established": null,
+  "wording": "the paper may state a change of the best method, and the rate lost by keeping the published accounting's choice as a decision cost, only at the established changes; every other change is a point estimate and is worded as one; no change is established, and the abstract and conclusion say so"
+ },
+ "seconds": 38.7
+}

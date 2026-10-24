@@ -1,0 +1,183 @@
+{
+ "k_f": 16,
+ "subband_offsets_Hz": [
+  -46875000.0,
+  -40625000.0,
+  -34375000.0,
+  -28125000.0,
+  -21875000.0,
+  -15625000.0,
+  -9375000.0,
+  -3125000.0,
+  3125000.0,
+  9375000.0,
+  15625000.0,
+  21875000.0,
+  28125000.0,
+  34375000.0,
+  40625000.0,
+  46875000.0
+ ],
+ "sites": [
+  {
+   "scenario": "city_0_newyork_28",
+   "role": "training",
+   "tx_set_id": 1,
+   "n": 16303,
+   "eligible_sha256": "2017090126f5fb6e",
+   "n_los": 4467,
+   "oracle_snr_dB_pct": {
+    "1": -36.62,
+    "5": -24.13,
+    "25": -9.7,
+    "50": 1.16,
+    "75": 32.96,
+    "95": 46.94,
+    "99": 54.08
+   },
+   "frac_below_0dB": 0.4816,
+   "oracle_se_mean": 4.9197,
+   "seconds": 13.7
+  },
+  {
+   "scenario": "city_1_losangeles_28",
+   "role": "validation",
+   "tx_set_id": 1,
+   "n": 19911,
+   "eligible_sha256": "347f2b538674e16c",
+   "n_los": 4090,
+   "oracle_snr_dB_pct": {
+    "1": -49.68,
+    "5": -40.06,
+    "25": -19.87,
+    "50": -7.98,
+    "75": 9.95,
+    "95": 43.37,
+    "99": 53.41
+   },
+   "frac_below_0dB": 0.6449,
+   "oracle_se_mean": 3.3162,
+   "seconds": 15.2
+  },
+  {
+   "scenario": "city_2_chicago_28",
+   "role": "test_A",
+   "tx_set_id": 1,
+   "n": 10451,
+   "eligible_sha256": "83a506c366843fe4",
+   "n_los": 3609,
+   "oracle_snr_dB_pct": {
+    "1": -37.79,
+    "5": -35.51,
+    "25": -23.37,
+    "50": 0.57,
+    "75": 34.48,
+    "95": 48.52,
+    "99": 55.46
+   },
+   "frac_below_0dB": 0.4887,
+   "oracle_se_mean": 5.123,
+   "seconds": 7.7
+  },
+  {
+   "scenario": "city_3_houston_28",
+   "role": "test_B",
+   "tx_set_id": 1,
+   "n": 19379,
+   "eligible_sha256": "6cce9228562a0e82",
+   "n_los": 5912,
+   "oracle_snr_dB_pct": {
+    "1": -39.34,
+    "5": -32.45,
+    "25": -13.42,
+    "50": -2.07,
+    "75": 33.53,
+    "95": 46.7,
+    "99": 53.85
+   },
+   "frac_below_0dB": 0.5333,
+   "oracle_se_mean": 4.6293,
+   "seconds": 15.3
+  },
+  {
+   "scenario": "city_4_phoenix_28",
+   "role": "test_extra_1",
+   "tx_set_id": 1,
+   "n": 13489,
+   "eligible_sha256": "816a351cd1594720",
+   "n_los": 2227,
+   "oracle_snr_dB_pct": {
+    "1": -53.49,
+    "5": -37.57,
+    "25": -28.52,
+    "50": -21.88,
+    "75": 9.52,
+    "95": 47.66,
+    "99": 55.02
+   },
+   "frac_below_0dB": 0.6959,
+   "oracle_se_mean": 3.094,
+   "seconds": 10.5
+  },
+  {
+   "scenario": "city_5_philadelphia_28",
+   "role": "test_extra_2",
+   "tx_set_id": 1,
+   "n": 11302,
+   "eligible_sha256": "06ee685ad5c730b5",
+   "n_los": 3139,
+   "oracle_snr_dB_pct": {
+    "1": -46.65,
+    "5": -44.02,
+    "25": -24.35,
+    "50": -11.5,
+    "75": 28.91,
+    "95": 41.92,
+    "99": 50.47
+   },
+   "frac_below_0dB": 0.6662,
+   "oracle_se_mean": 3.5411,
+   "seconds": 8.4
+  },
+  {
+   "scenario": "city_6_miami_28",
+   "role": "test_extra_3",
+   "tx_set_id": 1,
+   "n": 27061,
+   "eligible_sha256": "bf3eae73b0896f42",
+   "n_los": 6739,
+   "oracle_snr_dB_pct": {
+    "1": -43.95,
+    "5": -38.57,
+    "25": -17.83,
+    "50": -1.01,
+    "75": 28.71,
+    "95": 43.05,
+    "99": 51.53
+   },
+   "frac_below_0dB": 0.5201,
+   "oracle_se_mean": 4.0134,
+   "seconds": 22.1
+  },
+  {
+   "scenario": "city_7_sandiego_28",
+   "role": "test_extra_4",
+   "tx_set_id": 1,
+   "n": 22681,
+   "eligible_sha256": "09723b938ac89793",
+   "n_los": 8737,
+   "oracle_snr_dB_pct": {
+    "1": -36.22,
+    "5": -31.56,
+    "25": -14.92,
+    "50": 5.63,
+    "75": 33.6,
+    "95": 46.36,
+    "99": 53.15
+   },
+   "frac_below_0dB": 0.4251,
+   "oracle_se_mean": 5.5664,
+   "seconds": 19.0
+  }
+ ]
+}

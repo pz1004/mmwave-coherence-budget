@@ -1,0 +1,774 @@
+{
+ "case": "B",
+ "component": "vit_b16_vision",
+ "profile": "gpu-resident",
+ "device": "cuda",
+ "threads": 1,
+ "interop_threads": 1,
+ "run": 1,
+ "attempt": 1,
+ "smoke": false,
+ "started": true,
+ "started_utc": "2026-10-22T06:04:22Z",
+ "ended_utc": "2026-10-22T06:13:05Z",
+ "protocol": {
+  "warmup": 1000,
+  "timed": 10000,
+  "recheck": [
+   250,
+   2500
+  ],
+  "seeds": [
+   17,
+   29,
+   43
+  ],
+  "percentile": "nearest-rank p95",
+  "drift_max": 0.1,
+  "boundaries": [
+   "host"
+  ],
+  "runtimes": [
+   "uncompiled",
+   "torchscript"
+  ]
+ },
+ "contended": false,
+ "configurations": [
+  {
+   "runtime": "uncompiled",
+   "boundary": "host",
+   "per_seed": [
+    {
+     "seed": 17,
+     "n_warmup": 1000,
+     "recheck_n_warmup": 250,
+     "n_timed": 10000,
+     "p95_ns": 7043174,
+     "median_ns": 6305814.0,
+     "mean_ns": 6365205.3338,
+     "q1_ns": 6119800.75,
+     "q3_ns": 6395582.75,
+     "p99_ns": 8741332,
+     "min_ns": 5569607,
+     "max_ns": 10293975,
+     "lag1_autocorrelation": 0.5507457239138233,
+     "recheck_n_timed": 2500,
+     "recheck_p95_ns": 7007625,
+     "drift": 0.005047298277736713
+    },
+    {
+     "seed": 29,
+     "n_warmup": 1000,
+     "recheck_n_warmup": 250,
+     "n_timed": 10000,
+     "p95_ns": 6907608,
+     "median_ns": 6390103.0,
+     "mean_ns": 6459492.7565,
+     "q1_ns": 6308899.25,
+     "q3_ns": 6487170.5,
+     "p99_ns": 8885616,
+     "min_ns": 6104871,
+     "max_ns": 10106981,
+     "lag1_autocorrelation": 0.44447780405883025,
+     "recheck_n_timed": 2500,
+     "recheck_p95_ns": 6771430,
+     "drift": 0.019714204975152035
+    },
+    {
+     "seed": 43,
+     "n_warmup": 1000,
+     "recheck_n_warmup": 250,
+     "n_timed": 10000,
+     "p95_ns": 6829584,
+     "median_ns": 6303769.0,
+     "mean_ns": 6382043.24,
+     "q1_ns": 6239895.75,
+     "q3_ns": 6323958.25,
+     "p99_ns": 8763462,
+     "min_ns": 6101216,
+     "max_ns": 10338845,
+     "lag1_autocorrelation": 0.479125439245572,
+     "recheck_n_timed": 2500,
+     "recheck_p95_ns": 6765373,
+     "drift": 0.009401890364039742
+    }
+   ],
+   "charge_ns": 7043174,
+   "contended": false,
+   "state_before": {
+    "utc": "2026-10-22T06:04:22Z",
+    "loadavg": [
+     "0.81",
+     "3.84",
+     "2.63"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     3297686,
+     2121214,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000
+    ],
+    "gpu": "0, 0, 1395, 6500, 62, 68.35, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1567     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1797     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0       2711     G      -      -      -      -      -      -    snapd-desktop-i",
+     "    0      83188   C+G      1      0      1      -      -      -    gnome-remote-de",
+     "    0      83204     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0     171289     G      -      -      -      -      -      -    firefox"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "   1797 gnome-shell      1.5",
+     "  42119 claude           0.7",
+     "1854712 python3          0.6",
+     "  41566 claude-desktop   0.4",
+     "  83188 gnome-remote-de  0.4",
+     " 171289 firefox          0.4",
+     " 171912 Isolated Web Co  0.3"
+    ]
+   },
+   "state_after": {
+    "utc": "2026-10-22T06:08:47Z",
+    "loadavg": [
+     "1.38",
+     "2.53",
+     "2.38"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     5983869,
+     5976032,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000
+    ],
+    "gpu": "99, 24, 1395, 6500, 88, 199.85, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1567     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1797     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0       2711     G      -      -      -      -      -      -    snapd-desktop-i",
+     "    0      83188   C+G      -      -      1      -      -      -    gnome-remote-de",
+     "    0      83204     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0     171289     G      -      -      -      -      -      -    firefox        ",
+     "    0    1854712     C     99     23      -      -      -      -    python3"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "1854712 python3         64.6",
+     "   1797 gnome-shell      1.5",
+     "  42119 claude           0.7",
+     "  41566 claude-desktop   0.4",
+     "  83188 gnome-remote-de  0.4",
+     " 171289 firefox          0.4",
+     " 171912 Isolated Web Co  0.3"
+    ]
+   }
+  },
+  {
+   "runtime": "torchscript",
+   "boundary": "host",
+   "per_seed": [
+    {
+     "seed": 17,
+     "n_warmup": 1000,
+     "recheck_n_warmup": 250,
+     "n_timed": 10000,
+     "p95_ns": 6670613,
+     "median_ns": 6093011.5,
+     "mean_ns": 6167519.8251,
+     "q1_ns": 5967475.5,
+     "q3_ns": 6160917.25,
+     "p99_ns": 8506053,
+     "min_ns": 5906162,
+     "max_ns": 9865152,
+     "lag1_autocorrelation": 0.5702231240415586,
+     "recheck_n_timed": 2500,
+     "recheck_p95_ns": 6668912,
+     "drift": 0.0002549990533103929
+    },
+    {
+     "seed": 29,
+     "n_warmup": 1000,
+     "recheck_n_warmup": 250,
+     "n_timed": 10000,
+     "p95_ns": 6790358,
+     "median_ns": 6091188.5,
+     "mean_ns": 6169374.0256,
+     "q1_ns": 5957282.5,
+     "q3_ns": 6163971.0,
+     "p99_ns": 8560391,
+     "min_ns": 5811998,
+     "max_ns": 9634249,
+     "lag1_autocorrelation": 0.5895749729668442,
+     "recheck_n_timed": 2500,
+     "recheck_p95_ns": 6591105,
+     "drift": 0.029343519148769474
+    },
+    {
+     "seed": 43,
+     "n_warmup": 1000,
+     "recheck_n_warmup": 250,
+     "n_timed": 10000,
+     "p95_ns": 6652274,
+     "median_ns": 6097608.5,
+     "mean_ns": 6158222.5322,
+     "q1_ns": 5964168.25,
+     "q3_ns": 6167579.0,
+     "p99_ns": 8515420,
+     "min_ns": 5818741,
+     "max_ns": 9505307,
+     "lag1_autocorrelation": 0.5803401985265086,
+     "recheck_n_timed": 2500,
+     "recheck_p95_ns": 6533539,
+     "drift": 0.01784878373921459
+    }
+   ],
+   "charge_ns": 6790358,
+   "contended": false,
+   "state_before": {
+    "utc": "2026-10-22T06:08:47Z",
+    "loadavg": [
+     "1.38",
+     "2.53",
+     "2.38"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     5697833,
+     1307590,
+     1593548,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     5692136,
+     5700000,
+     5700000,
+     800000,
+     800000,
+     5700000,
+     5700000,
+     800000
+    ],
+    "gpu": "99, 24, 1800, 6500, 88, 132.48, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1567     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1797     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0       2711     G      -      -      -      -      -      -    snapd-desktop-i",
+     "    0      83188   C+G      -      -      1      -      -      -    gnome-remote-de",
+     "    0      83204     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0     171289     G      -      -      -      -      -      -    firefox        ",
+     "    0    1854712     C     99     23      -      -      -      -    python3"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "1854712 python3         64.6",
+     "   1797 gnome-shell      1.5",
+     "  42119 claude           0.7",
+     "  41566 claude-desktop   0.4",
+     "  83188 gnome-remote-de  0.4",
+     " 171289 firefox          0.4",
+     " 171912 Isolated Web Co  0.3"
+    ]
+   },
+   "state_after": {
+    "utc": "2026-10-22T06:13:05Z",
+    "loadavg": [
+     "1.09",
+     "1.70",
+     "2.06"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     800000,
+     800000,
+     800000,
+     800000,
+     5687104,
+     800000,
+     800000,
+     800000,
+     6000000,
+     5999939,
+     800000,
+     800000,
+     5700000,
+     800000,
+     800000,
+     800000
+    ],
+    "gpu": "100, 26, 1395, 6500, 88, 207.78, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1567     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1797     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0       2711     G      -      -      -      -      -      -    snapd-desktop-i",
+     "    0      83188   C+G     12      3      1      -      -      -    gnome-remote-de",
+     "    0      83204     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0     171289     G      -      -      -      -      -      -    firefox        ",
+     "    0    1854712     C     86     22      -      -      -      -    python3"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "1854712 python3         78.2",
+     "   1797 gnome-shell      1.5",
+     "  42119 claude           0.7",
+     "  41566 claude-desktop   0.4",
+     "  83188 gnome-remote-de  0.4",
+     " 171289 firefox          0.4",
+     " 171912 Isolated Web Co  0.3"
+    ]
+   }
+  }
+ ],
+ "quiet_log": [
+  {
+   "utc": "2026-10-22T06:02:01Z",
+   "samples": [
+    [
+     0,
+     7.53
+    ],
+    [
+     3,
+     7.53
+    ],
+    [
+     0,
+     7.53
+    ],
+    [
+     3,
+     7.53
+    ],
+    [
+     0,
+     7.53
+    ],
+    [
+     3,
+     7.53
+    ],
+    [
+     0,
+     7.53
+    ],
+    [
+     5,
+     7.53
+    ],
+    [
+     0,
+     7.53
+    ],
+    [
+     3,
+     6.92
+    ]
+   ],
+   "quiet": false
+  },
+  {
+   "utc": "2026-10-22T06:02:36Z",
+   "samples": [
+    [
+     0,
+     4.2
+    ],
+    [
+     4,
+     4.2
+    ],
+    [
+     3,
+     4.2
+    ],
+    [
+     5,
+     4.2
+    ],
+    [
+     0,
+     4.2
+    ],
+    [
+     3,
+     4.2
+    ],
+    [
+     0,
+     4.2
+    ],
+    [
+     3,
+     4.2
+    ],
+    [
+     0,
+     4.2
+    ],
+    [
+     0,
+     3.86
+    ]
+   ],
+   "quiet": false
+  },
+  {
+   "utc": "2026-10-22T06:03:11Z",
+   "samples": [
+    [
+     0,
+     2.34
+    ],
+    [
+     3,
+     2.34
+    ],
+    [
+     0,
+     2.34
+    ],
+    [
+     2,
+     2.34
+    ],
+    [
+     0,
+     2.34
+    ],
+    [
+     0,
+     2.34
+    ],
+    [
+     0,
+     2.34
+    ],
+    [
+     0,
+     2.34
+    ],
+    [
+     0,
+     2.15
+    ],
+    [
+     0,
+     2.15
+    ]
+   ],
+   "quiet": false
+  },
+  {
+   "utc": "2026-10-22T06:03:47Z",
+   "samples": [
+    [
+     3,
+     1.38
+    ],
+    [
+     0,
+     1.38
+    ],
+    [
+     3,
+     1.38
+    ],
+    [
+     0,
+     1.38
+    ],
+    [
+     3,
+     1.38
+    ],
+    [
+     0,
+     1.38
+    ],
+    [
+     5,
+     1.38
+    ],
+    [
+     0,
+     1.38
+    ],
+    [
+     3,
+     1.35
+    ],
+    [
+     0,
+     1.35
+    ]
+   ],
+   "quiet": false
+  },
+  {
+   "utc": "2026-10-22T06:04:22Z",
+   "samples": [
+    [
+     6,
+     0.89
+    ],
+    [
+     0,
+     0.89
+    ],
+    [
+     6,
+     0.89
+    ],
+    [
+     5,
+     0.89
+    ],
+    [
+     8,
+     0.89
+    ],
+    [
+     0,
+     0.89
+    ],
+    [
+     5,
+     0.89
+    ],
+    [
+     0,
+     0.89
+    ],
+    [
+     0,
+     0.81
+    ],
+    [
+     0,
+     0.81
+    ]
+   ],
+   "quiet": true
+  }
+ ],
+ "build_warnings": [
+  "uncompiled s17: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True",
+  "uncompiled s29: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True",
+  "uncompiled s43: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True",
+  "torchscript s17: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: TracerWarning: Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s17: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s17: TracerWarning: Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s17: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s17: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s17: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s17: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: TracerWarning: Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s29: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s29: TracerWarning: Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s29: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s29: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s29: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s29: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: TracerWarning: Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s43: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s43: TracerWarning: Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s43: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!",
+  "torchscript s43: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.trace_method` is deprecated. Please switch to `torch.compile` or `torch.export`.",
+  "torchscript s43: DeprecationWarning: `torch.jit.freeze` is deprecated. Please use `torch.compile` instead.",
+  "torchscript s43: DeprecationWarning: `torch.jit.optimize_for_inference` is deprecated. Please use `torch.compile` instead."
+ ],
+ "env": {
+  "profile": "gpu-resident",
+  "cpu": "Intel(R) Core(TM) i9-14900KF",
+  "governor": "powersave",
+  "affinity": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "torch_threads": 1,
+  "requested_threads": 1,
+  "torch": "2.12.0+cu130",
+  "python": "3.13.12",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "numpy": "2.5.3",
+  "gpu": "Quadro RTX 8000",
+  "omp": "1",
+  "timestamp": "2026-10-22T15:13:05+0900",
+  "torchvision": "0.27.0+cu130",
+  "cuda": "13.0",
+  "cudnn": 92000,
+  "source_sha256": {
+   "calibrate.py": "a3edd9bf45ba03f8f497a2b266c7c800625899150fe14d1b84debfd288fd6d44",
+   "calibrate_opt2.py": "fb93f5489ffaa25f3bbd0f1f603e4ef65fae806b940bc38c1689e85762728e4b",
+   "models.py": "1819703b5203e83bdce77667f27878b711c7cc585797eec2335d22d551d4d20f"
+  },
+  "script_sha256": "01d9ee0a722b114a0c04b1158fbba7197eeea7b77d9464698c32f34c07bb40c9",
+  "env_vars": {
+   "OMP_NUM_THREADS": "1",
+   "OPENBLAS_NUM_THREADS": "1",
+   "MKL_NUM_THREADS": "1",
+   "CUDA_VISIBLE_DEVICES": null,
+   "PYTHONWARNINGS": "ignore"
+  }
+ }
+}

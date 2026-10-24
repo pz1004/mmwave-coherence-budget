@@ -1,0 +1,242 @@
+{
+ "env": {
+  "profile": "gpu-resident",
+  "device": "cuda",
+  "threads": 1,
+  "torch": "2.12.0+cu130",
+  "python": "3.13.12",
+  "cpu": "x86_64",
+  "utc": "2026-09-18T07:24:55Z"
+ },
+ "protocol": "G3 verbatim; largest p95 over seeds 17/29/43",
+ "n_warmup": 1000,
+ "n_timed": 10000,
+ "contention": {
+  "loadavg": [
+   "1.85",
+   "1.29",
+   "0.68"
+  ],
+  "worst_recheck_drift": 0.096,
+  "worst_component": "fc_k32",
+  "contended": false,
+  "rule": "each component timed twice; >10% drift between passes means the machine was not quiet"
+ },
+ "rows": [
+  {
+   "component": "feat_build",
+   "charge_us": 16.267,
+   "per_seed_us": [
+    16.267,
+    16.1,
+    15.785
+   ],
+   "desc": "194-vector rebuilt from the power buffer"
+  },
+  {
+   "component": "feat_build_opt",
+   "charge_us": 0.261,
+   "per_seed_us": [
+    0.248,
+    0.258,
+    0.261
+   ],
+   "desc": "194-vector refreshed incrementally"
+  },
+  {
+   "component": "probe_update",
+   "charge_us": 0.341,
+   "per_seed_us": [
+    0.327,
+    0.337,
+    0.341
+   ],
+   "desc": "per-probe dB conversion + running best"
+  },
+  {
+   "component": "ee_net1",
+   "charge_us": 42.314,
+   "per_seed_us": [
+    42.314,
+    40.411,
+    39.851
+   ],
+   "desc": "block 1 + exit 1 + argmax, network only"
+  },
+  {
+   "component": "ee_net2",
+   "charge_us": 41.097,
+   "per_seed_us": [
+    41.097,
+    40.62,
+    40.137
+   ],
+   "desc": "block 2 + exit 2 + argmax (reuses block 1)"
+  },
+  {
+   "component": "ee_net3",
+   "charge_us": 41.166,
+   "per_seed_us": [
+    40.717,
+    41.166,
+    39.849
+   ],
+   "desc": "block 3 + exit 3 + argmax (reuses block 2)"
+  },
+  {
+   "component": "ee_step1",
+   "charge_us": 41.895,
+   "per_seed_us": [
+    41.624,
+    41.895,
+    40.89
+   ],
+   "desc": "front end + block 1 + exit 1 + argmax"
+  },
+  {
+   "component": "ee_fresh1",
+   "charge_us": 41.731,
+   "per_seed_us": [
+    41.127,
+    41.731,
+    40.951
+   ],
+   "desc": "fresh invocation: front end + blocks 1..1 + exit 1 + argmax"
+  },
+  {
+   "component": "ee_fresh2",
+   "charge_us": 54.215,
+   "per_seed_us": [
+    53.342,
+    51.468,
+    54.215
+   ],
+   "desc": "fresh invocation: front end + blocks 1..2 + exit 2 + argmax"
+  },
+  {
+   "component": "ee_fresh3",
+   "charge_us": 76.66,
+   "per_seed_us": [
+    76.66,
+    62.921,
+    66.276
+   ],
+   "desc": "fresh invocation: front end + blocks 1..3 + exit 3 + argmax"
+  },
+  {
+   "component": "fc_k4",
+   "charge_us": 64.576,
+   "per_seed_us": [
+    64.576,
+    61.404,
+    63.71
+   ],
+   "desc": "BeamMLP(4) full decision"
+  },
+  {
+   "component": "fc_k8",
+   "charge_us": 65.622,
+   "per_seed_us": [
+    65.622,
+    61.959,
+    63.958
+   ],
+   "desc": "BeamMLP(8) full decision"
+  },
+  {
+   "component": "fc_k16",
+   "charge_us": 66.604,
+   "per_seed_us": [
+    66.604,
+    62.768,
+    61.652
+   ],
+   "desc": "BeamMLP(16) full decision"
+  },
+  {
+   "component": "fc_k32",
+   "charge_us": 66.145,
+   "per_seed_us": [
+    64.579,
+    66.145,
+    61.009
+   ],
+   "desc": "BeamMLP(32) full decision"
+  },
+  {
+   "component": "fc_k64",
+   "charge_us": 66.148,
+   "per_seed_us": [
+    62.419,
+    62.744,
+    66.148
+   ],
+   "desc": "BeamMLP(64) full decision"
+  },
+  {
+   "component": "cnn",
+   "charge_us": 118.868,
+   "per_seed_us": [
+    117.448,
+    118.868,
+    118.661
+   ],
+   "desc": "BeamCNN over (2,64) full decision"
+  },
+  {
+   "component": "sweep_select",
+   "charge_us": 1.073,
+   "per_seed_us": [
+    1.05,
+    1.052,
+    1.073
+   ],
+   "desc": "argmax over the measurement buffer"
+  },
+  {
+   "component": "lookup",
+   "charge_us": 0.508,
+   "per_seed_us": [
+    0.251,
+    0.255,
+    0.508
+   ],
+   "desc": "DP threshold-table consult (the controller)"
+  },
+  {
+   "component": "np_test",
+   "charge_us": 0.281,
+   "per_seed_us": [
+    0.137,
+    0.14,
+    0.281
+   ],
+   "desc": "Zhang Neyman-Pearson slot decision"
+  }
+ ],
+ "front_end_us": {
+  "naive": 16.267,
+  "optimised": 0.261,
+  "charged": 0.261
+ },
+ "tau_cumulative_us": {
+  "1": 42.575,
+  "2": 83.672,
+  "3": 124.838
+ },
+ "tau_fresh_us": {
+  "1": 41.731,
+  "2": 54.215,
+  "3": 76.66
+ },
+ "tau_restart_us": {
+  "1": 41.731,
+  "2": 95.946,
+  "3": 172.606
+ },
+ "tau_network_only_us": {
+  "1": 42.314,
+  "2": 83.411,
+  "3": 124.577
+ }
+}

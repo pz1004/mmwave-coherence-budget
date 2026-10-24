@@ -1,0 +1,145 @@
+{
+ "env": {
+  "profile": "cpu-1t-pcore-numpy",
+  "python": "3.13.12",
+  "numpy": "2.5.3",
+  "governor": "powersave",
+  "affinity": [
+   2
+  ],
+  "utc": "2026-09-23T05:20:48Z"
+ },
+ "protocol": "G3 verbatim; largest p95 over seeds 17/29/43; NumPy float32, identical weights and argmax to the PyTorch profile",
+ "rows": [
+  {
+   "component": "feat_build_opt",
+   "charge_us": 0.259,
+   "per_seed_us": [
+    0.259,
+    0.258,
+    0.259
+   ]
+  },
+  {
+   "component": "ee_net1",
+   "charge_us": 4.348,
+   "per_seed_us": [
+    4.348,
+    3.986,
+    4.171
+   ]
+  },
+  {
+   "component": "ee_net2",
+   "charge_us": 4.811,
+   "per_seed_us": [
+    4.447,
+    4.302,
+    4.811
+   ]
+  },
+  {
+   "component": "ee_net3",
+   "charge_us": 4.734,
+   "per_seed_us": [
+    4.734,
+    4.302,
+    4.433
+   ]
+  },
+  {
+   "component": "ee_fresh1",
+   "charge_us": 4.793,
+   "per_seed_us": [
+    4.793,
+    4.431,
+    4.617
+   ]
+  },
+  {
+   "component": "ee_fresh2",
+   "charge_us": 7.553,
+   "per_seed_us": [
+    7.522,
+    7.069,
+    7.553
+   ]
+  },
+  {
+   "component": "ee_fresh3",
+   "charge_us": 10.381,
+   "per_seed_us": [
+    10.381,
+    9.666,
+    10.278
+   ]
+  },
+  {
+   "component": "fc_k4",
+   "charge_us": 6.879,
+   "per_seed_us": [
+    6.777,
+    6.879,
+    6.61
+   ]
+  },
+  {
+   "component": "fc_k8",
+   "charge_us": 6.53,
+   "per_seed_us": [
+    6.403,
+    6.53,
+    6.437
+   ]
+  },
+  {
+   "component": "fc_k16",
+   "charge_us": 6.637,
+   "per_seed_us": [
+    6.483,
+    6.637,
+    6.544
+   ]
+  },
+  {
+   "component": "fc_k32",
+   "charge_us": 7.075,
+   "per_seed_us": [
+    6.685,
+    7.075,
+    7.04
+   ]
+  },
+  {
+   "component": "fc_k64",
+   "charge_us": 7.501,
+   "per_seed_us": [
+    7.361,
+    7.501,
+    7.256
+   ]
+  }
+ ],
+ "contention": {
+  "loadavg": [
+   "1.27",
+   "2.52",
+   "1.99"
+  ],
+  "worst_recheck_drift": 0.0545,
+  "worst_component": "fc_k16",
+  "contended": false,
+  "rule": "each component timed twice; >10% drift between passes means the machine was not quiet"
+ },
+ "tau_fresh_us": {
+  "1": 4.793,
+  "2": 7.553,
+  "3": 10.381
+ },
+ "tau_restart_us": {
+  "1": 4.793,
+  "2": 12.346,
+  "3": 22.727
+ },
+ "rho_vs_pcore": 0.35
+}

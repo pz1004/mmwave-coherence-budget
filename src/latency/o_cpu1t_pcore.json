@@ -1,0 +1,283 @@
+{
+  "env": {
+    "profile": "cpu-1t-pcore",
+    "cpu": "Intel(R) Core(TM) i9-14900KF",
+    "governor": "powersave",
+    "affinity": [
+      2
+    ],
+    "torch_threads": 1,
+    "requested_threads": 1,
+    "torch": "2.12.0+cu130",
+    "python": "3.13.12",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "numpy": "1.26.4",
+    "gpu": "Quadro RTX 8000",
+    "omp": "1",
+    "timestamp": "2026-09-15T19:07:48+0900"
+  },
+  "runtime": "torchscript-frozen",
+  "rows": [
+    {
+      "component": "graff_eig",
+      "charge_ns": 27886,
+      "charge_us": 27.886,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 26589,
+          "median_ns": 26098
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 27025,
+          "median_ns": 25967
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 27886,
+          "median_ns": 26484
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "graff_col",
+      "charge_ns": 15232,
+      "charge_us": 15.232,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 15212,
+          "median_ns": 15020
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 15223,
+          "median_ns": 15025
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 15232,
+          "median_ns": 15064
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "graff_aps",
+      "charge_ns": 25879,
+      "charge_us": 25.879,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 25401,
+          "median_ns": 25058
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 25611,
+          "median_ns": 25239
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 25879,
+          "median_ns": 25349
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "beam_mlp",
+      "charge_ns": 8756,
+      "charge_us": 8.756,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 8756,
+          "median_ns": 8590
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 8707,
+          "median_ns": 8560
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 8622,
+          "median_ns": 8478
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "beam_cnn",
+      "charge_ns": 71075,
+      "charge_us": 71.075,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 71075,
+          "median_ns": 64661
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 68899,
+          "median_ns": 64858
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 71061,
+          "median_ns": 64349
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "transformer_small",
+      "charge_ns": 942579,
+      "charge_us": 942.579,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 942579,
+          "median_ns": 926315
+        },
+        {
+          "seed": 29,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 941428,
+          "median_ns": 925869
+        },
+        {
+          "seed": 43,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 936732,
+          "median_ns": 922026
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "resnet18_vision",
+      "charge_ns": 25211863,
+      "charge_us": 25211.863,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 20,
+          "n_timed": 200,
+          "p95_ns": 24916704,
+          "median_ns": 24443674
+        },
+        {
+          "seed": 29,
+          "n_warmup": 20,
+          "n_timed": 200,
+          "p95_ns": 24993396,
+          "median_ns": 24474869
+        },
+        {
+          "seed": 43,
+          "n_warmup": 20,
+          "n_timed": 200,
+          "p95_ns": 25211863,
+          "median_ns": 24662802
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "vit_b16_vision",
+      "charge_ns": 236924806,
+      "charge_us": 236924.806,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 5,
+          "n_timed": 50,
+          "p95_ns": 235383887,
+          "median_ns": 234313133
+        },
+        {
+          "seed": 29,
+          "n_warmup": 5,
+          "n_timed": 50,
+          "p95_ns": 236924806,
+          "median_ns": 234771908
+        },
+        {
+          "seed": 43,
+          "n_warmup": 5,
+          "n_timed": 50,
+          "p95_ns": 235253193,
+          "median_ns": 234411735
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "s1_q_nets",
+      "charge_ns": 13692,
+      "charge_us": 13.692,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 13452,
+          "median_ns": 13059
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 13692,
+          "median_ns": 13313
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 13622,
+          "median_ns": 13268
+        }
+      ],
+      "reduced_n": false
+    }
+  ]
+}

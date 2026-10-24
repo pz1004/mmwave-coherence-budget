@@ -1,0 +1,717 @@
+{
+ "phase": 3,
+ "date": "2026-09-15",
+ "gate": {
+  "rule": "at least 4 sites decode and qualify",
+  "qualified": 8,
+  "of": 8,
+  "pass": true
+ },
+ "environment": {
+  "python": "3.13.12",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "deepmimo": "4.0.5",
+  "wheel_sha256": "4470cd17654eccfe8ec837e987ee89ad516ee94acfd7a86ee6066738df12e035",
+  "wheel_sha256_matches_2026_09_13_screen": true,
+  "pip_freeze": [
+   "certifi==2026.7.22",
+   "charset-normalizer==3.5.1",
+   "contourpy==1.4.0",
+   "cycler==0.12.1",
+   "DeepMIMO==4.0.5",
+   "fonttools==4.65.0",
+   "idna==3.19",
+   "kiwisolver==1.5.1",
+   "matplotlib==3.11.2",
+   "numpy==2.2.6",
+   "packaging==26.3",
+   "pillow==12.3.0",
+   "pyparsing==3.3.2",
+   "python-dateutil==2.9.0.post0",
+   "requests==2.34.2",
+   "scipy==1.18.1",
+   "six==1.17.0",
+   "tqdm==4.70.1",
+   "urllib3==2.7.0",
+   "wheel==0.48.0"
+  ]
+ },
+ "terms": {
+  "resolved": "citation obligation, recorded; not a legal opinion",
+  "license_page": {
+   "url": "https://www.deepmimo.net/license",
+   "module": "https://www.deepmimo.net/assets/License-s-b5tBZI.js",
+   "module_sha256": "05b2e63ff7d84bf63520e2560405310668fa276fb9d22d284c2a19d357d4cea7",
+   "note": "same module filename the 2026-09-13 screen recovered; page unchanged since",
+   "states": "In order to use the DeepMIMO dataset/scripts or any (modified) part of them, please cite: Alkhateeb 2019 (DeepMIMO, ITA) and the ray tracer (Remcom Wireless InSite for these scenarios). 'Select a specific scenario above to see additional required citations.'"
+  },
+  "per_scenario": {
+   "source": "https://www.deepmimo.net/api/scenarios (233 entries)",
+   "finding": "all eight archives carry no publicationCitation, no license and no scenario-specific raytracer citation field, so no additional publication is required beyond the two general references",
+   "required_citations": [
+    "Alkhateeb 2019, DeepMIMO, Proc. ITA, San Diego, Feb. 2019",
+    "Remcom, Wireless InSite"
+   ]
+  },
+  "software_label_discrepancy": {
+   "artifact": "deepmimo-4.0.5-py3-none-any.whl",
+   "sha256": "4470cd17654eccfe8ec837e987ee89ad516ee94acfd7a86ee6066738df12e035",
+   "METADATA": "License-Expression: GPL-2.0-or-later",
+   "bundled_LICENSE": "Apache License 2.0 (11,338 bytes, no GPL text present)",
+   "status": "unresolved on the exact artifact, exactly as the 2026-09-13 screen recorded; concerns the software, not the scenario data; neither label prohibits local research use, and nothing is redistributed"
+  }
+ },
+ "observation_law": {
+  "source": "G1, reused verbatim (scratchpad/atlas/calibrate.py:41-42, pilot-design.md)",
+  "P_tx_W": 1.0,
+  "P_tx_dBm": 30.0,
+  "bandwidth_Hz": 100000000.0,
+  "noise_figure_dB": 7.0,
+  "sigma_d2_W": 1.9953e-12,
+  "sigma_p2_W": 3.1924800000000005e-14,
+  "processing_gain": 1000,
+  "n_subbands": 16,
+  "processing_gain_note": "the pilot carries BANDWIDTH * 10 us = PILOT_SYMBOLS complex dimensions in total; sigma_p2 is per sub-band, so the band average over n_subbands recovers that gain exactly once",
+  "t_probe_us": 20.0,
+  "codebook": "normalized 64-beam DFT, ||f_m|| = 1",
+  "array": "64-element ULA along +y, half-wavelength spacing, isotropic elements",
+  "channel": "h[n] = sum_p sqrt(P_p) exp(j phi_p) exp(j n psi_p), psi_p = pi sin(theta_p) sin(phi_p), theta from aod_el (polar), phi from aod_az",
+  "gamma": "P_tx |h^T f|^2 / sigma_d2",
+  "power_reference_resolved": "stored path power is dBW received for a 1 W isotropic transmit, i.e. path gain in dB; verified by Friis on 3609 LoS links to a median offset of -0.0116 dB. 30 dBm = 1 W = the dataset reference, so the scale factor is exactly 1."
+ },
+ "fixtures": {
+  "scenario": "city_2_chicago_28",
+  "tx_index": 0,
+  "checks": [
+   {
+    "name": "F1 sigma_d2 == -174 dBm/Hz + 10log10(B) + NF",
+    "pass": true,
+    "gate": true,
+    "frozen_W": 1.9953e-12,
+    "convention_W": 1.995262e-12,
+    "exact_kT0BF_W": 2.006695e-12,
+    "rounding_gap_dB": 0.0247
+   },
+   {
+    "name": "F2 hand narrowband == sqrt(N)*DeepMIMO OFDM k=0",
+    "pass": true,
+    "gate": true,
+    "n_users": 256,
+    "rel_err_matched_angles": 2.219e-07,
+    "rel_err_raw_angles": 1.049e-05,
+    "library_angle_roundtrip_max_dev_deg": 1.34e-05,
+    "raw_angle_gap_dB": 9.11e-05
+   },
+   {
+    "name": "F2b delay convention exp(-j2 pi tau df) at df = B/2",
+    "pass": true,
+    "gate": true,
+    "subcarrier": 256,
+    "df_MHz": 50.0,
+    "rel_err": 5.274e-07
+   },
+   {
+    "name": "F3 codebook unit-norm, unitary, Parseval, FFT identity",
+    "pass": true,
+    "gate": true,
+    "max_col_norm_err": 0.0,
+    "fft_identity_rel_err": 4.8e-16
+   },
+   {
+    "name": "F4 LoS path power == Friis with 0 dBW isotropic transmit",
+    "pass": true,
+    "gate": true,
+    "n_los": 3609,
+    "median_offset_dB": -0.0116,
+    "p99_abs_dev_dB": 0.009,
+    "range_m": [
+     4.0,
+     130.8
+    ]
+   },
+   {
+    "name": "F5 single-path array gain in [(2/pi)^2, 1] x N",
+    "pass": true,
+    "gate": true,
+    "n_users": 89,
+    "min_ratio": 0.4054,
+    "max_ratio": 0.95925,
+    "scallop_floor": 0.40528
+   },
+   {
+    "name": "F6 narrowband beam choice holds across 100 MHz",
+    "pass": false,
+    "gate": false,
+    "subcarrier_argmax_agreement": 0.8295,
+    "median_band_avg_loss_dB": 0.0,
+    "p95_band_avg_loss_dB": 2.8099,
+    "median_rms_delay_spread_ns": 14.64,
+    "p95_rms_delay_spread_ns": 42.35,
+    "coherence_bw_MHz_median": 13.66
+   },
+   {
+    "name": "F7 best-beam SNR distribution is physically plausible",
+    "pass": true,
+    "gate": true,
+    "n_users": 10451,
+    "snr_dB_pct": {
+     "1": -42.88,
+     "5": -36.34,
+     "25": -23.81,
+     "50": 0.44,
+     "75": 34.39,
+     "95": 48.57,
+     "99": 55.53
+    },
+    "frac_below_0dB": 0.4925
+   }
+  ],
+  "all_gate_pass": true,
+  "all_pass": false
+ },
+ "catalog_crosscheck": {
+  "check": "R2 eligibility vs catalog active-point count",
+  "identity": "catalog numRx - numTx == eligible receivers at the highest tx_set_id",
+  "all_match": true,
+  "rows": [
+   {
+    "scenario": "city_0_newyork_28",
+    "catalog_numRx": 17340,
+    "catalog_numTx": 3,
+    "catalog_active_implied": 17337,
+    "highest_tx_set_id": 3,
+    "eligible_at_highest_tx": 17337,
+    "match": true,
+    "tx_sets_loaded": 3
+   },
+   {
+    "scenario": "city_1_losangeles_28",
+    "catalog_numRx": 18280,
+    "catalog_numTx": 3,
+    "catalog_active_implied": 18277,
+    "highest_tx_set_id": 3,
+    "eligible_at_highest_tx": 18277,
+    "match": true,
+    "tx_sets_loaded": 3
+   },
+   {
+    "scenario": "city_2_chicago_28",
+    "catalog_numRx": 7070,
+    "catalog_numTx": 2,
+    "catalog_active_implied": 7068,
+    "highest_tx_set_id": 3,
+    "eligible_at_highest_tx": 7068,
+    "match": true,
+    "tx_sets_loaded": 3
+   },
+   {
+    "scenario": "city_3_houston_28",
+    "catalog_numRx": 24800,
+    "catalog_numTx": 3,
+    "catalog_active_implied": 24797,
+    "highest_tx_set_id": 3,
+    "eligible_at_highest_tx": 24797,
+    "match": true,
+    "tx_sets_loaded": 3
+   },
+   {
+    "scenario": "city_4_phoenix_28",
+    "catalog_numRx": 24715,
+    "catalog_numTx": 3,
+    "catalog_active_implied": 24712,
+    "highest_tx_set_id": 3,
+    "eligible_at_highest_tx": 24712,
+    "match": true,
+    "tx_sets_loaded": 3
+   },
+   {
+    "scenario": "city_5_philadelphia_28",
+    "catalog_numRx": 11931,
+    "catalog_numTx": 3,
+    "catalog_active_implied": 11928,
+    "highest_tx_set_id": 3,
+    "eligible_at_highest_tx": 11928,
+    "match": true,
+    "tx_sets_loaded": 3
+   },
+   {
+    "scenario": "city_6_miami_28",
+    "catalog_numRx": 27609,
+    "catalog_numTx": 3,
+    "catalog_active_implied": 27606,
+    "highest_tx_set_id": 3,
+    "eligible_at_highest_tx": 27606,
+    "match": true,
+    "tx_sets_loaded": 3
+   },
+   {
+    "scenario": "city_7_sandiego_28",
+    "catalog_numRx": 22135,
+    "catalog_numTx": 3,
+    "catalog_active_implied": 22132,
+    "highest_tx_set_id": 3,
+    "eligible_at_highest_tx": 22132,
+    "match": true,
+    "tx_sets_loaded": 3
+   }
+  ]
+ },
+ "acquisition": {
+  "frozen_order": [
+   "city_0_newyork_28",
+   "city_1_losangeles_28",
+   "city_2_chicago_28",
+   "city_3_houston_28",
+   "city_4_phoenix_28",
+   "city_5_philadelphia_28",
+   "city_6_miami_28",
+   "city_7_sandiego_28"
+  ],
+  "records": [
+   {
+    "order": 0,
+    "scenario": "city_0_newyork_28",
+    "zip_bytes": 33459080,
+    "zip_sha256": "664b8cbff925386c2bc3fec9fad2a781712319cdb59f0410fbea5e9d29ebfb38",
+    "extracted_bytes": 163181626,
+    "n_files": 135,
+    "seconds": 35.4,
+    "error": null
+   },
+   {
+    "order": 1,
+    "scenario": "city_1_losangeles_28",
+    "zip_bytes": 33633360,
+    "zip_sha256": "3eb62ebc424a4008bc14e286672adec55010809c5024424b0384134a3f6928d7",
+    "extracted_bytes": 146780253,
+    "n_files": 135,
+    "seconds": 7.4,
+    "error": null
+   },
+   {
+    "order": 2,
+    "scenario": "city_2_chicago_28",
+    "zip_bytes": 14516309,
+    "zip_sha256": "781eeac4cd56f2f6642aac4593658aebd220dac3f0c35eaf201c237d5dfcb668",
+    "extracted_bytes": 142902941,
+    "n_files": 135,
+    "seconds": 0.0,
+    "error": null
+   },
+   {
+    "order": 3,
+    "scenario": "city_3_houston_28",
+    "zip_bytes": 46310039,
+    "zip_sha256": "eb4d105a1798a560d1b16e7df2919238a5b48c0faf8f6efe9cf657a358ca72e5",
+    "extracted_bytes": 159888753,
+    "n_files": 135,
+    "seconds": 9.3,
+    "error": null
+   },
+   {
+    "order": 4,
+    "scenario": "city_4_phoenix_28",
+    "zip_bytes": 38379989,
+    "zip_sha256": "831c2bc43d27f4f47eeb0c7bb7f7c0deb4f13726584b44734a8a2881986fb35d",
+    "extracted_bytes": 217752156,
+    "n_files": 135,
+    "seconds": 8.3,
+    "error": null
+   },
+   {
+    "order": 5,
+    "scenario": "city_5_philadelphia_28",
+    "zip_bytes": 21225173,
+    "zip_sha256": "58fc40017296f8275611dfcc623cea270bb6ff6871adf1679d8a14e3f46a1807",
+    "extracted_bytes": 201502143,
+    "n_files": 135,
+    "seconds": 6.6,
+    "error": null
+   },
+   {
+    "order": 6,
+    "scenario": "city_6_miami_28",
+    "zip_bytes": 46222039,
+    "zip_sha256": "994b30a4d4fcc036ea3a95963c366eafc6c8f9b84138b6efd2112a6f31c42cf0",
+    "extracted_bytes": 220943919,
+    "n_files": 135,
+    "seconds": 9.2,
+    "error": null
+   },
+   {
+    "order": 7,
+    "scenario": "city_7_sandiego_28",
+    "zip_bytes": 45389166,
+    "zip_sha256": "b7f360e13c932aaa3c8dda4978455789c8563ce03f7e9c5458ccd4ed64e4875e",
+    "extracted_bytes": 187244126,
+    "n_files": 135,
+    "seconds": 43.5,
+    "error": null
+   }
+  ]
+ },
+ "sites": [
+  {
+   "order": 0,
+   "scenario": "city_0_newyork_28",
+   "role": "training",
+   "qualified": true,
+   "zip_sha256": "664b8cbff925386c2bc3fec9fad2a781712319cdb59f0410fbea5e9d29ebfb38",
+   "zip_bytes": 33459080,
+   "tx_set_id": 1,
+   "tx_index": 0,
+   "n_rx_total": 31719,
+   "n_eligible": 16303,
+   "n_zero_path": 15416,
+   "n_structurally_inconsistent": 0,
+   "n_los": 4467,
+   "eligible_sha256": "2017090126f5fb6e",
+   "best_beam_snr_dB_pct": {
+    "1": -37.11,
+    "5": -24.39,
+    "25": -9.55,
+    "50": 1.26,
+    "75": 32.94,
+    "95": 47.03,
+    "99": 54.13
+   },
+   "frac_best_beam_below_0dB": 0.4781,
+   "per_tx_eligible": {
+    "1": 16303,
+    "2": 15023,
+    "3": 17337
+   },
+   "decode_rel_err": 1.088e-07,
+   "band": {
+    "argmax_agreement": 0.8422,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 1.184,
+    "median_rms_delay_ns": 23.67,
+    "coherence_bw_MHz": 8.45
+   }
+  },
+  {
+   "order": 1,
+   "scenario": "city_1_losangeles_28",
+   "role": "validation",
+   "qualified": true,
+   "zip_sha256": "3eb62ebc424a4008bc14e286672adec55010809c5024424b0384134a3f6928d7",
+   "zip_bytes": 33633360,
+   "tx_set_id": 1,
+   "tx_index": 0,
+   "n_rx_total": 28542,
+   "n_eligible": 19911,
+   "n_zero_path": 8631,
+   "n_structurally_inconsistent": 0,
+   "n_los": 4090,
+   "eligible_sha256": "347f2b538674e16c",
+   "best_beam_snr_dB_pct": {
+    "1": -49.68,
+    "5": -40.05,
+    "25": -19.99,
+    "50": -7.77,
+    "75": 9.85,
+    "95": 43.33,
+    "99": 53.39
+   },
+   "frac_best_beam_below_0dB": 0.6452,
+   "per_tx_eligible": {
+    "1": 19911,
+    "2": 17403,
+    "3": 18277
+   },
+   "decode_rel_err": 1.803e-07,
+   "band": {
+    "argmax_agreement": 0.9059,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 1.039,
+    "median_rms_delay_ns": 23.48,
+    "coherence_bw_MHz": 8.52
+   }
+  },
+  {
+   "order": 2,
+   "scenario": "city_2_chicago_28",
+   "role": "test_A",
+   "qualified": true,
+   "zip_sha256": "781eeac4cd56f2f6642aac4593658aebd220dac3f0c35eaf201c237d5dfcb668",
+   "zip_bytes": 14516309,
+   "tx_set_id": 1,
+   "tx_index": 0,
+   "n_rx_total": 27800,
+   "n_eligible": 10451,
+   "n_zero_path": 17349,
+   "n_structurally_inconsistent": 0,
+   "n_los": 3609,
+   "eligible_sha256": "83a506c366843fe4",
+   "best_beam_snr_dB_pct": {
+    "1": -42.88,
+    "5": -36.34,
+    "25": -23.81,
+    "50": 0.44,
+    "75": 34.39,
+    "95": 48.57,
+    "99": 55.53
+   },
+   "frac_best_beam_below_0dB": 0.4925,
+   "per_tx_eligible": {
+    "1": 10451,
+    "2": 8150,
+    "3": 7068
+   },
+   "decode_rel_err": 1.717e-07,
+   "band": {
+    "argmax_agreement": 0.8263,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 2.967,
+    "median_rms_delay_ns": 15.15,
+    "coherence_bw_MHz": 13.2
+   }
+  },
+  {
+   "order": 3,
+   "scenario": "city_3_houston_28",
+   "role": "test_B",
+   "qualified": true,
+   "zip_sha256": "eb4d105a1798a560d1b16e7df2919238a5b48c0faf8f6efe9cf657a358ca72e5",
+   "zip_bytes": 46310039,
+   "tx_set_id": 1,
+   "tx_index": 0,
+   "n_rx_total": 31108,
+   "n_eligible": 19379,
+   "n_zero_path": 11729,
+   "n_structurally_inconsistent": 0,
+   "n_los": 5912,
+   "eligible_sha256": "6cce9228562a0e82",
+   "best_beam_snr_dB_pct": {
+    "1": -39.46,
+    "5": -32.67,
+    "25": -14.21,
+    "50": -2.4,
+    "75": 33.48,
+    "95": 46.74,
+    "99": 53.75
+   },
+   "frac_best_beam_below_0dB": 0.5365,
+   "per_tx_eligible": {
+    "1": 19379,
+    "2": 24555,
+    "3": 24797
+   },
+   "decode_rel_err": 1.222e-07,
+   "band": {
+    "argmax_agreement": 0.8732,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 0.789,
+    "median_rms_delay_ns": 16.92,
+    "coherence_bw_MHz": 11.82
+   }
+  },
+  {
+   "order": 4,
+   "scenario": "city_4_phoenix_28",
+   "role": "test_extra_1",
+   "qualified": true,
+   "zip_sha256": "831c2bc43d27f4f47eeb0c7bb7f7c0deb4f13726584b44734a8a2881986fb35d",
+   "zip_bytes": 38379989,
+   "tx_set_id": 1,
+   "tx_index": 0,
+   "n_rx_total": 42372,
+   "n_eligible": 13489,
+   "n_zero_path": 28883,
+   "n_structurally_inconsistent": 0,
+   "n_los": 2227,
+   "eligible_sha256": "816a351cd1594720",
+   "best_beam_snr_dB_pct": {
+    "1": -53.99,
+    "5": -37.94,
+    "25": -28.38,
+    "50": -21.83,
+    "75": 9.54,
+    "95": 47.7,
+    "99": 54.91
+   },
+   "frac_best_beam_below_0dB": 0.696,
+   "per_tx_eligible": {
+    "1": 13489,
+    "2": 23436,
+    "3": 24712
+   },
+   "decode_rel_err": 2.583e-07,
+   "band": {
+    "argmax_agreement": 0.9049,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 0.685,
+    "median_rms_delay_ns": 33.12,
+    "coherence_bw_MHz": 6.04
+   }
+  },
+  {
+   "order": 5,
+   "scenario": "city_5_philadelphia_28",
+   "role": "test_extra_2",
+   "qualified": true,
+   "zip_sha256": "58fc40017296f8275611dfcc623cea270bb6ff6871adf1679d8a14e3f46a1807",
+   "zip_bytes": 21225173,
+   "tx_set_id": 1,
+   "tx_index": 0,
+   "n_rx_total": 39196,
+   "n_eligible": 11302,
+   "n_zero_path": 27894,
+   "n_structurally_inconsistent": 0,
+   "n_los": 3139,
+   "eligible_sha256": "06ee685ad5c730b5",
+   "best_beam_snr_dB_pct": {
+    "1": -46.65,
+    "5": -44.02,
+    "25": -24.87,
+    "50": -11.43,
+    "75": 28.92,
+    "95": 41.93,
+    "99": 50.5
+   },
+   "frac_best_beam_below_0dB": 0.6649,
+   "per_tx_eligible": {
+    "1": 11302,
+    "2": 8347,
+    "3": 11928
+   },
+   "decode_rel_err": 1.995e-07,
+   "band": {
+    "argmax_agreement": 0.9054,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 1.684,
+    "median_rms_delay_ns": 8.85,
+    "coherence_bw_MHz": 22.6
+   }
+  },
+  {
+   "order": 6,
+   "scenario": "city_6_miami_28",
+   "role": "test_extra_3",
+   "qualified": true,
+   "zip_sha256": "994b30a4d4fcc036ea3a95963c366eafc6c8f9b84138b6efd2112a6f31c42cf0",
+   "zip_bytes": 46222039,
+   "tx_set_id": 1,
+   "tx_index": 0,
+   "n_rx_total": 42984,
+   "n_eligible": 27061,
+   "n_zero_path": 15923,
+   "n_structurally_inconsistent": 0,
+   "n_los": 6739,
+   "eligible_sha256": "bf3eae73b0896f42",
+   "best_beam_snr_dB_pct": {
+    "1": -45.12,
+    "5": -38.86,
+    "25": -18.01,
+    "50": -0.87,
+    "75": 28.44,
+    "95": 43.1,
+    "99": 51.69
+   },
+   "frac_best_beam_below_0dB": 0.5193,
+   "per_tx_eligible": {
+    "1": 27061,
+    "2": 27639,
+    "3": 27606
+   },
+   "decode_rel_err": 1.398e-07,
+   "band": {
+    "argmax_agreement": 0.8494,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 1.403,
+    "median_rms_delay_ns": 16.31,
+    "coherence_bw_MHz": 12.26
+   }
+  },
+  {
+   "order": 7,
+   "scenario": "city_7_sandiego_28",
+   "role": "test_extra_4",
+   "qualified": true,
+   "zip_sha256": "b7f360e13c932aaa3c8dda4978455789c8563ce03f7e9c5458ccd4ed64e4875e",
+   "zip_bytes": 45389166,
+   "tx_set_id": 1,
+   "tx_index": 0,
+   "n_rx_total": 36432,
+   "n_eligible": 22681,
+   "n_zero_path": 13751,
+   "n_structurally_inconsistent": 0,
+   "n_los": 8737,
+   "eligible_sha256": "09723b938ac89793",
+   "best_beam_snr_dB_pct": {
+    "1": -37.4,
+    "5": -31.92,
+    "25": -14.96,
+    "50": 5.66,
+    "75": 33.58,
+    "95": 46.4,
+    "99": 53.17
+   },
+   "frac_best_beam_below_0dB": 0.426,
+   "per_tx_eligible": {
+    "1": 22681,
+    "2": 23455,
+    "3": 22132
+   },
+   "decode_rel_err": 2.556e-07,
+   "band": {
+    "argmax_agreement": 0.9065,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 0.469,
+    "median_rms_delay_ns": 17.74,
+    "coherence_bw_MHz": 11.27
+   }
+  }
+ ],
+ "frozen_split": [
+  {
+   "order": 0,
+   "scenario": "city_0_newyork_28",
+   "tx_set_id": 1,
+   "role": "training"
+  },
+  {
+   "order": 1,
+   "scenario": "city_1_losangeles_28",
+   "tx_set_id": 1,
+   "role": "validation"
+  },
+  {
+   "order": 2,
+   "scenario": "city_2_chicago_28",
+   "tx_set_id": 1,
+   "role": "test_A"
+  },
+  {
+   "order": 3,
+   "scenario": "city_3_houston_28",
+   "tx_set_id": 1,
+   "role": "test_B"
+  },
+  {
+   "order": 4,
+   "scenario": "city_4_phoenix_28",
+   "tx_set_id": 1,
+   "role": "test_extra_1"
+  },
+  {
+   "order": 5,
+   "scenario": "city_5_philadelphia_28",
+   "tx_set_id": 1,
+   "role": "test_extra_2"
+  },
+  {
+   "order": 6,
+   "scenario": "city_6_miami_28",
+   "tx_set_id": 1,
+   "role": "test_extra_3"
+  },
+  {
+   "order": 7,
+   "scenario": "city_7_sandiego_28",
+   "tx_set_id": 1,
+   "role": "test_extra_4"
+  }
+ ]
+}

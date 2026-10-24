@@ -1,0 +1,293 @@
+{
+  "charge_us": {
+    "sweep_select|cpu-1t-ecore": 4.302,
+    "s1_r|cpu-1t-ecore": 61.443,
+    "s1_u|cpu-1t-ecore": 6.138,
+    "s1_q|cpu-1t-ecore": 116.773,
+    "graff_eig|cpu-1t-ecore": 268.337,
+    "graff_col|cpu-1t-ecore": 188.839,
+    "graff_aps|cpu-1t-ecore": 114.801,
+    "beam_mlp|cpu-1t-ecore": 59.162,
+    "beam_cnn|cpu-1t-ecore": 196.388,
+    "lstm_cached|cpu-1t-ecore": 241.169,
+    "lstm_seq|cpu-1t-ecore": 360.634,
+    "transformer_small|cpu-1t-ecore": 2762.571,
+    "resnet18_vision|cpu-1t-ecore": 70893.249,
+    "vit_b16_vision|cpu-1t-ecore": 650670.382,
+    "earlyexit_1|cpu-1t-ecore": 45.238,
+    "earlyexit_2|cpu-1t-ecore": 68.291,
+    "earlyexit_3|cpu-1t-ecore": 89.826,
+    "sweep_select|cpu-1t-pcore": 1.355,
+    "s1_r|cpu-1t-pcore": 16.156,
+    "s1_u|cpu-1t-pcore": 1.877,
+    "s1_q|cpu-1t-pcore": 32.477,
+    "graff_eig|cpu-1t-pcore": 78.317,
+    "graff_col|cpu-1t-pcore": 49.75,
+    "graff_aps|cpu-1t-pcore": 34.969,
+    "beam_mlp|cpu-1t-pcore": 16.267,
+    "beam_cnn|cpu-1t-pcore": 84.951,
+    "lstm_cached|cpu-1t-pcore": 125.877,
+    "lstm_seq|cpu-1t-pcore": 167.18,
+    "transformer_small|cpu-1t-pcore": 1038.357,
+    "resnet18_vision|cpu-1t-pcore": 29025.72,
+    "vit_b16_vision|cpu-1t-pcore": 233200.6,
+    "earlyexit_1|cpu-1t-pcore": 13.754,
+    "earlyexit_2|cpu-1t-pcore": 20.224,
+    "earlyexit_3|cpu-1t-pcore": 27.143,
+    "sweep_select|cpu-8t-pcore": 2.194,
+    "s1_r|cpu-8t-pcore": 17.369,
+    "s1_u|cpu-8t-pcore": 1.838,
+    "s1_q|cpu-8t-pcore": 35.492,
+    "graff_eig|cpu-8t-pcore": 72.088,
+    "graff_col|cpu-8t-pcore": 54.692,
+    "graff_aps|cpu-8t-pcore": 37.909,
+    "beam_mlp|cpu-8t-pcore": 16.238,
+    "beam_cnn|cpu-8t-pcore": 46.242,
+    "lstm_cached|cpu-8t-pcore": 96.328,
+    "lstm_seq|cpu-8t-pcore": 130.414,
+    "transformer_small|cpu-8t-pcore": 436.303,
+    "resnet18_vision|cpu-8t-pcore": 5289.57,
+    "vit_b16_vision|cpu-8t-pcore": 42602.81,
+    "earlyexit_1|cpu-8t-pcore": 13.716,
+    "earlyexit_2|cpu-8t-pcore": 19.689,
+    "earlyexit_3|cpu-8t-pcore": 26.233,
+    "sweep_select|gpu-resident": 1.309,
+    "s1_r|gpu-resident": 47.99,
+    "s1_u|gpu-resident": 1.811,
+    "s1_q|gpu-resident": 82.881,
+    "graff_eig|gpu-resident": 153.007,
+    "graff_col|gpu-resident": 106.011,
+    "graff_aps|gpu-resident": 57.029,
+    "beam_mlp|gpu-resident": 36.15,
+    "beam_cnn|gpu-resident": 73.71,
+    "lstm_cached|gpu-resident": 121.984,
+    "lstm_seq|gpu-resident": 160.599,
+    "transformer_small|gpu-resident": 297.776,
+    "resnet18_vision|gpu-resident": 1344.464,
+    "vit_b16_vision|gpu-resident": 6331.027,
+    "earlyexit_1|gpu-resident": 35.292,
+    "earlyexit_2|gpu-resident": 45.509,
+    "earlyexit_3|gpu-resident": 56.208
+  },
+  "budget_ref_profile": "cpu-1t-pcore",
+  "budget": {
+    "sweep_select": {
+      "K": 64,
+      "probe_us": 1280.0,
+      "compute_us": 1.355,
+      "payload": {
+        "vehicular 0.43 ms": 0.0,
+        "2 ms": 0.3593225,
+        "5 ms": 0.743729,
+        "pedestrian 7.7 ms": 0.8335902597402598,
+        "10 ms": 0.8718645
+      }
+    },
+    "s1_r": {
+      "K": 4,
+      "probe_us": 80.0,
+      "compute_us": 16.156,
+      "payload": {
+        "vehicular 0.43 ms": 0.7763813953488372,
+        "2 ms": 0.951922,
+        "5 ms": 0.9807688,
+        "pedestrian 7.7 ms": 0.9875122077922078,
+        "10 ms": 0.9903844
+      }
+    },
+    "s1_u": {
+      "K": 8,
+      "probe_us": 160.0,
+      "compute_us": 1.877,
+      "payload": {
+        "vehicular 0.43 ms": 0.6235418604651163,
+        "2 ms": 0.9190615,
+        "5 ms": 0.9676246,
+        "pedestrian 7.7 ms": 0.978977012987013,
+        "10 ms": 0.9838123
+      }
+    },
+    "s1_q": {
+      "K": 8,
+      "probe_us": 160.0,
+      "compute_us": 32.477,
+      "payload": {
+        "vehicular 0.43 ms": 0.5523790697674418,
+        "2 ms": 0.9037615,
+        "5 ms": 0.9615046,
+        "pedestrian 7.7 ms": 0.975002987012987,
+        "10 ms": 0.9807523
+      }
+    },
+    "graff_eig": {
+      "K": 4,
+      "probe_us": 80.0,
+      "compute_us": 78.317,
+      "payload": {
+        "vehicular 0.43 ms": 0.6318209302325581,
+        "2 ms": 0.9208415,
+        "5 ms": 0.9683366,
+        "pedestrian 7.7 ms": 0.9794393506493506,
+        "10 ms": 0.9841683
+      }
+    },
+    "graff_col": {
+      "K": 4,
+      "probe_us": 80.0,
+      "compute_us": 49.75,
+      "payload": {
+        "vehicular 0.43 ms": 0.6982558139534883,
+        "2 ms": 0.935125,
+        "5 ms": 0.97405,
+        "pedestrian 7.7 ms": 0.9831493506493506,
+        "10 ms": 0.987025
+      }
+    },
+    "graff_aps": {
+      "K": 4,
+      "probe_us": 80.0,
+      "compute_us": 34.969,
+      "payload": {
+        "vehicular 0.43 ms": 0.7326302325581395,
+        "2 ms": 0.9425155000000001,
+        "5 ms": 0.9770062,
+        "pedestrian 7.7 ms": 0.985068961038961,
+        "10 ms": 0.9885031
+      }
+    },
+    "beam_mlp": {
+      "K": 8,
+      "probe_us": 160.0,
+      "compute_us": 16.267,
+      "payload": {
+        "vehicular 0.43 ms": 0.5900767441860465,
+        "2 ms": 0.9118665,
+        "5 ms": 0.9647466,
+        "pedestrian 7.7 ms": 0.9771081818181818,
+        "10 ms": 0.9823733
+      }
+    },
+    "beam_cnn": {
+      "K": 8,
+      "probe_us": 160.0,
+      "compute_us": 84.951,
+      "payload": {
+        "vehicular 0.43 ms": 0.43034651162790705,
+        "2 ms": 0.8775245,
+        "5 ms": 0.9510098,
+        "pedestrian 7.7 ms": 0.9681881818181818,
+        "10 ms": 0.9755049
+      }
+    },
+    "lstm_cached": {
+      "K": 8,
+      "probe_us": 160.0,
+      "compute_us": 125.877,
+      "payload": {
+        "vehicular 0.43 ms": 0.33516976744186044,
+        "2 ms": 0.8570615,
+        "5 ms": 0.9428246,
+        "pedestrian 7.7 ms": 0.9628731168831168,
+        "10 ms": 0.9714123
+      }
+    },
+    "lstm_seq": {
+      "K": 8,
+      "probe_us": 160.0,
+      "compute_us": 167.18,
+      "payload": {
+        "vehicular 0.43 ms": 0.2391162790697674,
+        "2 ms": 0.83641,
+        "5 ms": 0.934564,
+        "pedestrian 7.7 ms": 0.9575090909090909,
+        "10 ms": 0.967282
+      }
+    },
+    "transformer_small": {
+      "K": 8,
+      "probe_us": 160.0,
+      "compute_us": 1038.357,
+      "payload": {
+        "vehicular 0.43 ms": 0.0,
+        "2 ms": 0.40082150000000005,
+        "5 ms": 0.7603286,
+        "pedestrian 7.7 ms": 0.8443692207792208,
+        "10 ms": 0.8801643
+      }
+    },
+    "resnet18_vision": {
+      "K": 4,
+      "probe_us": 80.0,
+      "compute_us": 29025.72,
+      "payload": {
+        "vehicular 0.43 ms": 0.0,
+        "2 ms": 0.0,
+        "5 ms": 0.0,
+        "pedestrian 7.7 ms": 0.0,
+        "10 ms": 0.0
+      }
+    },
+    "vit_b16_vision": {
+      "K": 4,
+      "probe_us": 80.0,
+      "compute_us": 233200.6,
+      "payload": {
+        "vehicular 0.43 ms": 0.0,
+        "2 ms": 0.0,
+        "5 ms": 0.0,
+        "pedestrian 7.7 ms": 0.0,
+        "10 ms": 0.0
+      }
+    },
+    "earlyexit_1": {
+      "K": 8,
+      "probe_us": 160.0,
+      "compute_us": 13.754,
+      "payload": {
+        "vehicular 0.43 ms": 0.5959209302325581,
+        "2 ms": 0.913123,
+        "5 ms": 0.9652492,
+        "pedestrian 7.7 ms": 0.9774345454545454,
+        "10 ms": 0.9826246
+      }
+    },
+    "earlyexit_2": {
+      "K": 8,
+      "probe_us": 160.0,
+      "compute_us": 20.224,
+      "payload": {
+        "vehicular 0.43 ms": 0.5808744186046512,
+        "2 ms": 0.909888,
+        "5 ms": 0.9639552,
+        "pedestrian 7.7 ms": 0.9765942857142857,
+        "10 ms": 0.9819776
+      }
+    },
+    "earlyexit_3": {
+      "K": 8,
+      "probe_us": 160.0,
+      "compute_us": 27.143,
+      "payload": {
+        "vehicular 0.43 ms": 0.5647837209302325,
+        "2 ms": 0.9064285,
+        "5 ms": 0.9625714,
+        "pedestrian 7.7 ms": 0.9756957142857143,
+        "10 ms": 0.9812857
+      }
+    }
+  },
+  "gate": {
+    "verdict": "PASS",
+    "over_50us": [
+      "graff_eig",
+      "beam_cnn",
+      "lstm_cached",
+      "lstm_seq",
+      "transformer_small",
+      "resnet18_vision",
+      "vit_b16_vision"
+    ],
+    "largest": "vit_b16_vision",
+    "largest_us": 233200.6
+  }
+}

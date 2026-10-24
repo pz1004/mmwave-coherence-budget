@@ -1,0 +1,688 @@
+{
+ "script_sha256": "88e61cbe81b34661001a33641bb3944121418c9391b935335d60c1e9e4e76021",
+ "aging_json_sha256": "53f7431a9e7ab69bd821987d3014ae2ba44a9fedb96ef3877eb0754a5dd50acb",
+ "aging_py_sha256": "1a2249411395639cc709d332dd03d16d70935e7c37d27df5f7691def294034d0",
+ "bound": "int_{d_S}^{d_L} G >= int_{d_S}^{T_max} (G - r_S); slack = least d_L - d_S",
+ "grid": "t_p/4 plus every breakpoint",
+ "tolerance": 1e-05,
+ "sites": [
+  "city_2_chicago_28",
+  "city_3_houston_28",
+  "city_4_phoenix_28",
+  "city_5_philadelphia_28",
+  "city_6_miami_28",
+  "city_7_sandiego_28"
+ ],
+ "speeds_kmh": [
+  0.0,
+  3.0,
+  30.0,
+  60.0,
+  120.0
+ ],
+ "seeds": [
+  17,
+  29,
+  43,
+  53,
+  61,
+  71,
+  79,
+  89,
+  97,
+  107
+ ],
+ "gate": [
+  {
+   "site": "city_2_chicago_28",
+   "speed_kmh": 0.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_2_chicago_28",
+   "speed_kmh": 3.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_2_chicago_28",
+   "speed_kmh": 30.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_2_chicago_28",
+   "speed_kmh": 60.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_2_chicago_28",
+   "speed_kmh": 120.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_3_houston_28",
+   "speed_kmh": 0.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_3_houston_28",
+   "speed_kmh": 3.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_3_houston_28",
+   "speed_kmh": 30.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_3_houston_28",
+   "speed_kmh": 60.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_3_houston_28",
+   "speed_kmh": 120.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "speed_kmh": 0.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "speed_kmh": 3.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "speed_kmh": 30.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "speed_kmh": 60.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "speed_kmh": 120.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "speed_kmh": 0.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "speed_kmh": 3.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "speed_kmh": 30.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "speed_kmh": 60.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "speed_kmh": 120.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_6_miami_28",
+   "speed_kmh": 0.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_6_miami_28",
+   "speed_kmh": 3.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_6_miami_28",
+   "speed_kmh": 30.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_6_miami_28",
+   "speed_kmh": 60.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_6_miami_28",
+   "speed_kmh": 120.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "speed_kmh": 0.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "speed_kmh": 3.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "speed_kmh": 30.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "speed_kmh": 60.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "speed_kmh": 120.0,
+   "max_abs_dev": 0.0,
+   "holds": true
+  }
+ ],
+ "gate_holds": true,
+ "v0": [
+  {
+   "site": "city_2_chicago_28",
+   "slack_us": 3.3153973296905406,
+   "prop1b_us": 3.4793215820308667,
+   "eta_S_stored": 0.9996,
+   "holds": true
+  },
+  {
+   "site": "city_3_houston_28",
+   "slack_us": 3.018093491739137,
+   "prop1b_us": 2.60949118652315,
+   "eta_S_stored": 0.9997,
+   "holds": true
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "slack_us": 5.992613096343348,
+   "prop1b_us": 6.088812768554982,
+   "eta_S_stored": 0.9993,
+   "holds": true
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "slack_us": 3.3595801136802947,
+   "prop1b_us": 3.4793215820308667,
+   "eta_S_stored": 0.9996,
+   "holds": true
+  },
+  {
+   "site": "city_6_miami_28",
+   "slack_us": 6.084154663445361,
+   "prop1b_us": 6.088812768554982,
+   "eta_S_stored": 0.9993,
+   "holds": true
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "slack_us": 2.118362326018314,
+   "prop1b_us": 1.7396607910154334,
+   "eta_S_stored": 0.9998,
+   "holds": true
+  }
+ ],
+ "v0_holds": true,
+ "rows": [
+  {
+   "site": "city_2_chicago_28",
+   "speed_kmh": 0.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 44561.61690142245,
+   "shortfall": 16.984858938553824,
+   "slack_us": 3.3153973296905406,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_2_chicago_28",
+   "speed_kmh": 3.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 44565.01099625618,
+   "shortfall": 33.768057840387264,
+   "slack_us": 6.591262391799319,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_2_chicago_28",
+   "speed_kmh": 30.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 44549.981936549615,
+   "shortfall": 67.3873767703583,
+   "slack_us": 13.153522468114716,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_2_chicago_28",
+   "speed_kmh": 60.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 44551.13384288936,
+   "shortfall": 70.8359118495527,
+   "slack_us": 13.831346967084528,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_2_chicago_28",
+   "speed_kmh": 120.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 44550.484209459726,
+   "shortfall": 69.80356164661606,
+   "slack_us": 13.629133612861324,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_3_houston_28",
+   "speed_kmh": 0.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 40266.93915059725,
+   "shortfall": 13.9716187903181,
+   "slack_us": 3.018093491739137,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_3_houston_28",
+   "speed_kmh": 3.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 40267.110140932535,
+   "shortfall": 19.0919544416262,
+   "slack_us": 4.124049375796631,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_3_houston_28",
+   "speed_kmh": 30.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 40258.71506225956,
+   "shortfall": 51.69783296541398,
+   "slack_us": 11.168333096900824,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_3_houston_28",
+   "speed_kmh": 60.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 40262.50079276191,
+   "shortfall": 73.85203744896113,
+   "slack_us": 15.959403856272502,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_3_houston_28",
+   "speed_kmh": 120.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 40265.16675421868,
+   "shortfall": 85.66995777946052,
+   "slack_us": 18.50393571742802,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "speed_kmh": 0.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 26912.656291859614,
+   "shortfall": 18.54121646988785,
+   "slack_us": 5.992613096343348,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "speed_kmh": 3.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 26910.105751459185,
+   "shortfall": 27.931913136539617,
+   "slack_us": 9.027974289881968,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "speed_kmh": 30.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 26913.90179289239,
+   "shortfall": 32.98112717225057,
+   "slack_us": 10.660837948130165,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "speed_kmh": 60.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 26915.260099276165,
+   "shortfall": 35.29990193984196,
+   "slack_us": 11.407426533161015,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_4_phoenix_28",
+   "speed_kmh": 120.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 26916.21539395263,
+   "shortfall": 38.950266668860024,
+   "slack_us": 12.589379830327516,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "speed_kmh": 0.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 30801.911178136357,
+   "shortfall": 11.896743180261323,
+   "slack_us": 3.3595801136802947,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "speed_kmh": 3.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 30801.40665347812,
+   "shortfall": 18.47305611227847,
+   "slack_us": 5.216807148428188,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "speed_kmh": 30.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 30795.80521267982,
+   "shortfall": 60.44523292577853,
+   "slack_us": 17.069562620653187,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "speed_kmh": 60.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 30793.005127090517,
+   "shortfall": 67.95204897424182,
+   "slack_us": 19.18917640605764,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_5_philadelphia_28",
+   "speed_kmh": 120.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 30789.79757718698,
+   "shortfall": 73.35455913834778,
+   "slack_us": 20.72957417510338,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_6_miami_28",
+   "speed_kmh": 0.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 34909.49051357247,
+   "shortfall": 24.417948671781073,
+   "slack_us": 6.084154663445361,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_6_miami_28",
+   "speed_kmh": 3.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 34915.81998532238,
+   "shortfall": 42.05493636457242,
+   "slack_us": 10.47818723160185,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_6_miami_28",
+   "speed_kmh": 30.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 34928.56330330257,
+   "shortfall": 107.00329609753557,
+   "slack_us": 26.653306347535818,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_6_miami_28",
+   "speed_kmh": 60.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 34932.23990308169,
+   "shortfall": 140.79817476883738,
+   "slack_us": 35.071322267134065,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_6_miami_28",
+   "speed_kmh": 120.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 34930.736111407336,
+   "shortfall": 171.090018988304,
+   "slack_us": 42.59697979646808,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "speed_kmh": 0.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 48418.379748354884,
+   "shortfall": 11.79168629602557,
+   "slack_us": 2.118362326018314,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "speed_kmh": 3.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 48427.2939245952,
+   "shortfall": 25.509935906706442,
+   "slack_us": 4.582849137080075,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "speed_kmh": 30.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 48454.84366116121,
+   "shortfall": 70.36171850757235,
+   "slack_us": 12.633724522719831,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "speed_kmh": 60.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 48453.20918230008,
+   "shortfall": 89.05154642627862,
+   "slack_us": 15.985923403887455,
+   "grid_points": 2039
+  },
+  {
+   "site": "city_7_sandiego_28",
+   "speed_kmh": 120.0,
+   "d_S_us": 1301.696044921875,
+   "T_max_us": 10000.0,
+   "int_G": 48456.894436192124,
+   "shortfall": 108.38359493894805,
+   "slack_us": 19.457467409020865,
+   "grid_points": 2039
+  }
+ ],
+ "max_slack_us": {
+  "0": 6.084154663445361,
+  "3": 10.47818723160185,
+  "30": 26.653306347535818,
+  "60": 35.071322267134065,
+  "120": 42.59697979646808
+ },
+ "exclusions": [
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-1t-pcore",
+   "tau_us": 25000.433,
+   "tau_star_us": 1220.34,
+   "excess_us": 23780.093,
+   "holds_at": {
+    "0": true,
+    "3": true,
+    "30": true,
+    "60": true,
+    "120": true
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-1t-pcore",
+   "tau_us": 233200.6,
+   "tau_star_us": 1220.34,
+   "excess_us": 231980.26,
+   "holds_at": {
+    "0": true,
+    "3": true,
+    "30": true,
+    "60": true,
+    "120": true
+   }
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-1t-ecore",
+   "tau_us": 70893.249,
+   "tau_star_us": 1257.96,
+   "excess_us": 69635.28899999999,
+   "holds_at": {
+    "0": true,
+    "3": true,
+    "30": true,
+    "60": true,
+    "120": true
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-1t-ecore",
+   "tau_us": 650670.382,
+   "tau_star_us": 1257.96,
+   "excess_us": 649412.422,
+   "holds_at": {
+    "0": true,
+    "3": true,
+    "30": true,
+    "60": true,
+    "120": true
+   }
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-1t-ecore",
+   "tau_us": 2573.466,
+   "tau_star_us": 1257.96,
+   "excess_us": 1315.5059999999999,
+   "holds_at": {
+    "0": true,
+    "3": true,
+    "30": true,
+    "60": true,
+    "120": true
+   }
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-8t-pcore",
+   "tau_us": 5289.57,
+   "tau_star_us": 1219.98,
+   "excess_us": 4069.5899999999997,
+   "holds_at": {
+    "0": true,
+    "3": true,
+    "30": true,
+    "60": true,
+    "120": true
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-8t-pcore",
+   "tau_us": 42602.81,
+   "tau_star_us": 1219.98,
+   "excess_us": 41382.829999999994,
+   "holds_at": {
+    "0": true,
+    "3": true,
+    "30": true,
+    "60": true,
+    "120": true
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "gpu-resident",
+   "tau_us": 6331.027,
+   "tau_star_us": 1220.46,
+   "excess_us": 5110.567,
+   "holds_at": {
+    "0": true,
+    "3": true,
+    "30": true,
+    "60": true,
+    "120": true
+   }
+  }
+ ],
+ "all_exclusions_hold": true,
+ "seconds": 390.3
+}

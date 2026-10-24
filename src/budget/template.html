@@ -1,0 +1,385 @@
+<title>Beam Deliberation Budget</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400;1,600&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ground:#F5F6F7; --surface:#FFFFFF; --sunk:#EEF0F1;
+  --ink:#141A20; --muted:#5C6771; --rule:#DDE1E4; --rule2:#C8CED3;
+  --probe:#A8762A; --compute:#8C3B4A; --payload:#0F6E6E;
+  --ok:#0F6E6E; --alarm:#8C3B4A;
+  --f-d:"Spectral",Georgia,"Times New Roman",serif;
+  --f-b:"Source Sans 3",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --f-m:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#11151A; --surface:#191E24; --sunk:#14181D;
+    --ink:#E6EAED; --muted:#98A3AC; --rule:#2A3138; --rule2:#3A434B;
+    --probe:#D8A660; --compute:#DE8B99; --payload:#54B5B2;
+    --ok:#54B5B2; --alarm:#DE8B99;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#11151A; --surface:#191E24; --sunk:#14181D;
+  --ink:#E6EAED; --muted:#98A3AC; --rule:#2A3138; --rule2:#3A434B;
+  --probe:#D8A660; --compute:#DE8B99; --payload:#54B5B2;
+  --ok:#54B5B2; --alarm:#DE8B99;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-b);font-size:16px;
+  line-height:1.62;margin:0;padding-block:0 4rem;padding-left:20px;padding-right:20px;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:0 auto}
+.prose{max-width:68ch}
+h1,h2,h3{font-family:var(--f-d);font-weight:600;text-wrap:balance;line-height:1.2}
+h2{font-size:1.45rem;margin:3.25rem 0 .75rem;border-top:1px solid var(--rule);padding-top:1.5rem}
+h3{font-size:1.05rem;margin:2rem 0 .4rem}
+p{margin:0 0 1rem}
+a{color:var(--payload)}
+code,.mono{font-family:var(--f-m);font-size:.86em}
+.eyebrow{font-family:var(--f-m);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 .4rem}
+.mast{padding:3.5rem 0 2rem}
+.mast h1{font-size:clamp(2.1rem,6vw,3rem);margin:0 0 .5rem;letter-spacing:-.015em}
+.mast .sub{font-family:var(--f-d);font-style:italic;font-size:1.15rem;color:var(--muted);
+  max-width:58ch;margin:0 0 1.5rem}
+.meta{font-family:var(--f-m);font-size:.74rem;color:var(--muted);border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);padding:.7rem 0;line-height:1.9}
+
+/* propositions */
+.prop{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--payload);
+  padding:1.15rem 1.35rem;margin:1.5rem 0}
+.prop.neg{border-left-color:var(--alarm)}
+.prop .lab{font-family:var(--f-m);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--payload);margin:0 0 .5rem;display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap}
+.prop.neg .lab{color:var(--alarm)}
+.prop .lab .chk{color:var(--muted);letter-spacing:.06em;text-transform:none;font-size:.7rem}
+.prop p{margin:0 0 .7rem;max-width:66ch}
+.prop p:last-child{margin-bottom:0}
+.eq{font-family:var(--f-m);font-size:.9rem;background:var(--sunk);border:1px solid var(--rule);
+  padding:.8rem 1rem;margin:.9rem 0;overflow-x:auto;white-space:nowrap}
+.eq.wide{white-space:normal}
+.pf{font-size:.9rem;color:var(--muted);border-left:2px solid var(--rule2);padding-left:.9rem;
+  margin:.9rem 0 0;max-width:66ch}
+.pf b{color:var(--ink);font-weight:600}
+
+/* tables */
+.tw{overflow-x:auto;margin:1.25rem 0 1.5rem;border:1px solid var(--rule);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.84rem;min-width:620px}
+th,td{padding:.45rem .7rem;text-align:right;border-bottom:1px solid var(--rule);white-space:nowrap}
+thead th{font-weight:600;font-size:.78rem;vertical-align:bottom;border-bottom:1px solid var(--rule2)}
+thead th .u{font-family:var(--f-m);font-weight:400;font-size:.68rem;color:var(--muted)}
+tbody th{text-align:left;font-weight:400}
+thead th:first-child{text-align:left}
+td{font-family:var(--f-m);font-variant-numeric:tabular-nums}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+td.no{color:var(--alarm);font-weight:600}
+td.any{color:var(--payload);font-weight:600}
+td.hard{background:color-mix(in srgb,var(--probe) 18%,transparent)}
+tr.sweep th,tr.sweep td{background:var(--sunk)}
+.note{background:var(--surface);border:1px solid var(--rule);padding:1.1rem 1.25rem;margin:1.25rem 0;
+  font-size:.92rem}
+.note h3{font-size:.95rem;margin:0 0 .5rem}
+.note p:last-child,.note ul:last-child{margin-bottom:0}
+ul{margin:0 0 1rem;padding-left:1.15rem}
+li{margin-bottom:.4rem;max-width:66ch}
+.foot{margin-top:3.5rem;padding-top:1.1rem;border-top:1px solid var(--rule);font-family:var(--f-m);
+  font-size:.72rem;color:var(--muted);line-height:1.9}
+@media (max-width:640px){.mast{padding-top:2.5rem}h2{margin-top:2.25rem}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Phase 2 · compute-aware beam acquisition</p>
+  <h1>Beam Deliberation Budget</h1>
+  <p class="sub">How much time a beam predictor is allowed to spend thinking, and what
+  follows once you write that cost into the objective.</p>
+  <div class="meta">formulated and verified 2026-09-15 · five propositions, one negative result
+  · every claim checked against an exact dynamic program or brute force · latency figures from
+  the <a href="@@ATLAS@@">Phase 1 atlas</a>, conservative charge, pinned P-core, whole decision
+  traced</div>
+</header>
+
+<h2>The objective</h2>
+<div class="prose">
+<p>One coherence interval of length T. A codebook of M beams. An agent spends that interval on
+three things and only three: probing beams at t<sub>p</sub> each, running its own predictor,
+and transmitting. Committing at elapsed time d to a beam of SNR γ earns the net rate</p>
+</div>
+<div class="eq">R(d, γ) = max(0, 1 &minus; d/T) · log₂(1 + γ)</div>
+<div class="prose">
+<p>The published objective is this same expression with d counting probe time alone. Writing the
+predictor's own latency into d is the entire modelling change, and everything below is a
+consequence of it.</p>
+<p>A strategy is then just a pair: what it costs in time, and what it delivers. Write c for its
+total overhead and η = G/G<sub>max</sub> for the spectral efficiency it achieves relative to an
+oracle that always picks the true best beam. On the range where it has any rate at all,</p>
+</div>
+<div class="eq">R(T) = (1 &minus; c/T) · η · G<sub>max</sub> &nbsp;&nbsp;∝&nbsp;&nbsp;
+  <strong>g(T) = η · (T &minus; c)</strong> &nbsp;— a line in T.</div>
+<div class="prose">
+<p>That is the structural fact the rest of this page exploits. Comparing beam-management methods
+across coherence times is comparing lines, and the answers come from their upper envelope.</p>
+</div>
+
+<h2>1 · The budget</h2>
+
+<div class="prop">
+  <p class="lab">Proposition 1 — compute budget <span class="chk">verified: closed form is
+  exactly the feasibility boundary at η ∈ {0.5, 0.8, 0.95, 0.999}, K ∈ {4, 8, 16}</span></p>
+  <p>A method that probes K beams and spends τ on computation beats the exhaustive sweep at
+  <em>some</em> coherence time if and only if</p>
+  <div class="eq">τ &lt; τ* = (M &minus; K)·t<sub>p</sub> + c<sub>sel</sub></div>
+  <p>The accuracy η does not appear. A predictor may spend on deliberation at most the probe
+  time it saves — no more — and being better does not buy it a larger allowance.</p>
+  <p class="pf"><b>Proof.</b> Both sides are (1 − d/T)<sup>+</sup> times their efficiency, with
+  η<sub>S</sub> = 1. If d<sub>L</sub> &lt; d<sub>S</sub>, then on d<sub>L</sub> &lt; T ≤
+  d<sub>S</sub> the learned method has positive rate and the sweep has none. If d<sub>L</sub> ≥
+  d<sub>S</sub>, then for T ≤ d<sub>L</sub> the learned rate is 0 ≤ R<sub>S</sub>, and for T &gt;
+  d<sub>L</sub> we have η(1 − d<sub>L</sub>/T) ≤ 1·(1 − d<sub>S</sub>/T) because η ≤ 1 and
+  d<sub>L</sub> ≥ d<sub>S</sub>. So the set where it wins is nonempty iff d<sub>L</sub> &lt;
+  d<sub>S</sub>, which is the displayed inequality. ∎</p>
+  <p class="pf"><b>Assumption, and where it can fail.</b> The &ldquo;only if&rdquo; direction
+  uses η<sub>L</sub> ≤ η<sub>S</sub> = 1 — the sweep measures every beam and is therefore the
+  accuracy ceiling. That is exact for noiseless probing. Under pilot noise the sweep selects
+  argmax|z<sub>j</sub>|² and is <em>not</em> the oracle, so a predictor exploiting channel
+  structure could in principle exceed it; a slower method would then still win as T → ∞, where
+  only accuracy matters. With the specified 1,000-symbol processing gain the sweep's selection
+  error is small and η<sub>S</sub> ≈ 1, but τ* is a budget for methods that do not out-predict
+  an exhaustive measurement, and should be quoted that way.</p>
+</div>
+
+<div class="prose">
+<p>With M = 64 and t<sub>p</sub> = 20 μs, and c<sub>sel</sub> measured at
+@@CSEL@@ μs:</p>
+</div>
+@@TAUSTAR@@
+<div class="prose">
+<p>Against the Phase 1 measurements this is immediately decisive. The small transformer at
+@@TRANS@@ μs consumes @@TRANSPCT@@% of the K = 8 allowance and survives. ResNet-18 at
+@@RESNET@@ μs exceeds it by @@RESNETX@@×, and ViT-B/16 by @@VITX@@×. Neither can beat a plain
+64-beam sweep at any coherence time, on any hardware with this latency profile, at any accuracy
+whatsoever — including perfect.</p>
+</div>
+
+<h2>2 · The window</h2>
+
+<div class="prop">
+  <p class="lab">Proposition 2 — operating window <span class="chk">verified against
+  brute-force evaluation on 400,000 coherence times, agreement within 2 μs</span></p>
+  <p>If d<sub>L</sub> &lt; d<sub>S</sub> and η &lt; 1, the set of coherence times on which the
+  learned method strictly beats the sweep is the open interval</p>
+  <div class="eq">( d<sub>L</sub> , &nbsp; T<sub>up</sub> ) &nbsp;&nbsp;with&nbsp;&nbsp;
+    T<sub>up</sub> = (d<sub>S</sub> &minus; η·d<sub>L</sub>) / (1 &minus; η)</div>
+  <p>Below the lower edge the method cannot finish deliberating. Above the upper edge the
+  sweep's full gain wins, because overhead has stopped mattering. <strong>The published
+  accounting places that lower edge at K·t<sub>p</sub>. The true edge is K·t<sub>p</sub> +
+  τ.</strong></p>
+</div>
+<div class="prose">
+<p>So the field's standing claim — that learning wins at short coherence times — is true, but
+it is a claim about an interval with two edges, and the literature has only ever drawn one of
+them. The correction is small for light predictors and fatal for heavy ones.</p>
+</div>
+@@WINDOWS@@
+
+<h2>3 · Which architectures are ever worth running</h2>
+
+<div class="prop">
+  <p class="lab">Proposition 3 — envelope <span class="chk">verified against brute force at
+  20,000 coherence times on a log grid</span></p>
+  <p>Given a menu of candidate strategies {(c<sub>i</sub>, η<sub>i</sub>)}, strategy i is
+  optimal at some coherence time if and only if the point (η<sub>i</sub>,
+  &minus;η<sub>i</sub>c<sub>i</sub>) is a vertex of the upper convex hull of those points. Each
+  surviving strategy is optimal on an interval; the intervals are ordered by increasing η, and
+  the optimum passes from i to j at</p>
+  <div class="eq">T<sub>i→j</sub> = (η<sub>j</sub>c<sub>j</sub> &minus; η<sub>i</sub>c<sub>i</sub>)
+    / (η<sub>j</sub> &minus; η<sub>i</sub>)</div>
+  <p class="pf"><b>Proof.</b> On T &gt; c, ordering by rate is ordering by the line g(T) = η(T −
+  c), of slope η and intercept −ηc. The pointwise maximum of a finite family of lines is their
+  upper envelope, whose active pieces are exactly the upper-hull vertices in (slope, intercept),
+  in increasing order of slope. ∎</p>
+  <p><strong>Corollary.</strong> The optimal compute depth is non-decreasing in T: deeper exits
+  are steeper lines, and steeper lines win later. Equivalently it is non-increasing in ρ = τ/T.</p>
+</div>
+<div class="prose">
+<p>This is a practical instrument, not just a picture. A menu of candidate architectures reduces
+to its hull vertices; everything strictly inside is dominated at every deadline and never needs
+to be trained, tuned, or reported. Run on the ten Phase 1 architectures with an illustrative
+accuracy assignment, it retains four:</p>
+</div>
+@@ENVELOPE@@
+<div class="prose">
+<p class="mono" style="font-size:.8rem;color:var(--muted)">never optimal at any coherence time:
+@@DOMINATED@@</p>
+<p>The specific verdict depends on the η values assumed, which are not measured — that is
+Phase 3–4. The <em>method</em> does not. And the next section removes the assumption entirely.</p>
+</div>
+
+<h2>4 · The instrument: required accuracy</h2>
+<div class="prose">
+<p>Rather than assume each method's accuracy and ask who wins, fix the coherence time and ask
+what accuracy a method would <em>need</em> in order to beat a full sweep. Solving
+η(1 &minus; d<sub>L</sub>/T) &gt; (1 &minus; d<sub>S</sub>/T) gives</p>
+</div>
+<div class="eq">η<sub>req</sub>(T) = (1 &minus; d<sub>S</sub>/T)<sup>+</sup> /
+  (1 &minus; d<sub>L</sub>/T)</div>
+<div class="prose">
+<p>Every quantity on the right is measured. This table contains no assumption about how well any
+network predicts — it states the bar each one has to clear, and lets Phase 3 find out whether it
+does.</p>
+</div>
+@@ETAREQ@@
+<div class="prose">
+<p>Read across a row and the shape of the problem appears. At 0.43 ms the sweep cannot finish, so
+anything that finishes wins on a walkover. At 2 ms the light predictors need only about
+@@ETA2@@ of oracle efficiency — a low bar, which is why the literature's conclusions have held
+up. At 10 ms every method needs roughly 0.88, because overhead no longer matters and accuracy is
+all that is left. The transformer's bar rises to @@ETATRANS@@ at 2 ms, and the two vision
+backbones never get a bar at all.</p>
+</div>
+
+<h2>5 · The adaptive schedule</h2>
+<div class="prose">
+<p>Propositions 1–3 compare fixed strategies. The scheduler the plan proposes is adaptive: at
+each epoch it may probe, compute further, or commit. To characterise its optimum I solved the
+problem exactly by backward induction over states (i, k, m) — compute level, probes taken, best
+gain measured — which is possible precisely because the frozen latency profile makes elapsed
+time a deterministic function of (i, k).</p>
+</div>
+
+<div class="prop">
+  <p class="lab">Theorem 4 — structure of the optimal schedule <span class="chk">verified on the
+  exact DP, all @@NSLICES@@ state slices</span></p>
+  <p><strong>(a) Threshold.</strong> At every (i, k) the optimal rule is: commit iff the best
+  measured gain is at least a threshold m̄(i, k). Every state slice has a single crossing.</p>
+  <p><strong>(b) Monotone in elapsed time.</strong> m̄ falls as time is consumed — from
+  @@THRHI@@ at the first decision to @@THRLO@@ after 60 probes. Once committing is optimal, no
+  amount of further elapsed time reverses it.</p>
+  <p><strong>(c) Monotone in deliberation.</strong> m̄ rises with compute level: a better
+  predictor makes the agent pickier, because its next probe is worth more.</p>
+  <p><strong>(d) Separation.</strong> The schedule does not interleave. Over the range where the
+  optimum uses any deliberation at all — per-exit costs from @@SEPLO@@ to @@SEPHI@@ μs, a
+  @@SCALERANGE@@× span — the policy fixes a compute depth first and then probes, never returning
+  to deliberate. The chosen depth falls as computation gets dearer, exactly as the Corollary to
+  Proposition 3 predicts, and past the top of that range the optimum stops computing entirely,
+  so there is nothing left to interleave and the test says nothing.</p>
+</div>
+<div class="prose">
+<p>(d) is worth dwelling on, because it simplifies the proposed algorithm rather than
+complicating it. The three-action-per-epoch formulation is more general than the optimum needs:
+deliberation is chosen once, up front, and the remaining problem is ordinary optimal stopping
+against a shrinking threshold. On the calibrated instance the policy commits after
+@@MEANPROBES@@ probes on average and @@P95PROBES@@ at the 95th percentile — out of 64 available.</p>
+<p>The scope of (d) is real and should be stated: here deliberation improves all future probes
+but does not condition on the measurements already taken. A predictor that re-runs on the
+measured buffer — which is exactly what the retired S1 stage networks did — could plausibly
+restore interleaving. That case is open.</p>
+</div>
+
+<h2>6 · What does not work</h2>
+
+<div class="prop neg">
+  <p class="lab">Negative result — the myopic index rule is not optimal
+  <span class="chk">measured against the exact DP at seven coherence times</span></p>
+  <p>The natural one-step rule is to continue with action a exactly when the information it buys
+  outweighs the time it costs:</p>
+  <div class="eq">ΔG<sub>a</sub> / E[G<sub>a</sub>] &nbsp;&gt;&nbsp;
+    c<sub>a</sub> / (T &minus; d) &nbsp;&nbsp;&nbsp;&nbsp;
+    <span style="color:var(--muted)">relative value of information &gt; cost as a share of
+    remaining time</span></div>
+  <p>Both sides are dimensionless, the right side rises monotonically as the deadline
+  approaches, and the rule is exactly the value-of-computation test that metareasoning would
+  prescribe. <strong>It is also wrong.</strong> Evaluated exactly, it loses between
+  @@OSLAMIN@@% and @@OSLAMAX@@% of the optimal value, and it is worst where this work cares
+  most — at short coherence times.</p>
+  <p>The failure is structural, not numerical: a single probe's marginal contribution to a
+  running maximum is small, while the cumulative contribution of many probes is large, so the
+  myopic test stops far too early. The problem is not in the monotone case, and one-stage
+  lookahead therefore carries no optimality guarantee here.</p>
+</div>
+@@OSLA@@
+<div class="prose">
+<p>This matters for how the paper positions itself. Importing the value-of-computation rule from
+metareasoning and calling it the algorithm would have been the obvious move, and it would have
+cost a fifth of the achievable rate. The contribution has to be the exact schedule, not the
+index.</p>
+</div>
+
+<h2>7 · Two properties that make this usable</h2>
+
+<div class="prop">
+  <p class="lab">Proposition 5 — ρ-sufficiency <span class="chk">verified: policy and value
+  identical to machine precision at α ∈ {0.25, 3, 40}</span></p>
+  <p>Scaling every cost and the coherence time by a common factor leaves the optimal policy and
+  the normalised value unchanged. The problem depends on hardware only through the dimensionless
+  ratios ρ = c/T.</p>
+  <p>So the conclusions here are not pinned to an i9 and an RTX 8000. A device ten times slower
+  reaches the identical policy at a coherence time ten times longer, and the atlas's ρ table is
+  the portable form of its microseconds.</p>
+</div>
+
+<div class="prop">
+  <p class="lab">Proposition 6 — the controller is free <span class="chk">measured under the
+  Phase 1 protocol: 1,000 warmup, 10,000 timed, nearest-rank p95</span></p>
+  <p>By Theorem 4(a) the optimal policy is a threshold table. Computed offline it occupies
+  @@TABLEBYTES@@ bytes, and a runtime decision is one array index and one comparison:</p>
+  <div class="eq">threshold lookup @@LOOKUP@@ μs &nbsp;·&nbsp; neural stage decision
+    @@NEURAL@@ μs &nbsp;·&nbsp; <strong>@@RATIO@@× cheaper</strong></div>
+  <p>And the gap compounds, because an adaptive controller runs at <em>every</em> stage, not once
+  per interval. Over eight probe decisions the table costs @@PERINTLOOK@@ μs against
+  @@PERINTNEURAL@@ μs for the neural rule — the difference between a rounding error and a fifth
+  of a 1 ms coherence interval spent deciding rather than measuring.</p>
+  <p>This closes a hole that would otherwise be fatal. A controller whose job is to account for
+  deliberation cost, but which is itself expensive to run, is self-defeating.</p>
+</div>
+
+<h2>8 · What this establishes, and what it does not</h2>
+<div class="note">
+  <h3>Established</h3>
+  <ul>
+    <li>Propositions 1, 2, 3 and 5 are proved, and each is independently checked against brute
+    force or the exact DP. They hold for any strategy pair, not just the measured ones.</li>
+    <li>Theorem 4 is verified computationally on the calibrated instance, not proved in
+    generality. (a)–(c) are robust across every parameterisation tried; (d) is the one I would
+    most expect to break under a different deliberation model.</li>
+    <li>The required-accuracy table uses no assumption about predictive accuracy.</li>
+  </ul>
+  <h3>Not established</h3>
+  <ul>
+    <li><b>The DP instance is idealised.</b> Beam SNRs i.i.d. exponential, probes noiseless,
+    draws with replacement, deliberation that does not condition on measurements. These are
+    stated so they can be argued with; Phase 3's DeepMIMO channels replace the first two.</li>
+    <li><b>η is still unmeasured.</b> The envelope illustration in §3 assumes it. §4 is the
+    assumption-free version and is the one to cite until Phase 4 supplies real numbers.</li>
+    <li><b>Single user, single interval.</b> No multi-user scheduling, no correlation between
+    consecutive coherence intervals, no beam tracking across time — all of which would change
+    what deliberation is worth.</li>
+    <li><b>Graff et al. are not overturned.</b> Their own networks cost @@GRAFFMIN@@–@@GRAFFMAX@@ μs
+    compiled and clear Proposition 1 comfortably; their conclusion survives the correction
+    almost intact. What fails is the heavier architecture class the field has since adopted, and
+    the accounting that let nobody notice the difference.</li>
+  </ul>
+</div>
+
+<h2>9 · What Phase 3 inherits</h2>
+<div class="prose">
+<p>A specification with no free parameters left except the ones Phase 3 exists to measure. The
+objective is written; τ* and the window are closed forms in quantities Phase 1 already measured;
+the optimal schedule is a threshold table that costs @@LOOKUP@@ μs to consult; and §4 states,
+for each candidate architecture, the exact predictive accuracy it must demonstrate on held-out
+sites to be worth using at all.</p>
+<p>That last point is the handover. Phase 3 does not need to ask which architecture is best. It
+needs to measure η for each, and read off the table.</p>
+</div>
+
+<div class="foot">
+verification suite, exact DP and closed forms in the accompanying Python; 9 of 10 machine-checked
+claims hold and the tenth is reported above as the negative result · latency inputs from the
+<a href="@@ATLAS@@">Phase 1 latency atlas</a> · research plan: <a href="@@PLAN@@">compute-aware
+beam acquisition</a>
+</div>
+
+</div>

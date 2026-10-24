@@ -1,0 +1,84 @@
+{
+ "env": {
+  "profile": "cpu-1t-pcore",
+  "python": "3.13.12",
+  "numpy": "2.5.3",
+  "governor": "powersave",
+  "affinity": [
+   2
+  ],
+  "utc": "2026-09-23T05:22:01Z"
+ },
+ "method": "real (4,65,40,10,2) tables of seeds 17/29/43, consults replayed in order from the deployed controller's trajectories on the validation city; nearest-rank p95 per seed, largest of three seeds",
+ "rows": [
+  {
+   "seed": 17,
+   "component": "lookup_real",
+   "charge_us": 0.19638999999999998,
+   "recheck_us": 0.19599,
+   "drift": 0.010676156583629704,
+   "percall_p95_us": 0.281,
+   "percall_recheck_us": 0.284,
+   "n_states": 48586,
+   "table_shape": [
+    4,
+    65,
+    40,
+    10,
+    2
+   ],
+   "table_bytes": 208000
+  },
+  {
+   "seed": 29,
+   "component": "lookup_real",
+   "charge_us": 0.19807,
+   "recheck_us": 0.19798,
+   "drift": 0.00045438481344982454,
+   "percall_p95_us": 0.289,
+   "percall_recheck_us": 0.289,
+   "n_states": 50266,
+   "table_shape": [
+    4,
+    65,
+    40,
+    10,
+    2
+   ],
+   "table_bytes": 208000
+  },
+  {
+   "seed": 43,
+   "component": "lookup_real",
+   "charge_us": 0.19648,
+   "recheck_us": 0.19622,
+   "drift": 0.030405405405405435,
+   "percall_p95_us": 0.296,
+   "percall_recheck_us": 0.287,
+   "n_states": 54631,
+   "table_shape": [
+    4,
+    65,
+    40,
+    10,
+    2
+   ],
+   "table_bytes": 208000
+  }
+ ],
+ "contention": {
+  "loadavg": [
+   "0.41",
+   "1.97",
+   "1.84"
+  ],
+  "worst_recheck_drift": 0.0304,
+  "worst_component": "lookup_real",
+  "contended": false,
+  "rule": "each component timed twice; >10% drift between passes means the machine was not quiet"
+ },
+ "percall_us": 0.296,
+ "batched_us": 0.198,
+ "charged_rule": "per call, as G3 times every other component",
+ "charge_us": 0.296
+}

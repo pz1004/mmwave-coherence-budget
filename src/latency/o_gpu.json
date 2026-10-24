@@ -1,0 +1,298 @@
+{
+  "env": {
+    "profile": "gpu-resident",
+    "cpu": "Intel(R) Core(TM) i9-14900KF",
+    "governor": "powersave",
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "torch_threads": 1,
+    "requested_threads": 1,
+    "torch": "2.12.0+cu130",
+    "python": "3.13.12",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "numpy": "1.26.4",
+    "gpu": "Quadro RTX 8000",
+    "omp": "1",
+    "timestamp": "2026-09-15T19:08:48+0900"
+  },
+  "runtime": "torchscript-frozen",
+  "rows": [
+    {
+      "component": "graff_eig",
+      "charge_ns": 47807,
+      "charge_us": 47.807,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 47807,
+          "median_ns": 45004
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 47259,
+          "median_ns": 45402
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 46638,
+          "median_ns": 44524
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "graff_col",
+      "charge_ns": 36180,
+      "charge_us": 36.18,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 35742,
+          "median_ns": 33332
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 35828,
+          "median_ns": 34182
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 36180,
+          "median_ns": 34546
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "graff_aps",
+      "charge_ns": 48204,
+      "charge_us": 48.204,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 47599,
+          "median_ns": 46491
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 47493,
+          "median_ns": 46258
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 48204,
+          "median_ns": 46412
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "beam_mlp",
+      "charge_ns": 26686,
+      "charge_us": 26.686,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 26184,
+          "median_ns": 25107
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 25768,
+          "median_ns": 24880
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 26686,
+          "median_ns": 25538
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "beam_cnn",
+      "charge_ns": 60535,
+      "charge_us": 60.535,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 59982,
+          "median_ns": 58495
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 60535,
+          "median_ns": 58231
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 60165,
+          "median_ns": 58517
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "transformer_small",
+      "charge_ns": 222512,
+      "charge_us": 222.512,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 220009,
+          "median_ns": 216877
+        },
+        {
+          "seed": 29,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 222512,
+          "median_ns": 219006
+        },
+        {
+          "seed": 43,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 220257,
+          "median_ns": 218196
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "resnet18_vision",
+      "charge_ns": 1199569,
+      "charge_us": 1199.569,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 1163505,
+          "median_ns": 1117782
+        },
+        {
+          "seed": 29,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 1190031,
+          "median_ns": 1149810
+        },
+        {
+          "seed": 43,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 1199569,
+          "median_ns": 1161084
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "vit_b16_vision",
+      "charge_ns": 6356232,
+      "charge_us": 6356.232,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 6192340,
+          "median_ns": 5682668
+        },
+        {
+          "seed": 29,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 6297040,
+          "median_ns": 5745653
+        },
+        {
+          "seed": 43,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 6356232,
+          "median_ns": 5782701
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "s1_q_nets",
+      "charge_ns": 39527,
+      "charge_us": 39.527,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 39527,
+          "median_ns": 37450
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 38813,
+          "median_ns": 36869
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 39084,
+          "median_ns": 36870
+        }
+      ],
+      "reduced_n": false
+    }
+  ]
+}

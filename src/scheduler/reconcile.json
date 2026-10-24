@@ -1,0 +1,3146 @@
+{
+ "rule": "R21",
+ "script_sha256": "29fd9243d1187ca33a02039e50408fc2194c9871c33e02444a570063669d6788",
+ "inputs_sha256": {
+  "rules.json": "7a26065948dd267cd109b917c1c42056f91018e982fc145407a6b62cf74345d8",
+  "rules_rx.json": "e58e2b9f6dfaafda8ee4a3cabbb7d349a9e0e21a32cd5fa5e28676d8a115e6c7",
+  "margins.json": "3f194c9eadda1407638c077c17e03109515610fa0fe41539ee6325c0cb667457",
+  "results.json": "a73ffb0ce7934b2c56d3bfeac4c4f773811b96eaebf6943785d434cf88b0856b"
+ },
+ "boundary": "host",
+ "runs": [
+  1,
+  2,
+  3
+ ],
+ "alpha": 0.05,
+ "gate": {
+  "G1_stored_reproduced": true,
+  "G2_verdicts_unchanged": true,
+  "G3_pins": true,
+  "G4_runs_clean": true,
+  "G5_rank": true,
+  "holds": true
+ },
+ "changed": [
+  [
+   "resnet18_vision",
+   "cpu-8t-pcore"
+  ]
+ ],
+ "admission_changed": [
+  [
+   "resnet18_vision",
+   "cpu-8t-pcore",
+   "M256",
+   "K4",
+   "measured"
+  ],
+  [
+   "resnet18_vision",
+   "cpu-8t-pcore",
+   "M256",
+   "K8",
+   "measured"
+  ],
+  [
+   "resnet18_vision",
+   "cpu-8t-pcore",
+   "M256",
+   "K16",
+   "measured"
+  ]
+ ],
+ "fastest_call_repeated_us": {
+  "A": 4451.007,
+  "C": 1231.293,
+  "B": 5487.272
+ },
+ "repeated": {
+  "A": {
+   "component": "resnet18_vision",
+   "profile": "cpu-8t-pcore",
+   "runtimes": {
+    "eager, repeated runs": {
+     "charged_us": 5805.439,
+     "lower_us": 5756.131,
+     "run_charges_us": [
+      5829.058,
+      5959.283,
+      5805.439
+     ],
+     "charged_run": 3,
+     "seed_p95_us": [
+      5791.193,
+      5829.058,
+      5826.072,
+      5959.283,
+      5827.354,
+      5803.337,
+      5786.113,
+      5805.076,
+      5805.439
+     ],
+     "seed_lower_us": [
+      5781.98,
+      5818.885,
+      5814.989,
+      5942.145,
+      5812.352,
+      5785.184,
+      5756.131,
+      5782.733,
+      5792.438
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_A.npz:uncompiled.host.s17",
+      "r1_A.npz:uncompiled.host.s29",
+      "r1_A.npz:uncompiled.host.s43",
+      "r2_A.npz:uncompiled.host.s17",
+      "r2_A.npz:uncompiled.host.s29",
+      "r2_A.npz:uncompiled.host.s43",
+      "r3_A.npz:uncompiled.host.s17",
+      "r3_A.npz:uncompiled.host.s29",
+      "r3_A.npz:uncompiled.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 3,
+     "lower_seed": 17,
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, repeated runs": {
+     "charged_us": 4782.254,
+     "lower_us": 4626.138,
+     "run_charges_us": [
+      4929.346,
+      4833.929,
+      4782.254
+     ],
+     "charged_run": 3,
+     "seed_p95_us": [
+      4891.361,
+      4929.346,
+      4879.249,
+      4808.564,
+      4777.749,
+      4833.929,
+      4771.526,
+      4634.805,
+      4782.254
+     ],
+     "seed_lower_us": [
+      4874.325,
+      4914.784,
+      4868.919,
+      4797.67,
+      4764.427,
+      4815.74,
+      4759.331,
+      4626.138,
+      4772.947
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_A.npz:torchscript.host.s17",
+      "r1_A.npz:torchscript.host.s29",
+      "r1_A.npz:torchscript.host.s43",
+      "r2_A.npz:torchscript.host.s17",
+      "r2_A.npz:torchscript.host.s29",
+      "r2_A.npz:torchscript.host.s43",
+      "r3_A.npz:torchscript.host.s17",
+      "r3_A.npz:torchscript.host.s29",
+      "r3_A.npz:torchscript.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 3,
+     "lower_seed": 29,
+     "kind": "order-statistic bound"
+    }
+   }
+  },
+  "C": {
+   "component": "resnet18_vision",
+   "profile": "gpu-resident",
+   "runtimes": {
+    "eager, repeated runs": {
+     "charged_us": 1461.67,
+     "lower_us": 1455.219,
+     "run_charges_us": [
+      1461.67,
+      1471.601,
+      1468.991
+     ],
+     "charged_run": 1,
+     "seed_p95_us": [
+      1461.67,
+      1459.351,
+      1457.758,
+      1471.601,
+      1466.615,
+      1471.004,
+      1468.991,
+      1463.28,
+      1460.154
+     ],
+     "seed_lower_us": [
+      1461.034,
+      1458.624,
+      1455.219,
+      1470.188,
+      1462.414,
+      1470.142,
+      1467.704,
+      1458.228,
+      1458.741
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_C.npz:uncompiled.host.s17",
+      "r1_C.npz:uncompiled.host.s29",
+      "r1_C.npz:uncompiled.host.s43",
+      "r2_C.npz:uncompiled.host.s17",
+      "r2_C.npz:uncompiled.host.s29",
+      "r2_C.npz:uncompiled.host.s43",
+      "r3_C.npz:uncompiled.host.s17",
+      "r3_C.npz:uncompiled.host.s29",
+      "r3_C.npz:uncompiled.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 1,
+     "lower_seed": 43,
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, repeated runs": {
+     "charged_us": 1339.977,
+     "lower_us": 1311.838,
+     "run_charges_us": [
+      1339.977,
+      1343.738,
+      1352.072
+     ],
+     "charged_run": 1,
+     "seed_p95_us": [
+      1339.977,
+      1312.594,
+      1315.507,
+      1342.59,
+      1335.083,
+      1343.738,
+      1352.072,
+      1328.374,
+      1342.156
+     ],
+     "seed_lower_us": [
+      1337.518,
+      1311.838,
+      1314.951,
+      1341.173,
+      1332.659,
+      1341.723,
+      1349.651,
+      1327.117,
+      1341.385
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_C.npz:torchscript.host.s17",
+      "r1_C.npz:torchscript.host.s29",
+      "r1_C.npz:torchscript.host.s43",
+      "r2_C.npz:torchscript.host.s17",
+      "r2_C.npz:torchscript.host.s29",
+      "r2_C.npz:torchscript.host.s43",
+      "r3_C.npz:torchscript.host.s17",
+      "r3_C.npz:torchscript.host.s29",
+      "r3_C.npz:torchscript.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 1,
+     "lower_seed": 29,
+     "kind": "order-statistic bound"
+    }
+   }
+  },
+  "B": {
+   "component": "vit_b16_vision",
+   "profile": "gpu-resident",
+   "runtimes": {
+    "eager, repeated runs": {
+     "charged_us": 7043.174,
+     "lower_us": 6800.136,
+     "run_charges_us": [
+      7043.174,
+      7225.327,
+      7184.212
+     ],
+     "charged_run": 1,
+     "seed_p95_us": [
+      7043.174,
+      6907.608,
+      6829.584,
+      7133.586,
+      7225.327,
+      7010.824,
+      7129.861,
+      7184.212,
+      7120.024
+     ],
+     "seed_lower_us": [
+      6988.271,
+      6869.487,
+      6800.136,
+      6981.644,
+      7119.3,
+      6878.195,
+      7023.691,
+      6995.239,
+      6986.872
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_B.npz:uncompiled.host.s17",
+      "r1_B.npz:uncompiled.host.s29",
+      "r1_B.npz:uncompiled.host.s43",
+      "r2_B.npz:uncompiled.host.s17",
+      "r2_B.npz:uncompiled.host.s29",
+      "r2_B.npz:uncompiled.host.s43",
+      "r3_B.npz:uncompiled.host.s17",
+      "r3_B.npz:uncompiled.host.s29",
+      "r3_B.npz:uncompiled.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 1,
+     "lower_seed": 43,
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, repeated runs": {
+     "charged_us": 6616.224,
+     "lower_us": 6535.323,
+     "run_charges_us": [
+      6790.358,
+      6772.959,
+      6616.224
+     ],
+     "charged_run": 3,
+     "seed_p95_us": [
+      6670.613,
+      6790.358,
+      6652.274,
+      6759.098,
+      6763.464,
+      6772.959,
+      6564.85,
+      6616.224,
+      6556.932
+     ],
+     "seed_lower_us": [
+      6623.487,
+      6673.989,
+      6601.842,
+      6687.217,
+      6714.004,
+      6664.286,
+      6536.347,
+      6535.323,
+      6536.32
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_B.npz:torchscript.host.s17",
+      "r1_B.npz:torchscript.host.s29",
+      "r1_B.npz:torchscript.host.s43",
+      "r2_B.npz:torchscript.host.s17",
+      "r2_B.npz:torchscript.host.s29",
+      "r2_B.npz:torchscript.host.s43",
+      "r3_B.npz:torchscript.host.s17",
+      "r3_B.npz:torchscript.host.s29",
+      "r3_B.npz:torchscript.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 3,
+     "lower_seed": 29,
+     "kind": "order-statistic bound"
+    }
+   }
+  }
+ },
+ "r5_rows": [
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-1t-pcore",
+   "t_p_us": 20.339,
+   "tau_star_us": 1220.34,
+   "charges_us": {
+    "eager, Phase-1 counts": 29025.72,
+    "TorchScript, whole decision": 25000.433
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 23.784945179212354,
+    "TorchScript, whole decision": 20.48644885851484
+   },
+   "ratio_min": 20.48644885851484,
+   "network_only_us": 25211.863,
+   "excluded": true,
+   "excluded_if_network_only_included": true,
+   "at_budget": false,
+   "tp_star_us": 416.6738833333333,
+   "tp_star_air_us": 416.3348833333333,
+   "first_feasible_T_us": null,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-1t-pcore",
+   "t_p_us": 20.339,
+   "tau_star_us": 1220.34,
+   "charges_us": {
+    "eager, Phase-1 counts": 233200.6,
+    "TorchScript, whole decision": 235577.451
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 191.09477686546373,
+    "TorchScript, whole decision": 193.04247258960618
+   },
+   "ratio_min": 191.09477686546373,
+   "network_only_us": 236924.806,
+   "excluded": true,
+   "excluded_if_network_only_included": true,
+   "at_budget": false,
+   "tp_star_us": 3886.6766666666667,
+   "tp_star_air_us": 3886.337666666667,
+   "first_feasible_T_us": null,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-1t-pcore",
+   "t_p_us": 20.339,
+   "tau_star_us": 1220.34,
+   "charges_us": {
+    "eager, Phase-1 counts": 1038.357,
+    "TorchScript, whole decision": 938.784
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 0.8508751659373618,
+    "TorchScript, whole decision": 0.7692806922660899
+   },
+   "ratio_min": 0.7692806922660899,
+   "network_only_us": 942.579,
+   "excluded": false,
+   "excluded_if_network_only_included": false,
+   "at_budget": false,
+   "tp_star_us": 15.6464,
+   "tp_star_air_us": 15.3074,
+   "first_feasible_T_us": 1400,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-1t-ecore",
+   "t_p_us": 20.966,
+   "tau_star_us": 1257.96,
+   "charges_us": {
+    "eager, Phase-1 counts": 70893.249
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 56.3557259372317
+   },
+   "ratio_min": 56.3557259372317,
+   "network_only_us": 64222.02,
+   "excluded": true,
+   "excluded_if_network_only_included": true,
+   "at_budget": false,
+   "tp_star_us": 1181.55415,
+   "tp_star_air_us": 1180.58815,
+   "first_feasible_T_us": null,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-1t-ecore",
+   "t_p_us": 20.966,
+   "tau_star_us": 1257.96,
+   "charges_us": {
+    "eager, Phase-1 counts": 650670.382
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 517.2425053260835
+   },
+   "ratio_min": 517.2425053260835,
+   "network_only_us": 649755.407,
+   "excluded": true,
+   "excluded_if_network_only_included": true,
+   "at_budget": false,
+   "tp_star_us": 10844.506366666667,
+   "tp_star_air_us": 10843.540366666666,
+   "first_feasible_T_us": null,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-1t-ecore",
+   "t_p_us": 20.966,
+   "tau_star_us": 1257.96,
+   "charges_us": {
+    "eager, Phase-1 counts": 2762.571,
+    "TorchScript, whole decision": 2573.466
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 2.1960722121530094,
+    "TorchScript, whole decision": 2.0457454927024705
+   },
+   "ratio_min": 2.0457454927024705,
+   "network_only_us": 2560.462,
+   "excluded": true,
+   "excluded_if_network_only_included": true,
+   "at_budget": false,
+   "tp_star_us": 42.8911,
+   "tp_star_air_us": 41.9251,
+   "first_feasible_T_us": 2800,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-8t-pcore",
+   "t_p_us": 20.333,
+   "tau_star_us": 1219.98,
+   "charges_us": {
+    "eager, Phase-1 counts": 5289.57,
+    "eager, repeated runs": 5805.439,
+    "TorchScript, repeated runs": 4782.254
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 4.335784193183494,
+    "eager, repeated runs": 4.7586345677798,
+    "TorchScript, repeated runs": 3.9199445892555613
+   },
+   "ratio_min": 3.9199445892555613,
+   "network_only_us": null,
+   "excluded": true,
+   "excluded_if_network_only_included": true,
+   "at_budget": false,
+   "tp_star_us": 79.70423333333333,
+   "tp_star_air_us": 79.37123333333334,
+   "first_feasible_T_us": 5600,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-8t-pcore",
+   "t_p_us": 20.333,
+   "tau_star_us": 1219.98,
+   "charges_us": {
+    "eager, Phase-1 counts": 42602.81
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 34.92090853948425
+   },
+   "ratio_min": 34.92090853948425,
+   "network_only_us": null,
+   "excluded": true,
+   "excluded_if_network_only_included": true,
+   "at_budget": false,
+   "tp_star_us": 710.0468333333333,
+   "tp_star_air_us": 709.7138333333334,
+   "first_feasible_T_us": null,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-8t-pcore",
+   "t_p_us": 20.333,
+   "tau_star_us": 1219.98,
+   "charges_us": {
+    "eager, Phase-1 counts": 436.303
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 0.35763127264381384
+   },
+   "ratio_min": 0.35763127264381384,
+   "network_only_us": null,
+   "excluded": false,
+   "excluded_if_network_only_included": false,
+   "at_budget": false,
+   "tp_star_us": 7.271716666666666,
+   "tp_star_air_us": 6.938716666666666,
+   "first_feasible_T_us": 700,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "gpu-resident",
+   "t_p_us": 20.341,
+   "tau_star_us": 1220.46,
+   "charges_us": {
+    "eager, Phase-1 counts": 1344.464,
+    "eager, full counts": 1753.783,
+    "TorchScript, whole decision": 1218.876,
+    "eager, repeated runs": 1461.67,
+    "TorchScript, repeated runs": 1339.977
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 1.101604313127837,
+    "eager, full counts": 1.4369852350752994,
+    "TorchScript, whole decision": 0.99870212870557,
+    "eager, repeated runs": 1.1976385952837454,
+    "TorchScript, repeated runs": 1.0979278304901432
+   },
+   "ratio_min": 0.99870212870557,
+   "network_only_us": 1199.569,
+   "excluded": false,
+   "excluded_if_network_only_included": false,
+   "at_budget": true,
+   "tp_star_us": 20.3146,
+   "tp_star_air_us": 19.973599999999998,
+   "first_feasible_T_us": 1400,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "gpu-resident",
+   "t_p_us": 20.341,
+   "tau_star_us": 1220.46,
+   "charges_us": {
+    "eager, Phase-1 counts": 6331.027,
+    "eager, full counts": 7691.273,
+    "TorchScript, whole decision": 7148.229,
+    "eager, repeated runs": 7043.174,
+    "TorchScript, repeated runs": 6616.224
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 5.187410484571391,
+    "eager, full counts": 6.301945987578454,
+    "TorchScript, whole decision": 5.856995722924143,
+    "eager, repeated runs": 5.770917522901201,
+    "TorchScript, repeated runs": 5.421090408534487
+   },
+   "ratio_min": 5.187410484571391,
+   "network_only_us": 6356.232,
+   "excluded": true,
+   "excluded_if_network_only_included": true,
+   "at_budget": false,
+   "tp_star_us": 105.51711666666667,
+   "tp_star_air_us": 105.17611666666667,
+   "first_feasible_T_us": 8000,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": false
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": false,
+      "air250": true
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": false,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  },
+  {
+   "component": "transformer_small",
+   "profile": "gpu-resident",
+   "t_p_us": 20.341,
+   "tau_star_us": 1220.46,
+   "charges_us": {
+    "eager, Phase-1 counts": 297.776,
+    "TorchScript, whole decision": 225.621
+   },
+   "ratios": {
+    "eager, Phase-1 counts": 0.24398669354177932,
+    "TorchScript, whole decision": 0.1848655425003687
+   },
+   "ratio_min": 0.1848655425003687,
+   "network_only_us": 222.512,
+   "excluded": false,
+   "excluded_if_network_only_included": false,
+   "at_budget": false,
+   "tp_star_us": 3.7603500000000003,
+   "tp_star_air_us": 3.41935,
+   "first_feasible_T_us": 350,
+   "admission": {
+    "M16": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": false,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M32": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M64": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M128": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    },
+    "M256": {
+     "K4": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K8": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     },
+     "K16": {
+      "measured": true,
+      "air50": true,
+      "air125": true,
+      "air250": true
+     }
+    }
+   },
+   "admission_beyond_64_is_accounting_only": true
+  }
+ ],
+ "r5_by_model": {
+  "resnet18_vision": {
+   "excluded_profiles": [
+    "cpu-1t-pcore",
+    "cpu-1t-ecore",
+    "cpu-8t-pcore"
+   ],
+   "every_profile": false,
+   "at_budget_profiles": [
+    "gpu-resident"
+   ]
+  },
+  "vit_b16_vision": {
+   "excluded_profiles": [
+    "cpu-1t-pcore",
+    "cpu-1t-ecore",
+    "cpu-8t-pcore",
+    "gpu-resident"
+   ],
+   "every_profile": true,
+   "at_budget_profiles": []
+  },
+  "transformer_small": {
+   "excluded_profiles": [
+    "cpu-1t-ecore"
+   ],
+   "every_profile": false,
+   "at_budget_profiles": []
+  }
+ },
+ "margin_rows": [
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-1t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 29025.72,
+     "lower_us": 28755.224,
+     "seed_p95_us": [
+      28826.955,
+      29025.72,
+      29002.196
+     ],
+     "seed_lower_us": [
+      28755.224,
+      28898.491,
+      28928.151
+     ],
+     "n_timed": [
+      200,
+      200,
+      200
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 25000.433,
+     "lower_us": 24721.832,
+     "seed_p95_us": [
+      25000.433,
+      24721.832,
+      24850.857
+     ],
+     "n_timed": [
+      200,
+      200,
+      200
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "TorchScript, whole decision",
+   "tau_us": 25000.433,
+   "tau_lo_us": 24721.832,
+   "tau_lo_runtime": "TorchScript, whole decision",
+   "tau_lo_kind": "smallest seed p95 (point value)",
+   "dL_us": 25081.789,
+   "dL_lo_us": 24801.832,
+   "nr_dL_lo_us": 24650.403428571426,
+   "margin_us": 23219.152224275058,
+   "excluded_robust": true,
+   "infeasible_robust": true,
+   "nr_margin_us": {
+    "3": 23514.02362024599,
+    "1": 23007.615687173653,
+    "0.5": 22404.643254958657
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-1t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 233200.6,
+     "lower_us": 231942.238,
+     "seed_p95_us": [
+      232093.536,
+      233104.158,
+      233200.6
+     ],
+     "seed_lower_us": [
+      231942.238,
+      232657.747,
+      232744.055
+     ],
+     "n_timed": [
+      50,
+      50,
+      50
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 235577.451,
+     "lower_us": 235376.743,
+     "seed_p95_us": [
+      235574.98,
+      235376.743,
+      235577.451
+     ],
+     "n_timed": [
+      50,
+      50,
+      50
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 233200.6,
+   "tau_lo_us": 231942.238,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 233281.956,
+   "dL_lo_us": 232022.238,
+   "nr_dL_lo_us": 231870.80942857143,
+   "margin_us": 230439.55822427507,
+   "excluded_robust": true,
+   "infeasible_robust": true,
+   "nr_margin_us": {
+    "3": 230734.429620246,
+    "1": 230228.02168717366,
+    "0.5": 229625.04925495866
+   }
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-1t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 1038.357,
+     "lower_us": 1031.703,
+     "seed_p95_us": [
+      1036.296,
+      1038.357,
+      1033.276
+     ],
+     "seed_lower_us": [
+      1033.061,
+      1035.813,
+      1031.703
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 938.784,
+     "lower_us": 929.542,
+     "seed_p95_us": [
+      929.542,
+      938.784,
+      935.401
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "TorchScript, whole decision",
+   "tau_us": 938.784,
+   "tau_lo_us": 929.542,
+   "tau_lo_runtime": "TorchScript, whole decision",
+   "tau_lo_kind": "smallest seed p95 (point value)",
+   "dL_us": 1020.14,
+   "dL_lo_us": 1009.542,
+   "nr_dL_lo_us": 858.1134285714286,
+   "margin_us": -573.1377757249428,
+   "excluded_robust": false,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": -278.2663797540103,
+    "1": -784.6743128263446,
+    "0.5": -1387.6467450413425
+   }
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-1t-ecore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 70893.249,
+     "lower_us": 70754.47,
+     "seed_p95_us": [
+      70892.129,
+      70893.249,
+      70806.643
+     ],
+     "seed_lower_us": [
+      70840.902,
+      70824.299,
+      70754.47
+     ],
+     "n_timed": [
+      200,
+      200,
+      200
+     ],
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 70893.249,
+   "tau_lo_us": 70754.47,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 70977.113,
+   "dL_lo_us": 70834.47,
+   "nr_dL_lo_us": 70683.04142857144,
+   "margin_us": 69251.79022427506,
+   "excluded_robust": true,
+   "infeasible_robust": true,
+   "nr_margin_us": {
+    "3": 69546.661620246,
+    "1": 69040.25368717365,
+    "0.5": 68437.28125495867
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-1t-ecore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 650670.382,
+     "lower_us": 646147.941,
+     "seed_p95_us": [
+      648135.019,
+      650670.382,
+      646234.379
+     ],
+     "seed_lower_us": [
+      647090.29,
+      649560.129,
+      646147.941
+     ],
+     "n_timed": [
+      50,
+      50,
+      50
+     ],
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 650670.382,
+   "tau_lo_us": 646147.941,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 650754.2459999999,
+   "dL_lo_us": 646227.941,
+   "nr_dL_lo_us": 646076.5124285715,
+   "margin_us": 644645.261224275,
+   "excluded_robust": true,
+   "infeasible_robust": true,
+   "nr_margin_us": {
+    "3": 644940.132620246,
+    "1": 644433.7246871737,
+    "0.5": 643830.7522549586
+   }
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-1t-ecore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 2762.571,
+     "lower_us": 2757.588,
+     "seed_p95_us": [
+      2762.571,
+      2759.559,
+      2761.115
+     ],
+     "seed_lower_us": [
+      2758.593,
+      2757.588,
+      2757.752
+     ],
+     "n_timed": [
+      500,
+      500,
+      500
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 2573.466,
+     "lower_us": 2558.764,
+     "seed_p95_us": [
+      2573.466,
+      2558.764,
+      2562.155
+     ],
+     "n_timed": [
+      500,
+      500,
+      500
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "TorchScript, whole decision",
+   "tau_us": 2573.466,
+   "tau_lo_us": 2558.764,
+   "tau_lo_runtime": "TorchScript, whole decision",
+   "tau_lo_kind": "smallest seed p95 (point value)",
+   "dL_us": 2657.33,
+   "dL_lo_us": 2638.764,
+   "nr_dL_lo_us": 2487.3354285714286,
+   "margin_us": 1056.0842242750573,
+   "excluded_robust": true,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": 1350.9556202459896,
+    "1": 844.5476871736554,
+    "0.5": 241.57525495865752
+   }
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-8t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 5289.57,
+     "lower_us": 5255.235,
+     "seed_p95_us": [
+      5289.57,
+      5275.264,
+      5269.869
+     ],
+     "seed_lower_us": [
+      5275.726,
+      5262.555,
+      5255.235
+     ],
+     "n_timed": [
+      500,
+      500,
+      500
+     ],
+     "kind": "order-statistic bound"
+    },
+    "eager, repeated runs": {
+     "charged_us": 5805.439,
+     "lower_us": 5756.131,
+     "run_charges_us": [
+      5829.058,
+      5959.283,
+      5805.439
+     ],
+     "charged_run": 3,
+     "seed_p95_us": [
+      5791.193,
+      5829.058,
+      5826.072,
+      5959.283,
+      5827.354,
+      5803.337,
+      5786.113,
+      5805.076,
+      5805.439
+     ],
+     "seed_lower_us": [
+      5781.98,
+      5818.885,
+      5814.989,
+      5942.145,
+      5812.352,
+      5785.184,
+      5756.131,
+      5782.733,
+      5792.438
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_A.npz:uncompiled.host.s17",
+      "r1_A.npz:uncompiled.host.s29",
+      "r1_A.npz:uncompiled.host.s43",
+      "r2_A.npz:uncompiled.host.s17",
+      "r2_A.npz:uncompiled.host.s29",
+      "r2_A.npz:uncompiled.host.s43",
+      "r3_A.npz:uncompiled.host.s17",
+      "r3_A.npz:uncompiled.host.s29",
+      "r3_A.npz:uncompiled.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 3,
+     "lower_seed": 17,
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, repeated runs": {
+     "charged_us": 4782.254,
+     "lower_us": 4626.138,
+     "run_charges_us": [
+      4929.346,
+      4833.929,
+      4782.254
+     ],
+     "charged_run": 3,
+     "seed_p95_us": [
+      4891.361,
+      4929.346,
+      4879.249,
+      4808.564,
+      4777.749,
+      4833.929,
+      4771.526,
+      4634.805,
+      4782.254
+     ],
+     "seed_lower_us": [
+      4874.325,
+      4914.784,
+      4868.919,
+      4797.67,
+      4764.427,
+      4815.74,
+      4759.331,
+      4626.138,
+      4772.947
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_A.npz:torchscript.host.s17",
+      "r1_A.npz:torchscript.host.s29",
+      "r1_A.npz:torchscript.host.s43",
+      "r2_A.npz:torchscript.host.s17",
+      "r2_A.npz:torchscript.host.s29",
+      "r2_A.npz:torchscript.host.s43",
+      "r3_A.npz:torchscript.host.s17",
+      "r3_A.npz:torchscript.host.s29",
+      "r3_A.npz:torchscript.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 3,
+     "lower_seed": 29,
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "TorchScript, repeated runs",
+   "tau_us": 4782.254,
+   "tau_lo_us": 4626.138,
+   "tau_lo_runtime": "TorchScript, repeated runs",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 4863.586,
+   "dL_lo_us": 4706.138,
+   "nr_dL_lo_us": 4554.709428571428,
+   "margin_us": 3123.458224275057,
+   "excluded_robust": true,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": 3418.3296202459896,
+    "1": 2911.9216871736553,
+    "0.5": 2308.949254958657
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-8t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 42602.81,
+     "lower_us": 40049.138,
+     "seed_p95_us": [
+      42602.81,
+      40124.735,
+      40364.536
+     ],
+     "seed_lower_us": [
+      42393.898,
+      40049.138,
+      40127.523
+     ],
+     "n_timed": [
+      200,
+      200,
+      200
+     ],
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 42602.81,
+   "tau_lo_us": 40049.138,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 42684.142,
+   "dL_lo_us": 40129.138,
+   "nr_dL_lo_us": 39977.70942857143,
+   "margin_us": 38546.458224275055,
+   "excluded_robust": true,
+   "infeasible_robust": true,
+   "nr_margin_us": {
+    "3": 38841.32962024598,
+    "1": 38334.92168717366,
+    "0.5": 37731.94925495866
+   }
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-8t-pcore",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 436.303,
+     "lower_us": 433.399,
+     "seed_p95_us": [
+      436.303,
+      434.033,
+      433.801
+     ],
+     "seed_lower_us": [
+      435.788,
+      433.782,
+      433.399
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 436.303,
+   "tau_lo_us": 433.399,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 517.635,
+   "dL_lo_us": 513.399,
+   "nr_dL_lo_us": 361.97042857142856,
+   "margin_us": -1069.280775724943,
+   "excluded_robust": false,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": -774.4093797540104,
+    "1": -1280.8173128263447,
+    "0.5": -1883.7897450413425
+   }
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "gpu-resident",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 1344.464,
+     "lower_us": 1268.463,
+     "seed_p95_us": [
+      1269.251,
+      1316.462,
+      1344.464
+     ],
+     "seed_lower_us": [
+      1268.463,
+      1315.981,
+      1341.04
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 1218.876,
+     "lower_us": 1167.051,
+     "seed_p95_us": [
+      1167.051,
+      1189.827,
+      1218.876
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "smallest seed p95 (point value)"
+    },
+    "eager, full counts": {
+     "charged_us": 1753.783,
+     "lower_us": 1634.581,
+     "seed_p95_us": [
+      1634.581,
+      1712.28,
+      1753.783
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000
+     ],
+     "kind": "smallest seed p95 (point value)"
+    },
+    "eager, repeated runs": {
+     "charged_us": 1461.67,
+     "lower_us": 1455.219,
+     "run_charges_us": [
+      1461.67,
+      1471.601,
+      1468.991
+     ],
+     "charged_run": 1,
+     "seed_p95_us": [
+      1461.67,
+      1459.351,
+      1457.758,
+      1471.601,
+      1466.615,
+      1471.004,
+      1468.991,
+      1463.28,
+      1460.154
+     ],
+     "seed_lower_us": [
+      1461.034,
+      1458.624,
+      1455.219,
+      1470.188,
+      1462.414,
+      1470.142,
+      1467.704,
+      1458.228,
+      1458.741
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_C.npz:uncompiled.host.s17",
+      "r1_C.npz:uncompiled.host.s29",
+      "r1_C.npz:uncompiled.host.s43",
+      "r2_C.npz:uncompiled.host.s17",
+      "r2_C.npz:uncompiled.host.s29",
+      "r2_C.npz:uncompiled.host.s43",
+      "r3_C.npz:uncompiled.host.s17",
+      "r3_C.npz:uncompiled.host.s29",
+      "r3_C.npz:uncompiled.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 1,
+     "lower_seed": 43,
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, repeated runs": {
+     "charged_us": 1339.977,
+     "lower_us": 1311.838,
+     "run_charges_us": [
+      1339.977,
+      1343.738,
+      1352.072
+     ],
+     "charged_run": 1,
+     "seed_p95_us": [
+      1339.977,
+      1312.594,
+      1315.507,
+      1342.59,
+      1335.083,
+      1343.738,
+      1352.072,
+      1328.374,
+      1342.156
+     ],
+     "seed_lower_us": [
+      1337.518,
+      1311.838,
+      1314.951,
+      1341.173,
+      1332.659,
+      1341.723,
+      1349.651,
+      1327.117,
+      1341.385
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_C.npz:torchscript.host.s17",
+      "r1_C.npz:torchscript.host.s29",
+      "r1_C.npz:torchscript.host.s43",
+      "r2_C.npz:torchscript.host.s17",
+      "r2_C.npz:torchscript.host.s29",
+      "r2_C.npz:torchscript.host.s43",
+      "r3_C.npz:torchscript.host.s17",
+      "r3_C.npz:torchscript.host.s29",
+      "r3_C.npz:torchscript.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 1,
+     "lower_seed": 29,
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "TorchScript, whole decision",
+   "tau_us": 1218.876,
+   "tau_lo_us": 1167.051,
+   "tau_lo_runtime": "TorchScript, whole decision",
+   "tau_lo_kind": "smallest seed p95 (point value)",
+   "dL_us": 1300.24,
+   "dL_lo_us": 1247.051,
+   "nr_dL_lo_us": 1095.6224285714286,
+   "margin_us": -335.6287757249429,
+   "excluded_robust": false,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": -40.757379754010344,
+    "1": -547.1653128263446,
+    "0.5": -1150.1377450413424
+   }
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "gpu-resident",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 6331.027,
+     "lower_us": 6224.227,
+     "seed_p95_us": [
+      6331.027,
+      6234.566,
+      6262.323
+     ],
+     "seed_lower_us": [
+      6228.378,
+      6224.227,
+      6229.208
+     ],
+     "n_timed": [
+      500,
+      500,
+      500
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 7148.229,
+     "lower_us": 6341.786,
+     "seed_p95_us": [
+      6521.982,
+      6341.786,
+      7148.229
+     ],
+     "n_timed": [
+      500,
+      500,
+      500
+     ],
+     "kind": "smallest seed p95 (point value)"
+    },
+    "eager, full counts": {
+     "charged_us": 7691.273,
+     "lower_us": 7606.049,
+     "seed_p95_us": [
+      7691.273,
+      7669.138,
+      7606.049
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000
+     ],
+     "kind": "smallest seed p95 (point value)"
+    },
+    "eager, repeated runs": {
+     "charged_us": 7043.174,
+     "lower_us": 6800.136,
+     "run_charges_us": [
+      7043.174,
+      7225.327,
+      7184.212
+     ],
+     "charged_run": 1,
+     "seed_p95_us": [
+      7043.174,
+      6907.608,
+      6829.584,
+      7133.586,
+      7225.327,
+      7010.824,
+      7129.861,
+      7184.212,
+      7120.024
+     ],
+     "seed_lower_us": [
+      6988.271,
+      6869.487,
+      6800.136,
+      6981.644,
+      7119.3,
+      6878.195,
+      7023.691,
+      6995.239,
+      6986.872
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_B.npz:uncompiled.host.s17",
+      "r1_B.npz:uncompiled.host.s29",
+      "r1_B.npz:uncompiled.host.s43",
+      "r2_B.npz:uncompiled.host.s17",
+      "r2_B.npz:uncompiled.host.s29",
+      "r2_B.npz:uncompiled.host.s43",
+      "r3_B.npz:uncompiled.host.s17",
+      "r3_B.npz:uncompiled.host.s29",
+      "r3_B.npz:uncompiled.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 1,
+     "lower_seed": 43,
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, repeated runs": {
+     "charged_us": 6616.224,
+     "lower_us": 6535.323,
+     "run_charges_us": [
+      6790.358,
+      6772.959,
+      6616.224
+     ],
+     "charged_run": 3,
+     "seed_p95_us": [
+      6670.613,
+      6790.358,
+      6652.274,
+      6759.098,
+      6763.464,
+      6772.959,
+      6564.85,
+      6616.224,
+      6556.932
+     ],
+     "seed_lower_us": [
+      6623.487,
+      6673.989,
+      6601.842,
+      6687.217,
+      6714.004,
+      6664.286,
+      6536.347,
+      6535.323,
+      6536.32
+     ],
+     "n_timed": [
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000,
+      10000
+     ],
+     "seed_run": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+     ],
+     "seed_id": [
+      17,
+      29,
+      43,
+      17,
+      29,
+      43,
+      17,
+      29,
+      43
+     ],
+     "npz_keys": [
+      "r1_B.npz:torchscript.host.s17",
+      "r1_B.npz:torchscript.host.s29",
+      "r1_B.npz:torchscript.host.s43",
+      "r2_B.npz:torchscript.host.s17",
+      "r2_B.npz:torchscript.host.s29",
+      "r2_B.npz:torchscript.host.s43",
+      "r3_B.npz:torchscript.host.s17",
+      "r3_B.npz:torchscript.host.s29",
+      "r3_B.npz:torchscript.host.s43"
+     ],
+     "rank": 9453,
+     "lower_run": 3,
+     "lower_seed": 29,
+     "kind": "order-statistic bound"
+    }
+   },
+   "fastest_runtime": "eager, Phase-1 counts",
+   "tau_us": 6331.027,
+   "tau_lo_us": 6224.227,
+   "tau_lo_runtime": "eager, Phase-1 counts",
+   "tau_lo_kind": "order-statistic bound",
+   "dL_us": 6412.391,
+   "dL_lo_us": 6304.227,
+   "nr_dL_lo_us": 6152.798428571428,
+   "margin_us": 4721.547224275057,
+   "excluded_robust": true,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": 5016.41862024599,
+    "1": 4510.010687173654,
+    "0.5": 3907.038254958657
+   }
+  },
+  {
+   "component": "transformer_small",
+   "profile": "gpu-resident",
+   "runtimes": {
+    "eager, Phase-1 counts": {
+     "charged_us": 297.776,
+     "lower_us": 293.664,
+     "seed_p95_us": [
+      297.564,
+      297.776,
+      297.581
+     ],
+     "seed_lower_us": [
+      296.656,
+      296.734,
+      293.664
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "order-statistic bound"
+    },
+    "TorchScript, whole decision": {
+     "charged_us": 225.621,
+     "lower_us": 222.358,
+     "seed_p95_us": [
+      225.621,
+      222.927,
+      222.358
+     ],
+     "n_timed": [
+      2000,
+      2000,
+      2000
+     ],
+     "kind": "smallest seed p95 (point value)"
+    }
+   },
+   "fastest_runtime": "TorchScript, whole decision",
+   "tau_us": 225.621,
+   "tau_lo_us": 222.358,
+   "tau_lo_runtime": "TorchScript, whole decision",
+   "tau_lo_kind": "smallest seed p95 (point value)",
+   "dL_us": 306.985,
+   "dL_lo_us": 302.358,
+   "nr_dL_lo_us": 150.92942857142856,
+   "margin_us": -1280.3217757249429,
+   "excluded_robust": false,
+   "infeasible_robust": false,
+   "nr_margin_us": {
+    "3": -985.4503797540103,
+    "1": -1491.8583128263444,
+    "0.5": -2094.830745041342
+   }
+  }
+ ]
+}

@@ -1,0 +1,116 @@
+{
+ "site": "city_2_chicago_28",
+ "seed": 17,
+ "controller": "dppi",
+ "note": "fraction of receivers that compute at least twice and have a probe between two of those computes -- the case the cumulative tau charge assumes away",
+ "rows": [
+  {
+   "T_us": 250,
+   "mean_exit_level": 0.638,
+   "n": 10451,
+   "n_multi_compute": 414,
+   "frac_multi_compute": 0.0396,
+   "n_interleaved": 268,
+   "frac_interleaved": 0.6473
+  },
+  {
+   "T_us": 350,
+   "mean_exit_level": 0.757,
+   "n": 10451,
+   "n_multi_compute": 1325,
+   "frac_multi_compute": 0.1268,
+   "n_interleaved": 856,
+   "frac_interleaved": 0.646
+  },
+  {
+   "T_us": 500,
+   "mean_exit_level": 1.352,
+   "n": 10451,
+   "n_multi_compute": 4315,
+   "frac_multi_compute": 0.4129,
+   "n_interleaved": 4230,
+   "frac_interleaved": 0.9803
+  },
+  {
+   "T_us": 700,
+   "mean_exit_level": 1.636,
+   "n": 10451,
+   "n_multi_compute": 5762,
+   "frac_multi_compute": 0.5513,
+   "n_interleaved": 5550,
+   "frac_interleaved": 0.9632
+  },
+  {
+   "T_us": 1000,
+   "mean_exit_level": 1.976,
+   "n": 10451,
+   "n_multi_compute": 6783,
+   "frac_multi_compute": 0.649,
+   "n_interleaved": 6358,
+   "frac_interleaved": 0.9373
+  },
+  {
+   "T_us": 1400,
+   "mean_exit_level": 2.199,
+   "n": 10451,
+   "n_multi_compute": 7654,
+   "frac_multi_compute": 0.7324,
+   "n_interleaved": 7011,
+   "frac_interleaved": 0.916
+  },
+  {
+   "T_us": 2000,
+   "mean_exit_level": 2.52,
+   "n": 10451,
+   "n_multi_compute": 8297,
+   "frac_multi_compute": 0.7939,
+   "n_interleaved": 8297,
+   "frac_interleaved": 1.0
+  },
+  {
+   "T_us": 2800,
+   "mean_exit_level": 2.593,
+   "n": 10451,
+   "n_multi_compute": 8687,
+   "frac_multi_compute": 0.8312,
+   "n_interleaved": 8687,
+   "frac_interleaved": 1.0
+  },
+  {
+   "T_us": 4000,
+   "mean_exit_level": 2.692,
+   "n": 10451,
+   "n_multi_compute": 9265,
+   "frac_multi_compute": 0.8865,
+   "n_interleaved": 9265,
+   "frac_interleaved": 1.0
+  },
+  {
+   "T_us": 5600,
+   "mean_exit_level": 2.858,
+   "n": 10451,
+   "n_multi_compute": 10253,
+   "frac_multi_compute": 0.9811,
+   "n_interleaved": 10253,
+   "frac_interleaved": 1.0
+  },
+  {
+   "T_us": 8000,
+   "mean_exit_level": 2.895,
+   "n": 10451,
+   "n_multi_compute": 10258,
+   "frac_multi_compute": 0.9815,
+   "n_interleaved": 10258,
+   "frac_interleaved": 1.0
+  },
+  {
+   "T_us": 10000,
+   "mean_exit_level": 2.921,
+   "n": 10451,
+   "n_multi_compute": 10383,
+   "frac_multi_compute": 0.9935,
+   "n_interleaved": 10383,
+   "frac_interleaved": 1.0
+  }
+ ]
+}

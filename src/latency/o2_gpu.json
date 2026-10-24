@@ -1,0 +1,271 @@
+{
+  "env": {
+    "profile": "gpu-resident",
+    "cpu": "Intel(R) Core(TM) i9-14900KF",
+    "governor": "powersave",
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "torch_threads": 1,
+    "requested_threads": 1,
+    "torch": "2.12.0+cu130",
+    "python": "3.13.12",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "numpy": "1.26.4",
+    "gpu": "Quadro RTX 8000",
+    "omp": "1",
+    "timestamp": "2026-09-15T23:00:24+0900"
+  },
+  "runtime": "torchscript-full-decision",
+  "rows": [
+    {
+      "component": "graff_eig",
+      "charge_ns": 84317,
+      "charge_us": 84.317,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 81767
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 84317
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 82631
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "graff_col",
+      "charge_ns": 71423,
+      "charge_us": 71.423,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 71175
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 70842
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 71423
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "graff_aps",
+      "charge_ns": 53043,
+      "charge_us": 53.043,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 52950
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 52986
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 53043
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "beam_mlp",
+      "charge_ns": 33061,
+      "charge_us": 33.061,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 31796
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 33061
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 32109
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "beam_cnn",
+      "charge_ns": 64567,
+      "charge_us": 64.567,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 64567
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 63868
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 63892
+        }
+      ],
+      "reduced_n": false
+    },
+    {
+      "component": "transformer_small",
+      "charge_ns": 225621,
+      "charge_us": 225.621,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 225621
+        },
+        {
+          "seed": 29,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 222927
+        },
+        {
+          "seed": 43,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 222358
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "resnet18_vision",
+      "charge_ns": 1218876,
+      "charge_us": 1218.876,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 1167051
+        },
+        {
+          "seed": 29,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 1189827
+        },
+        {
+          "seed": 43,
+          "n_warmup": 200,
+          "n_timed": 2000,
+          "p95_ns": 1218876
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "vit_b16_vision",
+      "charge_ns": 7148229,
+      "charge_us": 7148.229,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 6521982
+        },
+        {
+          "seed": 29,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 6341786
+        },
+        {
+          "seed": 43,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 7148229
+        }
+      ],
+      "reduced_n": true
+    },
+    {
+      "component": "s1_q",
+      "charge_ns": 55885,
+      "charge_us": 55.885,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 54611
+        },
+        {
+          "seed": 29,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 55885
+        },
+        {
+          "seed": 43,
+          "n_warmup": 1000,
+          "n_timed": 10000,
+          "p95_ns": 53732
+        }
+      ],
+      "reduced_n": false
+    }
+  ]
+}

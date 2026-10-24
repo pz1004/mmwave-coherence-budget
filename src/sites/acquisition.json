@@ -1,0 +1,94 @@
+{
+ "frozen_order": [
+  "city_0_newyork_28",
+  "city_1_losangeles_28",
+  "city_2_chicago_28",
+  "city_3_houston_28",
+  "city_4_phoenix_28",
+  "city_5_philadelphia_28",
+  "city_6_miami_28",
+  "city_7_sandiego_28"
+ ],
+ "records": [
+  {
+   "order": 0,
+   "scenario": "city_0_newyork_28",
+   "zip_bytes": 33459080,
+   "zip_sha256": "664b8cbff925386c2bc3fec9fad2a781712319cdb59f0410fbea5e9d29ebfb38",
+   "extracted_bytes": 163181626,
+   "n_files": 135,
+   "seconds": 35.4,
+   "error": null
+  },
+  {
+   "order": 1,
+   "scenario": "city_1_losangeles_28",
+   "zip_bytes": 33633360,
+   "zip_sha256": "3eb62ebc424a4008bc14e286672adec55010809c5024424b0384134a3f6928d7",
+   "extracted_bytes": 146780253,
+   "n_files": 135,
+   "seconds": 7.4,
+   "error": null
+  },
+  {
+   "order": 2,
+   "scenario": "city_2_chicago_28",
+   "zip_bytes": 14516309,
+   "zip_sha256": "781eeac4cd56f2f6642aac4593658aebd220dac3f0c35eaf201c237d5dfcb668",
+   "extracted_bytes": 142902941,
+   "n_files": 135,
+   "seconds": 0.0,
+   "error": null
+  },
+  {
+   "order": 3,
+   "scenario": "city_3_houston_28",
+   "zip_bytes": 46310039,
+   "zip_sha256": "eb4d105a1798a560d1b16e7df2919238a5b48c0faf8f6efe9cf657a358ca72e5",
+   "extracted_bytes": 159888753,
+   "n_files": 135,
+   "seconds": 9.3,
+   "error": null
+  },
+  {
+   "order": 4,
+   "scenario": "city_4_phoenix_28",
+   "zip_bytes": 38379989,
+   "zip_sha256": "831c2bc43d27f4f47eeb0c7bb7f7c0deb4f13726584b44734a8a2881986fb35d",
+   "extracted_bytes": 217752156,
+   "n_files": 135,
+   "seconds": 8.3,
+   "error": null
+  },
+  {
+   "order": 5,
+   "scenario": "city_5_philadelphia_28",
+   "zip_bytes": 21225173,
+   "zip_sha256": "58fc40017296f8275611dfcc623cea270bb6ff6871adf1679d8a14e3f46a1807",
+   "extracted_bytes": 201502143,
+   "n_files": 135,
+   "seconds": 6.6,
+   "error": null
+  },
+  {
+   "order": 6,
+   "scenario": "city_6_miami_28",
+   "zip_bytes": 46222039,
+   "zip_sha256": "994b30a4d4fcc036ea3a95963c366eafc6c8f9b84138b6efd2112a6f31c42cf0",
+   "extracted_bytes": 220943919,
+   "n_files": 135,
+   "seconds": 9.2,
+   "error": null
+  },
+  {
+   "order": 7,
+   "scenario": "city_7_sandiego_28",
+   "zip_bytes": 45389166,
+   "zip_sha256": "b7f360e13c932aaa3c8dda4978455789c8563ce03f7e9c5458ccd4ed64e4875e",
+   "extracted_bytes": 187244126,
+   "n_files": 135,
+   "seconds": 43.5,
+   "error": null
+  }
+ ]
+}

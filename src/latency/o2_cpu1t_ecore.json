@@ -1,0 +1,34 @@
+{
+  "env": {
+    "profile": "cpu-1t-ecore"
+  },
+  "runtime": "torchscript-full-decision",
+  "rows": [
+    {
+      "component": "transformer_small",
+      "charge_ns": 2573466,
+      "charge_us": 2573.466,
+      "per_seed": [
+        {
+          "seed": 17,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 2573466
+        },
+        {
+          "seed": 29,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 2558764
+        },
+        {
+          "seed": 43,
+          "n_warmup": 50,
+          "n_timed": 500,
+          "p95_ns": 2562155
+        }
+      ],
+      "reduced_n": true
+    }
+  ]
+}

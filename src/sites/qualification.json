@@ -1,0 +1,786 @@
+{
+ "rules": "R1-R5 in module docstring",
+ "min_eligible": 5000,
+ "sites": [
+  {
+   "order": 0,
+   "scenario": "city_0_newyork_28",
+   "loaded": true,
+   "n_tx_sets": 3,
+   "carrier_Hz": 28000000000.0,
+   "raytracer": "Remcom Wireless Insite 3.3",
+   "meta_ok": true,
+   "transmitters": [
+    {
+     "tx_set_id": 1,
+     "tx_index": 0,
+     "n_rx_total": 31719,
+     "n_zero_path": 15416,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 16303,
+     "n_los": 4467,
+     "median_paths": 25,
+     "best_beam_snr_dB_pct": {
+      "1": -37.11,
+      "5": -24.39,
+      "25": -9.55,
+      "50": 1.26,
+      "75": 32.94,
+      "95": 47.03,
+      "99": 54.13
+     },
+     "frac_best_beam_below_0dB": 0.4781,
+     "eligible_sha256": "2017090126f5fb6e"
+    },
+    {
+     "tx_set_id": 2,
+     "tx_index": 1,
+     "n_rx_total": 31719,
+     "n_zero_path": 16696,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 15023,
+     "n_los": 3479,
+     "median_paths": 19,
+     "best_beam_snr_dB_pct": {
+      "1": -42.48,
+      "5": -37.95,
+      "25": -17.51,
+      "50": -5.2,
+      "75": 22.95,
+      "95": 47.89,
+      "99": 54.29
+     },
+     "frac_best_beam_below_0dB": 0.6131,
+     "eligible_sha256": "2e8f5a0db86a0e72"
+    },
+    {
+     "tx_set_id": 3,
+     "tx_index": 2,
+     "n_rx_total": 31719,
+     "n_zero_path": 14382,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 17337,
+     "n_los": 5807,
+     "median_paths": 25,
+     "best_beam_snr_dB_pct": {
+      "1": -40.5,
+      "5": -30.37,
+      "25": -10.48,
+      "50": 0.04,
+      "75": 35.99,
+      "95": 47.32,
+      "99": 53.66
+     },
+     "frac_best_beam_below_0dB": 0.499,
+     "eligible_sha256": "9352bd0722a1fa38"
+    }
+   ],
+   "chosen_tx_set_id": 1,
+   "chosen_tx_index": 0,
+   "decode_rel_err": 1.088e-07,
+   "decode_ok": true,
+   "band": {
+    "argmax_agreement": 0.8422,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 1.184,
+    "median_rms_delay_ns": 23.67,
+    "coherence_bw_MHz": 8.45
+   },
+   "qualified": true,
+   "seconds": 3.2,
+   "role": "training"
+  },
+  {
+   "order": 1,
+   "scenario": "city_1_losangeles_28",
+   "loaded": true,
+   "n_tx_sets": 3,
+   "carrier_Hz": 28000000000.0,
+   "raytracer": "Remcom Wireless Insite 3.3",
+   "meta_ok": true,
+   "transmitters": [
+    {
+     "tx_set_id": 1,
+     "tx_index": 0,
+     "n_rx_total": 28542,
+     "n_zero_path": 8631,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 19911,
+     "n_los": 4090,
+     "median_paths": 17,
+     "best_beam_snr_dB_pct": {
+      "1": -49.68,
+      "5": -40.05,
+      "25": -19.99,
+      "50": -7.77,
+      "75": 9.85,
+      "95": 43.33,
+      "99": 53.39
+     },
+     "frac_best_beam_below_0dB": 0.6452,
+     "eligible_sha256": "347f2b538674e16c"
+    },
+    {
+     "tx_set_id": 2,
+     "tx_index": 1,
+     "n_rx_total": 28542,
+     "n_zero_path": 11139,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 17403,
+     "n_los": 5798,
+     "median_paths": 23,
+     "best_beam_snr_dB_pct": {
+      "1": -40.74,
+      "5": -33.07,
+      "25": -3.96,
+      "50": 5.85,
+      "75": 37.54,
+      "95": 47.69,
+      "99": 54.13
+     },
+     "frac_best_beam_below_0dB": 0.3378,
+     "eligible_sha256": "4f35cf4e329938de"
+    },
+    {
+     "tx_set_id": 3,
+     "tx_index": 2,
+     "n_rx_total": 28542,
+     "n_zero_path": 10265,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 18277,
+     "n_los": 2191,
+     "median_paths": 18,
+     "best_beam_snr_dB_pct": {
+      "1": -35.18,
+      "5": -30.03,
+      "25": -16.29,
+      "50": -7.96,
+      "75": 3.86,
+      "95": 44.35,
+      "99": 53.7
+     },
+     "frac_best_beam_below_0dB": 0.687,
+     "eligible_sha256": "2a69257458263008"
+    }
+   ],
+   "chosen_tx_set_id": 1,
+   "chosen_tx_index": 0,
+   "decode_rel_err": 1.803e-07,
+   "decode_ok": true,
+   "band": {
+    "argmax_agreement": 0.9059,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 1.039,
+    "median_rms_delay_ns": 23.48,
+    "coherence_bw_MHz": 8.52
+   },
+   "qualified": true,
+   "seconds": 3.1,
+   "role": "validation"
+  },
+  {
+   "order": 2,
+   "scenario": "city_2_chicago_28",
+   "loaded": true,
+   "n_tx_sets": 3,
+   "carrier_Hz": 28000000000.0,
+   "raytracer": "Remcom Wireless Insite 3.3",
+   "meta_ok": true,
+   "transmitters": [
+    {
+     "tx_set_id": 1,
+     "tx_index": 0,
+     "n_rx_total": 27800,
+     "n_zero_path": 17349,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 10451,
+     "n_los": 3609,
+     "median_paths": 16,
+     "best_beam_snr_dB_pct": {
+      "1": -42.88,
+      "5": -36.34,
+      "25": -23.81,
+      "50": 0.44,
+      "75": 34.39,
+      "95": 48.57,
+      "99": 55.53
+     },
+     "frac_best_beam_below_0dB": 0.4925,
+     "eligible_sha256": "83a506c366843fe4"
+    },
+    {
+     "tx_set_id": 2,
+     "tx_index": 1,
+     "n_rx_total": 27800,
+     "n_zero_path": 19650,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 8150,
+     "n_los": 4788,
+     "median_paths": 25,
+     "best_beam_snr_dB_pct": {
+      "1": -15.15,
+      "5": -7.78,
+      "25": 2.59,
+      "50": 37.06,
+      "75": 43.03,
+      "95": 50.5,
+      "99": 56.12
+     },
+     "frac_best_beam_below_0dB": 0.1937,
+     "eligible_sha256": "6c8f6c60f4d17f77"
+    },
+    {
+     "tx_set_id": 3,
+     "tx_index": 2,
+     "n_rx_total": 27800,
+     "n_zero_path": 20732,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 7068,
+     "n_los": 1341,
+     "median_paths": 4,
+     "best_beam_snr_dB_pct": {
+      "1": -40.39,
+      "5": -33.59,
+      "25": -24.98,
+      "50": -17.66,
+      "75": 3.21,
+      "95": 46.62,
+      "99": 55.46
+     },
+     "frac_best_beam_below_0dB": 0.7334,
+     "eligible_sha256": "cfc28936dfda0ec1"
+    }
+   ],
+   "chosen_tx_set_id": 1,
+   "chosen_tx_index": 0,
+   "decode_rel_err": 1.717e-07,
+   "decode_ok": true,
+   "band": {
+    "argmax_agreement": 0.8263,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 2.967,
+    "median_rms_delay_ns": 15.15,
+    "coherence_bw_MHz": 13.2
+   },
+   "qualified": true,
+   "seconds": 1.9,
+   "role": "test_A"
+  },
+  {
+   "order": 3,
+   "scenario": "city_3_houston_28",
+   "loaded": true,
+   "n_tx_sets": 3,
+   "carrier_Hz": 28000000000.0,
+   "raytracer": "Remcom Wireless Insite 3.3",
+   "meta_ok": true,
+   "transmitters": [
+    {
+     "tx_set_id": 1,
+     "tx_index": 0,
+     "n_rx_total": 31108,
+     "n_zero_path": 11729,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 19379,
+     "n_los": 5912,
+     "median_paths": 16,
+     "best_beam_snr_dB_pct": {
+      "1": -39.46,
+      "5": -32.67,
+      "25": -14.21,
+      "50": -2.4,
+      "75": 33.48,
+      "95": 46.74,
+      "99": 53.75
+     },
+     "frac_best_beam_below_0dB": 0.5365,
+     "eligible_sha256": "6cce9228562a0e82"
+    },
+    {
+     "tx_set_id": 2,
+     "tx_index": 1,
+     "n_rx_total": 31108,
+     "n_zero_path": 6553,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 24555,
+     "n_los": 6854,
+     "median_paths": 25,
+     "best_beam_snr_dB_pct": {
+      "1": -34.59,
+      "5": -25.66,
+      "25": -9.25,
+      "50": 7.02,
+      "75": 29.67,
+      "95": 45.37,
+      "99": 52.84
+     },
+     "frac_best_beam_below_0dB": 0.4154,
+     "eligible_sha256": "98c7b16b6bb2300c"
+    },
+    {
+     "tx_set_id": 3,
+     "tx_index": 2,
+     "n_rx_total": 31108,
+     "n_zero_path": 6311,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 24797,
+     "n_los": 8373,
+     "median_paths": 25,
+     "best_beam_snr_dB_pct": {
+      "1": -38.02,
+      "5": -22.87,
+      "25": -4.43,
+      "50": 11.46,
+      "75": 36.52,
+      "95": 46.31,
+      "99": 52.81
+     },
+     "frac_best_beam_below_0dB": 0.3527,
+     "eligible_sha256": "fbe12d54d78673ca"
+    }
+   ],
+   "chosen_tx_set_id": 1,
+   "chosen_tx_index": 0,
+   "decode_rel_err": 1.222e-07,
+   "decode_ok": true,
+   "band": {
+    "argmax_agreement": 0.8732,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 0.789,
+    "median_rms_delay_ns": 16.92,
+    "coherence_bw_MHz": 11.82
+   },
+   "qualified": true,
+   "seconds": 3.7,
+   "role": "test_B"
+  },
+  {
+   "order": 4,
+   "scenario": "city_4_phoenix_28",
+   "loaded": true,
+   "n_tx_sets": 3,
+   "carrier_Hz": 28000000000.0,
+   "raytracer": "Remcom Wireless Insite 3.3",
+   "meta_ok": true,
+   "transmitters": [
+    {
+     "tx_set_id": 1,
+     "tx_index": 0,
+     "n_rx_total": 42372,
+     "n_zero_path": 28883,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 13489,
+     "n_los": 2227,
+     "median_paths": 12,
+     "best_beam_snr_dB_pct": {
+      "1": -53.99,
+      "5": -37.94,
+      "25": -28.38,
+      "50": -21.83,
+      "75": 9.54,
+      "95": 47.7,
+      "99": 54.91
+     },
+     "frac_best_beam_below_0dB": 0.696,
+     "eligible_sha256": "816a351cd1594720"
+    },
+    {
+     "tx_set_id": 2,
+     "tx_index": 1,
+     "n_rx_total": 42372,
+     "n_zero_path": 18936,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 23436,
+     "n_los": 7352,
+     "median_paths": 25,
+     "best_beam_snr_dB_pct": {
+      "1": -31.73,
+      "5": -19.51,
+      "25": -9.14,
+      "50": 0.27,
+      "75": 29.46,
+      "95": 43.46,
+      "99": 52.37
+     },
+     "frac_best_beam_below_0dB": 0.4957,
+     "eligible_sha256": "3aee6ce0fb76fcfd"
+    },
+    {
+     "tx_set_id": 3,
+     "tx_index": 2,
+     "n_rx_total": 42372,
+     "n_zero_path": 17660,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 24712,
+     "n_los": 12507,
+     "median_paths": 25,
+     "best_beam_snr_dB_pct": {
+      "1": -39.28,
+      "5": -29.83,
+      "25": -10.16,
+      "50": 28.67,
+      "75": 38.29,
+      "95": 45.92,
+      "99": 52.98
+     },
+     "frac_best_beam_below_0dB": 0.3385,
+     "eligible_sha256": "691b61673ee84dfb"
+    }
+   ],
+   "chosen_tx_set_id": 1,
+   "chosen_tx_index": 0,
+   "decode_rel_err": 2.583e-07,
+   "decode_ok": true,
+   "band": {
+    "argmax_agreement": 0.9049,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 0.685,
+    "median_rms_delay_ns": 33.12,
+    "coherence_bw_MHz": 6.04
+   },
+   "qualified": true,
+   "seconds": 3.3,
+   "role": "test_extra_1"
+  },
+  {
+   "order": 5,
+   "scenario": "city_5_philadelphia_28",
+   "loaded": true,
+   "n_tx_sets": 3,
+   "carrier_Hz": 28000000000.0,
+   "raytracer": "Remcom Wireless Insite 3.3",
+   "meta_ok": true,
+   "transmitters": [
+    {
+     "tx_set_id": 1,
+     "tx_index": 0,
+     "n_rx_total": 39196,
+     "n_zero_path": 27894,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 11302,
+     "n_los": 3139,
+     "median_paths": 11,
+     "best_beam_snr_dB_pct": {
+      "1": -46.65,
+      "5": -44.02,
+      "25": -24.87,
+      "50": -11.43,
+      "75": 28.92,
+      "95": 41.93,
+      "99": 50.5
+     },
+     "frac_best_beam_below_0dB": 0.6649,
+     "eligible_sha256": "06ee685ad5c730b5"
+    },
+    {
+     "tx_set_id": 2,
+     "tx_index": 1,
+     "n_rx_total": 39196,
+     "n_zero_path": 30849,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 8347,
+     "n_los": 2992,
+     "median_paths": 25,
+     "best_beam_snr_dB_pct": {
+      "1": -38.92,
+      "5": -26.23,
+      "25": -15.02,
+      "50": -2.38,
+      "75": 36.87,
+      "95": 49.69,
+      "99": 56.19
+     },
+     "frac_best_beam_below_0dB": 0.5269,
+     "eligible_sha256": "0a82fb9579a43a22"
+    },
+    {
+     "tx_set_id": 3,
+     "tx_index": 2,
+     "n_rx_total": 39196,
+     "n_zero_path": 27268,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 11928,
+     "n_los": 2730,
+     "median_paths": 24,
+     "best_beam_snr_dB_pct": {
+      "1": -53.2,
+      "5": -45.92,
+      "25": -16.8,
+      "50": -4.82,
+      "75": 24.67,
+      "95": 44.85,
+      "99": 55.25
+     },
+     "frac_best_beam_below_0dB": 0.5902,
+     "eligible_sha256": "bcd2641dc5a161f6"
+    }
+   ],
+   "chosen_tx_set_id": 1,
+   "chosen_tx_index": 0,
+   "decode_rel_err": 1.995e-07,
+   "decode_ok": true,
+   "band": {
+    "argmax_agreement": 0.9054,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 1.684,
+    "median_rms_delay_ns": 8.85,
+    "coherence_bw_MHz": 22.6
+   },
+   "qualified": true,
+   "seconds": 2.2,
+   "role": "test_extra_2"
+  },
+  {
+   "order": 6,
+   "scenario": "city_6_miami_28",
+   "loaded": true,
+   "n_tx_sets": 3,
+   "carrier_Hz": 28000000000.0,
+   "raytracer": "Remcom Wireless Insite 3.3",
+   "meta_ok": true,
+   "transmitters": [
+    {
+     "tx_set_id": 1,
+     "tx_index": 0,
+     "n_rx_total": 42984,
+     "n_zero_path": 15923,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 27061,
+     "n_los": 6739,
+     "median_paths": 25,
+     "best_beam_snr_dB_pct": {
+      "1": -45.12,
+      "5": -38.86,
+      "25": -18.01,
+      "50": -0.87,
+      "75": 28.44,
+      "95": 43.1,
+      "99": 51.69
+     },
+     "frac_best_beam_below_0dB": 0.5193,
+     "eligible_sha256": "bf3eae73b0896f42"
+    },
+    {
+     "tx_set_id": 2,
+     "tx_index": 1,
+     "n_rx_total": 42984,
+     "n_zero_path": 15345,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 27639,
+     "n_los": 5482,
+     "median_paths": 14,
+     "best_beam_snr_dB_pct": {
+      "1": -37.1,
+      "5": -33.06,
+      "25": -16.6,
+      "50": -6.95,
+      "75": 18.71,
+      "95": 42.76,
+      "99": 51.78
+     },
+     "frac_best_beam_below_0dB": 0.6096,
+     "eligible_sha256": "e5da8d971ae70867"
+    },
+    {
+     "tx_set_id": 3,
+     "tx_index": 2,
+     "n_rx_total": 42984,
+     "n_zero_path": 15378,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 27606,
+     "n_los": 5353,
+     "median_paths": 17,
+     "best_beam_snr_dB_pct": {
+      "1": -34.59,
+      "5": -28.26,
+      "25": -13.67,
+      "50": -3.97,
+      "75": 9.05,
+      "95": 44.74,
+      "99": 52.48
+     },
+     "frac_best_beam_below_0dB": 0.6107,
+     "eligible_sha256": "02aa17d15c2a6f5f"
+    }
+   ],
+   "chosen_tx_set_id": 1,
+   "chosen_tx_index": 0,
+   "decode_rel_err": 1.398e-07,
+   "decode_ok": true,
+   "band": {
+    "argmax_agreement": 0.8494,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 1.403,
+    "median_rms_delay_ns": 16.31,
+    "coherence_bw_MHz": 12.26
+   },
+   "qualified": true,
+   "seconds": 4.4,
+   "role": "test_extra_3"
+  },
+  {
+   "order": 7,
+   "scenario": "city_7_sandiego_28",
+   "loaded": true,
+   "n_tx_sets": 3,
+   "carrier_Hz": 28000000000.0,
+   "raytracer": "Remcom Wireless Insite 3.3",
+   "meta_ok": true,
+   "transmitters": [
+    {
+     "tx_set_id": 1,
+     "tx_index": 0,
+     "n_rx_total": 36432,
+     "n_zero_path": 13751,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 22681,
+     "n_los": 8737,
+     "median_paths": 24,
+     "best_beam_snr_dB_pct": {
+      "1": -37.4,
+      "5": -31.92,
+      "25": -14.96,
+      "50": 5.66,
+      "75": 33.58,
+      "95": 46.4,
+      "99": 53.17
+     },
+     "frac_best_beam_below_0dB": 0.426,
+     "eligible_sha256": "09723b938ac89793"
+    },
+    {
+     "tx_set_id": 2,
+     "tx_index": 1,
+     "n_rx_total": 36432,
+     "n_zero_path": 12977,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 23455,
+     "n_los": 5543,
+     "median_paths": 25,
+     "best_beam_snr_dB_pct": {
+      "1": -56.0,
+      "5": -27.69,
+      "25": -11.81,
+      "50": 0.33,
+      "75": 28.32,
+      "95": 45.26,
+      "99": 52.71
+     },
+     "frac_best_beam_below_0dB": 0.4915,
+     "eligible_sha256": "87dc8e0933fae288"
+    },
+    {
+     "tx_set_id": 3,
+     "tx_index": 2,
+     "n_rx_total": 36432,
+     "n_zero_path": 14300,
+     "n_structurally_inconsistent": 0,
+     "n_nonfinite_channel": 0,
+     "n_eligible": 22132,
+     "n_los": 9107,
+     "median_paths": 23,
+     "best_beam_snr_dB_pct": {
+      "1": -38.71,
+      "5": -31.58,
+      "25": -13.34,
+      "50": 10.54,
+      "75": 34.29,
+      "95": 46.25,
+      "99": 53.3
+     },
+     "frac_best_beam_below_0dB": 0.3863,
+     "eligible_sha256": "19a44381fc7578d5"
+    }
+   ],
+   "chosen_tx_set_id": 1,
+   "chosen_tx_index": 0,
+   "decode_rel_err": 2.556e-07,
+   "decode_ok": true,
+   "band": {
+    "argmax_agreement": 0.9065,
+    "median_loss_dB": 0.0,
+    "p95_loss_dB": 0.469,
+    "median_rms_delay_ns": 17.74,
+    "coherence_bw_MHz": 11.27
+   },
+   "qualified": true,
+   "seconds": 3.9,
+   "role": "test_extra_4"
+  }
+ ],
+ "n_qualified": 8,
+ "gate_pass": true,
+ "frozen_split": [
+  {
+   "order": 0,
+   "scenario": "city_0_newyork_28",
+   "tx_set_id": 1,
+   "role": "training"
+  },
+  {
+   "order": 1,
+   "scenario": "city_1_losangeles_28",
+   "tx_set_id": 1,
+   "role": "validation"
+  },
+  {
+   "order": 2,
+   "scenario": "city_2_chicago_28",
+   "tx_set_id": 1,
+   "role": "test_A"
+  },
+  {
+   "order": 3,
+   "scenario": "city_3_houston_28",
+   "tx_set_id": 1,
+   "role": "test_B"
+  },
+  {
+   "order": 4,
+   "scenario": "city_4_phoenix_28",
+   "tx_set_id": 1,
+   "role": "test_extra_1"
+  },
+  {
+   "order": 5,
+   "scenario": "city_5_philadelphia_28",
+   "tx_set_id": 1,
+   "role": "test_extra_2"
+  },
+  {
+   "order": 6,
+   "scenario": "city_6_miami_28",
+   "tx_set_id": 1,
+   "role": "test_extra_3"
+  },
+  {
+   "order": 7,
+   "scenario": "city_7_sandiego_28",
+   "tx_set_id": 1,
+   "role": "test_extra_4"
+  }
+ ]
+}

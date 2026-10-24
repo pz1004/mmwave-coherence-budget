@@ -1,0 +1,1810 @@
+{
+ "headline_controller": "sched-pi",
+ "nocompute_controller": "sched-nocompute-pi",
+ "seeds": [
+  17,
+  29,
+  43,
+  53,
+  61,
+  71,
+  79,
+  89,
+  97,
+  107
+ ],
+ "estimators_used": [
+  "seed x block + t"
+ ],
+ "need_sites": 4,
+ "test_sites": [
+  "city_2_chicago_28",
+  "city_3_houston_28"
+ ],
+ "per_site": {
+  "city_2_chicago_28": {
+   "beats_blind": 0,
+   "beats_nocompute": 0,
+   "vs_deployable": 0,
+   "beats_rep1": 0,
+   "beats_1exit": 0,
+   "fcc_beats_anyr": 0,
+   "cnnc_beats_anyr": 0
+  },
+  "city_3_houston_28": {
+   "beats_blind": 0,
+   "beats_nocompute": 0,
+   "vs_deployable": 0,
+   "beats_rep1": 0,
+   "beats_1exit": 0,
+   "fcc_beats_anyr": 0,
+   "cnnc_beats_anyr": 0
+  },
+  "city_4_phoenix_28": {
+   "beats_blind": 0,
+   "beats_nocompute": 0,
+   "vs_deployable": 0,
+   "beats_rep1": 0,
+   "beats_1exit": 0,
+   "fcc_beats_anyr": 0,
+   "cnnc_beats_anyr": 0
+  },
+  "city_5_philadelphia_28": {
+   "beats_blind": 0,
+   "beats_nocompute": 0,
+   "vs_deployable": 0,
+   "beats_rep1": 0,
+   "beats_1exit": 0,
+   "fcc_beats_anyr": 0,
+   "cnnc_beats_anyr": 0
+  },
+  "city_6_miami_28": {
+   "beats_blind": 0,
+   "beats_nocompute": 0,
+   "vs_deployable": 0,
+   "beats_rep1": 0,
+   "beats_1exit": 0,
+   "fcc_beats_anyr": 0,
+   "cnnc_beats_anyr": 0
+  },
+  "city_7_sandiego_28": {
+   "beats_blind": 0,
+   "beats_nocompute": 1,
+   "vs_deployable": 1,
+   "beats_rep1": 0,
+   "beats_1exit": 1,
+   "fcc_beats_anyr": -1,
+   "cnnc_beats_anyr": -1
+  }
+ },
+ "R1": {
+  "holds": false,
+  "sites_beating_blind_and_nocompute": [],
+  "count_ok": false,
+  "includes_a_test_site": false,
+  "loses_to_deployable_on_a_test_site": [],
+  "framing": "accounting"
+ },
+ "R2": {
+  "holds": false,
+  "sites": [],
+  "wording": "whether and when to invoke"
+ },
+ "R3": {
+  "holds": false,
+  "fcc_sites": [],
+  "cnnc_sites": []
+ },
+ "R4": [
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-1t-pcore",
+   "tau_us": 29025.72,
+   "feasible_deadlines_us": [],
+   "zero_rate_at_every_deadline": true,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": true,
+   "margin_over_tau_star": 23.785
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-1t-ecore",
+   "tau_us": 70893.249,
+   "feasible_deadlines_us": [],
+   "zero_rate_at_every_deadline": true,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": true,
+   "margin_over_tau_star": 58.093
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "cpu-8t-pcore",
+   "tau_us": 5289.57,
+   "feasible_deadlines_us": [
+    5600,
+    8000,
+    10000
+   ],
+   "zero_rate_at_every_deadline": false,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": true,
+   "margin_over_tau_star": 4.335
+  },
+  {
+   "component": "resnet18_vision",
+   "profile": "gpu-resident",
+   "tau_us": 1753.783,
+   "feasible_deadlines_us": [
+    2000,
+    2800,
+    4000,
+    5600,
+    8000,
+    10000
+   ],
+   "zero_rate_at_every_deadline": false,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": true,
+   "margin_over_tau_star": 1.437
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-1t-pcore",
+   "tau_us": 233200.6,
+   "feasible_deadlines_us": [],
+   "zero_rate_at_every_deadline": true,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": true,
+   "margin_over_tau_star": 191.095
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-1t-ecore",
+   "tau_us": 650670.382,
+   "feasible_deadlines_us": [],
+   "zero_rate_at_every_deadline": true,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": true,
+   "margin_over_tau_star": 533.188
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "cpu-8t-pcore",
+   "tau_us": 42602.81,
+   "feasible_deadlines_us": [],
+   "zero_rate_at_every_deadline": true,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": true,
+   "margin_over_tau_star": 34.911
+  },
+  {
+   "component": "vit_b16_vision",
+   "profile": "gpu-resident",
+   "tau_us": 7691.273,
+   "feasible_deadlines_us": [
+    8000,
+    10000
+   ],
+   "zero_rate_at_every_deadline": false,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": true,
+   "margin_over_tau_star": 6.303
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-1t-pcore",
+   "tau_us": 1038.357,
+   "feasible_deadlines_us": [
+    1400,
+    2000,
+    2800,
+    4000,
+    5600,
+    8000,
+    10000
+   ],
+   "zero_rate_at_every_deadline": false,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": false,
+   "margin_over_tau_star": 0.851
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-1t-ecore",
+   "tau_us": 2762.571,
+   "feasible_deadlines_us": [
+    4000,
+    5600,
+    8000,
+    10000
+   ],
+   "zero_rate_at_every_deadline": false,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": true,
+   "margin_over_tau_star": 2.264
+  },
+  {
+   "component": "transformer_small",
+   "profile": "cpu-8t-pcore",
+   "tau_us": 436.303,
+   "feasible_deadlines_us": [
+    700,
+    1000,
+    1400,
+    2000,
+    2800,
+    4000,
+    5600,
+    8000,
+    10000
+   ],
+   "zero_rate_at_every_deadline": false,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": false,
+   "margin_over_tau_star": 0.358
+  },
+  {
+   "component": "transformer_small",
+   "profile": "gpu-resident",
+   "tau_us": 297.776,
+   "feasible_deadlines_us": [
+    500,
+    700,
+    1000,
+    1400,
+    2000,
+    2800,
+    4000,
+    5600,
+    8000,
+    10000
+   ],
+   "zero_rate_at_every_deadline": false,
+   "tau_star_us": 1220.34,
+   "cannot_beat_sweep_anywhere": false,
+   "margin_over_tau_star": 0.244
+  }
+ ],
+ "R5": {
+  "K": 4,
+  "M": 64,
+  "rows": [
+   {
+    "component": "resnet18_vision",
+    "profile": "cpu-1t-pcore",
+    "t_p_us": 20.339,
+    "tau_star_us": 1220.34,
+    "charges_us": {
+     "eager, Phase-1 counts": 29025.72,
+     "TorchScript, whole decision": 25000.433
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 23.784945179212354,
+     "TorchScript, whole decision": 20.48644885851484
+    },
+    "ratio_min": 20.48644885851484,
+    "network_only_us": 25211.863,
+    "excluded": true,
+    "excluded_if_network_only_included": true,
+    "at_budget": false,
+    "tp_star_us": 416.6738833333333,
+    "tp_star_air_us": 416.3348833333333,
+    "first_feasible_T_us": null,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   },
+   {
+    "component": "vit_b16_vision",
+    "profile": "cpu-1t-pcore",
+    "t_p_us": 20.339,
+    "tau_star_us": 1220.34,
+    "charges_us": {
+     "eager, Phase-1 counts": 233200.6,
+     "TorchScript, whole decision": 235577.451
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 191.09477686546373,
+     "TorchScript, whole decision": 193.04247258960618
+    },
+    "ratio_min": 191.09477686546373,
+    "network_only_us": 236924.806,
+    "excluded": true,
+    "excluded_if_network_only_included": true,
+    "at_budget": false,
+    "tp_star_us": 3886.6766666666667,
+    "tp_star_air_us": 3886.337666666667,
+    "first_feasible_T_us": null,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   },
+   {
+    "component": "transformer_small",
+    "profile": "cpu-1t-pcore",
+    "t_p_us": 20.339,
+    "tau_star_us": 1220.34,
+    "charges_us": {
+     "eager, Phase-1 counts": 1038.357,
+     "TorchScript, whole decision": 938.784
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 0.8508751659373618,
+     "TorchScript, whole decision": 0.7692806922660899
+    },
+    "ratio_min": 0.7692806922660899,
+    "network_only_us": 942.579,
+    "excluded": false,
+    "excluded_if_network_only_included": false,
+    "at_budget": false,
+    "tp_star_us": 15.6464,
+    "tp_star_air_us": 15.3074,
+    "first_feasible_T_us": 1400,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   },
+   {
+    "component": "resnet18_vision",
+    "profile": "cpu-1t-ecore",
+    "t_p_us": 20.966,
+    "tau_star_us": 1257.96,
+    "charges_us": {
+     "eager, Phase-1 counts": 70893.249
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 56.3557259372317
+    },
+    "ratio_min": 56.3557259372317,
+    "network_only_us": 64222.02,
+    "excluded": true,
+    "excluded_if_network_only_included": true,
+    "at_budget": false,
+    "tp_star_us": 1181.55415,
+    "tp_star_air_us": 1180.58815,
+    "first_feasible_T_us": null,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   },
+   {
+    "component": "vit_b16_vision",
+    "profile": "cpu-1t-ecore",
+    "t_p_us": 20.966,
+    "tau_star_us": 1257.96,
+    "charges_us": {
+     "eager, Phase-1 counts": 650670.382
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 517.2425053260835
+    },
+    "ratio_min": 517.2425053260835,
+    "network_only_us": 649755.407,
+    "excluded": true,
+    "excluded_if_network_only_included": true,
+    "at_budget": false,
+    "tp_star_us": 10844.506366666667,
+    "tp_star_air_us": 10843.540366666666,
+    "first_feasible_T_us": null,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   },
+   {
+    "component": "transformer_small",
+    "profile": "cpu-1t-ecore",
+    "t_p_us": 20.966,
+    "tau_star_us": 1257.96,
+    "charges_us": {
+     "eager, Phase-1 counts": 2762.571,
+     "TorchScript, whole decision": 2573.466
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 2.1960722121530094,
+     "TorchScript, whole decision": 2.0457454927024705
+    },
+    "ratio_min": 2.0457454927024705,
+    "network_only_us": 2560.462,
+    "excluded": true,
+    "excluded_if_network_only_included": true,
+    "at_budget": false,
+    "tp_star_us": 42.8911,
+    "tp_star_air_us": 41.9251,
+    "first_feasible_T_us": 2800,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   },
+   {
+    "component": "resnet18_vision",
+    "profile": "cpu-8t-pcore",
+    "t_p_us": 20.333,
+    "tau_star_us": 1219.98,
+    "charges_us": {
+     "eager, Phase-1 counts": 5289.57
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 4.335784193183494
+    },
+    "ratio_min": 4.335784193183494,
+    "network_only_us": null,
+    "excluded": true,
+    "excluded_if_network_only_included": true,
+    "at_budget": false,
+    "tp_star_us": 88.1595,
+    "tp_star_air_us": 87.8265,
+    "first_feasible_T_us": 5600,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   },
+   {
+    "component": "vit_b16_vision",
+    "profile": "cpu-8t-pcore",
+    "t_p_us": 20.333,
+    "tau_star_us": 1219.98,
+    "charges_us": {
+     "eager, Phase-1 counts": 42602.81
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 34.92090853948425
+    },
+    "ratio_min": 34.92090853948425,
+    "network_only_us": null,
+    "excluded": true,
+    "excluded_if_network_only_included": true,
+    "at_budget": false,
+    "tp_star_us": 710.0468333333333,
+    "tp_star_air_us": 709.7138333333334,
+    "first_feasible_T_us": null,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   },
+   {
+    "component": "transformer_small",
+    "profile": "cpu-8t-pcore",
+    "t_p_us": 20.333,
+    "tau_star_us": 1219.98,
+    "charges_us": {
+     "eager, Phase-1 counts": 436.303
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 0.35763127264381384
+    },
+    "ratio_min": 0.35763127264381384,
+    "network_only_us": null,
+    "excluded": false,
+    "excluded_if_network_only_included": false,
+    "at_budget": false,
+    "tp_star_us": 7.271716666666666,
+    "tp_star_air_us": 6.938716666666666,
+    "first_feasible_T_us": 700,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   },
+   {
+    "component": "resnet18_vision",
+    "profile": "gpu-resident",
+    "t_p_us": 20.341,
+    "tau_star_us": 1220.46,
+    "charges_us": {
+     "eager, Phase-1 counts": 1344.464,
+     "eager, full counts": 1753.783,
+     "TorchScript, whole decision": 1218.876
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 1.101604313127837,
+     "eager, full counts": 1.4369852350752994,
+     "TorchScript, whole decision": 0.99870212870557
+    },
+    "ratio_min": 0.99870212870557,
+    "network_only_us": 1199.569,
+    "excluded": false,
+    "excluded_if_network_only_included": false,
+    "at_budget": true,
+    "tp_star_us": 20.3146,
+    "tp_star_air_us": 19.973599999999998,
+    "first_feasible_T_us": 1400,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   },
+   {
+    "component": "vit_b16_vision",
+    "profile": "gpu-resident",
+    "t_p_us": 20.341,
+    "tau_star_us": 1220.46,
+    "charges_us": {
+     "eager, Phase-1 counts": 6331.027,
+     "eager, full counts": 7691.273,
+     "TorchScript, whole decision": 7148.229
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 5.187410484571391,
+     "eager, full counts": 6.301945987578454,
+     "TorchScript, whole decision": 5.856995722924143
+    },
+    "ratio_min": 5.187410484571391,
+    "network_only_us": 6356.232,
+    "excluded": true,
+    "excluded_if_network_only_included": true,
+    "at_budget": false,
+    "tp_star_us": 105.51711666666667,
+    "tp_star_air_us": 105.17611666666667,
+    "first_feasible_T_us": 8000,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": false
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": false,
+       "air250": true
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": false,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   },
+   {
+    "component": "transformer_small",
+    "profile": "gpu-resident",
+    "t_p_us": 20.341,
+    "tau_star_us": 1220.46,
+    "charges_us": {
+     "eager, Phase-1 counts": 297.776,
+     "TorchScript, whole decision": 225.621
+    },
+    "ratios": {
+     "eager, Phase-1 counts": 0.24398669354177932,
+     "TorchScript, whole decision": 0.1848655425003687
+    },
+    "ratio_min": 0.1848655425003687,
+    "network_only_us": 222.512,
+    "excluded": false,
+    "excluded_if_network_only_included": false,
+    "at_budget": false,
+    "tp_star_us": 3.7603500000000003,
+    "tp_star_air_us": 3.41935,
+    "first_feasible_T_us": 350,
+    "admission": {
+     "M16": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": false,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M32": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M64": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M128": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     },
+     "M256": {
+      "K4": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K8": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      },
+      "K16": {
+       "measured": true,
+       "air50": true,
+       "air125": true,
+       "air250": true
+      }
+     }
+    },
+    "admission_beyond_64_is_accounting_only": true
+   }
+  ],
+  "by_model": {
+   "resnet18_vision": {
+    "excluded_profiles": [
+     "cpu-1t-pcore",
+     "cpu-1t-ecore",
+     "cpu-8t-pcore"
+    ],
+    "every_profile": false,
+    "at_budget_profiles": [
+     "gpu-resident"
+    ]
+   },
+   "vit_b16_vision": {
+    "excluded_profiles": [
+     "cpu-1t-pcore",
+     "cpu-1t-ecore",
+     "cpu-8t-pcore",
+     "gpu-resident"
+    ],
+    "every_profile": true,
+    "at_budget_profiles": []
+   },
+   "transformer_small": {
+    "excluded_profiles": [
+     "cpu-1t-ecore"
+    ],
+    "every_profile": false,
+    "at_budget_profiles": []
+   }
+  }
+ },
+ "R6": {
+  "pending": false,
+  "speeds_kmh": [
+   0.0,
+   3.0,
+   30.0,
+   60.0,
+   120.0
+  ],
+  "per_speed": {
+   "0": {
+    "dominance_holds": true,
+    "failures": [],
+    "block_fading_adequate": true,
+    "largest_delta_below_1pct_us": 10000,
+    "n_sites": 6
+   },
+   "3": {
+    "dominance_holds": true,
+    "failures": [],
+    "block_fading_adequate": true,
+    "largest_delta_below_1pct_us": 10000,
+    "n_sites": 6
+   },
+   "30": {
+    "dominance_holds": true,
+    "failures": [],
+    "block_fading_adequate": true,
+    "largest_delta_below_1pct_us": 10000,
+    "n_sites": 6
+   },
+   "60": {
+    "dominance_holds": true,
+    "failures": [],
+    "block_fading_adequate": true,
+    "largest_delta_below_1pct_us": 10000,
+    "n_sites": 6
+   },
+   "120": {
+    "dominance_holds": true,
+    "failures": [],
+    "block_fading_adequate": true,
+    "largest_delta_below_1pct_us": 10000,
+    "n_sites": 6
+   }
+  },
+  "dominance_holds_up_to_kmh": 120.0,
+  "dominance_holds_at_every_speed": true
+ },
+ "R7": {
+  "pending": false,
+  "per_q": {
+   "oq0.125": {
+    "q": 0.125,
+    "compute_pays_established": 1,
+    "compute_pays_lost": 0,
+    "aware_vs_blind_established": 0,
+    "aware_vs_blind_lost": 0
+   },
+   "oq0.25": {
+    "q": 0.25,
+    "compute_pays_established": 1,
+    "compute_pays_lost": 0,
+    "aware_vs_blind_established": 0,
+    "aware_vs_blind_lost": 0
+   },
+   "oq0.5": {
+    "q": 0.5,
+    "compute_pays_established": 1,
+    "compute_pays_lost": 0,
+    "aware_vs_blind_established": 4,
+    "aware_vs_blind_lost": 0
+   },
+   "oq1": {
+    "q": 1.0,
+    "compute_pays_established": 3,
+    "compute_pays_lost": 0,
+    "aware_vs_blind_established": 3,
+    "aware_vs_blind_lost": 0
+   }
+  },
+  "predictor_limited": false,
+  "awareness_depends_on_predictor": true
+ }
+}

@@ -1,0 +1,177 @@
+{
+ "env": {
+  "profile": "gpu-resident",
+  "cpu": "Intel(R) Core(TM) i9-14900KF",
+  "governor": "powersave",
+  "affinity": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "torch_threads": 1,
+  "requested_threads": 1,
+  "torch": "2.12.0+cu130",
+  "python": "3.13.12",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "numpy": "2.5.3",
+  "gpu": "Quadro RTX 8000",
+  "omp": "1",
+  "timestamp": "2026-09-23T14:26:41+0900"
+ },
+ "env_recheck": {
+  "profile": "gpu-resident",
+  "cpu": "Intel(R) Core(TM) i9-14900KF",
+  "governor": "powersave",
+  "affinity": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "torch_threads": 1,
+  "requested_threads": 1,
+  "torch": "2.12.0+cu130",
+  "python": "3.13.12",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "numpy": "2.5.3",
+  "gpu": "Quadro RTX 8000",
+  "omp": "1",
+  "timestamp": "2026-09-23T14:31:07+0900"
+ },
+ "protocol": {
+  "warmup_full": 1000,
+  "timed_full": 10000,
+  "seeds": [
+   17,
+   29,
+   43
+  ],
+  "input_seed": 881,
+  "percentile": "nearest-rank p95",
+  "charge_rule": "max over weight seeds"
+ },
+ "full_counts_forced": true,
+ "rows": [
+  {
+   "component": "resnet18_vision",
+   "provenance": "reconstruct",
+   "note": "ResNet-18 vision-aided beam predictor, 3x224x224, network only",
+   "charge_ns": 1753783,
+   "charge_us": 1753.783,
+   "per_seed": [
+    {
+     "seed": 17,
+     "n_warmup": 1000,
+     "n_timed": 10000,
+     "p95_ns": 1634581,
+     "median_ns": 1226258,
+     "min_ns": 1182661,
+     "max_ns": 1744752,
+     "mean_ns": 1316730.7582
+    },
+    {
+     "seed": 29,
+     "n_warmup": 1000,
+     "n_timed": 10000,
+     "p95_ns": 1712280,
+     "median_ns": 1284763,
+     "min_ns": 1258915,
+     "max_ns": 1819294,
+     "mean_ns": 1384821.365
+    },
+    {
+     "seed": 43,
+     "n_warmup": 1000,
+     "n_timed": 10000,
+     "p95_ns": 1753783,
+     "median_ns": 1318927,
+     "min_ns": 1261365,
+     "max_ns": 1848636,
+     "mean_ns": 1412168.1797
+    }
+   ],
+   "reduced_n": false,
+   "recheck_us": 1927.007,
+   "drift": 0.0988
+  },
+  {
+   "component": "vit_b16_vision",
+   "provenance": "reconstruct",
+   "note": "ViT-B/16 vision-aided beam predictor, 3x224x224, network only",
+   "charge_ns": 7691273,
+   "charge_us": 7691.273,
+   "per_seed": [
+    {
+     "seed": 17,
+     "n_warmup": 1000,
+     "n_timed": 10000,
+     "p95_ns": 7691273,
+     "median_ns": 6660059,
+     "min_ns": 5726347,
+     "max_ns": 8360697,
+     "mean_ns": 6717376.4517
+    },
+    {
+     "seed": 29,
+     "n_warmup": 1000,
+     "n_timed": 10000,
+     "p95_ns": 7669138,
+     "median_ns": 6595432,
+     "min_ns": 5891009,
+     "max_ns": 8203501,
+     "mean_ns": 6661071.5386
+    },
+    {
+     "seed": 43,
+     "n_warmup": 1000,
+     "n_timed": 10000,
+     "p95_ns": 7606049,
+     "median_ns": 6498898,
+     "min_ns": 5772905,
+     "max_ns": 7833079,
+     "mean_ns": 6578328.7772
+    }
+   ],
+   "reduced_n": false,
+   "recheck_us": 7529.083,
+   "drift": 0.0211
+  }
+ ],
+ "contention": {
+  "worst_recheck_drift": 0.0988,
+  "worst_component": "resnet18_vision",
+  "contended": false,
+  "rule": "two complete passes; >10% drift between them means the machine was not quiet",
+  "note": "the GPU was shared throughout with a desktop-session encoder (gnome-remote-desktop-daemon, ~21% utilization before timing began)"
+ },
+ "charged": "pass 1, as latency.py charges its first pass and uses the second as the recheck",
+ "reduced_count_atlas_us": {
+  "resnet18_vision": 1344.464,
+  "vit_b16_vision": 6331.027
+ }
+}

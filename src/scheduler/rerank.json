@@ -1,0 +1,69 @@
+{
+ "c_rank_us": 1.06,
+ "tag": "_rr",
+ "gates": {
+  "a_validation": {
+   "leaves": 23677,
+   "differing": 0,
+   "max_abs_dev": 0.0
+  },
+  "b_resolve_seed17": {
+   "entries": 59904000,
+   "differing": 0,
+   "reachable_entries": 6787584,
+   "reachable_differing": 0,
+   "share_reachable_differing": 0.0,
+   "g_m_max_abs_dev": 0.0,
+   "g_p_max_abs_dev": 0.0
+  }
+ },
+ "false_alarms": {
+  "draws": 2000000,
+  "seed": 23,
+  "share_clipped": 0.535014375,
+  "clipped": {
+   "per_look": [
+    0.2005,
+    0.2794,
+    0.3484,
+    0.4139
+   ],
+   "within_four_looks": 0.4982
+  },
+  "unclipped": {
+   "per_look": [
+    0.2005,
+    0.1999,
+    0.1999,
+    0.1998
+   ],
+   "within_four_looks": 0.3713
+  }
+ },
+ "step_seconds": {
+  "solve": 2061.1,
+  "validation": 126.4,
+  "results": 212.2,
+  "heldout": 487.1,
+  "validation_3seed": 39.8,
+  "results_3seed": 68.4,
+  "heldout_3seed": 157.2,
+  "analyze": 0.1,
+  "analyze_3seed": 0.1,
+  "sweep rho0.1": 899.6,
+  "sweep rho0.3": 886.3,
+  "sweep rho3": 857.7,
+  "sweep tp50": 722.7,
+  "sweep tp125": 568.1,
+  "sweep tp250": 457.1,
+  "sweep oq0.125": 915.0,
+  "sweep oq0.25": 911.8,
+  "sweep oq0.5": 907.3,
+  "sweep oq1": 783.9,
+  "summary sweeps": 0.1,
+  "summary predq": 0.1,
+  "rotation": 0.1,
+  "interleave": 1.3,
+  "rules": 0.1
+ }
+}

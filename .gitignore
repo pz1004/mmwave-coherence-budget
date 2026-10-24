@@ -1,0 +1,26 @@
+# Environments and caches
+.venv/
+.venv-deepmimo/
+venv/
+__pycache__/
+*.pyc
+*.log
+
+# Internal records and third-party PDFs. Kept on disk, never published.
+archive/
+
+# Licensed third-party data. DeepMIMO city scenarios are distributed by their
+# owners under their own terms and are not redistributed here;
+# src/sites/acquire.py fetches them.
+src/sites/scenarios/
+src/sites/zips/
+src/sites/wheels/
+
+src/scheduler/data/
+src/scheduler/models/
+src/scheduler/coverage_*.npz
+src/scheduler/tables_*_*.npz
+# The first re-solve's primary tables are tracked like the recorded ones.
+!src/scheduler/tables_*_rr.npz
+
+paper/

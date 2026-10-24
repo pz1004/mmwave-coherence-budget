@@ -1,0 +1,245 @@
+{
+ "grid_us": [
+  250,
+  350,
+  500,
+  700,
+  1000,
+  1400,
+  2000,
+  2800,
+  4000,
+  5600,
+  8000,
+  10000
+ ],
+ "sites": [
+  "city_1_losangeles_28",
+  "city_2_chicago_28",
+  "city_3_houston_28",
+  "city_4_phoenix_28",
+  "city_5_philadelphia_28",
+  "city_6_miami_28",
+  "city_7_sandiego_28"
+ ],
+ "families": {
+  "with_compute": {
+   "candidates": [
+    "sched",
+    "sched-pi",
+    "sched-noreorder",
+    "sched-noreorder-pi"
+   ],
+   "rows": [
+    {
+     "validator": "city_1_losangeles_28",
+     "picked": "sched-noreorder",
+     "agrees_with_site_best": 4,
+     "n_others": 6,
+     "mean_regret": 0.02744,
+     "max_regret": 0.10733
+    },
+    {
+     "validator": "city_2_chicago_28",
+     "picked": "sched-noreorder",
+     "agrees_with_site_best": 4,
+     "n_others": 6,
+     "mean_regret": 0.02744,
+     "max_regret": 0.10733
+    },
+    {
+     "validator": "city_3_houston_28",
+     "picked": "sched-noreorder",
+     "agrees_with_site_best": 4,
+     "n_others": 6,
+     "mean_regret": 0.02744,
+     "max_regret": 0.10733
+    },
+    {
+     "validator": "city_4_phoenix_28",
+     "picked": "sched-noreorder",
+     "agrees_with_site_best": 4,
+     "n_others": 6,
+     "mean_regret": 0.02744,
+     "max_regret": 0.10733
+    },
+    {
+     "validator": "city_5_philadelphia_28",
+     "picked": "sched",
+     "agrees_with_site_best": 0,
+     "n_others": 6,
+     "mean_regret": 0.13185,
+     "max_regret": 0.23402
+    },
+    {
+     "validator": "city_6_miami_28",
+     "picked": "sched-noreorder",
+     "agrees_with_site_best": 4,
+     "n_others": 6,
+     "mean_regret": 0.02744,
+     "max_regret": 0.10733
+    },
+    {
+     "validator": "city_7_sandiego_28",
+     "picked": "sched-pi",
+     "agrees_with_site_best": 0,
+     "n_others": 6,
+     "mean_regret": 0.02218,
+     "max_regret": 0.05918
+    }
+   ],
+   "votes": {
+    "sched-noreorder": 5,
+    "sched": 1,
+    "sched-pi": 1
+   },
+   "per_site_best": {
+    "city_1_losangeles_28": "sched-noreorder",
+    "city_2_chicago_28": "sched-noreorder",
+    "city_3_houston_28": "sched-noreorder",
+    "city_4_phoenix_28": "sched-noreorder",
+    "city_5_philadelphia_28": "sched",
+    "city_6_miami_28": "sched-noreorder",
+    "city_7_sandiego_28": "sched-pi"
+   },
+   "mean_regret_over_validators": 0.0416,
+   "worst_regret_any_pair": 0.23402
+  },
+  "without_compute": {
+   "candidates": [
+    "sched-nocompute",
+    "sched-nocompute-pi"
+   ],
+   "rows": [
+    {
+     "validator": "city_1_losangeles_28",
+     "picked": "sched-nocompute-pi",
+     "agrees_with_site_best": 6,
+     "n_others": 6,
+     "mean_regret": 0.0,
+     "max_regret": 0.0
+    },
+    {
+     "validator": "city_2_chicago_28",
+     "picked": "sched-nocompute-pi",
+     "agrees_with_site_best": 6,
+     "n_others": 6,
+     "mean_regret": 0.0,
+     "max_regret": 0.0
+    },
+    {
+     "validator": "city_3_houston_28",
+     "picked": "sched-nocompute-pi",
+     "agrees_with_site_best": 6,
+     "n_others": 6,
+     "mean_regret": 0.0,
+     "max_regret": 0.0
+    },
+    {
+     "validator": "city_4_phoenix_28",
+     "picked": "sched-nocompute-pi",
+     "agrees_with_site_best": 6,
+     "n_others": 6,
+     "mean_regret": 0.0,
+     "max_regret": 0.0
+    },
+    {
+     "validator": "city_5_philadelphia_28",
+     "picked": "sched-nocompute-pi",
+     "agrees_with_site_best": 6,
+     "n_others": 6,
+     "mean_regret": 0.0,
+     "max_regret": 0.0
+    },
+    {
+     "validator": "city_6_miami_28",
+     "picked": "sched-nocompute-pi",
+     "agrees_with_site_best": 6,
+     "n_others": 6,
+     "mean_regret": 0.0,
+     "max_regret": 0.0
+    },
+    {
+     "validator": "city_7_sandiego_28",
+     "picked": "sched-nocompute-pi",
+     "agrees_with_site_best": 6,
+     "n_others": 6,
+     "mean_regret": 0.0,
+     "max_regret": 0.0
+    }
+   ],
+   "votes": {
+    "sched-nocompute-pi": 7
+   },
+   "per_site_best": {
+    "city_1_losangeles_28": "sched-nocompute-pi",
+    "city_2_chicago_28": "sched-nocompute-pi",
+    "city_3_houston_28": "sched-nocompute-pi",
+    "city_4_phoenix_28": "sched-nocompute-pi",
+    "city_5_philadelphia_28": "sched-nocompute-pi",
+    "city_6_miami_28": "sched-nocompute-pi",
+    "city_7_sandiego_28": "sched-nocompute-pi"
+   },
+   "mean_regret_over_validators": 0.0,
+   "worst_regret_any_pair": 0.0
+  }
+ },
+ "conclusion_robustness": [
+  {
+   "validator": "city_1_losangeles_28",
+   "with": "sched-noreorder",
+   "without": "sched-nocompute-pi",
+   "min_gain": 0.0368,
+   "max_gain": 0.17445,
+   "n_negative": 0
+  },
+  {
+   "validator": "city_2_chicago_28",
+   "with": "sched-noreorder",
+   "without": "sched-nocompute-pi",
+   "min_gain": 0.08981,
+   "max_gain": 0.17445,
+   "n_negative": 0
+  },
+  {
+   "validator": "city_3_houston_28",
+   "with": "sched-noreorder",
+   "without": "sched-nocompute-pi",
+   "min_gain": 0.0368,
+   "max_gain": 0.17445,
+   "n_negative": 0
+  },
+  {
+   "validator": "city_4_phoenix_28",
+   "with": "sched-noreorder",
+   "without": "sched-nocompute-pi",
+   "min_gain": 0.0368,
+   "max_gain": 0.17445,
+   "n_negative": 0
+  },
+  {
+   "validator": "city_5_philadelphia_28",
+   "with": "sched",
+   "without": "sched-nocompute-pi",
+   "min_gain": -0.20583,
+   "max_gain": 0.20757,
+   "n_negative": 4
+  },
+  {
+   "validator": "city_6_miami_28",
+   "with": "sched-noreorder",
+   "without": "sched-nocompute-pi",
+   "min_gain": 0.0368,
+   "max_gain": 0.17445,
+   "n_negative": 0
+  },
+  {
+   "validator": "city_7_sandiego_28",
+   "with": "sched-pi",
+   "without": "sched-nocompute-pi",
+   "min_gain": -0.02456,
+   "max_gain": 0.24011,
+   "n_negative": 1
+  }
+ ]
+}

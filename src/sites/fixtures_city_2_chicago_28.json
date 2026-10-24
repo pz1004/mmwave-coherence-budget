@@ -1,0 +1,90 @@
+{
+ "scenario": "city_2_chicago_28",
+ "tx_index": 0,
+ "checks": [
+  {
+   "name": "F1 sigma_d2 == -174 dBm/Hz + 10log10(B) + NF",
+   "pass": true,
+   "gate": true,
+   "frozen_W": 1.9953e-12,
+   "convention_W": 1.995262e-12,
+   "exact_kT0BF_W": 2.006695e-12,
+   "rounding_gap_dB": 0.0247
+  },
+  {
+   "name": "F2 hand narrowband == sqrt(N)*DeepMIMO OFDM k=0",
+   "pass": true,
+   "gate": true,
+   "n_users": 256,
+   "rel_err_matched_angles": 2.219e-07,
+   "rel_err_raw_angles": 1.049e-05,
+   "library_angle_roundtrip_max_dev_deg": 1.34e-05,
+   "raw_angle_gap_dB": 9.11e-05
+  },
+  {
+   "name": "F2b delay convention exp(-j2 pi tau df) at df = B/2",
+   "pass": true,
+   "gate": true,
+   "subcarrier": 256,
+   "df_MHz": 50.0,
+   "rel_err": 5.274e-07
+  },
+  {
+   "name": "F3 codebook unit-norm, unitary, Parseval, FFT identity",
+   "pass": true,
+   "gate": true,
+   "max_col_norm_err": 0.0,
+   "fft_identity_rel_err": 4.8e-16
+  },
+  {
+   "name": "F4 LoS path power == Friis with 0 dBW isotropic transmit",
+   "pass": true,
+   "gate": true,
+   "n_los": 3609,
+   "median_offset_dB": -0.0116,
+   "p99_abs_dev_dB": 0.009,
+   "range_m": [
+    4.0,
+    130.8
+   ]
+  },
+  {
+   "name": "F5 single-path array gain in [(2/pi)^2, 1] x N",
+   "pass": true,
+   "gate": true,
+   "n_users": 89,
+   "min_ratio": 0.4054,
+   "max_ratio": 0.95925,
+   "scallop_floor": 0.40528
+  },
+  {
+   "name": "F6 narrowband beam choice holds across 100 MHz",
+   "pass": false,
+   "gate": false,
+   "subcarrier_argmax_agreement": 0.8295,
+   "median_band_avg_loss_dB": 0.0,
+   "p95_band_avg_loss_dB": 2.8099,
+   "median_rms_delay_spread_ns": 14.64,
+   "p95_rms_delay_spread_ns": 42.35,
+   "coherence_bw_MHz_median": 13.66
+  },
+  {
+   "name": "F7 best-beam SNR distribution is physically plausible",
+   "pass": true,
+   "gate": true,
+   "n_users": 10451,
+   "snr_dB_pct": {
+    "1": -42.88,
+    "5": -36.34,
+    "25": -23.81,
+    "50": 0.44,
+    "75": 34.39,
+    "95": 48.57,
+    "99": 55.53
+   },
+   "frac_below_0dB": 0.4925
+  }
+ ],
+ "all_gate_pass": true,
+ "all_pass": false
+}

@@ -1,0 +1,165 @@
+{
+ "tau_us": [
+  0.0,
+  14.135,
+  36.062,
+  65.0
+ ],
+ "c_lookup_us": 0.296,
+ "t_probe_us": 20.339,
+ "fit": "city_0_newyork_28",
+ "k_max": 64,
+ "replicates": 24,
+ "min_cell": 20,
+ "policy_iterations": 1,
+ "on_policy_reps": 10,
+ "epsilon": 0.15,
+ "seeds": [
+  {
+   "seed": 17,
+   "thin_gm": 95519,
+   "thin_gp": 102109,
+   "thin_trans": 95902,
+   "cells": 104000,
+   "visits": 26215224.0,
+   "reachable_cells": 11332,
+   "visit_frac_in_thin_gm": 0.000592,
+   "visit_frac_in_thin_trans": 0.001021,
+   "table_bytes": 13520000
+  },
+  {
+   "seed": 29,
+   "thin_gm": 95497,
+   "thin_gp": 102102,
+   "thin_trans": 95859,
+   "cells": 104000,
+   "visits": 26215224.0,
+   "reachable_cells": 11349,
+   "visit_frac_in_thin_gm": 0.000588,
+   "visit_frac_in_thin_trans": 0.000985,
+   "table_bytes": 13520000
+  },
+  {
+   "seed": 43,
+   "thin_gm": 95534,
+   "thin_gp": 102096,
+   "thin_trans": 95911,
+   "cells": 104000,
+   "visits": 26215224.0,
+   "reachable_cells": 11287,
+   "visit_frac_in_thin_gm": 0.0006,
+   "visit_frac_in_thin_trans": 0.001019,
+   "table_bytes": 13520000
+  },
+  {
+   "seed": 53,
+   "thin_gm": 95531,
+   "thin_gp": 102113,
+   "thin_trans": 95891,
+   "cells": 104000,
+   "visits": 26215224.0,
+   "reachable_cells": 11385,
+   "visit_frac_in_thin_gm": 0.000605,
+   "visit_frac_in_thin_trans": 0.000993,
+   "table_bytes": 13520000
+  },
+  {
+   "seed": 61,
+   "thin_gm": 95523,
+   "thin_gp": 102087,
+   "thin_trans": 95885,
+   "cells": 104000,
+   "visits": 26215224.0,
+   "reachable_cells": 11283,
+   "visit_frac_in_thin_gm": 0.000595,
+   "visit_frac_in_thin_trans": 0.000993,
+   "table_bytes": 13520000
+  },
+  {
+   "seed": 71,
+   "thin_gm": 95528,
+   "thin_gp": 102097,
+   "thin_trans": 95898,
+   "cells": 104000,
+   "visits": 26215224.0,
+   "reachable_cells": 11225,
+   "visit_frac_in_thin_gm": 0.00056,
+   "visit_frac_in_thin_trans": 0.000972,
+   "table_bytes": 13520000
+  },
+  {
+   "seed": 79,
+   "thin_gm": 95483,
+   "thin_gp": 102085,
+   "thin_trans": 95856,
+   "cells": 104000,
+   "visits": 26215224.0,
+   "reachable_cells": 11390,
+   "visit_frac_in_thin_gm": 0.000615,
+   "visit_frac_in_thin_trans": 0.001027,
+   "table_bytes": 13520000
+  },
+  {
+   "seed": 89,
+   "thin_gm": 95532,
+   "thin_gp": 102106,
+   "thin_trans": 95898,
+   "cells": 104000,
+   "visits": 26215224.0,
+   "reachable_cells": 11236,
+   "visit_frac_in_thin_gm": 0.000603,
+   "visit_frac_in_thin_trans": 0.001012,
+   "table_bytes": 13520000
+  },
+  {
+   "seed": 97,
+   "thin_gm": 95503,
+   "thin_gp": 102096,
+   "thin_trans": 95878,
+   "cells": 104000,
+   "visits": 26215224.0,
+   "reachable_cells": 11254,
+   "visit_frac_in_thin_gm": 0.000585,
+   "visit_frac_in_thin_trans": 0.000996,
+   "table_bytes": 13520000
+  },
+  {
+   "seed": 107,
+   "thin_gm": 95531,
+   "thin_gp": 102097,
+   "thin_trans": 95905,
+   "cells": 104000,
+   "visits": 26215224.0,
+   "reachable_cells": 11388,
+   "visit_frac_in_thin_gm": 0.00063,
+   "visit_frac_in_thin_trans": 0.001039,
+   "table_bytes": 13520000
+  }
+ ],
+ "charging": {
+  "lat_file": "lat_cpu1t_pcore.json",
+  "tau_scale": 1.0,
+  "tp_air_us": null,
+  "variants": "dp,blind,noc",
+  "oracle_mix": 1.0,
+  "c_rank_us": 1.06,
+  "c_rank_mode": "exact",
+  "c_lookup_aug_us": 0.31,
+  "c_lookup_aug_source": "file"
+ },
+ "oracle_mix": 1.0,
+ "c_rank_us": 1.06,
+ "c_rank_mode": "exact",
+ "c_lookup_aug_us": 0.31,
+ "c_lookup_aug_source": "file",
+ "table_layout": {
+  "augmented": "kappa-major [kappa, i, k, b, c, fresh], int8, shape [65, 4, 65, 40, 10, 2]",
+  "other": "[i, k, b, c, fresh], shape [4, 65, 40, 10, 2]"
+ },
+ "variant_tau_us": {},
+ "augmented_variants": [
+  "blind",
+  "dp"
+ ],
+ "seconds": 588.3
+}
