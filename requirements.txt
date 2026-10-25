@@ -1,9 +1,9 @@
-# Experiment environment (latency atlas, budget theory, scheduler, paper).
+# Experiment environment (latency atlas, budget theory, scheduler).
 # These are the versions the reported results were produced with; the timing
 # results in particular are tied to the build, so pin them to reproduce.
 #   python 3.13.12
 torch==2.12.0          # +cu130 build; CPU-only is enough except for the GPU profile
-torchvision==0.27.0    # the vision models the latency stages time; the paper build imports it
+torchvision==0.27.0    # the vision models the latency stages time
 numpy==1.26.4
 scipy==1.17.1
 matplotlib==3.10.9
