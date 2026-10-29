@@ -153,4 +153,9 @@ if [ "${MATCHED:-0}" = 1 ] && [ ! -d ../latency/profile_matched ]; then
 fi
 [ -f matched.json ] || python3 matched.py
 
+# Rule R23, set post hoc: the matched study's readings restated, and calculations on its records
+# added after its outputs (per-session boundaries, uniform scaling factors).  matched_post.py
+# times nothing and refuses to overwrite its output.
+[ -f matched_post.json ] || python3 matched_post.py
+
 python3 make_manifest.py       # -> manifest.json: the datasets', models' and environment's hashes

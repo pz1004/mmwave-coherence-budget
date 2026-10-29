@@ -1,0 +1,249 @@
+{
+ "rule": "R23",
+ "script_sha256": "9aa5275009bebc3ae9683b5f5f6b579b99e08591bb24ab0ffce700450cf74b6a",
+ "inputs_sha256": {
+  "matched.json": "339d3f708f8146266889f2505fd28f433b85e7af2d60b2c3ea49661fcdfe4b4e",
+  "margins.json": "3f194c9eadda1407638c077c17e03109515610fa0fe41539ee6325c0cb667457",
+  "../latency/profile_matched/s1.npz": "50692a408894165b9e8ed6826530bb095373e2e8e75228fc2e556b154fc4933f",
+  "../latency/profile_matched/s2.npz": "780dd8e3b69a4664d5bf9c82b7deb8dccc2244e282c6a9b2e0a3bad20351b230",
+  "../latency/profile_matched/s3.npz": "596e7b0cdbff4809cced028f85590be793bfee41c4f894dd80d07d3439000883"
+ },
+ "grid_us": [
+  250.0,
+  350.0,
+  500.0,
+  700.0,
+  1000.0,
+  1400.0,
+  2000.0,
+  2800.0,
+  4000.0,
+  5600.0,
+  8000.0,
+  10000.0
+ ],
+ "T_max_us": 10000.0,
+ "batch": 1000,
+ "t_quantile": 3.364203432439991,
+ "reference": {
+  "adverse": {
+   "eta": 0.972181695575957,
+   "d_S_us": 1341.824,
+   "boundary_us": 1582.6797757249428
+  },
+  "measured": {
+   "eta": 0.9993,
+   "d_S_us": 1301.824,
+   "boundary_us": 1307.9127232000003
+  }
+ },
+ "sessions_read": [
+  "1",
+  "2",
+  "3"
+ ],
+ "optimized_build": "fp16_graph",
+ "gate": {
+  "G1_pins": true,
+  "G2_reproduced": true,
+  "G3_closed_form": true,
+  "G4_monotone": true,
+  "holds": true
+ },
+ "sessions": {
+  "1": {
+   "fp32": {
+    "n": 10000,
+    "mean_us": 6302.3683719,
+    "min_us": 6121.51,
+    "max_us": 10745.311,
+    "horizon_us": 179660.0,
+    "horizon_closed_us": 179661.26059415378,
+    "eta_needed": 0.4270814872324148,
+    "probe_airtime_max_us": 95.85345097642416,
+    "scaling_adverse": {
+     "factor": 3.9820868811021577,
+     "turns_at_us": 10000.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": true,
+     "closed_form": 3.9820868811021577
+    },
+    "scaling_measured": {
+     "factor": 4.818645969342919,
+     "turns_at_us": 10000.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": false,
+     "closed_form": null
+    },
+    "r22_leaves_excluded": {
+     "factor": 3.971121941459708,
+     "turns_at_us": 10000.0,
+     "decision": "inconclusive"
+    }
+   },
+   "fp16_graph": {
+    "n": 10000,
+    "mean_us": 1941.6627292999997,
+    "min_us": 1853.903,
+    "max_us": 3271.8,
+    "horizon_us": 22900.0,
+    "horizon_closed_us": 22904.559102631458,
+    "eta_needed": 0.9307199658103508,
+    "probe_airtime_max_us": 25.769609400316106,
+    "scaling_adverse": {
+     "factor": 1.2268197010419402,
+     "turns_at_us": 10000.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": true,
+     "closed_form": 1.2268197010419404
+    },
+    "scaling_measured": {
+     "factor": 1.4845506851171504,
+     "turns_at_us": 10000.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": false,
+     "closed_form": null
+    },
+    "r22_leaves_excluded": {
+     "factor": 1.2238423970165038,
+     "turns_at_us": 10000.0,
+     "decision": "inconclusive"
+    }
+   }
+  },
+  "2": {
+   "fp32": {
+    "n": 10000,
+    "mean_us": 6336.990329,
+    "min_us": 6142.842,
+    "max_us": 10290.667,
+    "horizon_us": 180900.0,
+    "horizon_closed_us": 180905.83526600464,
+    "eta_needed": 0.42307279705332856,
+    "probe_airtime_max_us": 96.41128048983236,
+    "scaling_adverse": {
+     "factor": 4.003962409955832,
+     "turns_at_us": 10000.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": true,
+     "closed_form": 4.003962409955833
+    },
+    "scaling_measured": {
+     "factor": 4.845117121802763,
+     "turns_at_us": 10000.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": false,
+     "closed_form": null
+    },
+    "r22_leaves_excluded": {
+     "factor": 3.9888444935988097,
+     "turns_at_us": 10000.0,
+     "decision": "inconclusive"
+    }
+   },
+   "fp16_graph": {
+    "n": 10000,
+    "mean_us": 2029.2547998,
+    "min_us": 1944.121,
+    "max_us": 4110.135,
+    "horizon_us": 26050.0,
+    "horizon_closed_us": 26053.2797854167,
+    "eta_needed": 0.9206032772029582,
+    "probe_airtime_max_us": 27.177397787806445,
+    "scaling_adverse": {
+     "factor": 1.2821638533104425,
+     "turns_at_us": 10000.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": true,
+     "closed_form": 1.2821638533104427
+    },
+    "scaling_measured": {
+     "factor": 1.5487633605002409,
+     "turns_at_us": 1400.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": false,
+     "closed_form": null
+    },
+    "r22_leaves_excluded": {
+     "factor": 1.2765110393297194,
+     "turns_at_us": 10000.0,
+     "decision": "inconclusive"
+    }
+   }
+  },
+  "3": {
+   "fp32": {
+    "n": 10000,
+    "mean_us": 6343.6789511,
+    "min_us": 6140.869,
+    "max_us": 10291.136,
+    "horizon_us": 181140.0,
+    "horizon_closed_us": 181146.2748700165,
+    "eta_needed": 0.42230577508472916,
+    "probe_airtime_max_us": 96.51801547617515,
+    "scaling_adverse": {
+     "factor": 4.008188547297441,
+     "turns_at_us": 10000.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": true,
+     "closed_form": 4.008188547297442
+    },
+    "scaling_measured": {
+     "factor": 4.849658343431695,
+     "turns_at_us": 1400.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": false,
+     "closed_form": null
+    },
+    "r22_leaves_excluded": {
+     "factor": 3.9881439454217755,
+     "turns_at_us": 10000.0,
+     "decision": "inconclusive"
+    }
+   },
+   "fp16_graph": {
+    "n": 10000,
+    "mean_us": 1933.4540378,
+    "min_us": 1881.253,
+    "max_us": 3241.871,
+    "horizon_us": 22600.0,
+    "horizon_closed_us": 22609.476721805073,
+    "eta_needed": 0.9316680513540035,
+    "probe_airtime_max_us": 25.637678501728736,
+    "scaling_adverse": {
+     "factor": 1.2216331234247209,
+     "turns_at_us": 10000.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": true,
+     "closed_form": 1.2216331234247217
+    },
+    "scaling_measured": {
+     "factor": 1.4782745083093327,
+     "turns_at_us": 10000.0,
+     "scaled_calls_within_T_max": true,
+     "scaled_calls_after_d_S": false,
+     "closed_form": null
+    },
+    "r22_leaves_excluded": {
+     "factor": 1.2203127212964011,
+     "turns_at_us": 10000.0,
+     "decision": "inconclusive"
+    }
+   }
+  }
+ },
+ "pooled": {
+  "fp32": {
+   "horizon_us": 180570.0,
+   "horizon_closed_us": 180571.12357672496,
+   "eta_needed": 0.42415335312349084,
+   "probe_airtime_max_us": 96.26091564747722
+  },
+  "fp16_graph": {
+   "horizon_us": 23850.0,
+   "horizon_closed_us": 23855.77186995108,
+   "eta_needed": 0.9276637647891042,
+   "probe_airtime_max_us": 26.19489522995044
+  }
+ }
+}
