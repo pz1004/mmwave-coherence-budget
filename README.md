@@ -12,42 +12,45 @@ Correspondence: `ekim@hanbat.ac.kr`
 
 ![Effective rate against the re-acquisition period in Chicago and Houston, under airtime-only accounting and with inference latency included](assets/fig1_accounting.png)
 
-*Fig. 3 of the paper: the same methods, channels, users and noise realizations under
-airtime-only accounting (a, c) and with inference latency included (b, d), in Chicago, where
+*Fig. S4 of the supplementary material, whose Houston panels are Fig. 4 of the paper: the same
+methods, channels, users and noise realizations under airtime-only accounting (a, c) and with
+inference latency included (b, d), in Chicago, where
 the best of the ten methods changes at no period, and in Houston, where it changes in point
 estimate at the shaded periods. The learned predictors' curves move down and to the right;
 the measurement-only curves do not move.*
 
 ## Abstract
 
-Learned predictors shorten the time millimeter-wave links lose to beam acquisition only if they
-infer fast enough. With accuracy unknown before training, we seek an accuracy-independent test.
+Learned beam predictors outperform the exhaustive millimeter-wave beam sweep only by finishing
+sooner or by selecting better beams. With accuracy unknown before training, we seek an
+accuracy-independent test.
 Counting inference latency as cold-start beam-training overhead, we derive an exclusion condition
-from a narrow-beam candidate's completion time, a lower bound on the exhaustive sweep's efficiency
-and a maximum period. If it holds, the candidate cannot outperform the sweep at any period up to
-that maximum, even with perfect selection. We apply it to eight ray-traced city scenarios with
-20-microsecond probes of a 64-beam codebook, using 95th-percentile latencies of single-precision,
-unbatched, serialized inference on four hardware profiles. It excludes two vision-model
-implementations finishing within the 10-millisecond maximum: an 18-layer residual network on eight
-processor threads and a base-size vision transformer on the graphics processor. Both are excluded
-at sweep efficiencies above 60%, with positive margins at adverse inputs and in all three repeated
-timing runs; five others cannot finish and one is unresolved. Latency changes the best method in
-point estimate at 10 of 72 scenario-period pairs, none statistically established at ten seeds. A
-case-study controller scheduling inference misses its pre-registered criterion against
-hindsight-selected fixed strategies. Designers can screen predictor-processor pairs before
-training.
+from a narrow-beam predictor's completion time, a lower bound on the sweep's efficiency
+and a maximum period. If it holds, the predictor cannot outperform the sweep at any period up to
+that maximum, even with perfect selection. We apply it to eight ray-traced scenarios with
+20-microsecond probes of a 64-beam codebook, at 95th-percentile latencies of single-precision
+inference. It excludes two vision-model implementations finishing within the 10-millisecond
+maximum: an 18-layer residual network on eight processor threads and a base-size vision
+transformer on the graphics processor. Both are excluded at sweep efficiencies above 62%, also at
+adverse inputs; five others exceed it at that percentile and one is unresolved. In an illustrative
+image-only study under sustained load, the transformer's half-precision build, three times faster,
+stays excluded in expected rate. Latency changes the best method in point estimate at 10 of 72
+scenario-period pairs, none statistically established. A case-study controller scheduling
+inference misses its pre-registered criterion. Designers can screen predictor-processor pairs
+before training.
 
 ## Repository layout
 
 ```
 src/
   sites/       DeepMIMO acquisition and outcome-blind scenario qualification (stage 1)
-  latency/     predictor latency atlas across four hardware profiles (stage 2)
+  latency/     predictor latency atlas across four hardware profiles (stage 2), and the
+               matched profiling study of an optimized build (stage 4)
   budget/      accuracy-free compute budget, the T* crossover, the DP reference (stage 3)
   scheduler/   observation law, codebook, comparators, the scheduled controller, the
                analyses, and the protocol record protocol.json (stage 4)
 scripts/       one runner per stage, in order
-assets/        the paper's Fig. 3 as PNG
+assets/        the supplementary material's Fig. S4 as PNG
 ```
 
 Each stage folder holds its code and the results it writes (JSON and NPZ) side by side.
@@ -103,10 +106,10 @@ Run the stages in order; each depends on the one before it.
 ./scripts/01_sites.sh           # DeepMIMO loader environment
 ./scripts/02_latency_atlas.sh   # timing stage -- see the warning below
 ./scripts/03_budget.sh
-./scripts/04_experiment.sh      # includes a second timing stage
+./scripts/04_experiment.sh      # includes further timing stages
 ```
 
-**The two timing stages need a quiet machine.** Nothing else may run on the pinned
+**The timing stages need a quiet machine.** Nothing else may run on the pinned
 cores. A contended run in our own testing inflated the measured predictor latency
 `τ₁` from 13.8 μs to 21.1 μs, which is larger than several of the effects the paper
 reports. Each stage prints the load average and a re-check drift, and labels itself
@@ -116,7 +119,7 @@ reports. Each stage prints the load average and a re-check drift, and labels its
 (`src/scheduler/protocol.py`): the frozen protocol's hash, the hashes of the inputs it
 depends on, and those of the stored results it lists. The long runs of stage 4 are skipped
 unless their flag is set (`RETIME`, `RERANK`, `EXACT`, `SCREEN`, `CALIB`, `NRCFG`,
-`LEVELS`, `TRACE`; see the comments in the script). Every result the paper reports is
+`LEVELS`, `TRACE`, `MATCHED`; see the comments in the script). Every result the paper reports is
 stored in the repository.
 
 ## Protocol record and result files
@@ -128,7 +131,7 @@ The measurement model and the six-layer hierarchical codebook are frozen in
   number seen (its fields hash to `self_sha256`);
 - its three amendments, A1–A3;
 - the changes made after results existed, each dated, with its reason;
-- the interpretation rules R1–R21, which state what each result permits the paper to claim,
+- the interpretation rules R1–R22, which state what each result permits the paper to claim,
   each with the date it was set and whether it was set after the results it reads;
 - the later analyses, each declared before it ran, with its scripts, its rules and the
   hashes of the stored files it wrote.
@@ -151,6 +154,7 @@ Result files in `src/scheduler/` are named after the run that wrote them:
 | no suffix, `_rr`, `_rx` | the controller results in three versions: as recorded, without the time of choosing the next codeword after an inference call (a masked argmax, 1.06 μs); re-solved with that time counted on every probe of a sequence that invokes the predictor (`rerank.py`); and re-solved with it counted only after the first inference call, whose probe count enters the controller's state (`exact.py`). The paper reports the third |
 | `sweep*_rho*`, `sweep*_tp*`, `sweep*_oq*` | the sensitivity runs: hardware ratio ρ, probe airtime, predictor quality q |
 | `lat_*.json`, `../latency/p_*.json`, `o_*.json`, `o2_*.json` | the timings: the controller's charges and the latency atlas's profiles and compiled runtimes |
+| `matched` | the matched profiling study read by rule R22 (`matched.py`): an image-only ViT-B/16 on the GPU, FP32 against one FP16 build, in expected effective rate; its pilot and three sessions, every call kept, are in `../latency/profile_matched/` |
 | `manifest.json` | hashes of the datasets and model checkpoints, which are regenerated, not tracked |
 
 ## Citation

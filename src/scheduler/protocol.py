@@ -4,7 +4,7 @@
 protocol.json holds the protocol as frozen on 2026-09-15, before any dataset was built, any model
 trained or any number seen (the observation law, the strata, the splits, the seeds, the grid of
 periods, the method menu, the statistic and the primary criterion), together with its three
-amendments, the changes made after results existed, the interpretation rules R1-R21 and the
+amendments, the changes made after results existed, the interpretation rules R1-R22 and the
 analyses declared later, each before it ran.  Stage-4 scripts take their seed list from here.
 
 `python3 protocol.py` checks three things and exits non-zero on any problem:

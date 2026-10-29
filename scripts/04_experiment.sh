@@ -11,7 +11,7 @@
 #     machine; the charges it writes are listed with their hashes in protocol.json, so a
 #     re-timing fails protocol.py until the record says so.
 #   * The later analyses refuse to overwrite their outputs, and the long ones run only when
-#     their flag is set (RERANK, EXACT, SCREEN, CALIB, NRCFG, LEVELS, TRACE).
+#     their flag is set (RERANK, EXACT, SCREEN, CALIB, NRCFG, LEVELS, TRACE, MATCHED).
 #
 # The seed list (ten seeds) comes from protocol.json; `--seeds 17 29 43` re-runs the
 # pre-registered three.
@@ -141,5 +141,16 @@ if [ "${TRACE:-0}" = 1 ]; then [ -d ../latency/trace_decisive ] || ../latency/ru
 # stored timings and the repeated runs.  reconcile.py applies it; nothing is timed, and it
 # refuses to overwrite its output.
 [ -f reconcile.json ] || python3 reconcile.py
+
+# The matched profiling study (rule R22): an image-only ViT-B/16 on the GPU, FP32 against the
+# FP16 build its pilot chose.  The pilot, the freeze of its choices into protocol.json and the
+# three sessions run only with MATCHED=1, on a quiet machine, and never twice; matched.py reads
+# the sessions whenever its output is missing.
+if [ "${MATCHED:-0}" = 1 ] && [ ! -d ../latency/profile_matched ]; then
+  ../latency/run_profile_matched.sh pilot
+  python3 matched.py --freeze
+  ../latency/run_profile_matched.sh main
+fi
+[ -f matched.json ] || python3 matched.py
 
 python3 make_manifest.py       # -> manifest.json: the datasets', models' and environment's hashes

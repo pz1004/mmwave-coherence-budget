@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """The exhaustive sweep's efficiency under the measurement of the aperiodic CSI-RS procedure of
-Section VI-A.  Declared in protocol.json (analysis 'csirs_margins_calib') before it ran; its lower
+Section VI-D.  Declared in protocol.json (analysis 'csirs_margins_calib') before it ran; its lower
 bound and R12's tests follow the amendment recorded there.
 
 The probe model.  sim.measure (G2) reports a codeword's band-averaged received power from a pilot

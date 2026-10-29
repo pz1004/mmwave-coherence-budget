@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""When the aperiodic CSI-RS procedure of Section VI-A delivers its reports, under both
+"""When the aperiodic CSI-RS procedure of Section VI-D delivers its reports, under both
 computation-time conditions of TS 38.214 5.4.  Declared in protocol.json (analysis 'levels');
 make_draft.py, figures_pdf.py and levels.py import it.
 

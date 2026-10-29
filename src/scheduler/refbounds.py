@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Nominal simultaneous lower bounds on the efficiencies of the fast fixed references the screen
-of Appendix A.1 uses, Top-8, Top-16, Top-32 and Hier-6.  Declared in protocol.json (analysis
+of Appendix B.1 uses, Top-8, Top-16, Top-32 and Hier-6.  Declared in protocol.json (analysis
 'csirs_cfg_refbounds') before it ran.
 
 The paper screens an untrained implementation against a fast reference j with the condition

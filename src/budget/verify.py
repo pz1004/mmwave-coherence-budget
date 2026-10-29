@@ -15,7 +15,7 @@ ATLAS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RES = {}
 
 # The idealised instance used for the structural claims and the myopic-rule
-# comparison.  Appendix A.4 of the paper states this counterexample explicitly,
+# comparison.  Appendix B.4 of the paper states this counterexample explicitly,
 # so the parameters are defined once here and recorded in verification.json
 # rather than retyped anywhere.
 INST_TAU = [13.75, 20.22, 27.14]   # cumulative us to exits 1..3
