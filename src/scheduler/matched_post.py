@@ -18,18 +18,20 @@ descriptive reading.  Per session read and build the script computes:
     form, (mean - eta d) / (1 - eta), where no call finishes before d and every call before it), the
     lowest eta_S that keeps the exclusion over the grid and the largest per-probe airtime at which
     it holds;
-  - the uniform scaling factor, at the adverse and at the measured inputs: the smallest a at which
-    psi(T; ., ., a) > 0 at some period of the grid, every timed call (copy, normalization, network,
-    argmax and return) divided by a; the period at which it turns; and, where every call divided
-    by a finishes by T_max and after d, the closed form mean / ((1 - eta) T_max + eta d): psi is
-    then zero up to d and convex beyond, so T_max turns first.  psi increases in a, so bisection
-    finds the factor;
-  - the factor at which R22's own procedure, applied to the D_i / a, first leaves 'excluded' at a
-    period at which the sweep delivers (its batch-means bound above zero there).  Its 'not
-    excluded' begins at the scaling factor, where psi itself turns positive.
+  - the uniform scaling factor, at the adverse and at the measured inputs: the critical factor, the
+    infimum of the a for which psi(T; ., ., a) > 0 at some period of the grid, every timed call
+    (copy, normalization, network, argmax and return) divided by a; the period at which it turns;
+    and, where every call divided by the critical factor finishes by T_max and after d, the closed
+    form mean / ((1 - eta) T_max + eta d): psi is then zero up to d and convex beyond, so T_max
+    turns first.  psi does not decrease in a, so every larger factor removes the exclusion and
+    bisection finds the critical factor;
+  - the infimum of the a for which R22's own procedure, applied to the D_i / a, does not read
+    'excluded' at some period at which the sweep delivers (its batch-means bound above zero
+    there).  Its 'not excluded' begins above the critical factor, where psi itself is positive.
 
-Every factor holds the regime, the reference and the other inputs fixed; at the factor itself psi
-is zero at the period that turns, so the exclusion still holds there, weakly.
+Every factor holds the regime, the reference and the other inputs fixed; at the critical factor
+itself psi is zero at the period that turns, so the exclusion still holds there, weakly.  The value
+recorded is the bisection's upper end, at which it no longer holds.
 
 Gates:
   G1_pins         matched.json and the session records are those protocol.json records (analysis
@@ -74,7 +76,9 @@ def bound(D, T, eta, d, b, tq, a=1.0):
 
 
 def first_turn(pred, hi=2.0):
-    """The smallest a >= 1 at which pred holds, pred false at 1 and monotone in a: bisection."""
+    """The infimum of the a >= 1 at which pred holds, pred false at 1 and monotone in a, by
+    bisection to float precision; the value returned is the bracket's upper end, at which pred
+    holds."""
     assert not pred(1.0)
     while not pred(hi):
         hi *= 2
@@ -120,7 +124,8 @@ def vii(D, grid, eta, d, proc):
 
 
 def scaling(D, grid, t_max, eta, d):
-    """The uniform scaling factor at which psi first turns positive on the grid."""
+    """The critical factor: the infimum of the uniform scaling factors a for which psi is positive
+    at some period of the grid."""
     a = first_turn(lambda a: max(psi(D, T, eta, d, a) for T in grid) > 0)
     at = max(grid, key=lambda T: psi(D, T, eta, d, a))
     within, after = float(D.max()) / a <= t_max, float(D.min()) / a > d
@@ -130,8 +135,8 @@ def scaling(D, grid, t_max, eta, d):
 
 
 def r22_leaves(D, grid, eta, d, b, tq):
-    """The factor at which R22's procedure, on the D_i / a, first leaves 'excluded' at a period at
-    which the sweep delivers, and G4's scan."""
+    """The infimum of the a for which R22's procedure, on the D_i / a, does not read 'excluded' at
+    some period at which the sweep delivers, and G4's scan."""
     contest = [T for T in grid if T > d]
     excluded = lambda a: all(bound(D, T, eta, d, b, tq, a) <= 0 for T in contest)
     a = first_turn(lambda a: not excluded(a))
