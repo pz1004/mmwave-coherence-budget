@@ -10,9 +10,10 @@ set's report, four resources after its trigger, is held by Z; the sweep's last r
 after, mostly by Z'.  The delays therefore differ, and this module computes both procedures'
 report times from the clauses read on 2026-10-18:
 
-  target carrier  120 kHz, 125 us slots of 14 symbols; one-port, one-symbol CSI-RS resources, n per
-                  slot in the slot's last n symbols (make_draft._nr_end), one aperiodic set per slot
-                  (5.2.1.5.1: one triggering offset per set)
+  target carrier  120 kHz, 125 us slots of 14 symbols; one-port, one-symbol CSI-RS resources, up to
+                  n per slot, a slot's m resources in its last m symbols, so a last set shorter
+                  than n ends with its slot, the sweep's later, in the candidate's favour; one
+                  aperiodic set per slot (5.2.1.5.1: one triggering offset per set)
   control carrier triggers and reports, at 120 or 30 kHz; a two-symbol PDCCH opens each triggering
                   slot; reports go on that carrier's uplink as two-symbol transmissions that do not
                   cross a slot boundary
@@ -42,7 +43,9 @@ the reduced set's report later than Z does, the sweep's being held later still b
 out can only make an exclusion harder.  Time-division duplexing's uplink slots and timing advance
 can delay either procedure's report; unshared_room gives the delay of the sweep's report that an
 exclusion tolerates.  With zprime_only and X = 0 the module is csirs.py's model (gate: it
-reproduces csirs.nr_threshold to 1e-12).
+reproduces csirs.nr_threshold to 1e-12), including that model's placement of a short last set at
+the start of the slot's last n symbols.  Until 2026-10-29 every mode placed it there, the sweep's
+last four resources (n = 12) in symbols 2-5 rather than 10-13, and its last report 71.4 us earlier.
 """
 import math
 
@@ -63,9 +66,12 @@ def slot_us(scs):
     return 1000.0 / (scs / 15)
 
 
-def res_end(j, n):
-    """End of resource j (0-based) from the start of the first CSI-RS slot, n per slot."""
-    return (j // n) * SLOT + (14 - n + j % n + 1) * SYM
+def res_end(j, n, total=N_BEAMS):
+    """End of resource j (0-based) from the start of the first CSI-RS slot, n per slot, a slot's m
+    resources in its last m symbols, m = n but for a last slot of total; total=None, csirs.py's
+    model, places every slot's resources as if it held n."""
+    m = n if total is None else min(n, total - (j // n) * n)
+    return (j // n) * SLOT + (14 - m + j % n + 1) * SYM
 
 
 def z_pair(ctrl, x, kb):
@@ -120,7 +126,8 @@ def sweep_reports(n, ctrl, x, kb, zprime_only=False):
             continue
         # a set at its slot offset from the trigger, never before the trigger's own first CSI-RS slot
         assert s0 + sets[0] * SLOT >= tr + first_csirs(ctrl) - 1e-9, (n, ctrl)
-        last = s0 + res_end(min(N_BEAMS, (sets[-1] + 1) * n) - 1, n)
+        last = s0 + res_end(min(N_BEAMS, (sets[-1] + 1) * n) - 1, n,
+                            None if zprime_only else N_BEAMS)
         t = _report(tr, last, ctrl, x, kb, zprime_only)
         if out and _slot(t, ctrl) <= _slot(out[-1], ctrl):
             t = (_slot(out[-1], ctrl) + 1) * slot_us(ctrl)

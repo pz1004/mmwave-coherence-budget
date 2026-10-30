@@ -17,6 +17,8 @@ the amendment recorded there.
 2. R12 at the corrected thresholds.  nrtime.py gives the CSI-RS threshold of ResNet-18 on the GPU
    under both computation-time conditions of TS 38.214 5.4, at the declarable UE timing most
    favourable to it, for a 120 kHz or a 30 kHz control carrier and 12 or 8 resources per slot.
+   With 12 per slot the sweep's short last set ends with its slot (nrtime.py, from 2026-10-29),
+   which raises the 120 kHz threshold from the declared 0.9393 to 0.9467 and leaves the others.
    R12's test (csirs.at_threshold, on its stream '|thr') runs at each, for csirs.py's exact comparison
    and the configured variants of the same resources per slot, with Holm across the seven scenarios
    as csirs.py reads it.
@@ -67,8 +69,9 @@ WINDOW = 1.0
 VAR12 = csirs_cfg.VARIANTS                       # 'spread|worst', 'contiguous|worst'
 VAR8 = ('spread8|worst', 'contiguous8|worst')
 SETS8 = (8,) * 8
-# the corrected thresholds as declared (nrtime.worst at ResNet-18's fastest GPU latency)
-DECLARED = {'120k12': 0.9393066873786408, '30k12': 0.9480869285714285,
+# the corrected thresholds as declared (nrtime.worst at ResNet-18's fastest GPU latency); 120k12
+# since 2026-10-29, when nrtime.py's short last set came to end with its slot (declared 0.9393066873786408)
+DECLARED = {'120k12': 0.9466593816046966, '30k12': 0.9480869285714285,
             '120k8': 0.97332584305835, '30k8': 0.9740620829493087}
 THR_SOURCES = {'zp': ('exact',) + VAR12, '120k12': ('exact',) + VAR12, '30k12': ('exact',) + VAR12,
                '120k8': ('exact',) + VAR8, '30k8': ('exact',) + VAR8}
