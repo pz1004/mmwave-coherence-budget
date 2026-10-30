@@ -158,4 +158,14 @@ fi
 # times nothing and refuses to overwrite its output.
 [ -f matched_post.json ] || python3 matched_post.py
 
+# The cadence study (rule R24): the matched study's two builds at three invocation spacings,
+# 18 sessions in an order cadence.py --freeze fixed before the first ran.  They run only with
+# CADENCE=1, on a quiet machine, and never twice; cadence.py reads them whenever its output is
+# missing.
+if [ "${CADENCE:-0}" = 1 ] && [ ! -d ../latency/profile_cadence ]; then
+  python3 cadence.py --freeze
+  ../latency/run_profile_cadence.sh main
+fi
+[ -f cadence.json ] || python3 cadence.py
+
 python3 make_manifest.py       # -> manifest.json: the datasets', models' and environment's hashes

@@ -22,22 +22,20 @@ the measurement-only curves do not move.*
 ## Abstract
 
 Learned beam predictors outperform the exhaustive millimeter-wave beam sweep only by finishing
-sooner or selecting better beams. With accuracy unknown before training, we seek an
-accuracy-independent test.
-Counting inference latency as cold-start beam-training overhead, we derive an exclusion condition
-from a narrow-beam predictor's completion time, a lower bound on sweep efficiency
-and a maximum period. If it holds, the predictor cannot outperform the sweep at any period up to
-that maximum, even with perfect selection. We apply it to eight ray-traced scenarios with
-20-microsecond probes of 64 beams, at 95th-percentile latencies of single-precision
-inference. It excludes two vision-model implementations finishing within the 10-millisecond
-maximum: an 18-layer residual network on eight threads and a base-size vision
-transformer on the graphics processor. Both are excluded above 62% sweep efficiency, also at
-adverse inputs; five others exceed the maximum at that percentile and one is unresolved. In an illustrative
-image-only study under sustained load, the transformer's optimized half-precision build, three
-times faster, stays excluded in expected rate for recorded latencies. Latency changes the best
-method in point estimate at 10 of 72 scenario-period pairs, none statistically established. A
-case-study controller scheduling inference misses its pre-registered criterion. Designers can
-screen predictor-processor pairs before training.
+sooner or selecting better beams, and their accuracy is unknown before training. Counting inference
+latency as cold-start beam-training overhead, we derive an accuracy-independent exclusion condition
+from a narrow-beam predictor's completion time, a lower bound on sweep efficiency and a maximum
+period. If it holds, even a perfect predictor cannot outperform the sweep at any period up to that
+maximum. We apply it to eight ray-traced scenarios with 20-microsecond probes of 64 beams, at
+95th-percentile single-precision latencies from one desktop. It excludes two vision-model
+implementations finishing
+within the 10-millisecond maximum: an 18-layer residual network on eight threads and a base-size
+vision transformer on the graphics processor. Both are excluded above 62% sweep efficiency, also
+at adverse inputs; five others exceed the maximum at that percentile and one is unresolved. In an
+illustrative image-only study, the transformer's optimized half-precision build stays excluded in
+expected rate for recorded latencies at call spacings of 0, 10 and 50 milliseconds. Latency changes the best method in point estimate at 10 of 72 scenario-period pairs,
+none statistically established. A case-study controller scheduling inference misses its
+prespecified criterion. Designers can screen predictor-processor pairs before training.
 
 ## Repository layout
 
@@ -45,7 +43,7 @@ screen predictor-processor pairs before training.
 src/
   sites/       DeepMIMO acquisition and outcome-blind scenario qualification (stage 1)
   latency/     predictor latency atlas across four hardware profiles (stage 2), and the
-               matched profiling study of an optimized build (stage 4)
+               matched profiling study of an optimized build and its cadence study (stage 4)
   budget/      accuracy-free compute budget, the T* crossover, the DP reference (stage 3)
   scheduler/   observation law, codebook, comparators, the scheduled controller, the
                analyses, and the protocol record protocol.json (stage 4)
@@ -131,7 +129,7 @@ The measurement model and the six-layer hierarchical codebook are frozen in
   number seen (its fields hash to `self_sha256`);
 - its three amendments, A1–A3;
 - the changes made after results existed, each dated, with its reason;
-- the interpretation rules R1–R23, which state what each result permits the paper to claim,
+- the interpretation rules R1–R24, which state what each result permits the paper to claim,
   each with the date it was set and whether it was set after the results it reads;
 - the later analyses, each declared before it ran, with its scripts, its rules and the
   hashes of the stored files it wrote.
@@ -150,12 +148,13 @@ Result files in `src/scheduler/` are named after the run that wrote them:
 |---|---|
 | `validation`, `results`, `heldout` | the validation scenario, the two test scenarios and the four held-out scenarios, ten seeds |
 | `report` | the variant selection and the comparisons computed from those runs (`analyze.py`) |
-| `*_3seed` | the pre-registered three-seed analysis (seeds 17, 29, 43) |
+| `*_3seed` | the prespecified three-seed analysis (seeds 17, 29, 43) |
 | no suffix, `_rr`, `_rx` | the controller results in three versions: as recorded, without the time of choosing the next codeword after an inference call (a masked argmax, 1.06 μs); re-solved with that time counted on every probe of a sequence that invokes the predictor (`rerank.py`); and re-solved with it counted only after the first inference call, whose probe count enters the controller's state (`exact.py`). The paper reports the third |
 | `sweep*_rho*`, `sweep*_tp*`, `sweep*_oq*` | the sensitivity runs: hardware ratio ρ, probe airtime, predictor quality q |
 | `lat_*.json`, `../latency/p_*.json`, `o_*.json`, `o2_*.json` | the timings: the controller's charges and the latency atlas's profiles and compiled runtimes |
 | `matched` | the matched profiling study read by rule R22 (`matched.py`): an image-only ViT-B/16 on the GPU, FP32 against one FP16 build, in expected effective rate; its pilot and three sessions, every call kept, are in `../latency/profile_matched/` |
 | `matched_post` | rule R23, set after the matched study's outputs (`matched_post.py`): its readings restated as exact for each session's recorded calls, with calculations on those records that R22 did not name or named only pooled, each with the other inputs held fixed: per-session horizons, efficiencies and airtimes, the factor by which every completion time must be divided to remove the exclusion, at adverse and measured inputs, and the factor at which R22's own procedure stops reading an exclusion |
+| `cadence` | the cadence study read by rule R24 (`cadence.py`): the matched study's two builds at three invocation spacings (back to back, and starts at least 10 and 50 ms apart), three sessions each in an order frozen before the first ran, every call kept, read in expected effective rate for each session's recorded calls; the sessions are in `../latency/profile_cadence/` |
 | `manifest.json` | hashes of the datasets and model checkpoints, which are regenerated, not tracked |
 
 ## Citation

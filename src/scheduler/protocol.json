@@ -1,5 +1,5 @@
 {
- "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R23, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
+ "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R24, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
  "amendments": [
   {
    "changes": "predictor.input",
@@ -703,6 +703,258 @@
    },
    "state": "declared before it ran; rule R23 was set after the matched study's outputs and a review had been seen, and the closed-form scaling factors had been computed while planning it; after a further review, rule R23's text and the script's docstrings were reworded to define the factors as infima, and the script was re-run on 2026-10-29, reproducing every value of matched_post.json but the script's own hash",
    "title": "the matched study's readings restated, with per-session and scaling calculations"
+  },
+  {
+   "analyses": {
+    "cadence": "Timeline, timed call, network, weights, frames and execution checks: analysis 'matched'.  Builds: fp32 (eager FP32) and fp16_graph (the timed path captured in one CUDA graph, R22's optimized build).  Spacings: 0 (back to back), 10 ms and 50 ms between the starts of successive calls, the process sleeping until the next start is due.  Session: one process, one build and one spacing, under taskset -c 0-15 with one CPU thread, one inter-op thread and cudnn.benchmark on, at default clocks; the quiet check of trace_decisive.py; loading, the build and one call; 60 s idle; 60 s of warm-up and a 120 s window in one paced schedule, every call's start and end kept (time.perf_counter_ns); the execution checks on 256 further frames.  Logging: nvidia-smi every second in a process pinned to CPUs 16-31, the machine's state and the GPU's compute processes before the warm-up and after the window.  Order: 18 sessions in three blocks of the six conditions, frozen by cadence.py --freeze with the scripts' sha256, the software versions and weights of the matched study's sessions, and the reference inputs.  Budget: 18 sessions of 240 s of fixed phases each, 72 min, plus loading and quiet checks"
+   },
+   "criteria": {
+    "cadence": "before timing: the frozen record exists and profile_cadence.py's sha256 equals its value; models.py's sha256 equals trace_decisive.py's source value; the affinity is CPUs 0-15 and OMP, OpenBLAS and MKL threads are 1; CUDA is available on the Quadro RTX 8000; torch, torchvision, triton, CUDA, cuDNN, the driver, Python and numpy equal the frozen versions, those of the matched study's sessions; the output does not exist.  Before the session's timing: the build's weights hash equals the frozen value and the timed path returns a Python int in [0, 64).  After timing: the window and the warm-up hold calls, every call ends after it starts, the execution checks pass, and the output still does not exist (no overwrite).  cadence.py: its psi reproduces matched.json's psi_adv for R22's six session-build records to 1e-9; every session read ran under the frozen record and the frozen script"
+   },
+   "declared": "2026-10-30",
+   "description": "a timing campaign declared before it runs (src/latency/profile_cadence.py, driven by run_profile_cadence.sh), its session order (cadence.py --freeze) and the reading rule R24 (cadence.py).  It asks whether the screening verdict of the matched study's two builds changes when the same desktop invokes inference at another spacing.  Nothing is retrained or re-solved; no stored timing, output or verdict changes; the outputs are new",
+   "files_sha256": {
+    "../latency/profile_cadence/c01.json": "c98eb0626f90b050e847580cd479dd12f9bb0a0f4613c477de5e0ea159466f3a",
+    "../latency/profile_cadence/c01.npz": "8fb0d56e735700173574e385f70936640dbb85ceb19261240a0bf589e34e8987",
+    "../latency/profile_cadence/c01_gpu.csv": "2a0e969f225ba6e95797098999445bc1fde79d5f486b2722d6b14eabe875adb2",
+    "../latency/profile_cadence/c02.json": "f9a280d7894c61631949a64a71d9ad38245814b5247e0d021655caa356e2d74f",
+    "../latency/profile_cadence/c02.npz": "1efba9411f6c68046f57a4d21a2c740585658d9fb63494a8d2cb35e28ac1ec45",
+    "../latency/profile_cadence/c02_gpu.csv": "135ecbf9e4978692d870f7231f4fd08388807ee4b37e41c6f4c200a8bb524982",
+    "../latency/profile_cadence/c03.json": "55be5ba7544dc2106d844405b490739b3adc854d42481e29b15d44cac167c48c",
+    "../latency/profile_cadence/c03.npz": "622217fc7e408ea35fd5d8bc8df5026905e86be691fc3a7c468ab15a23a84519",
+    "../latency/profile_cadence/c03_gpu.csv": "fa8123cddc2bf58f8f50716699881675ebb51331db8efdcfed6105883fb052ae",
+    "../latency/profile_cadence/c04.json": "4706c341036c330367dd227c8f46bbbad8357b72a33d8431abee964aad093ce5",
+    "../latency/profile_cadence/c04.npz": "ae2a3e7f85723b08fba6d0b42c441987c897258126e18f27a8ab2202744ec86b",
+    "../latency/profile_cadence/c04_gpu.csv": "da6e2fb04f3b744b16675f445dd00e203da984b54b53b92c1aff1b2148a127a7",
+    "../latency/profile_cadence/c05.json": "ad0a18a547843e7c12fdecd7759de6ca683096018706c860ce5f86ef9ec19f65",
+    "../latency/profile_cadence/c05.npz": "e15308b44d992274c8abbbf9c196133c09c84f0a0fd5cb8d91b672b63a019fca",
+    "../latency/profile_cadence/c05_gpu.csv": "39f02984b6cc7582f2fcc67c9481c8d4f7455a24cfa67f713045a6700491c0bd",
+    "../latency/profile_cadence/c06.json": "ba5b8e500c3c0bbc8721f1dd4466cee91e4582d87867fc464466c1ce17766839",
+    "../latency/profile_cadence/c06.npz": "4fa5cd33304f511d615fc600fb29bf105da386e19a3008253cec139d6b34f78f",
+    "../latency/profile_cadence/c06_gpu.csv": "615b9ae164d16307208c8a13cbe5142cee6d20d6c9ddcbcc02651471ffb8707f",
+    "../latency/profile_cadence/c07.json": "ee31466f808b51b4aca535071d24a1ae10784d2218797f8a21b94d1f59da436a",
+    "../latency/profile_cadence/c07.npz": "ef3b3df547f8537ef5a07fd7b7fa7cacb6de89440cd3dd891ee00abf160ec500",
+    "../latency/profile_cadence/c07_gpu.csv": "bf2a1405a59babc55a0c58a056b8ac68bbefe0b445cdf34108aca58933c93127",
+    "../latency/profile_cadence/c08.json": "94bc4f69d62879290f6e40ea268c0362e66c2c66e76db0c33ddd33f91265ad75",
+    "../latency/profile_cadence/c08.npz": "a2ef8b53d2ed862b3c2008311f4e905b5d8c8de57d7f86515d330fcaa3c06e34",
+    "../latency/profile_cadence/c08_gpu.csv": "dc65c7bfc30024db85d49d8f2551f68cbe2c3eea76168d0b51d8b5c7081e01fb",
+    "../latency/profile_cadence/c09.json": "004d74e3e3ed5322612910bbc82906250fbe94c7f2b6e93346c4b43d8f1e4593",
+    "../latency/profile_cadence/c09.npz": "a801754816b1a1a658599b74a421ffcd7c1cbad2941439b5fd02bab3d03a5431",
+    "../latency/profile_cadence/c09_gpu.csv": "ce5f969a3dd6cd370526f3e688e669ebc9f3599f74c05a031c6c928435954d8b",
+    "../latency/profile_cadence/c10.json": "ddc683623d0817dbac22365a65138494a6fbf4b8b342cf9bdc7d7486853e3ec3",
+    "../latency/profile_cadence/c10.npz": "39ac1f8be28e3373b47a4bca12fcf2a9e79f256843ede01e72841ce51e06b3cd",
+    "../latency/profile_cadence/c10_gpu.csv": "751f8a59ed8d0364174f24675a32a12e30474a3007c6b26c767d8eb8c910322e",
+    "../latency/profile_cadence/c11.json": "102df66f5ac1d8bf7455cbfc372e982f95c39ab3f42e970c57ef6956d9744310",
+    "../latency/profile_cadence/c11.npz": "62a90c1626e43ece977379623043c085dd6c74f10bf11d41a2f339b2f0578c4d",
+    "../latency/profile_cadence/c11_gpu.csv": "9240e857bed893f83958b55a851eaf075915fed65df6788133e8fe81c3ec4d9e",
+    "../latency/profile_cadence/c12.json": "c3da8e4ff9dc5c6c176c1bc5f2142f9880f476545a8100e03c7c956e744c7832",
+    "../latency/profile_cadence/c12.npz": "7423a6a8f48ce49bda6a5d1c4182b5ffc0daca7b8c041c7b21136ba37ef25215",
+    "../latency/profile_cadence/c12_gpu.csv": "6049a3e642fa84f85d44d01aafe9a9955ce85f1a65b1668cad52725033b38eeb",
+    "../latency/profile_cadence/c13.json": "a851bf5c941ed11c147e0338b6d5a381809a60035516e8a81c0d7b1fccb3c5ad",
+    "../latency/profile_cadence/c13.npz": "985996b246d2bd1bda8681a8aedac2f002de0c9484a6d34baabf04686c735053",
+    "../latency/profile_cadence/c13_gpu.csv": "2088986d49c39d50a8ba99496294f0d46650216d4f987943a8ebb60f731bf7cf",
+    "../latency/profile_cadence/c14.json": "3ab647832c26cb384a2b073d93e6c2f4496da77bd58fd13135011c2428109d41",
+    "../latency/profile_cadence/c14.npz": "5ebc2578c7c658d4bbc3fcd5b28bb225bc3ad957018e91194c5726830385dc40",
+    "../latency/profile_cadence/c14_gpu.csv": "d90ace4be7d4d2beeee8296b4e10ad671a65b5fbe2850216d13e1fc1ed3ad259",
+    "../latency/profile_cadence/c15.json": "773b41ecb793884b2eb8dc564fafdff47749cbca72a5cd202b289b6a8457817a",
+    "../latency/profile_cadence/c15.npz": "257169174c0a87912dd1e33bc2bc4cfddda81e0785e0f4cca555951a2bc321c3",
+    "../latency/profile_cadence/c15_gpu.csv": "b3a7a37becf13a9fc48c45e0c96c9a16f316577fb59ca2ae547c91af17bdad17",
+    "../latency/profile_cadence/c16.json": "6c8a1320c7f364d6613865c3247d0a93db07944c2528d6aa8d3e4cdb0af8c86e",
+    "../latency/profile_cadence/c16.npz": "abebc1aff2697c135c70376dd03061959b22de36a23196b3202e84992dd99f88",
+    "../latency/profile_cadence/c16_gpu.csv": "a4f48bf50acf7717997b0366bcb222652d4f2761aa8dfba4565ce4e36830b153",
+    "../latency/profile_cadence/c17.json": "9fd0ec2dc8b07e13aef01a9b839ee1c701e1952df9e922d4c649dc1f601b051e",
+    "../latency/profile_cadence/c17.npz": "764ff6a6cf2685b4686a650757180d581e52d018471c207c24ab53578cbea635",
+    "../latency/profile_cadence/c17_gpu.csv": "849a9aa5941e94fadff314db4561db92c58f3c44893d2d1279d49185a9b5c879",
+    "../latency/profile_cadence/c18.json": "f0de52b0a13a8df6e8146c278d27b8a0cc39c75d63dbb050accb24e9cf8a3743",
+    "../latency/profile_cadence/c18.npz": "c397bd3fd51b26bcf6d583e9d45a94c1bc56e9ce17b58f045b379c2f497ccfee",
+    "../latency/profile_cadence/c18_gpu.csv": "31ef636c435f8a4d752816ef44cd05ba234d0f99b6c958d93bfb170402968133",
+    "cadence.json": "350cf2c43d9cd66b15b6bfaa0fa1958499e3e0b70fc13d749561ac2757f04159"
+   },
+   "frozen": {
+    "builds": [
+     "fp32",
+     "fp16_graph"
+    ],
+    "grid_us": [
+     250.0,
+     350.0,
+     500.0,
+     700.0,
+     1000.0,
+     1400.0,
+     2000.0,
+     2800.0,
+     4000.0,
+     5600.0,
+     8000.0,
+     10000.0
+    ],
+    "order": [
+     {
+      "block": 1,
+      "build": "fp32",
+      "slot": 1,
+      "spacing_ms": 10
+     },
+     {
+      "block": 1,
+      "build": "fp32",
+      "slot": 2,
+      "spacing_ms": 0
+     },
+     {
+      "block": 1,
+      "build": "fp16_graph",
+      "slot": 3,
+      "spacing_ms": 50
+     },
+     {
+      "block": 1,
+      "build": "fp32",
+      "slot": 4,
+      "spacing_ms": 50
+     },
+     {
+      "block": 1,
+      "build": "fp16_graph",
+      "slot": 5,
+      "spacing_ms": 0
+     },
+     {
+      "block": 1,
+      "build": "fp16_graph",
+      "slot": 6,
+      "spacing_ms": 10
+     },
+     {
+      "block": 2,
+      "build": "fp32",
+      "slot": 7,
+      "spacing_ms": 50
+     },
+     {
+      "block": 2,
+      "build": "fp32",
+      "slot": 8,
+      "spacing_ms": 0
+     },
+     {
+      "block": 2,
+      "build": "fp32",
+      "slot": 9,
+      "spacing_ms": 10
+     },
+     {
+      "block": 2,
+      "build": "fp16_graph",
+      "slot": 10,
+      "spacing_ms": 50
+     },
+     {
+      "block": 2,
+      "build": "fp16_graph",
+      "slot": 11,
+      "spacing_ms": 0
+     },
+     {
+      "block": 2,
+      "build": "fp16_graph",
+      "slot": 12,
+      "spacing_ms": 10
+     },
+     {
+      "block": 3,
+      "build": "fp32",
+      "slot": 13,
+      "spacing_ms": 0
+     },
+     {
+      "block": 3,
+      "build": "fp32",
+      "slot": 14,
+      "spacing_ms": 50
+     },
+     {
+      "block": 3,
+      "build": "fp32",
+      "slot": 15,
+      "spacing_ms": 10
+     },
+     {
+      "block": 3,
+      "build": "fp16_graph",
+      "slot": 16,
+      "spacing_ms": 50
+     },
+     {
+      "block": 3,
+      "build": "fp16_graph",
+      "slot": 17,
+      "spacing_ms": 0
+     },
+     {
+      "block": 3,
+      "build": "fp16_graph",
+      "slot": 18,
+      "spacing_ms": 10
+     }
+    ],
+    "order_rule": "three blocks; block k is the six conditions [(b, ms) for b in ('fp32', 'fp16_graph') for ms in (0, 10, 50)] permuted by numpy.random.default_rng(evaluate.stable_seed('cadence', k)).permutation(6)",
+    "phases_s": {
+     "idle": 60,
+     "warmup": 60,
+     "window": 120
+    },
+    "reference": {
+     "d_S_hi_us": 1341.824,
+     "d_S_measured_us": 1301.824,
+     "eta_lo": 0.972181695575957,
+     "eta_measured": 0.9993
+    },
+    "scripts_sha256": {
+     "../latency/profile_cadence.py": "d18052225407cc48946e9d088829fe8bd7f6f85d108a4ffbe7fae9f077469409",
+     "../latency/run_profile_cadence.sh": "b68c6c76552705be6e5fb5418b11764c289ef544bd2bde45802d97a888c16046",
+     "cadence.py": "ae0e28399374e37b72fe297270cdf278fcb247af14c17d61cb1f0c22374fe393"
+    },
+    "software": {
+     "cuda": "13.0",
+     "cudnn": 92000,
+     "driver": "580.178.04",
+     "numpy": "2.5.3",
+     "python": "3.13.12",
+     "torch": "2.12.0+cu130",
+     "torchvision": "0.27.0+cu130",
+     "triton": "3.7.0"
+    },
+    "software_source": "../latency/profile_matched/s1.json",
+    "spacings_ms": [
+     0,
+     10,
+     50
+    ],
+    "utc": "2026-10-29T15:17:06Z",
+    "weights_sha256": {
+     "fp16_graph": "d7c4121b169338a5c7207fe1d05edc1fa9883faa42c005e2003511ddb842bdd2",
+     "fp32": "edf69f72f2823e47587f16b4a5396611d8d544d8d7b13bb190f91760e7f8d930"
+    }
+   },
+   "key": "cadence",
+   "rules": [
+    "R24"
+   ],
+   "scripts": [
+    "../latency/profile_cadence.py",
+    "../latency/run_profile_cadence.sh",
+    "cadence.py"
+   ],
+   "scripts_sha256": {
+    "../latency/profile_cadence.py": "d18052225407cc48946e9d088829fe8bd7f6f85d108a4ffbe7fae9f077469409",
+    "../latency/run_profile_cadence.sh": "b68c6c76552705be6e5fb5418b11764c289ef544bd2bde45802d97a888c16046",
+    "cadence.py": "ae0e28399374e37b72fe297270cdf278fcb247af14c17d61cb1f0c22374fe393"
+   },
+   "state": "declared before it ran; none of its outputs existed; a smoke test of a few seconds per build and spacing, on a cool GPU, had run to check the scripts, its output discarded and its timings seen; ran: 18 of 18 sessions read, 18 attempts, none replaced",
+   "title": "cadence study: the matched study's two builds of an image-only ViT-B/16 on the GPU at three invocation spacings, read in expected effective rate",
+   "use_case": "analysis 'matched''s: illustrative image-only beam prediction from a base-station camera, the frame assumed present in pinned host memory at the trigger and the host index taken as the decision.  The spacing between calls is a profiling condition of the inference service, not a property of the radio procedure"
   }
  ],
  "changes": [
@@ -1027,6 +1279,13 @@
    "set": "2026-10-29",
    "text": "(i) For each session rule R22 read and each build, psi_adv(T) is Proposition 1(d)'s psi for a perfect predictor under the empirical distribution that gives each of the session's 10,000 timed calls probability 1/10,000, at the adverse inputs of R22 (iv): its sign decides the modeled comparison exactly for that distribution, conditional on the reference inputs and the model, and says nothing about future executions, another request cadence or another regime.  (ii) R22's classifications, its outcome and its secondary results are reported as R22 computed them, as the outputs of its prespecified procedure: the pilot met R22 (ii)'s dependence criterion at no batch size in every window, so the fallback of 1,000-call batches, ten per session and build, applies, and the batch-means bounds are nominal, their coverage for future executions under the observed dependence and possible drift not demonstrated; neither meeting nor missing that criterion would show coverage.  No reading is called established (R22 (viii)).  (iii) Calculations on the recorded completion times, added after R22's outputs had been seen and made by matched_post.py, each with the regime, the reference and the other inputs held fixed: R22 (vii)'s horizon, lowest eta_S and largest per-probe airtime for each session read (R22 (vii) makes them on the pooled record, which matched_post.py must reproduce); the uniform scaling factor, at the adverse and at the measured inputs: the critical factor, the infimum of the a for which mean_i (T - D_i / a)^+ - eta (T - d)^+ is positive at a period of the grid, with the period at which it turns; and the infimum of the a for which R22's procedure applied to the D_i / a does not read 'excluded' at some period at which the sweep delivers.  A factor divides the whole timed call, not the network alone, and is a hypothetical uniform scaling, not a measured build; the expression does not decrease in a, so every larger factor removes the exclusion, while at the critical factor itself the exclusion still holds, weakly, so the paper prints factors rounded up.  The paper states a calculation for each session or, as the change that removes the exclusion in every session, the largest over the sessions read; removing an exclusion makes a build a candidate for an accuracy evaluation, not a competitive one; a longer airtime may change the measurements, a longer period the duty cycle, and a lower efficiency input does not show a lower efficiency.  (iv) R23 is post hoc: it was set after the matched study's outputs and a review of the paper had been seen, the closed-form scaling factors having been computed while planning it, and its definitions of the factors were reworded as infima after a further review, no value changing; it changes no output, classification or outcome of R22",
    "when": "set after the matched study's outputs and a review had been seen; it changes no output of R22"
+  },
+  "R24": {
+   "note": "set before any session of the cadence study ran, after the matched study's outputs (R22, R23), two reviews of the paper and a reviewer's revision plan had been seen; a smoke test of a few seconds per build and spacing on a cool GPU had checked the scripts, its output discarded and its timings seen",
+   "post_hoc": false,
+   "set": "2026-10-30",
+   "text": "(i) The cadence study (analysis 'cadence') is an addendum to the matched study, designed after the outputs of R22 and R23 had been seen and fixed before any of its sessions ran.  It is an implementation-sensitivity illustration on the same desktop: R22 (i)'s workload, timed call, network, weights, frames, threads and pinning, with eager FP32 and the FP16 build in one CUDA graph that R22's pilot chose.  It replaces no output of R22 or R23, changes none of the screen's inputs (the screen's table, rule R5's verdicts and every margin keep theirs) and is not carried to the four-probe implementations.  (ii) Design: the two builds at three invocation spacings Delta, back to back (Delta = 0) and a minimum start-to-start spacing of 10 ms and of 50 ms, three sessions each, 18 sessions, one process each, in the frozen order: three blocks, each a permutation of the six build-spacing conditions drawn by numpy's default_rng(evaluate.stable_seed('cadence', block)).  Per session: R22's quiet check; loading and the build, graph capture included, untimed; one call; 60 s idle; then one paced schedule, 60 s of warm-up followed by a 120 s window, every call kept; then R22 (ii)'s execution checks.  Call i + 1 starts no earlier than max(s_i + Delta, e_i), s_i and e_i the start and end of call i, the process sleeping until then: no calls overlap, no queue accumulates, the wait is not part of a call's completion time, an overrun starts the next call at once and is recorded, and each call's actual start is kept.  A call belongs to the phase in which it starts.  Delta is a controlled profiling condition: it is not derived from the acquisition period T, it models neither request traffic nor a service-rate guarantee, and every session is read on the same grid of T.  (iii) Telemetry as R22: nvidia-smi every second (utilization of the GPU, memory and encoder, clocks, temperature, power, performance state, clock-event reasons, encoder sessions and frame rate), and the machine's state and the GPU's compute processes before the warm-up and after the window.  (iv) Stop rule: the 18 sessions, then stop.  A session is replaced, once, as attempt 2, only after an objective execution failure: a crash or CUDA error, failed execution checks or a missing timing record; the failed attempt is kept and reported.  A changed verdict, a high temperature, a clock reduction, a slow session, encoder activity or a new GPU process is a result, not a reason to repeat or set aside a session.  A session the quiet check never starts has timed nothing and runs once the machine is quiet.  (v) Reading (cadence.py), per session: psi(T) = mean_i (T - D_i)^+ - eta_lo (T - d_S_hi)^+ over the window's completion times D_i (K = 0, no probe time added), at R22 (iv)'s adverse inputs as matched.json records them (eta_lo = 0.972181695575957, d_S_hi = 1341.824 us), on the protocol's 12-period grid, T_max = 10 ms.  At T the build is excluded if psi(T) <= 0 and not excluded if psi(T) > 0, which leaves its accuracy and competitiveness unknown; periods at or below d_S_hi, where the sweep delivers nothing, are marked, and among them those at or below the session's fastest call, where neither delivers anything.  If the session's fastest call is at least d_S_hi and psi(T_max) <= 0, Proposition 1(d) excludes the build at every T up to T_max for that session's empirical distribution; otherwise the readings stay pointwise.  Also per session: psi(T_max), the fastest call and the share of calls finishing before d_S_hi.  (vi) Interpretation, per build and spacing over its sessions, without a majority vote: excluded at every period in every session; not excluded at some period in every session; or the sessions differ, a sensitivity to the recorded execution conditions.  Per build over the spacings: the exclusion persists across the tested spacings if every session of every spacing is excluded at every period; it depends on the spacing if the sessions of one spacing are all excluded at every period and those of another all not excluded at some period; otherwise the verdict varies with the sessions.  A session not excluded at a period identifies the build at that spacing as needing an accuracy evaluation there; little change across the spacings is reported as limited sensitivity.  The readings are exact for each session's recorded distribution, conditional on the reference inputs and the model, descriptive across sessions, and make no claim on future executions; none is given a nominal confidence or called established, and no session is chosen as representative.  (vii) Descriptive, per session: the number of calls; the mean, median, 95th percentile, minimum and maximum completion time; the share of calls longer than Delta; the start-to-start intervals; the twelve 10 s means over the window and the change from its first to its last 30 s; the temperature, clock, power, performance-state and encoder readings over the window and the temperature at the warm-up's start; secondary, the reading at the measured inputs (eta 0.9993, d_S 1301.824 us) as matched.json records them.  (viii) The paper states the result with its regime (serialized calls at the three spacings on this desktop), workload (as R22 (viii)) and status (an addendum designed after the earlier results and fixed before its measurements), keeps a measured change of spacing apart from R23's hypothetical scaling, and calls no reading established",
+   "when": "set after the matched study's outputs and before any cadence session ran"
   },
   "R3": {
    "post_hoc": false,
