@@ -168,4 +168,9 @@ if [ "${CADENCE:-0}" = 1 ] && [ ! -d ../latency/profile_cadence ]; then
 fi
 [ -f cadence.json ] || python3 cadence.py
 
+# Rule R25: the calibration audit of the sweep-efficiency bound, by repeated sampling of spatial
+# blocks from the six evaluation scenarios.  calib_audit.py re-simulates the sweep's selections on
+# the GPU, times nothing and refuses to overwrite its output.
+[ -f calib_audit.json ] || python3 calib_audit.py
+
 python3 make_manifest.py       # -> manifest.json: the datasets', models' and environment's hashes

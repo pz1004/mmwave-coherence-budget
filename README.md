@@ -129,7 +129,7 @@ The measurement model and the six-layer hierarchical codebook are frozen in
   number seen (its fields hash to `self_sha256`);
 - its three amendments, A1–A3;
 - the changes made after results existed, each dated, with its reason;
-- the interpretation rules R1–R24, which state what each result permits the paper to claim,
+- the interpretation rules R1–R25, which state what each result permits the paper to claim,
   each with the date it was set and whether it was set after the results it reads;
 - the later analyses, each declared before it ran, with its scripts, its rules and the
   hashes of the stored files it wrote.
@@ -155,6 +155,7 @@ Result files in `src/scheduler/` are named after the run that wrote them:
 | `matched` | the matched profiling study read by rule R22 (`matched.py`): an image-only ViT-B/16 on the GPU, FP32 against one FP16 build, in expected effective rate; its pilot and three sessions, every call kept, are in `../latency/profile_matched/` |
 | `matched_post` | rule R23, set after the matched study's outputs (`matched_post.py`): its readings restated as exact for each session's recorded calls, with calculations on those records that R22 did not name or named only pooled, each with the other inputs held fixed: per-session horizons, efficiencies and airtimes, the factor by which every completion time must be divided to remove the exclusion, at adverse and measured inputs, and the factor at which R22's own procedure stops reading an exclusion |
 | `cadence` | the cadence study read by rule R24 (`cadence.py`): the matched study's two builds at three invocation spacings (back to back, and starts at least 10 and 50 ms apart), three sessions each in an order frozen before the first ran, every call kept, read in expected effective rate for each session's recorded calls; the sessions are in `../latency/profile_cadence/` |
+| `calib_audit` | the calibration audit of rule R25 (`calib_audit.py`): the sweep-efficiency bound's procedure applied to 200 samples of 4, 8 and 12 spatial blocks from each evaluation scenario, its coverage of the population's efficiency and how often it keeps four exclusions |
 | `manifest.json` | hashes of the datasets and model checkpoints, which are regenerated, not tracked |
 
 ## Citation
