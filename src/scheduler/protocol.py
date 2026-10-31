@@ -58,7 +58,7 @@ def seeds():
 
 def seed_arg(argv=None):
     """`--seeds 17 29 43` on the command line overrides the protocol's list.
-    Used to re-run the pre-registered three-seed analysis."""
+    Used to re-run the prespecified three-seed analysis."""
     argv = sys.argv if argv is None else argv
     if '--seeds' in argv:
         i = argv.index('--seeds')

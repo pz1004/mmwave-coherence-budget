@@ -15,7 +15,7 @@
 #     MATCHED, CADENCE).
 #
 # The seed list (ten seeds) comes from protocol.json; `--seeds 17 29 43` re-runs the
-# pre-registered three.
+# prespecified three.
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/../src/scheduler"
 
@@ -45,9 +45,9 @@ python3 selection_stability.py # leave-one-city-out -> selection_stability.json
 python3 interleave.py          # how often a probe falls between two computes
 python3 comparator.py          # why the published comparator loses rate as T grows
 
-# The pre-registered analysis: seeds 17/29/43 and the frozen estimator.  It has its own
+# The prespecified analysis: seeds 17/29/43 and the frozen estimator.  It has its own
 # validation run, so its deployable baseline and its matched selection are its own;
-# report_3seed.json carries the pre-registered primary criterion, reported whatever the
+# report_3seed.json carries the prespecified primary criterion, reported whatever the
 # ten-seed run shows.
 P3="--seeds 17 29 43"
 python3 evaluate.py $P3 --sites city_1_losangeles_28 --out validation_3seed.json

@@ -676,7 +676,7 @@ def evaluate_site(name, grid, lat, tables, verbose=True, free_compute=False):
         out[f"{fam}_aggregate_hier"] = hier_agg[fam]
         out[f"{fam}_rows_hier"] = hier_rows[fam]
 
-    # ---- descriptive: the pre-registered oracle-SNR strata as CONTRASTS ----
+    # ---- descriptive: the prespecified oracle-SNR strata as CONTRASTS ----
     # The frozen protocol requires strata beside every pooled number.  Each
     # stratum's contrast resamples only the blocks holding its receivers, and
     # gets an interval only when it spans at least MIN_STRATUM_BLOCKS blocks.

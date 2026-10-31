@@ -27,7 +27,7 @@ BATCH = 1024
 VAL_KS = (2, 4, 8, 16)
 import protocol
 # The seed list in force (ten seeds); `--seeds ...` overrides it, e.g. to
-# re-run the pre-registered three.  Written in exactly one place: protocol.json.
+# re-run the prespecified three.  Written in exactly one place: protocol.json.
 SEEDS = protocol.seed_arg()
 
 

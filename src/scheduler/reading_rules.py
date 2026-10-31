@@ -10,7 +10,7 @@ Conventions, as protocol.json states them:
   * "A beats B at a site" means the grid-averaged paired difference A - B has a
     lower bound strictly above zero under EVERY interval the artifact carries:
     the seed-by-block percentile bootstrap and the t interval when present,
-    otherwise the pre-registered block percentile interval. On top of that,
+    otherwise the prespecified block percentile interval. On top of that,
     its p-value must survive Holm correction across the six evaluation sites.
     "Loses" is the mirror image. When both a bootstrap and a t p-value exist,
     the larger is used.
@@ -99,7 +99,7 @@ def contrast(site, family, key):
     """The best available interval set for one grid-averaged contrast.
 
     The hierarchical (seed-by-block) aggregate is used when the run produced
-    one. Otherwise the pre-registered block aggregate is used, with seeds
+    one. Otherwise the prespecified block aggregate is used, with seeds
     averaged first, as the frozen protocol runs it."""
     hier = site.get(f'{family}_aggregate_hier', {}).get(key)
     if hier is not None:

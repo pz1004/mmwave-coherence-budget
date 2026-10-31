@@ -34,7 +34,7 @@ FAMILIES = {"with_compute": ("sched", "sched-pi", "sched-noreorder", "sched-nore
 FIXED_PREFIXES = ('topk', 'sweep', 'hier', 'fc', 'cnn', 'ee')
 ALPHA = 0.05
 # `--suffix _3seed` reads validation_3seed.json / results_3seed.json and writes
-# report_3seed.json: the pre-registered three-seed analysis on the same code.
+# report_3seed.json: the prespecified three-seed analysis on the same code.
 SUFFIX = sys.argv[sys.argv.index('--suffix') + 1] if '--suffix' in sys.argv else ''
 
 

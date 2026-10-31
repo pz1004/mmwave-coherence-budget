@@ -9,7 +9,7 @@ mechanism, without testing it by ablation, and writes comparator.json:
   * rate and mean hierarchy layer against T, for AHIBS alone and for
     AHTBS+AHIBS. The layer comes from evaluate.py's diagnostics, and T enters
     only AHIBS's layer rule (methods.zhang);
-  * each drop in rate as T grows, split into the four pre-registered
+  * each drop in rate as T grows, split into the four prespecified
     oracle-SNR strata, weighted by stratum size, so the stratum that carries
     the loss can be read directly;
   * the rate of fixed-depth hierarchical search (hier3..hier6) in the top
