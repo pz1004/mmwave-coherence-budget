@@ -118,7 +118,8 @@ reports. Each stage prints the load average and a re-check drift, and labels its
 depends on, and those of the stored results it lists. The long runs of stage 4 are skipped
 unless their flag is set (`RETIME`, `RERANK`, `EXACT`, `SCREEN`, `CALIB`, `NRCFG`,
 `LEVELS`, `TRACE`, `MATCHED`, `CADENCE`; see the comments in the script). Every result the
-paper reports is stored in the repository.
+paper reports is either stored in the repository or computed from files stored there by the
+scripts that typeset the paper, which are not themselves released.
 
 ## Protocol record and result files
 
