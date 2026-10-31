@@ -12,8 +12,8 @@ Correspondence: `ekim@hanbat.ac.kr`
 
 ![Effective rate against the re-acquisition period in Chicago and Houston, under airtime-only accounting and with inference latency included](assets/fig1_accounting.png)
 
-*Fig. S4 of the supplementary material, whose Houston panels are Fig. 4 of the paper: the same
-methods, channels, users and noise realizations under airtime-only accounting (a, c) and with
+*Fig. S4 of the supplementary material: the same methods, channels, users and noise
+realizations under airtime-only accounting (a, c) and with
 inference latency included (b, d), in Chicago, where
 the best of the ten methods changes at no period, and in Houston, where it changes in point
 estimate at the shaded periods. The learned predictors' curves move down and to the right;
@@ -117,8 +117,8 @@ reports. Each stage prints the load average and a re-check drift, and labels its
 (`src/scheduler/protocol.py`): the frozen protocol's hash, the hashes of the inputs it
 depends on, and those of the stored results it lists. The long runs of stage 4 are skipped
 unless their flag is set (`RETIME`, `RERANK`, `EXACT`, `SCREEN`, `CALIB`, `NRCFG`,
-`LEVELS`, `TRACE`, `MATCHED`; see the comments in the script). Every result the paper reports is
-stored in the repository.
+`LEVELS`, `TRACE`, `MATCHED`, `CADENCE`; see the comments in the script). Every result the
+paper reports is stored in the repository.
 
 ## Protocol record and result files
 
@@ -156,6 +156,7 @@ Result files in `src/scheduler/` are named after the run that wrote them:
 | `matched_post` | rule R23, set after the matched study's outputs (`matched_post.py`): its readings restated as exact for each session's recorded calls, with calculations on those records that R22 did not name or named only pooled, each with the other inputs held fixed: per-session horizons, efficiencies and airtimes, the factor by which every completion time must be divided to remove the exclusion, at adverse and measured inputs, and the factor at which R22's own procedure stops reading an exclusion |
 | `cadence` | the cadence study read by rule R24 (`cadence.py`): the matched study's two builds at three invocation spacings (back to back, and starts at least 10 and 50 ms apart), three sessions each in an order frozen before the first ran, every call kept, read in expected effective rate for each session's recorded calls; the sessions are in `../latency/profile_cadence/` |
 | `calib_audit` | the calibration audit of rule R25 (`calib_audit.py`): the sweep-efficiency bound's procedure applied to 200 samples of 4, 8 and 12 spatial blocks from each evaluation scenario, its coverage of the population's efficiency and how often it keeps four exclusions |
+| `margins_post` | the margins as rules R16, R19 and R21 read them (`margins_post.py`, recorded in `protocol.json` as a change of 2026-10-31): every threshold, margin and delay limit the paper states under the CSI-RS procedure, with `nrtime.py`'s report times, at the runtimes of `reconcile.json`, and each exclusion's excess under channel aging at those runtimes. It supersedes the `nr_*` fields of `margins.json` and `reconcile.json`, which leave out the report times, and the excess in `aging_bound.json`, read from the stored timings; those files stay as written |
 | `manifest.json` | hashes of the datasets and model checkpoints, which are regenerated, not tracked |
 
 ## Citation

@@ -142,6 +142,11 @@ if [ "${TRACE:-0}" = 1 ]; then [ -d ../latency/trace_decisive ] || ../latency/ru
 # refuses to overwrite its output.
 [ -f reconcile.json ] || python3 reconcile.py
 
+# The margins as rules R16, R19 and R21 read them: every CSI-RS threshold, margin and delay limit
+# with nrtime.py's report times, and each exclusion's excess under aging, at reconcile.py's
+# runtimes.  margins_post.py times nothing and refuses to overwrite its output.
+[ -f margins_post.json ] || python3 margins_post.py
+
 # The matched profiling study (rule R22): an image-only ViT-B/16 on the GPU, FP32 against the
 # FP16 build its pilot chose.  The pilot, the freeze of its choices into protocol.json and the
 # three sessions run only with MATCHED=1, on a quiet machine, and never twice; matched.py reads

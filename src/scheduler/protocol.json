@@ -1125,6 +1125,21 @@
    "not_affected": "the inference charges, the probe charge, the observation law, the estimated transition model and every fixed method",
    "to": "0.296 us: the real (4,65,40,10,2) tables of seeds 17/29/43, consults replayed in order from the deployed controller's trajectories on the validation city, timed one per call (lat_lookup_real.json); batched timing reads 0.198 us",
    "why": "the consult was timed on a stand-in table, and it is charged K+e+1 times per receiver"
+  },
+  {
+   "changed": "margins_post.py stores, in margins_post.json, the CSI-RS thresholds, margins and delay limits and each exclusion's excess under channel aging as rules R16, R19 and R21 read them",
+   "date": "2026-10-31",
+   "effect": "no stored output, rule, threshold, margin, limit or verdict changes: the script computes the values the paper states from the stored outputs, and its gates reproduce the superseded fields from the same rows and levels.json's thresholds from the same model.  margins.json and reconcile.json stay as written, because reconcile.json, matched.json, matched_post.json and calib_audit.json record their hashes, and aging_bound.json as its declared analysis wrote it; their nr_* fields and aging_bound.json's excess at the stored timings are superseded",
+   "files_sha256": {
+    "margins_post.json": "6c9e1b29122f31921d3bc0a80f07e12530fd5c6f2c988c9491af988178986f2b"
+   },
+   "from": "margins.json and reconcile.json store beside each margin one under the CSI-RS procedure (nr_dS_us, nr_dL_lo_us, nr_margin_us) from the resources' ends alone, every report time and common delay zero, at csirs.json's bounds, which rules R16 and R19 superseded with nrtime.py's report times and the lowest bound over the exact comparison and the configured variants; aging_bound.json stores each exclusion's excess over tau* at the stored timings, which rule R21 superseded for ResNet-18 on eight P-core threads.  The readings the rules prescribe were computed only by the scripts that typeset the paper, which the repository does not hold",
+   "not_affected": "every stored timing, simulation, bound, threshold and verdict, every rule, and every value the paper states",
+   "scripts_sha256": {
+    "margins_post.py": "b354ac5a286ec46a3df31d58200a307c61ba3310767d64d4f36c1a36fa82f4dc"
+   },
+   "to": "margins_post.json, written by margins_post.py from the stored outputs with the released nrtime.py: nrtime.py's report times at every declarable timing; the efficiencies and bounds rules R16, R18 and R19 read; per implementation, at reconcile.json's runtimes (rule R21), the CSI-RS thresholds and the margins of (4) with a 120 or 30 kHz control carrier and 12 or 8 resources per slot, at adverse inputs and at the latency of record, and the horizon at the smallest bound; the delay limits of ResNet-18 on the GPU; and each exclusion's excess under aging at those runtimes against aging_bound.json's largest slack",
+   "why": "a review of the released repository on 2026-10-30 found that the stored fields differ from the values the paper states, and that no stored file held those: the sweep's last report at 678.57 us where the paper states 875.0 us; ResNet-18 on the GPU's margin at density 3's bound -40.76 us where it states -35.0 us (-34.91 us, its size rounded up); ViT-B/16 on the GPU's margins 3907.0-5016.4 us where it states 3.583 ms at the smallest bound; and an excess at ResNet-18 on eight threads' stored 5289.57 us where the paper reads its repeated runs' 4782.25 us"
   }
  ],
  "coherence_grid_us": [
