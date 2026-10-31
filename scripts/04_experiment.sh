@@ -10,8 +10,9 @@
 #   * The timing stage re-measures every charge.  It runs only with RETIME=1, on a quiet
 #     machine; the charges it writes are listed with their hashes in protocol.json, so a
 #     re-timing fails protocol.py until the record says so.
-#   * The later analyses refuse to overwrite their outputs, and the long ones run only when
-#     their flag is set (RERANK, EXACT, SCREEN, CALIB, NRCFG, LEVELS, TRACE, MATCHED).
+#   * The later analyses refuse to overwrite their outputs, and the long ones run only
+#     when their flag is set (RERANK, EXACT, SCREEN, CALIB, NRCFG, LEVELS, TRACE,
+#     MATCHED, CADENCE).
 #
 # The seed list (ten seeds) comes from protocol.json; `--seeds 17 29 43` re-runs the
 # pre-registered three.
