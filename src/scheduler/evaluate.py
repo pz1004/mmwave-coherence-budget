@@ -748,7 +748,7 @@ if __name__ == '__main__':
                     help="charge probe time only, as Graff et al. Eq. (34) does")
     ap.add_argument('--seeds', nargs='+', type=int, default=None,
                     help="override the seed list in force, e.g. 17 29 43 for "
-                         "the pre-registered analysis")
+                         "the prespecified analysis")
     ap.add_argument('--validation', default='validation.json',
                     help="the validation run the deployable baseline is picked from")
     ap.add_argument('--lat', default='lat_cpu1t_pcore.json', help="latency file")
