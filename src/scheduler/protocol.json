@@ -1,5 +1,5 @@
 {
- "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R35, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
+ "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R36, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
  "amendments": [
   {
    "changes": "predictor.input",
@@ -1665,6 +1665,36 @@
    },
    "state": "declared before it ran, except that gate M had run alone with --gate and the review that prompted rule R35 had computed the per-probe arithmetic for N_r = 4 and 8",
    "files_sha256": {}
+  },
+  {
+   "key": "tdd_mu",
+   "declared": "2026-11-08",
+   "title": "the time-division CSI-RS budgets at 60 kHz, set post hoc",
+   "description": "one reading rule (R36), set post hoc, and the module that applies it (src/scheduler/nrtddmu.py), declared before its values run: rule R30's time-division procedure on 60 kHz carriers, on TS 38.101-2's 60 kHz test patterns.  Nothing is timed, trained or simulated; no stored file changes",
+   "rules": [
+    "R36"
+   ],
+   "post_hoc": [
+    "R36"
+   ],
+   "scripts": [
+    "nrtddmu.py"
+   ],
+   "scripts_sha256": {
+    "nrtddmu.py": "97fb66a61fa6f55a004a2172db8d668da989550626f53ab9373f15724cfd3a3e",
+    "nrtdd.py": "1b8bfe2f1a9bbd3d45726b98cadffa59092fc2a44ee8a04ece7778489b283f3d",
+    "nrtime.py": "8501735f556f328ebc2ae311dbb7f7fd4c17c3ddc8c51d197314e0ff36b186a8",
+    "nrmu.py": "f389e93249337cf6c31a16f3669de454243da161619fe3b5b3e80c74eddb2b22"
+   },
+   "inputs_sha256": {},
+   "analyses": {
+    "nrtddmu": "nrtddmu.py, a module that make_draft.py imports, schedules nrtdd.py's time-division procedure on carriers of either spacing and times it on the 60 kHz test patterns"
+   },
+   "criteria": {
+    "nrtddmu": "gate T: at 120 kHz the schedules reproduce nrtdd.times for both patterns, every phase, 12 and 8 resources per slot and every declarable timing to 1e-9; gate P: on paired spectrum at 60 kHz they reproduce nrmu.times; every schedule checked as built"
+   },
+   "state": "declared before it ran, except that gates T and P had run alone with --gate",
+   "files_sha256": {}
   }
  ],
  "changes": [
@@ -2130,6 +2160,12 @@
    "text": "(i) R35 times nrtime.py's paired CSI-RS procedure with its target and control carriers at a 60 kHz subcarrier spacing (nrmu.py): 250 us slots of 14 symbols; (Z, Z') = (min(44, X2 + KB1), X2), TS 38.214 Table 5.4-2 at mu = 2; X2 in {8, 14, 28} and KB1 in {14, 28, 48, 224, 336} symbols, beamReportTiming and beamSwitchTiming at scs-60kHz (TS 38.331 6.3.3); 12 and 8 resources per slot; every other rule of nrtime.py kept.  The budget is s_S - s_L + h, h = 250 us.  The paper states its range over the declarable timings at 12 per slot and, at the timing most favorable to the candidate, a row of its budget table read at the 120 kHz CSI-RS measurement's lowest efficiency and density 3's coherent bound, the smallest bound beside them (at 60 kHz a resource spans twice the resource blocks, not simulated), and the efficiencies that the two vision-model implementations finishing within T_max need there, as for the table's other CSI-RS rows.  Gate M: at 120 kHz nrmu.py reproduces nrtime.times for 12 and 8 resources per slot and every declarable timing to 1e-9.  (ii) With N_r in {2, 4, 8} analog receive beams and an exhaustive transmit-receive search, the per-probe sweep takes 64 N_r probes: d_S = 64 N_r t_p and tau* = (64 N_r - 4) t_p at one P-core's t_p (rho.json), read at the per-probe model's efficiency and bound, which were not simulated for receive beams; Proposition 1(a) applies only where d_S < T_max.  The paper states tau* for N_r = 2 and 4, a row of the budget table for N_r = 4, and the verdicts of the two implementations that finish within T_max under the every-runtime rule (excluded, unresolved, not excluded).  (iii) Under the CSI-RS procedure the UE applies the QCL assumptions of the indicated TCI states to the aperiodic CSI-RS resources (TS 38.214 5.2.1.5.1), the spatial QCL source the paper names, so it receives every resource on one beam and neither procedure's resources change; a receive-beam refinement after the selection delays both alike, the common delay that the bounding inputs allow.  No budget is computed for it.  (iv) R35 is post hoc: it was set after every earlier result and an internal review in the role of the journal's editor had been seen, that review having computed the per-probe arithmetic for N_r = 4 and 8; nrmu.py's gate M ran alone (--gate) before this declaration.  It changes no earlier output, threshold or verdict",
    "when": "set after every earlier result and a review had been seen; it changes no earlier output",
    "note": "Amended 2026-11-08, after an internal check of the paper's text, before any commit, with readings of nrmu.py's values that change none of them and no earlier output, threshold or verdict.  (i) Beside the efficiencies they need, the paper states the margin that the two vision-model exclusions keep at 60 kHz at the smallest bound.  (ii) It states every per-probe exclusion of an implementation finishing within T_max that receive beams change (the small transformer's on one E-core lost at N_r = 2; at 4 every one but ViT-B/16's on the GPU, ResNet-18 on eight P-core threads unresolved; at 8 every one), each transmit-receive pair a probe with its report, as (ii)'s 64 N_r probes are; one report per transmit beam, not computed, would shorten the sweep.  (iii) The QCL source is the indicated TCI state's or, below beamSwitchTiming, the default one (TS 38.214 5.2.1.5.1)."
+  },
+  "R36": {
+   "post_hoc": true,
+   "set": "2026-11-08",
+   "text": "(i) R36 times rule R30's time-division CSI-RS procedure (nrtdd.py) with both carriers at 60 kHz (nrtddmu.py), on TS 38.101-2 V18.14.0's 60 kHz test patterns: DDDSU every 1.25 ms (Table A.3.3.1-1, the downlink reference channels) and DDDSUUUU every 2 ms (Table A.2.3-1, the uplink ones), both with S = 4D+6G+4U.  (Z, Z') and the declarable timings are rule R35's at mu = 2; 12 and 8 resources per slot; every other rule of nrtdd.py is kept, the control carrier sharing the target's slot format; the budget is s_S - s_L + W.  Gate T: at 120 kHz the schedules reproduce nrtdd.times for both of its patterns, every phase, 12 and 8 resources per slot and every declarable timing (s_S, s_L, W, the budget, both guided references and the SS-input candidate) to 1e-9.  Gate P: on paired spectrum at 60 kHz they reproduce nrmu.times.  (ii) The paper states, at 12 resources per slot, each pattern's budget range over the phases and declarable timings; the efficiencies that the two vision-model exclusions finishing within T_max need at each pattern's phase and timing most favorable to the candidate; their margins at adverse inputs at the measured efficiencies, density 3's coherent bound and the smallest bound, and which of them, if any, is lost; and whether ResNet-18 on the GPU is excluded at any efficiency, read at the 120 kHz CSI-RS measurement's efficiencies and bounds (not simulated at 60 kHz), as rule R30 reads them at 120 kHz.  (iii) R36 is post hoc: it was set after every earlier result, rule R35's included, at the authors' request; nrtddmu.py's gates ran alone (--gate) before this declaration, computing no 60 kHz time-division value.  It changes no earlier output, threshold or verdict",
+   "when": "set after every earlier result had been seen; it changes no earlier output"
   }
  },
  "seeds": {
