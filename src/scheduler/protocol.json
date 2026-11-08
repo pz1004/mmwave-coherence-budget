@@ -1,5 +1,5 @@
 {
- "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R31, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
+ "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R34, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
  "amendments": [
   {
    "changes": "predictor.input",
@@ -1591,6 +1591,50 @@
    "files_sha256": {
     "ssbref.json": "5bec54c820f68932f0320fdf2aaf9890add14ddb18a118e83cd0716e8614a3c4"
    }
+  },
+  {
+   "key": "ue_ssb",
+   "declared": "2026-11-07",
+   "title": "a UE-side candidate, the refinement against the sweep and the refinement's SS-block measurement, set post hoc",
+   "description": "three reading rules (R32-R34), set post hoc, and the scripts that apply them, declared before ssbsens.py runs (src/scheduler/nrue.py, ssbsens.py): the report times and budgets of a candidate that infers at the UE, the period up to which the SS-block-guided refinement delivers more than the sweep, and the refinement's efficiency and simultaneous bounds with its SS blocks measured on fewer samples.  Nothing is timed or trained; ssbsens.py simulates on csirs.py's draws; no stored file changes; ssbsens.json is new",
+   "rules": [
+    "R32",
+    "R33",
+    "R34"
+   ],
+   "post_hoc": [
+    "R32",
+    "R33",
+    "R34"
+   ],
+   "scripts": [
+    "nrue.py",
+    "ssbsens.py"
+   ],
+   "scripts_sha256": {
+    "nrue.py": "76c6b0e833cf068ae787778e98b92aee653f3abd4c6402c3b6c09f63ee99b3dd",
+    "ssbsens.py": "1fd336fc2d031bab2613f62687ac82cd564e21ff70f83d3fecdb3c8b678dac90",
+    "nrtdd.py": "1b8bfe2f1a9bbd3d45726b98cadffa59092fc2a44ee8a04ece7778489b283f3d",
+    "ssbref.py": "b636b925fbd818cd97b48e048caf1c2e3219721e0799775152413669f9d81c73"
+   },
+   "inputs_sha256": {
+    "ssbref.json": "5bec54c820f68932f0320fdf2aaf9890add14ddb18a118e83cd0716e8614a3c4",
+    "csirs.json": "9c89539e73082c1e01516ab54b5d4d5e07c46f7e07ea0be7f3d2246e4ea698b1",
+    "csirs_cfg.json": "92ae169439095d4c2b751c4cb521c40690299b9d3579385befaefeef5baa4ee1",
+    "lat_cpu1t_pcore.json": "c659caa7eb31ce7c7e1cc1dd54db1e9f82dd7d487ed8b03b9b42b7e34fb8a4ef"
+   },
+   "analyses": {
+    "nrue": "nrue.py, a module that make_draft.py imports, times the UE-side candidate and the K = 0 candidate with nrtdd.py's schedules and computes the refinement's crossovers with the sweep from ssbref.json, csirs.json and csirs_cfg.json",
+    "ssbsens": "ssbsens.py simulates rule R31's refinement with its SS blocks under three coherent laws and its CSI-RS set under the six laws, in the seven non-training scenarios with the 10 seeds, on csirs.py's draws, and bounds each efficiency.  It refuses to overwrite ssbsens.json; --check-only runs S1, G2 and S3 and computes no statistic of the SS laws"
+   },
+   "criteria": {
+    "nrue": "gate U: at tau = 0 and at the free window the UE-side report is nrtdd.py's s_L, one symbol beyond the window it is later, and the candidate's resources are nrtdd.reduced's, at every pattern, phase and declarable timing",
+    "ssbsens": "S1 the coherent law at N = 1000 reproduces sim.measure bit for bit; G2 with the SS stage at coherent|1000 every law's efficiency and per-seed efficiencies reproduce ssbref.json's to 1e-12; S3 each layer's windows partition the 64 beams; S4 bound <= eta < 1 and the scans' asserts"
+   },
+   "state": "declared before they ran, except that rule R32's paired timings and rule R33's crossovers had been computed while the revision was planned and nrue.py written, and ssbsens.py's gates had run with --check-only; ssbsens.py ran once on 2026-11-07, every gate holding",
+   "files_sha256": {
+    "ssbsens.json": "db2ac7ac62b4ad4d82b38efafe383d1ee610b5c99def18f8788d15872e2d1f6b"
+   }
   }
  ],
  "changes": [
@@ -2029,6 +2073,25 @@
    "post_hoc": true,
    "set": "2026-11-06",
    "text": "(i) R31 adds an SS-block-guided CSI-RS reference (ssbref.py): the strongest of the 2^l layer-l codewords (l = 3 or 4, 8 or 16 SS blocks) under one probe-model measurement taken before the acquisition starts, then one aperiodic CSI-RS set of the 2^(6-l) narrow beams nearest its direction, b m - m/2 to b m + m/2 - 1 (mod 64), measured under csirs.py's laws on csirs.py's draws and reported in one report; it is timed by nrtdd.guided on paired spectrum and under R30's patterns.  (ii) Its efficiency per law is stated at its lowest over the seven non-training scenarios, and its bound at the lowest of the per-scenario bounds, each one-sided at 0.05/14 (seven scenarios, two references) and the smaller of the crossed bootstrap's and the delta method's, both halves stored; the budget table reads the lowest efficiency over the six CSI-RS laws and density 3's coherent bound, as for the sweep.  (iii) A candidate whose input precedes the trigger (K = 0: SS-block reports, a Set B unlike Set A) is timed by nrtdd.input_only, one report held by Z alone.  (iv) R31 is post hoc: it was set after every earlier result and the same review had been seen, and after a noiseless check of the window in Phoenix and Chicago, in which the strongest block's descendants held the genie-aided beam for 36-90% of users and its nearest beams for 85-95%; ssbref.py runs once, after this declaration.  It changes no earlier output, threshold or verdict",
+   "when": "set after every earlier result and a review had been seen; it changes no earlier output"
+  },
+  "R32": {
+   "post_hoc": true,
+   "set": "2026-11-07",
+   "text": "(i) R32 times a candidate that infers at the user equipment (UE), TR 38.843 5.2's Alt. 2 (nrue.py): it infers from the end of its last resource, e_L, and its report starts no earlier than nrtdd.report's conditions and the end of inference, so inference within the free window F = s_L - e_L delays nothing, and its data start no earlier than max(s_L, e_L + tau) plus the delay common to both procedures.  With nrtdd.py's bound on the reference's data start, an exclusion holds where e_L + tau >= s_S + W: the budget is s_S + W - e_L = tau* + F against the sweep and s_G + W - e_L against rule R31's refinement.  A candidate whose input is the SS-block measurements (K = 0) infers on demand from the trigger, its input known at the origin as the refinement's SS blocks are: e_L = 0.  (ii) On paired spectrum and under rule R30's two patterns, with a 120 kHz control carrier and 12 resources per slot, at every phase and declarable timing; the paper states ranges over the timings on paired spectrum and the largest under each pattern.  Gate U: at tau = 0 and tau = F the UE-side report is nrtdd.py's s_L, one symbol beyond F it is later, and the candidate's resources are nrtdd.reduced's.  (iii) R32 is post hoc: it was set after every earlier result and a review in the role of the journal's editor-in-chief had been seen, and after its paired timings had been computed with nrtdd.py while the revision was planned, before this declaration.  It changes no earlier output, threshold or verdict",
+   "when": "set after every earlier result and a review had been seen; it changes no earlier output"
+  },
+  "R33": {
+   "post_hoc": true,
+   "set": "2026-11-07",
+   "text": "(i) R33 compares rule R31's refinement with the sweep at the measured efficiencies (nrue.py), the refinement's from ssbref.json and the sweep's the highest of csirs.py's exact comparison and csirs_cfg.py's two configured variants, per non-training scenario, layer and each of the six CSI-RS laws: data start at the first slot that opens with downlink symbols at or after a report plus a delay delta >= 0 common to both, t_G(delta) and t_S(delta), and with eta_S > eta_G the refinement delivers more than the sweep at T > t_G up to T*(delta) = (eta_S t_S - eta_G t_G)/(eta_S - eta_G); T* is the least over delta.  (ii) The paper states the least T* over scenarios, layers and laws at the declarable timing most favorable to the candidate on paired spectrum, the least over every declarable timing, and the least under each of rule R30's patterns over phases and timings.  (iii) R33 is post hoc: it was set after every earlier result and the same review had been seen, and after crossovers had been computed from the same stored outputs while the revision was planned, first without slot boundaries or the common delay, and with them while nrue.py was written, before this declaration.  It changes no earlier output, threshold or verdict",
+   "when": "set after every earlier result and a review had been seen; it changes no earlier output",
+   "note": "Amended 2026-11-07, after an internal review of the paper's text had computed it, with one reading of stored outputs that changes no earlier output, threshold or verdict: the least T* on paired spectrum at KB2 = 14 symbols with the refinement's efficiencies under rule R34's SS laws (ssbsens.json), the sweep's as (i) reads them, per SS law; the paper states it at the fewest samples"
+  },
+  "R34": {
+   "post_hoc": true,
+   "set": "2026-11-07",
+   "text": "(i) R34 measures the SS blocks of rule R31's refinement on fewer samples (ssbsens.py): csirs.py's coherent law at 198, 66 and 33 samples on csirs.py's draws, in place of the probe model's 1000, each SS law paired with the six CSI-RS laws at both layers; windows, selection, scenarios and seeds are ssbref.py's.  (ii) Per SS law and layer, the lowest efficiency over the seven non-training scenarios and the six laws, density 3's coherent bound and the smallest bound over the laws, each one-sided at 0.05/14 as in R31 with its bootstrap and t halves stored, and the slacks they give with the refinement's report time.  (iii) R34 is post hoc: it was set after every earlier result and the same review had been seen; ssbsens.py's gates had run with --check-only, which computes no statistic of the SS laws, and it runs once, after this declaration.  It changes no earlier output, threshold or verdict",
    "when": "set after every earlier result and a review had been seen; it changes no earlier output"
   }
  },
