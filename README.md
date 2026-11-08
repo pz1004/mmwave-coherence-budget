@@ -12,7 +12,7 @@ Correspondence: `ekim@hanbat.ac.kr`
 
 ![Effective rate against the re-acquisition period in Chicago and Houston, under airtime-only accounting and with inference latency included](assets/fig1_accounting.png)
 
-*Fig. S4 of the supplementary material: the same methods, channels, users and noise
+*Effective rate against the re-acquisition period: the same methods, channels, users and noise
 realizations under airtime-only accounting (a, c) and with
 inference latency included (b, d), in Chicago, where
 the best of the ten methods changes at no period, and in Houston, where it changes in point
@@ -23,19 +23,19 @@ the measurement-only curves do not move.*
 
 Learned beam predictors outperform the exhaustive millimeter-wave beam sweep only by finishing
 sooner or selecting better beams, and their accuracy is unknown before training. Counting inference
-latency as cold-start beam-training overhead, we derive an accuracy-independent exclusion condition
-from a narrow-beam predictor's completion time, a lower bound on sweep efficiency and a maximum
-period. If it holds, even a perfect predictor cannot outperform the sweep at any period up to that
-maximum. We apply it to eight ray-traced scenarios with 20-microsecond probes of 64 beams, at
-95th-percentile single-precision latencies from one desktop. It excludes two vision-model
-implementations finishing
-within the 10-millisecond maximum: an 18-layer residual network on eight threads and a base-size
-vision transformer on the graphics processor. Both are excluded above 62% sweep efficiency, also
-at adverse inputs; five others exceed the maximum at that percentile and one is unresolved. In an
-illustrative image-only study, the transformer's optimized half-precision build stays excluded in
-expected rate for recorded latencies at call spacings of 0, 10 and 50 milliseconds. Latency changes the best method in point estimate at 10 of 72 scenario-period pairs,
-none statistically established. A case-study controller scheduling inference misses its
-prespecified criterion. Designers can screen predictor-processor pairs before training.
+latency as cold-start beam-training overhead per link, we derive an accuracy-independent condition
+under which even a perfect predictor cannot outperform the sweep at any period up to a maximum: its
+inference exceeds a budget, the sweep's duration less the predictor's probing, by at least a
+slack the sweep's efficiency sets. On ray-traced channels to single-antenna users the sweep's
+measured efficiency, near one, leaves a slack below 0.17 milliseconds. The beam-management
+configuration sets the budget: up to 0.73 milliseconds against a New Radio reference-signal sweep
+of 12 beams per 125-microsecond slot, 1.50 under a downlink-heavy time-division pattern, 1.22
+against 20.34-microsecond probes and 7.5 against one beam per slot. Against an idealized
+synchronization-signal-block-guided refinement reporting with the predictor, the slack, 0.27–0.48
+milliseconds, outweighs a one-slot budget. At 95th-percentile single-precision latencies from one
+desktop, two vision-model implementations inferring on demand are excluded against these
+references but one beam per slot, also at adverse inputs. Designers can screen implementations, not
+architectures, before training, given a calibrated bound on each reference's efficiency.
 
 ## Repository layout
 
@@ -43,12 +43,13 @@ prespecified criterion. Designers can screen predictor-processor pairs before tr
 src/
   sites/       DeepMIMO acquisition and outcome-blind scenario qualification (stage 1)
   latency/     predictor latency atlas across four hardware profiles (stage 2), and the
-               matched profiling study of an optimized build and its cadence study (stage 4)
+               matched profiling study of an optimized build, its cadence study and the
+               decision audit's timing campaign (stage 4)
   budget/      accuracy-free compute budget, the T* crossover, the DP reference (stage 3)
   scheduler/   observation law, codebook, comparators, the scheduled controller, the
                analyses, and the protocol record protocol.json (stage 4)
 scripts/       one runner per stage, in order
-assets/        the supplementary material's Fig. S4 as PNG
+assets/        the effective-rate figure above, as PNG
 ```
 
 Each stage folder holds its code and the results it writes (JSON and NPZ) side by side.
@@ -117,7 +118,7 @@ reports. Each stage prints the load average and a re-check drift, and labels its
 (`src/scheduler/protocol.py`): the frozen protocol's hash, the hashes of the inputs it
 depends on, and those of the stored results it lists. The long runs of stage 4 are skipped
 unless their flag is set (`RETIME`, `RERANK`, `EXACT`, `SCREEN`, `CALIB`, `NRCFG`,
-`LEVELS`, `TRACE`, `MATCHED`, `CADENCE`; see the comments in the script). Every result the
+`LEVELS`, `TRACE`, `MATCHED`, `CADENCE`, `AUDIT`; see the comments in the script). Every result the
 paper reports is either stored in the repository or computed from files stored there by the
 scripts that typeset the paper, which are not themselves released.
 
@@ -130,7 +131,7 @@ The measurement model and the six-layer hierarchical codebook are frozen in
   number seen (its fields hash to `self_sha256`);
 - its three amendments, A1–A3;
 - the changes made after results existed, each dated, with its reason;
-- the interpretation rules R1–R25, which state what each result permits the paper to claim,
+- the interpretation rules R1–R36, which state what each result permits the paper to claim,
   each with the date it was set and whether it was set after the results it reads;
 - the later analyses, each declared before it ran, with its scripts, its rules and the
   hashes of the stored files it wrote.
@@ -157,6 +158,12 @@ Result files in `src/scheduler/` are named after the run that wrote them:
 | `matched_post` | rule R23, set after the matched study's outputs (`matched_post.py`): its readings restated as exact for each session's recorded calls, with calculations on those records that R22 did not name or named only pooled, each with the other inputs held fixed: per-session horizons, efficiencies and airtimes, the factor by which every completion time must be divided to remove the exclusion, at adverse and measured inputs, and the factor at which R22's own procedure stops reading an exclusion |
 | `cadence` | the cadence study read by rule R24 (`cadence.py`): the matched study's two builds at three invocation spacings (back to back, and starts at least 10 and 50 ms apart), three sessions each in an order frozen before the first ran, every call kept, read in expected effective rate for each session's recorded calls; the sessions are in `../latency/profile_cadence/` |
 | `calib_audit` | the calibration audit of rule R25 (`calib_audit.py`): the sweep-efficiency bound's procedure applied to 200 samples of 4, 8 and 12 spatial blocks from each evaluation scenario, its coverage of the population's efficiency and how often it keeps four exclusions |
+| `audit_*` | the decision audit of rule R26: three image-only GPU builds (ResNet-18 in FP32 compiled by TorchScript, and the matched study's two ViT-B/16 builds) timed in 15 randomized rounds at a 10 ms spacing (`../latency/profile_audit/`); the per-probe sweep with a 10, 20 or 30 μs pilot in Houston and Phoenix (`audit_pop`); the screen's efficiency bounds from 200 calibrations of 4, 8 and 12 spatial blocks (`audit_bounds`) and its decisions from rounds 1–5, recorded before rounds 6–15 ran (`audit_decisions`); and an independent auditor that computes every rate from the ray-traced paths and evaluates the decisions in the same finite populations and on the later rounds (`audit_direct`, with its population efficiencies in `audit_rates.json`); its pilot on the validation scenario set the numerical tolerance (`audit_pilot`, `audit_direct_pilot`) |
+| `fallback`, `strata_eta` | rules R27 and R28, set post hoc and read from stored outputs alone: the screen for a procedure that sends data on the best probed beam while the predictor infers, against the fixed methods that need no training, at each implementation's 95th percentile, its lower bound and, for the three decisive implementations, its fastest recorded call (`fallback.py`); and the sweep's efficiency within each prespecified SNR stratum of the seven non-training scenarios, against every exclusion's threshold (`strata_eta.py`) |
+| `nrtdd.py`, `ssbref` | rules R30 and R31, set post hoc: the CSI-RS procedure's report times and budgets under the two time-division reference patterns of TS 38.101-2 at 120 kHz, DDDSU and 7DS8U, every procedure scheduled as early as the pattern allows (`nrtdd.py`, a module the paper imports; on paired spectrum it reproduces `nrtime.py`); and an SS-block-guided CSI-RS refinement, the strongest of 8 or 16 wide codewords refined by one set of its 8 or 4 nearest narrow beams, with its efficiency and simultaneous bounds on `csirs.py`'s draws (`ssbref.py`) |
+| `nrue.py`, `ssbsens` | rules R32 to R34, set post hoc: a candidate that infers at the user equipment, whose inference before its earliest report costs nothing, and its budgets on paired spectrum and under both patterns; the period up to which the SS-block-guided refinement delivers more than the sweep at the measured efficiencies, whatever the delay common to both (`nrue.py`, a module the paper imports, on stored outputs); and the refinement with its SS blocks measured on 198, 66 or 33 samples (`ssbsens.py`) |
+| `nrmu.py` | rule R35, set post hoc: the paired CSI-RS budgets with both carriers at 60 kHz (TS 38.214 Table 5.4-2 at mu = 2; gate M reproduces `nrtime.py` at 120 kHz), and the per-probe sweep over every transmit-receive pair with 2, 4 or 8 analog receive beams (a module the paper imports) |
+| `nrtddmu.py` | rule R36, set post hoc: rule R30's time-division procedure with both carriers at 60 kHz, on TS 38.101-2's 60 kHz test patterns (DDDSU every 1.25 ms, DDDSUUUU every 2 ms); gate T reproduces `nrtdd.py` at 120 kHz, gate P `nrmu.py` on paired spectrum (a module the paper imports) |
 | `margins_post` | the margins as rules R16, R19 and R21 read them (`margins_post.py`, recorded in `protocol.json` as a change of 2026-10-31): every threshold, margin and delay limit the paper states under the CSI-RS procedure, with `nrtime.py`'s report times, at the runtimes of `reconcile.json`, and each exclusion's excess under channel aging at those runtimes. It supersedes the `nr_*` fields of `margins.json` and `reconcile.json`, which leave out the report times, and the excess in `aging_bound.json`, read from the stored timings; those files stay as written |
 | `manifest.json` | hashes of the datasets and model checkpoints, which are regenerated, not tracked |
 
