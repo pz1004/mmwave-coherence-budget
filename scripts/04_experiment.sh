@@ -202,4 +202,11 @@ fi
 [ -f audit_rates.npz ] || python3 audit_direct.py --rates
 [ -f audit_direct.json ] || python3 audit_direct.py
 
+# Rules R27 and R28, set post hoc: the screen for a procedure that sends data on the best probed beam
+# while the predictor infers, against the fixed methods that need no training, and the sweep's
+# efficiency within each SNR stratum against every exclusion's threshold.  Both read stored outputs
+# only, time and simulate nothing, and refuse to overwrite their outputs.
+[ -f fallback.json ] || python3 fallback.py
+[ -f strata_eta.json ] || python3 strata_eta.py
+
 python3 make_manifest.py       # -> manifest.json: the datasets', models' and environment's hashes

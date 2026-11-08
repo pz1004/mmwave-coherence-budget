@@ -1,5 +1,5 @@
 {
- "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R26, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
+ "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R28, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
  "amendments": [
   {
    "changes": "predictor.input",
@@ -1509,6 +1509,49 @@
     "audit_pop.py": "ede90fcd914ba76506debb97b8ddcefe8876586a8d3717396d0afaa92d68476c",
     "audit_screen.py": "838cdd9bb554600867aab5d610ae430be81a5e745399285ce93a59e2504a7d12"
    }
+  },
+  {
+   "analyses": {
+    "fallback": "fallback.py reads results.json and heldout.json (the six evaluation scenarios' measured efficiencies and completion times), reconcile.json (each implementation's tau, its lower bound and the repeated runs' fastest calls) and rho.json (each profile's t_p).  Per scenario, implementation and latency reading it computes exactly, at every kink of the piecewise-linear difference, the largest excess over (0, T_max] of the perfect predictor's rate in the best-probed-beam procedure and in the paper's procedure over the envelope of the fixed methods that need no training, and over the sweep alone, with the share of G and the period; and Top-4's crossover with the sweep (Proposition 2).  It refuses to overwrite fallback.json; --check-only runs every gate and writes nothing",
+    "strata_eta": "strata_eta.py reads validation.json, results.json and heldout.json (the stored per-stratum means of the sweep and of the genie-aided rate, and the stratum counts), reconcile.json, margins.json and rho.json (each implementation's completion time, its lower bound, the declared upper completion time of the sweep and each profile's t_p).  Per non-training scenario and stratum it computes the sweep's efficiency at T_max, the share of users and of the genie-aided rate, and every exclusion threshold above that efficiency.  It refuses to overwrite strata_eta.json; --check-only runs every gate and writes nothing"
+   },
+   "criteria": {
+    "fallback": "G1: the inputs equal inputs_sha256 and every reference's stored completion time equals K_j t_p within 0.01 us; G2: the paper's procedure against the sweep alone gives, in every scenario at its measured efficiency, Proposition 1(a)'s verdict; G3: no point of a scan every 1 us exceeds the exact maximum, which exceeds the scan's by at most 1 us",
+    "strata_eta": "G1: the inputs equal inputs_sha256 and the strata are the protocol's; G2: the strata weighted by their stored counts reproduce each scenario's stored mean rate at T_max and the sweep's stored efficiency; G3: from 4 ms on, each stratum's efficiency agrees across the grid within the stored rounding"
+   },
+   "declared": "2026-11-04",
+   "description": "two reading rules (R27, R28), set post hoc, and the scripts that apply them, declared before they run (src/scheduler/fallback.py, strata_eta.py): the screen read for a procedure that sends data on the best probed beam while the predictor infers, against the fixed methods that need no training, and the sweep's efficiency within each prespecified SNR stratum against every exclusion's threshold.  Nothing is timed, trained or simulated; no stored file changes; fallback.json and strata_eta.json are new",
+   "files_sha256": {
+    "fallback.json": "02b2c29f16ab8388e1c8ff567e8b724fd1e0aa1bec24dd29e075b5383b98298b",
+    "strata_eta.json": "44506b4f39d4997b29163e4e557de0ea291f06636fb28ba1f79c796be464a7ab"
+   },
+   "inputs_sha256": {
+    "validation.json": "39c6fc9271c9ee07ccf643c127bf19dde88367d0fac1ba2f1fd8c621952cebc3",
+    "results.json": "a73ffb0ce7934b2c56d3bfeac4c4f773811b96eaebf6943785d434cf88b0856b",
+    "heldout.json": "e366259b2a4601d075da30ca45efd78f32c39ea6d540311e03d7d48e7439dbac",
+    "reconcile.json": "3b72af550d99ac052e41d20675e37aaaf4b68c2534520bc7e59e4a311494edd4",
+    "margins.json": "3f194c9eadda1407638c077c17e03109515610fa0fe41539ee6325c0cb667457",
+    "rho.json": "49b9979914d1cbf24ba4447b0a1630106b1a8ffaf1279798fc386882ac07ae1b"
+   },
+   "key": "scope_checks",
+   "post_hoc": [
+    "R27",
+    "R28"
+   ],
+   "rules": [
+    "R27",
+    "R28"
+   ],
+   "scripts": [
+    "fallback.py",
+    "strata_eta.py"
+   ],
+   "scripts_sha256": {
+    "fallback.py": "ad0b76cddfb5b6dc6073be4f752f716414e9d710bd4b532828c5c74107ab829c",
+    "strata_eta.py": "e0dcc1e1db27403beeb83cc09b6e9ae1e980111bfcedc1567cbeb8803f75bb4c"
+   },
+   "state": "declared before they ran; rules R27 and R28 were set after every earlier result and a review of the paper had been seen, and after the estimates recorded in their texts; both scripts ran once on 2026-11-04, every gate holding",
+   "title": "two descriptive checks of the screen's scope, set post hoc"
   }
  ],
  "changes": [
@@ -1916,6 +1959,19 @@
    "post_hoc": false,
    "set": "2026-09-23",
    "text": "'A beats B at a site' means the grid-averaged paired difference has a lower bound > 0 under every interval the artifact carries (both intervals above for the ten-seed run), with its p-value surviving Holm across the six evaluation sites; 'loses' is the mirror image; the headline controller is the matched rule's choice and comparators take its suffix"
+  },
+  "R27": {
+   "post_hoc": true,
+   "set": "2026-11-04",
+   "text": "(i) R27 reads the screen for a procedure the paper's acquisition model excludes: a 4-probe method that sends data on the best of its probed beams (Top-4's selection) from the end of its probes until its inference ends, and on the predicted beam after it, switching at no cost, as in the per-probe model under block fading.  For a perfect predictor its rate over a period T is eta_4 (min(T, d) - 4 t_p)^+ + (T - d)^+ in units of the genie-aided rate times time.  Against the exhaustive sweep alone no such procedure can be excluded, as Top-4 delivers before the sweep does.  (ii) The reference is the envelope of the fixed methods that need no training (Top-K for K = 1, 2, 4, 8, 16 and 32, the sweep, Hier-3 to Hier-6), each at its measured efficiency in each of the six evaluation scenarios, with completion time K_j t_p at the implementation's profile's t_p.  A procedure is excluded in a scenario if its perfect-predictor rate exceeds the envelope at no period in (0, T_max] by more than eps T_max (eps = 1e-6, as R26), checked exactly at every kink.  (iii) Latency readings: Table IV's tau (the 95th percentile of the fastest runtime), its lower bound (Table IV's adverse input) and, for the three implementations timed in repeated runs, the fastest recorded call; the paper's own procedure, which sends nothing until its inference ends, is read against the same envelope beside it.  (iv) The readings are descriptive, at measured efficiencies: no bound on a reference's efficiency is used, and at simultaneous bounds the fixed references' efficiencies collapse (the paper's fixed-reference analysis); a verdict holds for the stored efficiencies under the model, not for deployment.  Switching at no cost is the per-probe model's idealization; an NR beam indication takes time.  (v) R27 is post hoc: it was set after every earlier result and a review of the paper had been seen, after a quick estimate against the envelope of all 36 fixed methods at the 95th percentile (ResNet-18 on eight threads not excluded in Chicago, ViT-B/16 on the GPU excluded in all six scenarios, the small transformer on one E-core not excluded in three) and a hand calculation for ViT-B/16 on the GPU at its fastest recorded call in Chicago (not excluded there against the sweep's line) had been seen.  It changes no earlier output or verdict",
+   "when": "set after every earlier result and a review had been seen; it changes no earlier output",
+   "note": "Amended 2026-11-04, after the paper's second review of that day had been seen: Proposition 3 of the paper states this procedure in closed form.  Against an envelope that holds Top-4 and a reference j that finishes no later than the candidate, it is excluded exactly when eta_4 tau <= m_j = d - (1 - eta_j) T_max - eta_j d_j, which reproduces every verdict here in which every reference finishes by d and is never more permissive elsewhere.  The paper also reads it at the adverse inputs of (4) (the latency's lower bound with airtime-only probes, the sweep's upper completion time and the efficiency's lower bound), and at each repeated run's fastest recorded call, as the largest Top-4 efficiency at which each exclusion survives, beside Top-4's measured efficiencies; no bound on Top-4's efficiency is computed, so a verdict at those inputs holds at Top-4's point estimate only.  Every input is stored: Top-4's efficiencies in fallback.json, each margin, latency bound and fastest call in reconcile.json, and the airtime, the sweep's upper completion time and the efficiency's bound in margins.json; no stored output changes"
+  },
+  "R28": {
+   "post_hoc": true,
+   "set": "2026-11-04",
+   "text": "(i) R28 reports the exhaustive sweep's efficiency within each prespecified stratum of the best beam's SNR (edges 0, 10 and 20 dB) in each of the seven non-training scenarios, read from the evaluation's stored per-stratum means at T_max (ten seeds, each user weighted equally), against the lowest efficiency at which Proposition 1(a) excludes each implementation that finishes within T_max, at the measured and at the adverse inputs.  (ii) The per-stratum efficiencies are point estimates: no bound is computed, so a stratum's efficiency above a threshold does not make an exclusion hold with any stated confidence within that stratum, and one below it does not show that a perfect predictor can outperform the sweep there.  (iii) R28 is post hoc: it was set after every earlier result and a review had been seen, after an estimate from the decision audit's populations (Houston and Phoenix at the 10 us pilot, the strata approximated by the best beam's rate) and a hand calculation of Chicago's lowest stratum had been seen.  It changes no earlier output or verdict",
+   "when": "set after every earlier result and a review had been seen; it changes no earlier output"
   }
  },
  "seeds": {
