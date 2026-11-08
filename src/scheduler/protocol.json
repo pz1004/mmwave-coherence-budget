@@ -1,5 +1,5 @@
 {
- "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R34, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
+ "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R35, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
  "amendments": [
   {
    "changes": "predictor.input",
@@ -1635,6 +1635,36 @@
    "files_sha256": {
     "ssbsens.json": "db2ac7ac62b4ad4d82b38efafe383d1ee610b5c99def18f8788d15872e2d1f6b"
    }
+  },
+  {
+   "key": "mu_rx",
+   "declared": "2026-11-08",
+   "title": "the CSI-RS budgets at 60 kHz and the per-probe sweep with receive beams, set post hoc",
+   "description": "one reading rule (R35), set post hoc, and the module that applies it (src/scheduler/nrmu.py), declared before its values run: nrtime.py's paired CSI-RS procedure at a 60 kHz subcarrier spacing, and the per-probe sweep over every transmit-receive pair with analog receive beams.  Nothing is timed, trained or simulated; no stored file changes",
+   "rules": [
+    "R35"
+   ],
+   "post_hoc": [
+    "R35"
+   ],
+   "scripts": [
+    "nrmu.py"
+   ],
+   "scripts_sha256": {
+    "nrmu.py": "f389e93249337cf6c31a16f3669de454243da161619fe3b5b3e80c74eddb2b22",
+    "nrtime.py": "8501735f556f328ebc2ae311dbb7f7fd4c17c3ddc8c51d197314e0ff36b186a8"
+   },
+   "inputs_sha256": {
+    "rho.json": "49b9979914d1cbf24ba4447b0a1630106b1a8ffaf1279798fc386882ac07ae1b"
+   },
+   "analyses": {
+    "nrmu": "nrmu.py, a module that make_draft.py imports, times nrtime.py's paired procedure on 60 and 120 kHz carriers from TS 38.214 Table 5.4-2 and TS 38.331's declarable timings, and computes the per-probe sweep's completion time and budget with receive beams"
+   },
+   "criteria": {
+    "nrmu": "gate M: at 120 kHz the schedules reproduce nrtime.times for 12 and 8 resources per slot and every declarable timing to 1e-9"
+   },
+   "state": "declared before it ran, except that gate M had run alone with --gate and the review that prompted rule R35 had computed the per-probe arithmetic for N_r = 4 and 8",
+   "files_sha256": {}
   }
  ],
  "changes": [
@@ -2093,6 +2123,13 @@
    "set": "2026-11-07",
    "text": "(i) R34 measures the SS blocks of rule R31's refinement on fewer samples (ssbsens.py): csirs.py's coherent law at 198, 66 and 33 samples on csirs.py's draws, in place of the probe model's 1000, each SS law paired with the six CSI-RS laws at both layers; windows, selection, scenarios and seeds are ssbref.py's.  (ii) Per SS law and layer, the lowest efficiency over the seven non-training scenarios and the six laws, density 3's coherent bound and the smallest bound over the laws, each one-sided at 0.05/14 as in R31 with its bootstrap and t halves stored, and the slacks they give with the refinement's report time.  (iii) R34 is post hoc: it was set after every earlier result and the same review had been seen; ssbsens.py's gates had run with --check-only, which computes no statistic of the SS laws, and it runs once, after this declaration.  It changes no earlier output, threshold or verdict",
    "when": "set after every earlier result and a review had been seen; it changes no earlier output"
+  },
+  "R35": {
+   "post_hoc": true,
+   "set": "2026-11-08",
+   "text": "(i) R35 times nrtime.py's paired CSI-RS procedure with its target and control carriers at a 60 kHz subcarrier spacing (nrmu.py): 250 us slots of 14 symbols; (Z, Z') = (min(44, X2 + KB1), X2), TS 38.214 Table 5.4-2 at mu = 2; X2 in {8, 14, 28} and KB1 in {14, 28, 48, 224, 336} symbols, beamReportTiming and beamSwitchTiming at scs-60kHz (TS 38.331 6.3.3); 12 and 8 resources per slot; every other rule of nrtime.py kept.  The budget is s_S - s_L + h, h = 250 us.  The paper states its range over the declarable timings at 12 per slot and, at the timing most favorable to the candidate, a row of its budget table read at the 120 kHz CSI-RS measurement's lowest efficiency and density 3's coherent bound, the smallest bound beside them (at 60 kHz a resource spans twice the resource blocks, not simulated), and the efficiencies that the two vision-model implementations finishing within T_max need there, as for the table's other CSI-RS rows.  Gate M: at 120 kHz nrmu.py reproduces nrtime.times for 12 and 8 resources per slot and every declarable timing to 1e-9.  (ii) With N_r in {2, 4, 8} analog receive beams and an exhaustive transmit-receive search, the per-probe sweep takes 64 N_r probes: d_S = 64 N_r t_p and tau* = (64 N_r - 4) t_p at one P-core's t_p (rho.json), read at the per-probe model's efficiency and bound, which were not simulated for receive beams; Proposition 1(a) applies only where d_S < T_max.  The paper states tau* for N_r = 2 and 4, a row of the budget table for N_r = 4, and the verdicts of the two implementations that finish within T_max under the every-runtime rule (excluded, unresolved, not excluded).  (iii) Under the CSI-RS procedure the UE applies the QCL assumptions of the indicated TCI states to the aperiodic CSI-RS resources (TS 38.214 5.2.1.5.1), the spatial QCL source the paper names, so it receives every resource on one beam and neither procedure's resources change; a receive-beam refinement after the selection delays both alike, the common delay that the bounding inputs allow.  No budget is computed for it.  (iv) R35 is post hoc: it was set after every earlier result and an internal review in the role of the journal's editor had been seen, that review having computed the per-probe arithmetic for N_r = 4 and 8; nrmu.py's gate M ran alone (--gate) before this declaration.  It changes no earlier output, threshold or verdict",
+   "when": "set after every earlier result and a review had been seen; it changes no earlier output",
+   "note": "Amended 2026-11-08, after an internal check of the paper's text, before any commit, with readings of nrmu.py's values that change none of them and no earlier output, threshold or verdict.  (i) Beside the efficiencies they need, the paper states the margin that the two vision-model exclusions keep at 60 kHz at the smallest bound.  (ii) It states every per-probe exclusion of an implementation finishing within T_max that receive beams change (the small transformer's on one E-core lost at N_r = 2; at 4 every one but ViT-B/16's on the GPU, ResNet-18 on eight P-core threads unresolved; at 8 every one), each transmit-receive pair a probe with its report, as (ii)'s 64 N_r probes are; one report per transmit beam, not computed, would shorten the sweep.  (iii) The QCL source is the indicated TCI state's or, below beamSwitchTiming, the default one (TS 38.214 5.2.1.5.1)."
   }
  },
  "seeds": {
