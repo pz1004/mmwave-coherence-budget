@@ -12,7 +12,7 @@
 #     re-timing fails protocol.py until the record says so.
 #   * The later analyses refuse to overwrite their outputs, and the long ones run only
 #     when their flag is set (RERANK, EXACT, SCREEN, CALIB, NRCFG, LEVELS, TRACE,
-#     MATCHED, CADENCE).
+#     MATCHED, CADENCE, AUDIT).
 #
 # The seed list (ten seeds) comes from protocol.json; `--seeds 17 29 43` re-runs the
 # prespecified three.
@@ -178,5 +178,28 @@ fi
 # blocks from the six evaluation scenarios.  calib_audit.py re-simulates the sweep's selections on
 # the GPU, times nothing and refuses to overwrite its output.
 [ -f calib_audit.json ] || python3 calib_audit.py
+
+# Rule R26: the decision audit.  Its pilot on Los Angeles sets the numerical tolerance;
+# audit_screen.py --freeze fixes the design and the session order, with a smoke test's weights;
+# the populations and the calibrations' bounds come before any session; the screen decides from
+# rounds 1-5 (--decide), which rounds 6-15 require; the auditor, which imports nothing of this
+# repository, computes every rate from the ray-traced paths (audit_rates.npz, regenerated, not
+# tracked) and reads everything.  The timing runs only with AUDIT=1, on a quiet machine, and never
+# twice.
+if [ "${AUDIT:-0}" = 1 ] && [ ! -d ../latency/profile_audit ]; then
+  python3 audit_pop.py --pilot
+  python3 audit_direct.py --pilot
+  S=$(mktemp -d)
+  (cd ../latency && OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+     taskset -c 0-15 python3 profile_audit.py --smoke "$S/smoke")
+  python3 audit_screen.py --freeze "$S/smoke/smoke.json"
+  python3 audit_pop.py
+  python3 audit_screen.py --bounds
+  ../latency/run_profile_audit.sh main 1 15
+  python3 audit_screen.py --decide
+  ../latency/run_profile_audit.sh main 16 45
+fi
+[ -f audit_rates.npz ] || python3 audit_direct.py --rates
+[ -f audit_direct.json ] || python3 audit_direct.py
 
 python3 make_manifest.py       # -> manifest.json: the datasets', models' and environment's hashes

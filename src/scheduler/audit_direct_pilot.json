@@ -1,0 +1,35 @@
+{
+ "rule": "R26",
+ "city": "city_1_losangeles_28",
+ "eligibility": {
+  "eligible": 19911,
+  "digest": "347f2b538674e16c",
+  "digest_recorded": "347f2b538674e16c",
+  "digest_equal": true
+ },
+ "rate_vs_stored": {
+  "max_abs": 0.000860294366678005,
+  "max_rel": 0.0013545118126568302,
+  "mean_genie_rel": 2.0115584198343583e-08
+ },
+ "pbar_vs_stored_max_rel": 0.0013429568450153415,
+ "genie_beam_agreement": 1.0,
+ "eta_direct": {
+  "1000": 0.9995297929847327,
+  "2000": 0.999753232092509,
+  "3000": 0.9998198420434814
+ },
+ "eta_screen_side": {
+  "1000": 0.9995297924160803,
+  "2000": 0.9997532316464514,
+  "3000": 0.9998198333266461
+ },
+ "delta": 8.716835253608224e-09,
+ "eps_rule": "max(1e-6, 10^ceil(log10(100 delta))), delta the largest difference between the two sides' efficiencies over the pilots",
+ "eps": 1e-06,
+ "seconds": {
+  "rates": 2.1,
+  "selections": 0.5
+ },
+ "script_sha256": "08bc3121879db93e09f34a6e4abb457bfcddd2d59edc736e597ac4ed69610c86"
+}

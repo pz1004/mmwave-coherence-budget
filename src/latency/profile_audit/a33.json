@@ -1,0 +1,639 @@
+{
+ "stem": "a33",
+ "mode": "session",
+ "slot": 33,
+ "round": 11,
+ "attempt": 1,
+ "smoke": false,
+ "started": true,
+ "started_utc": "2026-11-03T19:11:32Z",
+ "frozen_sha256": "90ac3f383754a858818720edf4632293c78f43bbc33fff38ce9032c1d22d6e3a",
+ "decisions_sha256": "4eec438c01578db141750aea2c4233c4d808202897444de0fe77279100b2ed26",
+ "frozen": {
+  "H_us": 10000.0,
+  "alpha": 0.0071428571428571435,
+  "budgets": [
+   8,
+   4,
+   12
+  ],
+  "builds": [
+   "resnet18_ts",
+   "vit_fp16_graph",
+   "vit_fp32"
+  ],
+  "calibration_rounds": 5,
+  "cities": [
+   "city_3_houston_28",
+   "city_4_phoenix_28"
+  ],
+  "draws": 200,
+  "eps": 1e-06,
+  "eps_source": "audit_direct_pilot.json",
+  "grid_us": [
+   250.0,
+   350.0,
+   500.0,
+   700.0,
+   1000.0,
+   1400.0,
+   2000.0,
+   2800.0,
+   4000.0,
+   5600.0,
+   8000.0,
+   10000.0
+  ],
+  "order": [
+   {
+    "build": "resnet18_ts",
+    "round": 1,
+    "slot": 1
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 1,
+    "slot": 2
+   },
+   {
+    "build": "vit_fp32",
+    "round": 1,
+    "slot": 3
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 2,
+    "slot": 4
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 2,
+    "slot": 5
+   },
+   {
+    "build": "vit_fp32",
+    "round": 2,
+    "slot": 6
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 3,
+    "slot": 7
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 3,
+    "slot": 8
+   },
+   {
+    "build": "vit_fp32",
+    "round": 3,
+    "slot": 9
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 4,
+    "slot": 10
+   },
+   {
+    "build": "vit_fp32",
+    "round": 4,
+    "slot": 11
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 4,
+    "slot": 12
+   },
+   {
+    "build": "vit_fp32",
+    "round": 5,
+    "slot": 13
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 5,
+    "slot": 14
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 5,
+    "slot": 15
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 6,
+    "slot": 16
+   },
+   {
+    "build": "vit_fp32",
+    "round": 6,
+    "slot": 17
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 6,
+    "slot": 18
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 7,
+    "slot": 19
+   },
+   {
+    "build": "vit_fp32",
+    "round": 7,
+    "slot": 20
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 7,
+    "slot": 21
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 8,
+    "slot": 22
+   },
+   {
+    "build": "vit_fp32",
+    "round": 8,
+    "slot": 23
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 8,
+    "slot": 24
+   },
+   {
+    "build": "vit_fp32",
+    "round": 9,
+    "slot": 25
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 9,
+    "slot": 26
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 9,
+    "slot": 27
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 10,
+    "slot": 28
+   },
+   {
+    "build": "vit_fp32",
+    "round": 10,
+    "slot": 29
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 10,
+    "slot": 30
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 11,
+    "slot": 31
+   },
+   {
+    "build": "vit_fp32",
+    "round": 11,
+    "slot": 32
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 11,
+    "slot": 33
+   },
+   {
+    "build": "vit_fp32",
+    "round": 12,
+    "slot": 34
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 12,
+    "slot": 35
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 12,
+    "slot": 36
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 13,
+    "slot": 37
+   },
+   {
+    "build": "vit_fp32",
+    "round": 13,
+    "slot": 38
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 13,
+    "slot": 39
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 14,
+    "slot": 40
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 14,
+    "slot": 41
+   },
+   {
+    "build": "vit_fp32",
+    "round": 14,
+    "slot": 42
+   },
+   {
+    "build": "vit_fp32",
+    "round": 15,
+    "slot": 43
+   },
+   {
+    "build": "vit_fp16_graph",
+    "round": 15,
+    "slot": 44
+   },
+   {
+    "build": "resnet18_ts",
+    "round": 15,
+    "slot": 45
+   }
+  ],
+  "order_rule": "15 rounds; round j runs the three builds in the order ('resnet18_ts', 'vit_fp16_graph', 'vit_fp32') permuted by numpy.random.default_rng(evaluate.stable_seed('decision_audit', 'round', j)).permutation(3)",
+  "phases_s": {
+   "idle": 60,
+   "warmup": 60,
+   "window": 120
+  },
+  "pilot_sha256": {
+   "audit_direct_pilot.json": "fb6751abceffde532915529849806bac282133b453110e68eac2cc6d6c04336a",
+   "audit_pilot.json": "ca9ebde715b7d56b286d19051f95e4adb570a64f1fb07aa032524c767f4154ee"
+  },
+  "primary_budget": 8,
+  "realizations_fresh": [
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20
+  ],
+  "realizations_primary": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "reference": {
+   "d_S_us": {
+    "1000": 1341.824,
+    "2000": 1981.824,
+    "3000": 2621.824
+   },
+   "feedback_us": 10.0,
+   "pilot_us": [
+    10.0,
+    20.0,
+    30.0
+   ],
+   "processing_us": 0.966,
+   "samples": [
+    1000,
+    2000,
+    3000
+   ]
+  },
+  "rounds": 15,
+  "scripts_sha256": {
+   "../latency/profile_audit.py": "a6205a7d118594c17191cf900bf22e4fad4f581c43a5311addc819cd34437e66",
+   "../latency/run_profile_audit.sh": "657744befc1b21878b229674cfde85f5608d82aa40ef74f4929799295919a53a",
+   "audit_direct.py": "08bc3121879db93e09f34a6e4abb457bfcddd2d59edc736e597ac4ed69610c86",
+   "audit_pop.py": "ede90fcd914ba76506debb97b8ddcefe8876586a8d3717396d0afaa92d68476c",
+   "audit_screen.py": "838cdd9bb554600867aab5d610ae430be81a5e745399285ce93a59e2504a7d12"
+  },
+  "software": {
+   "cuda": "13.0",
+   "cudnn": 92000,
+   "driver": "580.178.04",
+   "numpy": "2.5.3",
+   "python": "3.13.12",
+   "torch": "2.12.0+cu130",
+   "torchvision": "0.27.0+cu130",
+   "triton": "3.7.0"
+  },
+  "software_source": "the cadence study's frozen record",
+  "spacing_ms": 10,
+  "utc": "2026-11-03T16:50:16Z",
+  "weights_sha256": {
+   "resnet18_ts": "5338c088001c925e015d1bfdf6b9a58b54bfbff833e8e71a2ff55bed822d8cad",
+   "vit_fp16_graph": "d7c4121b169338a5c7207fe1d05edc1fa9883faa42c005e2003511ddb842bdd2",
+   "vit_fp32": "edf69f72f2823e47587f16b4a5396611d8d544d8d7b13bb190f91760e7f8d930"
+  },
+  "weights_source": "the smoke test (smoke.json) for resnet18_ts; the ViT builds equal the cadence study's",
+  "window": 1.0
+ },
+ "compute_apps_at_start": [
+  "1838, /usr/libexec/gnome-remote-desktop-daemon"
+ ],
+ "protocol": {
+  "weight_seed": 17,
+  "frame_seed": 881,
+  "ring": 64,
+  "check_frames": 256,
+  "image": [
+   224,
+   224,
+   3
+  ],
+  "mean": [
+   0.485,
+   0.456,
+   0.406
+  ],
+  "std": [
+   0.229,
+   0.224,
+   0.225
+  ],
+  "spacing_ms": 10,
+  "idle_s": 60,
+  "warmup_s": 60,
+  "window_s": 120
+ },
+ "runs": [
+  {
+   "build": "resnet18_ts",
+   "spacing_ms": 10,
+   "init_s": 0.48013758659362793,
+   "build_warnings": [],
+   "weights_sha256": "5338c088001c925e015d1bfdf6b9a58b54bfbff833e8e71a2ff55bed822d8cad",
+   "idle_start_time": 1793733093.4154937,
+   "idle_end_time": 1793733153.4155564,
+   "state_before": {
+    "utc": "2026-11-03T19:12:33Z",
+    "loadavg": [
+     "0.22",
+     "0.37",
+     "0.34"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     800000,
+     800000,
+     800000,
+     800000,
+     5699809,
+     800000,
+     800000,
+     800000,
+     5700000,
+     800000,
+     4416391,
+     5700000,
+     5700000,
+     800000,
+     5492270,
+     800000
+    ],
+    "gpu": "0, 0, 1395, 6500, 58, 66.01, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1566     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1838   C+G      0      0      0      -      -      -    gnome-remote-de",
+     "    0       1876     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0     664063     G      -      -      -      -      -      -    firefox        ",
+     "    0     667181     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0     928295     C      -      -      -      -      -      -    python3"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "   1876 gnome-shell     14.3",
+     "   1838 gnome-remote-de  2.4",
+     " 928295 python3          2.4",
+     " 928330 nvidia-smi       1.9",
+     " 667181 claude-desktop   0.7",
+     " 664063 firefox          0.4",
+     " 667295 claude-desktop   0.4"
+    ],
+    "gpu_encoder": "3, 1, 1",
+    "compute_apps": [
+     "1838, /usr/libexec/gnome-remote-desktop-daemon",
+     "928295, python3"
+    ],
+    "time": 1793733153.5084686
+   },
+   "warmup_start_time": 1793733153.508494,
+   "window_start_time": 1793733213.508494,
+   "window_end_time": 1793733333.5058227,
+   "state_after": {
+    "utc": "2026-11-03T19:15:33Z",
+    "loadavg": [
+     "0.18",
+     "0.29",
+     "0.31"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     800000,
+     6000000,
+     800000,
+     800000,
+     800000,
+     4701372,
+     800000,
+     800000,
+     800000
+    ],
+    "gpu": "16, 4, 1395, 6500, 59, 75.06, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1566     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1838   C+G      -      -      0      -      -      -    gnome-remote-de",
+     "    0       1876     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0     664063     G      -      -      -      -      -      -    firefox        ",
+     "    0     667181     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0     928295     C     14      3      -      -      -      -    python3"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "   1876 gnome-shell     14.3",
+     " 928295 python3         12.3",
+     "   1838 gnome-remote-de  2.4",
+     " 928330 nvidia-smi       1.9",
+     " 667181 claude-desktop   0.7",
+     " 664063 firefox          0.4",
+     " 667295 claude-desktop   0.4"
+    ],
+    "gpu_encoder": "3, 1, 1",
+    "compute_apps": [
+     "1838, /usr/libexec/gnome-remote-desktop-daemon",
+     "928295, python3"
+    ],
+    "time": 1793733333.5963364
+   },
+   "warmup": {
+    "n": 5899,
+    "mean_us": 1588.805996609595,
+    "p95_us": 1708.807,
+    "min_us": 1429.446,
+    "max_us": 7088.041,
+    "overruns": 0,
+    "start_to_start_median_us": 10191.88
+   },
+   "window": {
+    "n": 11797,
+    "mean_us": 1585.336053488175,
+    "p95_us": 1706.965,
+    "min_us": 1424.867,
+    "max_us": 2835.736,
+    "overruns": 0,
+    "start_to_start_median_us": 10191.8095
+   },
+   "execution_checks": {
+    "n_frames": 256,
+    "shape_ok": true,
+    "finite_ok": true,
+    "self_consistent": true,
+    "passes": true,
+    "argmax_agreement_with_fp32": 1.0,
+    "max_abs_logit_difference_vs_fp32": 5.960464477539062e-07
+   }
+  }
+ ],
+ "quiet_log": [
+  {
+   "utc": "2026-11-03T19:11:32Z",
+   "samples": [
+    [
+     3,
+     0.64
+    ],
+    [
+     0,
+     0.64
+    ],
+    [
+     1,
+     0.64
+    ],
+    [
+     0,
+     0.64
+    ],
+    [
+     0,
+     0.64
+    ],
+    [
+     0,
+     0.64
+    ],
+    [
+     0,
+     0.64
+    ],
+    [
+     3,
+     0.64
+    ],
+    [
+     3,
+     0.64
+    ],
+    [
+     3,
+     0.59
+    ]
+   ],
+   "quiet": true
+  }
+ ],
+ "env": {
+  "profile": "gpu-resident",
+  "cpu": "Intel(R) Core(TM) i9-14900KF",
+  "governor": "powersave",
+  "affinity": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "torch_threads": 1,
+  "requested_threads": 1,
+  "torch": "2.12.0+cu130",
+  "python": "3.13.12",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "numpy": "2.5.3",
+  "gpu": "Quadro RTX 8000",
+  "omp": "1",
+  "timestamp": "2026-11-04T04:11:27+0900",
+  "torchvision": "0.27.0+cu130",
+  "triton": "3.7.0",
+  "cuda": "13.0",
+  "cudnn": 92000,
+  "driver": "580.178.04",
+  "script_sha256": "a6205a7d118594c17191cf900bf22e4fad4f581c43a5311addc819cd34437e66",
+  "models_sha256": "1819703b5203e83bdce77667f27878b711c7cc585797eec2335d22d551d4d20f",
+  "env_vars": {
+   "OMP_NUM_THREADS": "1",
+   "OPENBLAS_NUM_THREADS": "1",
+   "MKL_NUM_THREADS": "1",
+   "CUDA_VISIBLE_DEVICES": null,
+   "PYTHONWARNINGS": "ignore"
+  }
+ },
+ "ended_utc": "2026-11-03T19:15:34Z",
+ "compute_apps_at_end": [
+  "1838, /usr/libexec/gnome-remote-desktop-daemon",
+  "928295, python3"
+ ],
+ "new_compute_apps": [],
+ "failed": null
+}

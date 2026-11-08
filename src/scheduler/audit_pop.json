@@ -1,0 +1,96 @@
+{
+ "rule": "R26",
+ "cities": {
+  "city_3_houston_28": {
+   "users": 19379,
+   "blocks": 22,
+   "users_per_block": [
+    12,
+    29,
+    22,
+    518,
+    1483,
+    975,
+    625,
+    1538,
+    1746,
+    1004,
+    686,
+    1672,
+    2059,
+    948,
+    821,
+    1577,
+    2160,
+    1350,
+    27,
+    50,
+    50,
+    27
+   ]
+  },
+  "city_4_phoenix_28": {
+   "users": 13489,
+   "blocks": 21,
+   "users_per_block": [
+    63,
+    280,
+    350,
+    343,
+    59,
+    356,
+    823,
+    1034,
+    1222,
+    133,
+    72,
+    4,
+    1372,
+    386,
+    1324,
+    2330,
+    2173,
+    122,
+    350,
+    350,
+    343
+   ]
+  }
+ },
+ "samples": [
+  1000,
+  2000,
+  3000
+ ],
+ "realizations_primary": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+ ],
+ "realizations_fresh": [
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20
+ ],
+ "seed_tag": "stable_seed('decision_audit', city, r)",
+ "script_sha256": "ede90fcd914ba76506debb97b8ddcefe8876586a8d3717396d0afaa92d68476c",
+ "inputs_sha256": {
+  "data/city_3_houston_28.npz": "6f1afb0ddaa30320f6fe1f98e506b1458ec773a5ece65da19e3c4757d00b0254",
+  "data/city_4_phoenix_28.npz": "183e6ffb68ac3217a4c51b89c099199f86b32044c3eeb3b9beab379cf0057e8d"
+ },
+ "npz_sha256": "862cc9f3075c366cc7ddca42c7bbbcdedd95a057ddaca8e6b18cb36b7e5bf8e9"
+}

@@ -1,5 +1,5 @@
 {
- "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R25, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
+ "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R26, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
  "amendments": [
   {
    "changes": "predictor.input",
@@ -980,6 +980,535 @@
    },
    "state": "declared before it ran; none of its outputs existed; ran once: 3600 draws, 0 failed",
    "title": "calibration audit: the sweep-efficiency bound from samples of 4, 8 and 12 spatial blocks"
+  },
+  {
+   "amended_before_freeze": [
+    {
+     "utc": "2026-11-03T16:50:16Z",
+     "what": "audit_pop.py's gate: the declaration required a numpy re-implementation of the law to equal csirs.coherent bit for bit.  The Los Angeles pilot showed numpy's and torch's square roots differing in the last place for about 0.4% of entries (up to 2e-13 relative in a measurement), so no numpy re-implementation can pass; audit_pop.py now computes the measurement with csirs.coherent itself and selects with methods.topk.  The auditor's own selections are compared with these, not required to equal them.  No design choice changed"
+    }
+   ],
+   "analyses": {
+    "decision_audit": "Order: audit_pop.py --pilot and audit_direct.py --pilot on Los Angeles (eps); audit_screen.py --freeze; audit_pop.py (Houston, Phoenix); audit_direct.py --rates; audit_screen.py --bounds; sessions 1-15 (rounds 1-5); audit_screen.py --decide, recording the decisions' sha256; sessions 16-45 (rounds 6-15); audit_direct.py.  Workers for the bounds: numpy only, one thread each, started fresh, never during a session"
+   },
+   "criteria": {
+    "decision_audit": "audit_pop.py: the measurement is csirs.coherent itself, on the GPU as csirs.py ran it, and the selection methods.topk at k = 64.  audit_direct.py: its eligible users reproduce the qualification record's digest.  audit_screen.py: the frozen record exists and the scripts equal their frozen sha256; the decisions are written before any session of rounds 6-15 exists.  profile_audit.py: the frozen record exists and its sha256 matches; the software and weights equal the frozen values; slots 16-45 require the recorded decisions; execution checks pass; no output is overwritten"
+   },
+   "decided_utc": "2026-11-03T17:58:31Z",
+   "decisions_sha256": "4eec438c01578db141750aea2c4233c4d808202897444de0fe77279100b2ed26",
+   "declared": "2026-11-04",
+   "description": "a calibration and decision audit declared before it runs (rule R26): three image-only GPU builds (src/latency/profile_audit.py, run_profile_audit.sh) timed in 15 randomized rounds at a 10 ms spacing; reference populations at three pilot durations in Houston and Phoenix (audit_pop.py); the screen's bounds and decisions from 4-, 8- and 12-block calibrations and the first five rounds (audit_screen.py); and an independent auditor (audit_direct.py) computing the perfect predictor's rate from the ray-traced paths.  Nothing is retrained or re-solved; no stored output, bound or verdict changes; the outputs are new",
+   "frozen": {
+    "H_us": 10000.0,
+    "alpha": 0.0071428571428571435,
+    "budgets": [
+     8,
+     4,
+     12
+    ],
+    "builds": [
+     "resnet18_ts",
+     "vit_fp16_graph",
+     "vit_fp32"
+    ],
+    "calibration_rounds": 5,
+    "cities": [
+     "city_3_houston_28",
+     "city_4_phoenix_28"
+    ],
+    "draws": 200,
+    "eps": 1e-06,
+    "eps_source": "audit_direct_pilot.json",
+    "grid_us": [
+     250.0,
+     350.0,
+     500.0,
+     700.0,
+     1000.0,
+     1400.0,
+     2000.0,
+     2800.0,
+     4000.0,
+     5600.0,
+     8000.0,
+     10000.0
+    ],
+    "order": [
+     {
+      "build": "resnet18_ts",
+      "round": 1,
+      "slot": 1
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 1,
+      "slot": 2
+     },
+     {
+      "build": "vit_fp32",
+      "round": 1,
+      "slot": 3
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 2,
+      "slot": 4
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 2,
+      "slot": 5
+     },
+     {
+      "build": "vit_fp32",
+      "round": 2,
+      "slot": 6
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 3,
+      "slot": 7
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 3,
+      "slot": 8
+     },
+     {
+      "build": "vit_fp32",
+      "round": 3,
+      "slot": 9
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 4,
+      "slot": 10
+     },
+     {
+      "build": "vit_fp32",
+      "round": 4,
+      "slot": 11
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 4,
+      "slot": 12
+     },
+     {
+      "build": "vit_fp32",
+      "round": 5,
+      "slot": 13
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 5,
+      "slot": 14
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 5,
+      "slot": 15
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 6,
+      "slot": 16
+     },
+     {
+      "build": "vit_fp32",
+      "round": 6,
+      "slot": 17
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 6,
+      "slot": 18
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 7,
+      "slot": 19
+     },
+     {
+      "build": "vit_fp32",
+      "round": 7,
+      "slot": 20
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 7,
+      "slot": 21
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 8,
+      "slot": 22
+     },
+     {
+      "build": "vit_fp32",
+      "round": 8,
+      "slot": 23
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 8,
+      "slot": 24
+     },
+     {
+      "build": "vit_fp32",
+      "round": 9,
+      "slot": 25
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 9,
+      "slot": 26
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 9,
+      "slot": 27
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 10,
+      "slot": 28
+     },
+     {
+      "build": "vit_fp32",
+      "round": 10,
+      "slot": 29
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 10,
+      "slot": 30
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 11,
+      "slot": 31
+     },
+     {
+      "build": "vit_fp32",
+      "round": 11,
+      "slot": 32
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 11,
+      "slot": 33
+     },
+     {
+      "build": "vit_fp32",
+      "round": 12,
+      "slot": 34
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 12,
+      "slot": 35
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 12,
+      "slot": 36
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 13,
+      "slot": 37
+     },
+     {
+      "build": "vit_fp32",
+      "round": 13,
+      "slot": 38
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 13,
+      "slot": 39
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 14,
+      "slot": 40
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 14,
+      "slot": 41
+     },
+     {
+      "build": "vit_fp32",
+      "round": 14,
+      "slot": 42
+     },
+     {
+      "build": "vit_fp32",
+      "round": 15,
+      "slot": 43
+     },
+     {
+      "build": "vit_fp16_graph",
+      "round": 15,
+      "slot": 44
+     },
+     {
+      "build": "resnet18_ts",
+      "round": 15,
+      "slot": 45
+     }
+    ],
+    "order_rule": "15 rounds; round j runs the three builds in the order ('resnet18_ts', 'vit_fp16_graph', 'vit_fp32') permuted by numpy.random.default_rng(evaluate.stable_seed('decision_audit', 'round', j)).permutation(3)",
+    "phases_s": {
+     "idle": 60,
+     "warmup": 60,
+     "window": 120
+    },
+    "pilot_sha256": {
+     "audit_direct_pilot.json": "fb6751abceffde532915529849806bac282133b453110e68eac2cc6d6c04336a",
+     "audit_pilot.json": "ca9ebde715b7d56b286d19051f95e4adb570a64f1fb07aa032524c767f4154ee"
+    },
+    "primary_budget": 8,
+    "realizations_fresh": [
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20
+    ],
+    "realizations_primary": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "reference": {
+     "d_S_us": {
+      "1000": 1341.824,
+      "2000": 1981.824,
+      "3000": 2621.824
+     },
+     "feedback_us": 10.0,
+     "pilot_us": [
+      10.0,
+      20.0,
+      30.0
+     ],
+     "processing_us": 0.966,
+     "samples": [
+      1000,
+      2000,
+      3000
+     ]
+    },
+    "rounds": 15,
+    "scripts_sha256": {
+     "../latency/profile_audit.py": "a6205a7d118594c17191cf900bf22e4fad4f581c43a5311addc819cd34437e66",
+     "../latency/run_profile_audit.sh": "657744befc1b21878b229674cfde85f5608d82aa40ef74f4929799295919a53a",
+     "audit_direct.py": "08bc3121879db93e09f34a6e4abb457bfcddd2d59edc736e597ac4ed69610c86",
+     "audit_pop.py": "ede90fcd914ba76506debb97b8ddcefe8876586a8d3717396d0afaa92d68476c",
+     "audit_screen.py": "838cdd9bb554600867aab5d610ae430be81a5e745399285ce93a59e2504a7d12"
+    },
+    "software": {
+     "cuda": "13.0",
+     "cudnn": 92000,
+     "driver": "580.178.04",
+     "numpy": "2.5.3",
+     "python": "3.13.12",
+     "torch": "2.12.0+cu130",
+     "torchvision": "0.27.0+cu130",
+     "triton": "3.7.0"
+    },
+    "software_source": "the cadence study's frozen record",
+    "spacing_ms": 10,
+    "utc": "2026-11-03T16:50:16Z",
+    "weights_sha256": {
+     "resnet18_ts": "5338c088001c925e015d1bfdf6b9a58b54bfbff833e8e71a2ff55bed822d8cad",
+     "vit_fp16_graph": "d7c4121b169338a5c7207fe1d05edc1fa9883faa42c005e2003511ddb842bdd2",
+     "vit_fp32": "edf69f72f2823e47587f16b4a5396611d8d544d8d7b13bb190f91760e7f8d930"
+    },
+    "weights_source": "the smoke test (smoke.json) for resnet18_ts; the ViT builds equal the cadence study's",
+    "window": 1.0
+   },
+   "key": "decision_audit",
+   "pilot": "Los Angeles, realizations tagged 'pilot' (audit_pilot.json, audit_direct_pilot.json): the screen side's efficiency 0.999530, 0.999753 and 0.999820 at the three pilots, the auditor's within 8.7e-9 of them, so eps = 1e-6; the auditor's eligible users reproduce the qualification digest and its best beam equals the stored one for every user; its per-beam rates differ from the stored ones by at most 8.6e-4 bit/s/Hz, in beam nulls about 60 dB below a user's best beam, where the stored single-precision arithmetic loses digits",
+   "rules": [
+    "R26"
+   ],
+   "scripts": [
+    "../latency/profile_audit.py",
+    "../latency/run_profile_audit.sh",
+    "audit_pop.py",
+    "audit_screen.py",
+    "audit_direct.py"
+   ],
+   "state": "declared before it ran; none of its outputs existed; a smoke test of 8 s per build (2 s idle, 2 s warm-up, 4 s timed) had run before the freeze to check the scripts, its output kept outside the repository and its timings seen; ran: 45 of 45 sessions, 45 attempts, none failed or replaced; the decisions were recorded at 17:58:31Z, before session 16 began at 18:00:36Z; the auditor ran once, after session 45.  audit_rates.npz (16 MB) is not stored; audit_rates.json records its sha256 and audit_direct.py --rates rebuilds it",
+   "title": "decision audit: the screen under limited calibration, against a direct perfect-predictor calculation and later timing sessions",
+   "files_sha256": {
+    "../latency/profile_audit/a01.json": "7e41ed6e2a77009d60ce5be4da160edf7727c111b22b1e759d222d2758062e9a",
+    "../latency/profile_audit/a01.npz": "7fdfe60deafadda78853ca66a0a9a09d47189722f5bbf9e324f975cb20ce9bf6",
+    "../latency/profile_audit/a01_gpu.csv": "abd5b4acc2a45c58715e2a020365ec9c8dc5f286863b2a61ab3b30d34d634750",
+    "../latency/profile_audit/a02.json": "3ebd55ef175a926b1934bfde2f32349fee75633d83da2290c251a18f5cbf6fef",
+    "../latency/profile_audit/a02.npz": "eecd1d2d8a7d05a509d4bf67197166a0bbc1dc52c38d46654a31b78d21247995",
+    "../latency/profile_audit/a02_gpu.csv": "6a0300f39c3a63361ad61c76105db90ec56d1019ffc65d698632ee31a5d106e1",
+    "../latency/profile_audit/a03.json": "9fd9b6854156c87514ebfcb5cf38640f60a5db603c47cf299f333a51f892e5ad",
+    "../latency/profile_audit/a03.npz": "00a74ec6fe86f68d9267197b454142b3c10590f22681d13630430e1bff3a2405",
+    "../latency/profile_audit/a03_gpu.csv": "58de997b231097a18f36c988c4ea1349ce5c667a2d91b7d38d29721af1a6a57a",
+    "../latency/profile_audit/a04.json": "c5f97f2e299073e73bb052a24042bfb6f076b7ae481cc774230a65f73bc8f286",
+    "../latency/profile_audit/a04.npz": "c00516ea50622245f009c920bc842de069f02286ba9bc45676a1164006ede0c5",
+    "../latency/profile_audit/a04_gpu.csv": "66eea608134be38b2ff05fe7f106806f769e9afcd2a87010f5025030e4a5ebf3",
+    "../latency/profile_audit/a05.json": "169bd68c98673ed139ddb686effcf01ae3662b7ecedbd2ceb88a1d3f0b0e7685",
+    "../latency/profile_audit/a05.npz": "1f10bc5f555001c8275e9f9b21d0a262bee0fcdab049470bc1352652e79ed7cf",
+    "../latency/profile_audit/a05_gpu.csv": "0c5631dfc6171565c2b7baf957e7c82af625c0f6863fa9510303547549373f9e",
+    "../latency/profile_audit/a06.json": "f5ee116c292454de7172fd9d7de0481b54ffb9c41ca7ae4d70079e4d23d100b7",
+    "../latency/profile_audit/a06.npz": "cf4a9f51d28855089b6bc5cf4a5e1d43a2f2d42b3909daf93c63cc0b7011f2a1",
+    "../latency/profile_audit/a06_gpu.csv": "cdcf71d27cdd3d32c05c58eda8642c51859de755e62fb613f35b8f678d00e880",
+    "../latency/profile_audit/a07.json": "415f5358fc4ee87e86558d26618fdb502804f9c33feb464e883dc475901f1202",
+    "../latency/profile_audit/a07.npz": "f244fd6242976f0c287ad910f72312d04fa338f5e1c63d782c373d163acc98d7",
+    "../latency/profile_audit/a07_gpu.csv": "d867675824ac118f5f244228be76bbd3e9051ea9f0677818fd9387708c4c02d2",
+    "../latency/profile_audit/a08.json": "dd21605ea7863a4737a59b0125a4be5d4a8f291549edb37bdc9255dc034b883d",
+    "../latency/profile_audit/a08.npz": "3df35c41ced4de6cc361b8e380b4a4a41c01963676c52c191a685a9c5cc8dda4",
+    "../latency/profile_audit/a08_gpu.csv": "abba196325110c6c70b891fcefee62613602a658a3c19290904f5edfeadd0f29",
+    "../latency/profile_audit/a09.json": "1d659548bf975c4ea2caac8dbd1f7e2e058d8bb027ae271b86825bcf228a3704",
+    "../latency/profile_audit/a09.npz": "d3786290a08ec7bb5ed1f31cfbd5cf20fe613144ff7510c7774421c6a7d27086",
+    "../latency/profile_audit/a09_gpu.csv": "b7759668f3463b6c40fbd5f450c9ff27e6c99a4d195eb4dabb2212bbeb3b6efa",
+    "../latency/profile_audit/a10.json": "1873bc8af45ffd43556258ac134c4c3d6055504cfa6314224e5ad372722864d5",
+    "../latency/profile_audit/a10.npz": "aab91b0b85ea33931d4e95cdfdaa56e05b904444f3f4807a27399afc7a1eafd1",
+    "../latency/profile_audit/a10_gpu.csv": "45bda0b2a5fc4426fbd72993f4c2583383e6ecec468542ea59990588768f0201",
+    "../latency/profile_audit/a11.json": "08ba1a4a9c94c35fc882674a36584ac404c7adf2a6b2920a6794fee65274100c",
+    "../latency/profile_audit/a11.npz": "47338b524b71c240cc39a83fcb8432da71f4805b65a06fff5279a4373fd0e25c",
+    "../latency/profile_audit/a11_gpu.csv": "9b27d118c7cd213f8b288bcce757f4d264d868af5389d0cb6f0761628ef822ee",
+    "../latency/profile_audit/a12.json": "a04c1c6183449a9c4e980812d3a8ed0466e56d7efabd388d7591286974606085",
+    "../latency/profile_audit/a12.npz": "484b0855af85a9638a7778467978205783211bc98771472b18e9950baa890b6a",
+    "../latency/profile_audit/a12_gpu.csv": "7e30eb5ac9daf77b0f44fa362d1c7930f059236e7689ca2edcf67a26cae4e366",
+    "../latency/profile_audit/a13.json": "e3928608d0b74a2f7eacaf95a1ef4e4ab8f39a4bacb9775c949a4a32249bfc47",
+    "../latency/profile_audit/a13.npz": "044033ec96842cc158c9a348f262ab8bdf4c04c78ca4d9d9635949c7bfbf9f45",
+    "../latency/profile_audit/a13_gpu.csv": "6bb23ef24a64860d135896614d9bd1ac82d1be627800e05e832438fc25e3a8e4",
+    "../latency/profile_audit/a14.json": "1cac841292b075239489d40c4812e2e27b1f6ecd0d43762fb62c6736f5976010",
+    "../latency/profile_audit/a14.npz": "d11a17e60e6a4c624a932e8f1b91049ffd58650fe0033ea20a250bd1e12f35d2",
+    "../latency/profile_audit/a14_gpu.csv": "c4c89302e6d2b1f46fd78378eea3fb8325ce48c215520e59972e0d7c505245aa",
+    "../latency/profile_audit/a15.json": "1831606461eead3d999d578a52eae5a9312e681feec0eaace121e1db6ca0dd29",
+    "../latency/profile_audit/a15.npz": "86f260f0f212c691225d2a6aa8f381ed7b3c9a3bb8a2219d1a8d44fedcd60660",
+    "../latency/profile_audit/a15_gpu.csv": "fc574ba24e3e9fcd891dca46ac34031ccb00646cdf082dc8e6d6b7bcf86ec0d8",
+    "../latency/profile_audit/a16.json": "679128aaebfb5f710ba415cdf71fee4218273e83e02ef749d8f4b4cca4ad4be1",
+    "../latency/profile_audit/a16.npz": "bd9271c3b86cd1e36e43a5fc31bc373c158fab0d5423827fd36a370cbfcf714f",
+    "../latency/profile_audit/a16_gpu.csv": "0b6ddbfcb430875a7d83729d651a71f7307c7bef6c0517f5e44850a66618a83d",
+    "../latency/profile_audit/a17.json": "0aa17a1c87c9e689c9f9c15caf972db90c5d900a28e40ed1d1da2c0a55dd4680",
+    "../latency/profile_audit/a17.npz": "08b33b4ac6976dfc88540ee7a8d4b365b3cd71f807e690b663f16f67790f0a3b",
+    "../latency/profile_audit/a17_gpu.csv": "b7cf3ef764c857991414021f822eba7005dcf34f674f07bb4c44cfcaf2e6030d",
+    "../latency/profile_audit/a18.json": "0ea96b8681572f96c2077b04e84f28e317b52fd1d13b1e0945dd8dbc6535fa7c",
+    "../latency/profile_audit/a18.npz": "9d426eec7c352e190922c7c55cf95bf1de45802c667c705c7f3fccdbfed3cd57",
+    "../latency/profile_audit/a18_gpu.csv": "51f3555f40e226ce8a1ae48e626333797cd937ee0fc12624e6e5e0d13a89a394",
+    "../latency/profile_audit/a19.json": "769f4126ddaa197bae9c7d9d9b51380e77a1b72c6cf9c0f5e0c4df1dc5b775ae",
+    "../latency/profile_audit/a19.npz": "68f3442cbde176a4c2e8293d2fb105b743e2534043990c91efa7d3c8d6966924",
+    "../latency/profile_audit/a19_gpu.csv": "867a2ceafb23c63b552d4c7964b2f71184cf537be69a7cfc948e4cc7d46d99be",
+    "../latency/profile_audit/a20.json": "e76e70b90601470665465ba540db201b33116e83a98f9ef9a1e15b230877915f",
+    "../latency/profile_audit/a20.npz": "1fe601b31aca876332ecbb759b41b3506b037d22d3d02abbc61c7c9137b5987e",
+    "../latency/profile_audit/a20_gpu.csv": "b4ab586be309057674d1df8b37a535ca03643d3ffd8cb5abefe8721f6aa66710",
+    "../latency/profile_audit/a21.json": "69e7c2f0432cde5870800fc28b4eab0173e5f86ae6d44bc24b58f7a1e129d0fd",
+    "../latency/profile_audit/a21.npz": "fe99a21aa417d797e84f3fdd2a3834d34f9fabe6b3de70245c2dc1d1ad85b0c9",
+    "../latency/profile_audit/a21_gpu.csv": "b1e29411ddf004c9e1929126b9e854ce6f14cfe5209c2bcbc04bc46f74322a46",
+    "../latency/profile_audit/a22.json": "cebb8ba71f6a983f5b3b71f625c5d89c27f7bf9e86ceead3fbae6000e7d5dce3",
+    "../latency/profile_audit/a22.npz": "250c6e3f7d8e0914c7e8b6c9f630f8f6be1ba05bfbc5f034229d5c6dec7271b9",
+    "../latency/profile_audit/a22_gpu.csv": "4c86f78e9db8fdb8c9806c95cfbe81dc5f59dfed022864dc2cbaed7a749af58a",
+    "../latency/profile_audit/a23.json": "e89dd4dbf1464367ce03638fc5eb5253f15e2d8666d6b8ada383aa4857957f59",
+    "../latency/profile_audit/a23.npz": "6e4fdd90a34957ff6991a8201a51892da46df6c1d46115e49a431b7de4f3028f",
+    "../latency/profile_audit/a23_gpu.csv": "4283f399a03e3eb3005a5bd36a3b4b044de6ef7b7261610f474686a484aab20b",
+    "../latency/profile_audit/a24.json": "c5c2dd4ac0c6880c925025ad4bc7b1022e7c7fbd9dd7df76a9246b4241ed981c",
+    "../latency/profile_audit/a24.npz": "70696888e7e1531012f557b296fa9218f20964fb1620b5eee4cc62ab03cce494",
+    "../latency/profile_audit/a24_gpu.csv": "c15f2a8fb7183f17980524a8963e9338dd31a4e7721a42487901c898eb8cd9e6",
+    "../latency/profile_audit/a25.json": "a11f0d88f926aee63998418e745ee2738669219c24f7a7d5dcae25e5d1489545",
+    "../latency/profile_audit/a25.npz": "298f20df708ce7991c0cfa746de3edf8bae1a930c19f444874615337cbd96bc3",
+    "../latency/profile_audit/a25_gpu.csv": "82a33e91ce264338996d4c4aa74095a18da404ec006355592ce6a48e53310ae2",
+    "../latency/profile_audit/a26.json": "9fb38dd4a87487fe8a6a48986c0601f924eec518449deac1d01059d39a14e6c0",
+    "../latency/profile_audit/a26.npz": "52ba8ecd51b901d7bcc5a862c908d473e33f40f0b5dab5f38659281ef73b1c4a",
+    "../latency/profile_audit/a26_gpu.csv": "05a3250855204e43c29475d730f6724fc8b189ec686a89a84ec1aec94910a819",
+    "../latency/profile_audit/a27.json": "60e26b85a5503076cfa26569214495b6cd0761cc9b498ac43b33faf95013d19d",
+    "../latency/profile_audit/a27.npz": "56c493241b4e2dc6825fcbc1ee844c9f8fd22ec4a3d9f8e7e9c64563e9e1479a",
+    "../latency/profile_audit/a27_gpu.csv": "c227a602194791d30fdf6b23530c4c2b3b16e91d800f86053b55d26c8217852c",
+    "../latency/profile_audit/a28.json": "a4d677e88426f5a1fe61a4ee1a9b3d3f8a08972708fd32f2f94fc91849f61fc5",
+    "../latency/profile_audit/a28.npz": "b581fb56d12b06eea54b7404b74e448005459b81e7ecc5f5adfb3ad3b9459adf",
+    "../latency/profile_audit/a28_gpu.csv": "317974f2e7a5c961e8a26f289cad79e2737154592f3651eb3496414466fa0b5b",
+    "../latency/profile_audit/a29.json": "c569879a2965430ccfbe01aeb16925122844253dd665e032aee1f556f09e3dd3",
+    "../latency/profile_audit/a29.npz": "4da598c573896bac1a6c7e63c77615c7c5f6f000291b4cec8ce7b21b8f5756e6",
+    "../latency/profile_audit/a29_gpu.csv": "c1a4a75b872c16a1c9257551cb1b5cfc98a49e4e699502b83ca03c28700ed845",
+    "../latency/profile_audit/a30.json": "520c035994b27bfcfb04211156ad38d42017c2482d87b269dc986e7a6490b26b",
+    "../latency/profile_audit/a30.npz": "ba3cf3057e692f06717c9a2026162b396b598ad9db103dbee821e925c60557c1",
+    "../latency/profile_audit/a30_gpu.csv": "74f43c8af75f6b4fa0b9f2e7678fef0122028f6e1c8db122dc66f66858a57446",
+    "../latency/profile_audit/a31.json": "44f0856c05049e1c6679765d2a972caadd4a00e895a94c369905cefe79b8e50f",
+    "../latency/profile_audit/a31.npz": "775387f1a0848ecaeacfdaebed06c8fe14c9292aba962e2245c46dce90064565",
+    "../latency/profile_audit/a31_gpu.csv": "36a9e2491abb28c0cb6d273ec2bfc74dd6327e8496bc5ea45bae3d56ee0f9f56",
+    "../latency/profile_audit/a32.json": "8561e570d15cd617f2a172ef46e2adeeaaa61ac0da27c3ffcd34e1983253d591",
+    "../latency/profile_audit/a32.npz": "5c1cca913de3d59d0495a43946fb7223e6dfcd565c862052c80059665c7158eb",
+    "../latency/profile_audit/a32_gpu.csv": "52702346566d8699f0080cbf6600d5cbb87dfa70b71ba8e586498c026eb941cd",
+    "../latency/profile_audit/a33.json": "c9f15e6b2dab8067ca3b902d169852e69a21c3596813ec8cc66d3011db8c04cb",
+    "../latency/profile_audit/a33.npz": "1df14f5f873cf4268f8c424954f2c280b71400bd37fdb71c5caa35960a8c527a",
+    "../latency/profile_audit/a33_gpu.csv": "c3a9cc9224b909f85a1feb49e31b534ca830fe0359a19b9c9ba19e72bb16ec85",
+    "../latency/profile_audit/a34.json": "cb4adbf4444bfdaec8a44bcd0e5b18898c43e22698505f7a8c8fb37cf62e245d",
+    "../latency/profile_audit/a34.npz": "96cfcb1652f7838b52294cbcd2a0b2d0bab479d8f38a69feea8198ef15fa9cac",
+    "../latency/profile_audit/a34_gpu.csv": "a824d7b5197bdf15b12772288c7a7560082370b7c328cc03377344a6f3930abb",
+    "../latency/profile_audit/a35.json": "c3a5dc607d4d7653b616cde8df19b32e125366fcb1596eb69d56dbc15c447347",
+    "../latency/profile_audit/a35.npz": "8c6b9a618d064ee9dee752efd025396d7617f31dd110b331de092102cc7cdb12",
+    "../latency/profile_audit/a35_gpu.csv": "56ff4be7e3961732143e81c1fb68900c029b89b9ed16df6415b92ebfd49f2798",
+    "../latency/profile_audit/a36.json": "2d487b8bf94d80f47ee000ace79cb47b21269ac5e771f648b6df89bd1b8ecdc3",
+    "../latency/profile_audit/a36.npz": "edfa1b3af3bf703095707906a57d6da36425ac41751cd9cb579f371189762c2d",
+    "../latency/profile_audit/a36_gpu.csv": "643887eb731e2fc4d0f5b797c490193c128a92f9af9a9c1b333028db8033eaf7",
+    "../latency/profile_audit/a37.json": "34d77dcd3bc5096d1016d86c6a73c4d8b1e3d899ba47208e70869f30dba098cc",
+    "../latency/profile_audit/a37.npz": "72dff2fb41162a33129f4e4df02a30691d4029a89328c470f0a6cc5ed38b4889",
+    "../latency/profile_audit/a37_gpu.csv": "5cc07747c434f9574fed211ae40a1aa3445c3c5dbb793ce48174f14ddf4c8a98",
+    "../latency/profile_audit/a38.json": "a462b38bff96aacb6e2413db4bc43ec96d548bb2e4a7d95a18df537e37be440a",
+    "../latency/profile_audit/a38.npz": "514092518eb94a0ffa88b9f9fcb49e708b6663d1aad5107be7838f027fc2e2ac",
+    "../latency/profile_audit/a38_gpu.csv": "99dd0b29fecf1fabdb3e780740cb81a8c9b05613d6993565146d2a72de3b57db",
+    "../latency/profile_audit/a39.json": "055d37d5ad9099558713c8801c882e2bb32f6a1f22b6d8e554edccd37cb63ff7",
+    "../latency/profile_audit/a39.npz": "65c7a7b0e6038c1bd38a5f28839df5171869fe62794245a3b5ce53dd09296241",
+    "../latency/profile_audit/a39_gpu.csv": "fc53acb0c3f1bec9b5cd6fb7613420f35e73c8dd8fde591518faab54123a3239",
+    "../latency/profile_audit/a40.json": "1ac3de1ace7b13bc620ee7804ebe72db06dc889e6402f5b716f3a7476a7da45a",
+    "../latency/profile_audit/a40.npz": "e1cef3f68edbd10c63fe523855f55cbe34f2753c02f82adbd25a2608e2d9f1b3",
+    "../latency/profile_audit/a40_gpu.csv": "cbe26bc6ca34eaef69e9217b0b7aecb02c730a6aed92aa164646d1b7b4175815",
+    "../latency/profile_audit/a41.json": "d25b9425e03fbbd9a5a3618c37bbf2b262455c90879f8fdf921e4ba6307e65ec",
+    "../latency/profile_audit/a41.npz": "f9a221ec2433aeea38fb32fd71b782c0aa1e7673332b76a6369a254bfc1acd80",
+    "../latency/profile_audit/a41_gpu.csv": "6b7307abeeef30ba7ccb8f5ec293ecf7d30a50f69fef2c9a1fdd0ba0d237eda3",
+    "../latency/profile_audit/a42.json": "be4f65864f3bda368b63f00c7b6d6cf9b909e0b94f19c7656e71b9bc0db7f2ae",
+    "../latency/profile_audit/a42.npz": "4af09b8d7fc32424592e38223bb439861992e9e814029019bdd539d4418b5b1b",
+    "../latency/profile_audit/a42_gpu.csv": "df868c4aadf4bd41ebb592457b25217036eca8c3d4a1ef98d4b804524d0c02e3",
+    "../latency/profile_audit/a43.json": "de3442d55ed1bcea2c579881bac2486daa1851e3b7404d8e0683c35dc8b61433",
+    "../latency/profile_audit/a43.npz": "4a2cecc0ded24cfb43c2e0dcdf82d4d5f3abec1d439b7c090df0542e10769aa8",
+    "../latency/profile_audit/a43_gpu.csv": "9ec7d035cd768578a5c708f39e17d5129b9a868f86d5f895f818e136845df410",
+    "../latency/profile_audit/a44.json": "88999184009c18ae1cfcc6cec4c53961fccf8d2255443f843e9fe0e2d2ba6257",
+    "../latency/profile_audit/a44.npz": "23136caa2a15ae2dc20a4822362d68bdc328b0755bc6a391f5c0e5fffd7eb37d",
+    "../latency/profile_audit/a44_gpu.csv": "d90cf28f62ffd17d51f2a3a865c3ee91bc2034754640800e891ecb61c246e735",
+    "../latency/profile_audit/a45.json": "f1dc196b0db1f7aaf048a956480a001cf64a51fd57c9ca749e59ae1c3a8014cc",
+    "../latency/profile_audit/a45.npz": "0e4fac9758c008ebed7730cb4bce4fc73a068c8194eabc59b468dd8bae3bf4d2",
+    "../latency/profile_audit/a45_gpu.csv": "f6ad96032f21e452064102d0e693ddd7d5f0386ea89f0294591c60610e219136",
+    "audit_pilot.json": "ca9ebde715b7d56b286d19051f95e4adb570a64f1fb07aa032524c767f4154ee",
+    "audit_direct_pilot.json": "fb6751abceffde532915529849806bac282133b453110e68eac2cc6d6c04336a",
+    "audit_pop.json": "3ee83f49806165917f4dd37530e009f38a0fe4c0a74587a35fcd57b7e07f3a38",
+    "audit_pop.npz": "862cc9f3075c366cc7ddca42c7bbbcdedd95a057ddaca8e6b18cb36b7e5bf8e9",
+    "audit_bounds.json": "34ed02969acb7599d6b4efedd7994bda3cc02d25fc17797d63d93b35f5ce1a8b",
+    "audit_decisions.json": "4eec438c01578db141750aea2c4233c4d808202897444de0fe77279100b2ed26",
+    "audit_rates.json": "4bba52d9f360f26f7bfe663e706a68e19faf704be9fd60d09bb72442cca3020a",
+    "audit_direct.json": "cd5501ea97b62cb4cb9f55675d8930abec766c95da285ce253a598c6d5d823bd"
+   },
+   "scripts_sha256": {
+    "../latency/profile_audit.py": "a6205a7d118594c17191cf900bf22e4fad4f581c43a5311addc819cd34437e66",
+    "../latency/run_profile_audit.sh": "657744befc1b21878b229674cfde85f5608d82aa40ef74f4929799295919a53a",
+    "audit_direct.py": "08bc3121879db93e09f34a6e4abb457bfcddd2d59edc736e597ac4ed69610c86",
+    "audit_pop.py": "ede90fcd914ba76506debb97b8ddcefe8876586a8d3717396d0afaa92d68476c",
+    "audit_screen.py": "838cdd9bb554600867aab5d610ae430be81a5e745399285ce93a59e2504a7d12"
+   }
   }
  ],
  "changes": [
@@ -1333,6 +1862,13 @@
    "set": "2026-10-30",
    "text": "(i) The calibration audit (analysis 'calib_audit') asks how the procedure that bounds the sweep's efficiency from below behaves when a calibration sees only part of a scenario.  It was designed after the paper's results had been seen and fixed before it ran, and it changes no bound, threshold or verdict of the paper.  (ii) Population: for each of the six evaluation scenarios, the probe model's sweep selections (csirs.py's 'coherent|1000', sim.measure's law) over the protocol's 10 seeds and the genie-aided rates of every eligible user, re-simulated by csirs.scenario with its gates; eta_pop, their ratio of means, is the population's efficiency.  (iii) Samples: k = 4, 8 and 12 of the scenario's 50 m blocks, drawn uniformly without replacement, 200 draws per scenario and k, from numpy's default_rng(evaluate.stable_seed('calib_audit', scenario, k)); every user of the drawn blocks and all ten seeds, users weighted equally in the ratio of means.  (iv) Bound: csirs.py's procedure without retuning, at its level 0.05/7: the smaller of the crossed seed-by-block bootstrap bound and the delta-method t bound (effbound.lower_bound with csirs.lin_se), its scan over [0, eta_hat] so that a small sample cannot leave it, bisection to 1e-6; a draw on which the procedure fails is recorded as failed and not redrawn.  Gates: csirs.scenario's own; on each full population csirs.lower_bound reproduces csirs.json's bound exactly, and the audit's scan reproduces it to 1e-6.  (v) Reported per scenario and k: coverage, the share of draws whose bound does not exceed eta_pop, with a Clopper-Pearson 95% interval as its Monte Carlo uncertainty, against the nominal 1 - 0.05/7; the bound's quantiles; the exclusion share, the share of draws whose bound reaches eta* = (T_max - dL_lo)/(T_max - d_S_hi) of four implementations at adverse inputs (ResNet-18 on eight P-core threads, 0.6114; ViT-B/16 on the GPU, 0.4269; ResNet-18 on the GPU at its repeated runs' lower value, 0.9942; the image-only FP16 build in expected rate, the largest over the matched study's sessions, 0.9317), with its interval; the false-exclusion share, the share whose bound reaches eta* while eta_pop does not, zero by construction when eta_pop >= eta*, as it is for all four in every scenario; the users and the sweep's measurements a draw represents.  (vi) The audit runs once and is reported as it comes out: if coverage falls short of nominal, the paper keeps the conditional result and describes the bounds accordingly, and the procedure is not modified.  Coverage and exclusion shares characterize this declared sampling experiment from fixed ray-traced populations; they do not establish coverage in other environments or for future executions, and 200 draws make a diagnostic, not a precise estimate of nominal coverage or of a zero failure probability",
    "when": "set after the paper's results and before the audit ran"
+  },
+  "R26": {
+   "note": "set before the audit's pilot, populations, bounds and sessions existed, after every earlier result, the paper and a reviewer's revision plan had been seen; a smoke test of a few seconds per build on a cool GPU had checked the timing scripts, its output discarded and its timings seen (means 1.57, 2.20 and 5.24 ms for the three builds)",
+   "post_hoc": false,
+   "set": "2026-11-04",
+   "text": "(i) The decision audit (analysis 'decision_audit') asks, at a fixed calibration budget, how often the screen excludes implementations that the 10 ms feasibility check keeps; whether its exclusions agree with a direct calculation of a perfect predictor's rate in the same finite population; and whether its decisions persist in later timing sessions.  It is a targeted audit of the decision procedure inside the paper's acquisition model: agreement within that model does not establish the model's physical adequacy.  It changes no earlier output, input, bound or verdict.  (ii) Candidates: three image-only GPU builds with no beam report (K = 0), implementation workloads evaluated against a hypothetical perfect selector; the data contain no images, so no trained camera-aided pipeline and no four-probe fusion is timed.  ResNet-18 in FP32, the path from the device frame to the index traced and frozen by TorchScript (calibrate_opt2.frozen); ViT-B/16 in FP16 in one CUDA graph (R22's build); ViT-B/16 in eager FP32 (R22's comparator).  Weights as R22 (seed 17).  The common timing boundary of R22 (i): the frame (224 x 224 x 3, uint8) waits in pinned host memory at the trigger, and a call runs from its copy to the device to the beam index on the host.  (iii) References: the per-probe 64-beam sweep with a pilot of 10, 20 or 30 us (N = 1000, 2000 or 3000 complex samples over 100 MHz), the 10 us feedback, the transmit power, the 16 sub-bands, the users and the processing convention unchanged; each probe's measurement follows Section III's law with N in place of 1000 (csirs.coherent's law), on noise draws shared by the three pilots (common random numbers), and the sweep selects the largest of its 64 measurements in the frozen spread order.  Declared completion time d_S = 64 (N/100 + 10 + 0.966) us = 1341.824, 1981.824 and 2621.824 us, 0.966 us being the largest per-probe processing measured on any profile; the screen and the auditor use the same d_S, so that only the efficiency's calibration separates them.  At fixed transmit power the longer pilots spend two and three times the sweep's pilot energy (64 x 1 W x 10, 20 or 30 us: 0.64, 1.28 or 1.92 mJ).  This is a controlled per-probe simulation, not an NR configuration.  (iv) Populations: Houston and Phoenix, chosen as already-seen stress cases (under R25 Houston's coverage was among the lowest with four blocks and Phoenix's bounds the weakest), not as external validation; block fading; every eligible user; ten measurement-noise realizations per user and pilot, regenerated from declared seeds (audit_pop.py), realizations 1-10 the frozen population and 11-20 a fresh sample reported separately.  (v) Calibration: per city and budget k = 8 (primary), 4 and 12 (prespecified sensitivities), 200 draws of k of the city's 50 m blocks without replacement, from declared seeds, each draw serving the three pilots and the three builds.  On each draw and pilot, R25's bound without retuning, at its level 0.05/7 (scan over [0, eta_hat], the ten realizations as its seeds, users weighted equally in the ratio of means, a bootstrap stream shared by the three pilots), clipped to [0, 1]; a draw whose procedure fails has no bound and excludes nothing.  The six city-pilot bounds of a draw have a family-wise nominal error of at most 6 x 0.05/7 = 0.043 by Bonferroni; each bound's level stays nominal (R25 found coverage short of it with four blocks), and no multiplicity correction repairs an invalid marginal bound.  (vi) Timing: 15 rounds, each running the three builds once in an order drawn from declared seeds, 45 sessions of one process each at a minimum start-to-start spacing of 10 ms (R24's pacing): the quiet check; loading and the build, untimed; one call; 60 s idle; 60 s of warm-up and a 120 s window in one paced schedule, every call kept; the execution checks; R24's telemetry (temperature, clocks, clock-event reasons, encoder and compute processes).  Rounds 1-5 are the calibration timing record and rounds 6-15 the later sessions.  Load policy: no other compute job runs during the sessions; the authors' text editing continues.  A session is replaced once, as attempt 2, only after an objective execution failure (a crash or CUDA error, failed execution checks or a missing timing record); temperature, clock changes, drift, encoder activity or a new GPU process are results.  The screening decisions are computed after round 5, and their file's sha256 is recorded in protocol.json before round 6 may start (profile_audit.py enforces it).  Budget: 45 sessions of 240 s of fixed phases, 3 h, plus loading and quiet checks.  (vii) The screen (audit_screen.py) sees only the drawn blocks' selections and stored per-beam rates, the declared d_S and the calibration timing record, whose weights give each of its five sessions 1/5 and that session's calls equal shares.  At the primary period H = 10 ms, in expected effective rate (Proposition 1(d)), phi = sum_r v_r (1 - D_r/H)^+ - eta_lb (1 - d_S/H)^+: excluded if phi < -eps, unresolved if |phi| <= eps, and otherwise not excluded by this screen, which establishes neither an opportunity nor competitiveness.  Feasibility baseline in the same objective: a build is infeasible at H only if every recorded completion time is at least H; a 95th percentile above H is not that condition.  (viii) The auditor (audit_direct.py) imports no module of this repository: from the ray-traced paths it computes every user's frequency-averaged rate on every beam and the band-averaged powers, regenerates the frozen noise draws (never new ones), makes the sweep's measurement and selection, and computes U(T) and R_S(T) with uniform weights over the user-realization pairs and A(T) = (U - R_S)/G, the perfect predictor's advantage as a share of the genie-aided rate, on the same timing record as the screen.  A cell is dominated if A(H) < -eps, an opportunity if A(H) > eps and a tie otherwise.  Reported: (a) the additional exclusion yield: per cell, its exclusion share over the 200 draws at k = 8; per draw, the number of the 18 cells excluded, summarized over draws; (b) contradictions, exclusions of a cell whose A(H) > eps, with their fraction of the exclusions per configuration ('not applicable' when none); (c) unresolved draws, and missed exclusions, draws not excluded on a dominated cell; (d) coverage, the share of draws whose bound does not exceed the auditor's population efficiency, distinct from contradictions; (e) later-session stability: A(H) on each later session's own record, an exclusion persisting in a session where A(H) <= eps; the screen recomputed on later records with the original bounds is a different output, labeled separately if reported; (f) the calibration burden: blocks, users, per-beam information, profiling time and computation.  Secondary, prespecified: the 12-period grid (the screen's labels per period, and the auditor's exact all-period check at the breakpoints of T A(T) - eps T), the budgets 4 and 12, the individual sessions and the fresh-noise sample (A(H) with the efficiency of realizations 11-20, labeled as a changed reference sample).  The 200 draws measure Monte Carlo variation conditional on fixed populations and timing records; draws, cells and calls are not independent trials, and 'no contradiction observed' is conditional on this finite audit.  Nothing is selected after the results: no endpoint, denominator, city, pilot, build or budget is added or dropped, and an uninformative calibration or an absence of exclusions is reported as found.  (ix) Tolerance: before the audit, a deterministic check on Los Angeles (the validation scenario; audit_pop.py --pilot and audit_direct.py --pilot) compares the screen side's efficiency, from the stored rates, with the auditor's, from its own, at the three pilots; with delta their largest difference, eps = max(1e-6, 10^ceil(log10(100 delta))), a numerical tolerance and not a practically meaningful rate difference.  (x) Reading: an excluded build is rejected for the declared city, pilot and H; a retained one needs its accuracy evaluated; a missed exclusion marks where more informative calibration would have decided.  Builds sharing weights are not separate training jobs: an architecture's training is avoidable only when every admissible implementation of it is excluded, which three builds cannot show, and no saving of GPU-hours is claimed.",
+   "when": "set before the audit's pilot, populations, bounds and sessions"
   },
   "R3": {
    "post_hoc": false,

@@ -19,6 +19,8 @@ src/sites/wheels/
 src/scheduler/data/
 src/scheduler/models/
 src/scheduler/coverage_*.npz
+# the decision audit's per-beam rates, recomputed from the licensed paths (audit_direct.py --rates)
+src/scheduler/audit_rates.npz
 src/scheduler/tables_*_*.npz
 # The first re-solve's primary tables are tracked like the recorded ones.
 !src/scheduler/tables_*_rr.npz

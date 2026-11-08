@@ -1,0 +1,36 @@
+{
+ "rule": "R26",
+ "city": "city_1_losangeles_28",
+ "realizations": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+ ],
+ "seed_tag": "stable_seed('decision_audit', 'pilot', city, r)",
+ "samples": [
+  1000,
+  2000,
+  3000
+ ],
+ "users": 19911,
+ "blocks": 20,
+ "eta_screen_side": {
+  "1000": 0.9995297924160803,
+  "2000": 0.9997532316464514,
+  "3000": 0.9998198333266461
+ },
+ "same_selection_share": {
+  "1000-2000": 0.946225704384511,
+  "1000-3000": 0.9208929737331123,
+  "2000-3000": 0.9731906986088092
+ },
+ "seconds_selections": 1.6,
+ "script_sha256": "ede90fcd914ba76506debb97b8ddcefe8876586a8d3717396d0afaa92d68476c"
+}
