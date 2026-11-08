@@ -1,5 +1,5 @@
 {
- "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R29, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
+ "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R31, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
  "amendments": [
   {
    "changes": "predictor.input",
@@ -1552,6 +1552,45 @@
    },
    "state": "declared before they ran; rules R27 and R28 were set after every earlier result and a review of the paper had been seen, and after the estimates recorded in their texts; both scripts ran once on 2026-11-04, every gate holding",
    "title": "two descriptive checks of the screen's scope, set post hoc"
+  },
+  {
+   "key": "tdd_ssb",
+   "declared": "2026-11-06",
+   "title": "time-division duplexing and an SS-block-guided reference, set post hoc",
+   "description": "two reading rules (R30, R31), set post hoc, and the scripts that apply them, declared before ssbref.py runs (src/scheduler/nrtdd.py, ssbref.py): the CSI-RS procedure's report times and budgets under the two time-division reference patterns of TS 38.101-2 at 120 kHz, and an SS-block-guided CSI-RS reference's efficiency and simultaneous bounds.  Nothing is timed or trained; ssbref.py simulates on csirs.py's draws; no stored file changes; ssbref.json is new",
+   "rules": [
+    "R30",
+    "R31"
+   ],
+   "post_hoc": [
+    "R30",
+    "R31"
+   ],
+   "scripts": [
+    "nrtdd.py",
+    "ssbref.py"
+   ],
+   "scripts_sha256": {
+    "nrtdd.py": "1b8bfe2f1a9bbd3d45726b98cadffa59092fc2a44ee8a04ece7778489b283f3d",
+    "ssbref.py": "b636b925fbd818cd97b48e048caf1c2e3219721e0799775152413669f9d81c73",
+    "nrtime.py": "8501735f556f328ebc2ae311dbb7f7fd4c17c3ddc8c51d197314e0ff36b186a8"
+   },
+   "inputs_sha256": {
+    "csirs.json": "9c89539e73082c1e01516ab54b5d4d5e07c46f7e07ea0be7f3d2246e4ea698b1",
+    "lat_cpu1t_pcore.json": "c659caa7eb31ce7c7e1cc1dd54db1e9f82dd7d487ed8b03b9b42b7e34fb8a4ef"
+   },
+   "analyses": {
+    "nrtdd": "nrtdd.py, a module that make_draft.py imports, schedules the sweep, the candidate's reduced set, the SS-block-guided set and a K = 0 candidate's report under each pattern, phase, control carrier, number of resources per slot and declarable timing, with nrtime.py's report rules",
+    "ssbref": "ssbref.py simulates the SS-block-guided reference for l = 3 and 4 under seven measurement laws in the seven non-training scenarios with the 10 seeds, on csirs.py's draws, and bounds each efficiency.  It refuses to overwrite ssbref.json; --check-only runs S1-S3 and computes no statistic of the reference"
+   },
+   "criteria": {
+    "nrtdd": "gate F: on paired spectrum the schedules reproduce nrtime.times for 12 and 8 resources per slot, both control carriers and every declarable timing, and W is one slot; every schedule passes check_schedule",
+    "ssbref": "S1 the coherent law at N = 1000 reproduces sim.measure bit for bit; S2 the sweep under every law used reproduces csirs.json's efficiencies and per-seed efficiencies to 1e-12; S3 each layer's windows partition the 64 beams; S4 bound <= eta < 1 and the scans' asserts"
+   },
+   "state": "declared before they ran, except that nrtdd.py's schedules had been computed and printed while it was written and a noiseless check of rule R31's window had been run; ssbref.py ran once on 2026-11-06, every gate holding",
+   "files_sha256": {
+    "ssbref.json": "5bec54c820f68932f0320fdf2aaf9890add14ddb18a118e83cd0716e8614a3c4"
+   }
   }
  ],
  "changes": [
@@ -1979,6 +2018,18 @@
    "text": "(i) R29 reads Proposition 1(a) as a latency budget: a K-probe implementation that selects among the M beams is excluded at every T <= T_max if its inference latency is at least tau* + (1 - eta)(T_max - d_S), tau* the reference's completion time less the predictor's own completion time without inference and the second term, the slack, what perfect selection can recover against a reference of efficiency eta.  (ii) It tabulates d_S, tau* and the slack, at the reference's lowest measured efficiency over the seven non-training scenarios and at its declared lower bound, for K = 4 and six references: the CSI-RS procedure of rules R16 and R19 with 12 resources per slot and a 120 kHz control carrier, the same with a 30 kHz control carrier, and with 8 resources per slot (the bounding inputs at the declarable timing most favorable to the candidate, X3 = KB2 = 14 at 120 kHz and X1 = 28 at 30 kHz; the lowest efficiency over densities and estimators, R16's, and density 3's coherent simultaneous bound, with the smallest simultaneous bound, energy detection at density 0.5, beside them); the per-probe model at one P-core's t_p; and the per-probe model at the SS burst's average spacing (5 ms / 64) and at one 125 us slot per probe, the last two at the per-probe model's efficiency and bound, their own measurements not simulated.  (iii) The efficiencies each implementation needs against these references are those the paper and its supplementary already print (rules R5, R16, R19 and the reference section's SS-burst reading), which the budgets reproduce; R29 adds the budgets, the slacks and the reading that on these channels the screen nearly reduces to whether an implementation finishes after the reference, the configuration setting the budget.  (iv) R29 is post hoc: it was set after every earlier result and a scope review of the paper had been seen, after the budgets had been computed by hand from nrtime.py, csirs_cfg.json and levels.json in that review.  It changes no earlier output, threshold or verdict",
    "when": "set after every earlier result and a review had been seen; it changes no earlier output",
    "note": "Amended 2026-11-05, after a further review of the paper had been seen, with three readings of stored outputs alone that change no earlier output, threshold or verdict.  (a) The CSI-RS budgets at every declarable timing (TS 38.331's beamReportTiming and beamSwitchTiming values, nrtime.capabilities): the table's CSI-RS rows take the timing most favorable to the candidate, which gives each configuration's largest budget, and the text gives the smallest beside it.  (b) ResNet-18 on the GPU against the CSI-RS procedure at adverse inputs (its latency's lower bound, as rule R21 sets it), at each declarable timing: the efficiency it needs, and the timings at which each density's and estimator's simultaneous bound (rules R16 and R19, with eight resources per slot from levels.json) excludes it, with a 120 or 30 kHz control carrier and 12 or 8 resources per slot; the verdict at the timing most favorable to the candidate, which the paper's bounding inputs use, is unchanged.  (c) Hier-6 as a seventh reference of the table, under the per-probe model at one P-core's t_p, at its lowest stored efficiency over the seven non-training scenarios and its simultaneous bound (rule R17), and the horizons up to which the two exclusions that finish within T_max cannot outperform it (the fixed-reference form of Proposition 1(a)).  The budget table's note also names the slack at the smallest simultaneous CSI-RS bound, which the text already stated.  The readings were computed before being written into the paper, during the review that asked for them"
+  },
+  "R30": {
+   "post_hoc": true,
+   "set": "2026-11-06",
+   "text": "(i) R30 times the aperiodic CSI-RS procedure of rules R16, R19 and R29 under time-division duplexing (nrtdd.py): the 120 kHz target carrier and a 120 kHz control carrier share one TDD-UL-DL-Pattern of TS 38.331 6.3.2; triggers occupy the first two symbols of a slot that opens with downlink symbols, CSI-RS resources downlink symbols after them, reports two-symbol transmissions within one slot's uplink symbols, and data start at a slot that opens with downlink symbols; a 30 kHz control carrier keeps nrtime.py's paired model.  The patterns are the two of TS 38.101-2 V18.14.0 Annex A at 120 kHz: DDDSU, 0.625 ms, S = 10D+2G+2U (Table A.3.3.1-1), and 7DS8U, 2 ms, S = 12D+2G (Table A.2.3-1).  (ii) Each procedure is scheduled as early as these rules allow, for every phase of the pattern at which the first trigger can fall and every declarable UE timing; the bounding inputs are nrtime.py's with W, the longest gap between consecutive slot starts that open with downlink symbols, in place of one slot, so the budget is s_S - s_L + W.  (iii) The paper states, per pattern and configuration, the budget's range over the phases at the declarable timing most favorable to the candidate and its largest over phases and timings, and per implementation the lowest efficiency at which Proposition 1(a) excludes it at the phase and timing most favorable to it, at the efficiencies and bounds of rules R16, R18 and R29: duplexing changes the timing, not the selection.  (iv) R30 is post hoc: it was set after every earlier result and a review in the role of the journal's editor-in-chief had been seen, and after the schedules had been computed and printed while nrtdd.py was written, before this declaration.  It changes no earlier output, threshold or verdict; its readings stand beside them",
+   "when": "set after every earlier result and a review had been seen; it changes no earlier output"
+  },
+  "R31": {
+   "post_hoc": true,
+   "set": "2026-11-06",
+   "text": "(i) R31 adds an SS-block-guided CSI-RS reference (ssbref.py): the strongest of the 2^l layer-l codewords (l = 3 or 4, 8 or 16 SS blocks) under one probe-model measurement taken before the acquisition starts, then one aperiodic CSI-RS set of the 2^(6-l) narrow beams nearest its direction, b m - m/2 to b m + m/2 - 1 (mod 64), measured under csirs.py's laws on csirs.py's draws and reported in one report; it is timed by nrtdd.guided on paired spectrum and under R30's patterns.  (ii) Its efficiency per law is stated at its lowest over the seven non-training scenarios, and its bound at the lowest of the per-scenario bounds, each one-sided at 0.05/14 (seven scenarios, two references) and the smaller of the crossed bootstrap's and the delta method's, both halves stored; the budget table reads the lowest efficiency over the six CSI-RS laws and density 3's coherent bound, as for the sweep.  (iii) A candidate whose input precedes the trigger (K = 0: SS-block reports, a Set B unlike Set A) is timed by nrtdd.input_only, one report held by Z alone.  (iv) R31 is post hoc: it was set after every earlier result and the same review had been seen, and after a noiseless check of the window in Phoenix and Chicago, in which the strongest block's descendants held the genie-aided beam for 36-90% of users and its nearest beams for 85-95%; ssbref.py runs once, after this declaration.  It changes no earlier output, threshold or verdict",
+   "when": "set after every earlier result and a review had been seen; it changes no earlier output"
   }
  },
  "seeds": {
