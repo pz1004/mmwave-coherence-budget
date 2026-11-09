@@ -118,7 +118,7 @@ reports. Each stage prints the load average and a re-check drift, and labels its
 (`src/scheduler/protocol.py`): the frozen protocol's hash, the hashes of the inputs it
 depends on, and those of the stored results it lists. The long runs of stage 4 are skipped
 unless their flag is set (`RETIME`, `RERANK`, `EXACT`, `SCREEN`, `CALIB`, `NRCFG`,
-`LEVELS`, `TRACE`, `MATCHED`, `CADENCE`, `AUDIT`; see the comments in the script). Every result the
+`LEVELS`, `TRACE`, `MATCHED`, `CADENCE`, `AUDIT`, `DEPLOY`; see the comments in the script). Every result the
 paper reports is either stored in the repository or computed from files stored there by the
 scripts that typeset the paper, which are not themselves released.
 
@@ -131,7 +131,7 @@ The measurement model and the six-layer hierarchical codebook are frozen in
   number seen (its fields hash to `self_sha256`);
 - its three amendments, A1–A3;
 - the changes made after results existed, each dated, with its reason;
-- the interpretation rules R1–R36, which state what each result permits the paper to claim,
+- the interpretation rules R1–R40, which state what each result permits the paper to claim,
   each with the date it was set and whether it was set after the results it reads;
 - the later analyses, each declared before it ran, with its scripts, its rules and the
   hashes of the stored files it wrote.
@@ -164,6 +164,10 @@ Result files in `src/scheduler/` are named after the run that wrote them:
 | `nrue.py`, `ssbsens` | rules R32 to R34, set post hoc: a candidate that infers at the user equipment, whose inference before its earliest report costs nothing, and its budgets on paired spectrum and under both patterns; the period up to which the SS-block-guided refinement delivers more than the sweep at the measured efficiencies, whatever the delay common to both (`nrue.py`, a module the paper imports, on stored outputs); and the refinement with its SS blocks measured on 198, 66 or 33 samples (`ssbsens.py`) |
 | `nrmu.py` | rule R35, set post hoc: the paired CSI-RS budgets with both carriers at 60 kHz (TS 38.214 Table 5.4-2 at mu = 2; gate M reproduces `nrtime.py` at 120 kHz), and the per-probe sweep over every transmit-receive pair with 2, 4 or 8 analog receive beams (a module the paper imports) |
 | `nrtddmu.py` | rule R36, set post hoc: rule R30's time-division procedure with both carriers at 60 kHz, on TS 38.101-2's 60 kHz test patterns (DDDSU every 1.25 ms, DDDSUUUU every 2 ms); gate T reproduces `nrtdd.py` at 120 kHz, gate P `nrmu.py` on paired spectrum (a module the paper imports) |
+| `covpop`, `covpop_direct` | rule R37, set post hoc: the covered population (the rule's operating population), the users whose genie-aided rate reaches CQI 1 of TS 38.214's CQI Table 2 (0.1523 bit/s/Hz; as a sensitivity, an effective SNR of at least −6 dB). Every efficiency bound the paper reports (`csirs`, `csirs_cfg`, `refbounds`, `ssbref`) recomputed on it with each pipeline's own selections, streams, levels and windows, and the decision audit's screen on it (`covpop.py`; on all users it reproduces the stored files exactly); the auditor's side, with the auditor's own rates and code (`covpop_direct.py`) |
+| `deploy` | the deployment-runtime study read by rule R38, declared before any of its timings (`deploy.py`): compiled reduced-precision builds of the two vision models the screen excludes, with the installed PyTorch (ResNet-18 on the GPU in FP16, eager, in one CUDA graph and compiled in max-autotune mode; ViT-B/16 in that graph and so compiled; ResNet-18 on eight P-core threads compiled in FP32 and quantized to INT8), each group's fastest chosen by a pilot and timed against its FP32 build in three sessions; the pilot and sessions are in `../latency/profile_deploy/` |
+| `nrue19.py`, `nrconf.py` | rule R39, set post hoc: the UE-side candidate under Release 19's predicted-beam report timing, (Z<sub>3</sub> + d, Z′<sub>3</sub> + d′) with d and d′ declared by the UE (TS 38.214 V19.5.0 5.4, TS 38.306 V19.4.0 4.2.7.2); and the CSI-RS budgets when the network measures its predicted beams again before data (TR 38.843 6.3.1), at 120 and 60 kHz, paired and under the test patterns (modules the paper imports) |
+| `robust` | rule R40, set post hoc (`robust.py`): the sweep's efficiency and per-probe slack under per-beam report errors of 0–3 dB in 1 dB steps; the overstatement of the genie-aided rate when bounded from band-averaged powers (Jensen's inequality), also from 1 dB report ranges; and the efficiency with every rate capped at CQI Table 2's 7.4063 bit/s/Hz |
 | `margins_post` | the margins as rules R16, R19 and R21 read them (`margins_post.py`, recorded in `protocol.json` as a change of 2026-10-31): every threshold, margin and delay limit the paper states under the CSI-RS procedure, with `nrtime.py`'s report times, at the runtimes of `reconcile.json`, and each exclusion's excess under channel aging at those runtimes. It supersedes the `nr_*` fields of `margins.json` and `reconcile.json`, which leave out the report times, and the excess in `aging_bound.json`, read from the stored timings; those files stay as written |
 | `manifest.json` | hashes of the datasets and model checkpoints, which are regenerated, not tracked |
 

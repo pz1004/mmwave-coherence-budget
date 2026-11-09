@@ -209,4 +209,33 @@ fi
 [ -f fallback.json ] || python3 fallback.py
 [ -f strata_eta.json ] || python3 strata_eta.py
 
+# Rules R31 and R34, set post hoc: the SS-block-guided CSI-RS refinement on csirs.py's draws
+# (ssbref.py) and with its SS blocks measured on fewer samples (ssbsens.py).  Both simulate on the
+# GPU, time nothing and refuse to overwrite their outputs.  The time-division, user-side, 60 kHz,
+# Release 19 and confirmation readings (rules R30, R32, R33, R35, R36 and R39) are modules the
+# paper imports (nrtdd.py, nrue.py, nrmu.py, nrtddmu.py, nrue19.py, nrconf.py) and write nothing.
+[ -f ssbref.json ] || python3 ssbref.py
+[ -f ssbsens.json ] || python3 ssbsens.py
+
+# Rule R37, set post hoc: every efficiency bound the paper reports and the decision audit's screen
+# on the covered population (covpop.py), then the auditor's side on it (covpop_direct.py, which
+# reads audit_rates.npz).  Both refuse to overwrite their outputs.
+[ -f covpop.json ] || python3 covpop.py
+[ -f covpop_direct.json ] || python3 covpop_direct.py
+
+# Rule R38: the deployment-runtime study.  The pilots, deploy.py --freeze, then three main
+# sessions per group.  The timing runs only with DEPLOY=1, on a quiet machine, and never twice;
+# deploy.py reads the sessions into deploy.json.
+if [ "${DEPLOY:-0}" = 1 ] && [ ! -d ../latency/profile_deploy ]; then
+  ../latency/run_profile_deploy.sh pilot
+  python3 deploy.py --freeze
+  ../latency/run_profile_deploy.sh main
+fi
+[ -f deploy.json ] || python3 deploy.py
+
+# Rule R40, set post hoc: report error, band-averaged calibration and a rate cap, from the stored
+# channels; robust.py simulates the per-probe sweep's selections for the cap and refuses to
+# overwrite its output.
+[ -f robust.json ] || python3 robust.py
+
 python3 make_manifest.py       # -> manifest.json: the datasets', models' and environment's hashes
