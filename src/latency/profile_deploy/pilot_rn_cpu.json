@@ -1,0 +1,699 @@
+{
+ "stem": "pilot_rn_cpu",
+ "group": "rn_cpu",
+ "arch": "resnet18",
+ "device": "cpu",
+ "threads": 8,
+ "mode": "pilot",
+ "session": null,
+ "attempt": 1,
+ "smoke": false,
+ "started": true,
+ "started_utc": "2026-11-08T11:22:00Z",
+ "declaration_sha256": "b0d5b98fe2f6d99550685999d232887398257705e5bcca0cc48283a0feb7731d",
+ "frozen": null,
+ "builds_in_order": [
+  "fp32",
+  "cpu_compile",
+  "int8",
+  "fp32"
+ ],
+ "compute_apps_at_start": [
+  "1838, /usr/libexec/gnome-remote-desktop-daemon"
+ ],
+ "protocol": {
+  "weight_seed": 17,
+  "frame_seed": 881,
+  "ring": 64,
+  "check_frames": 256,
+  "image": [
+   224,
+   224,
+   3
+  ],
+  "mean": [
+   0.485,
+   0.456,
+   0.406
+  ],
+  "std": [
+   0.229,
+   0.224,
+   0.225
+  ],
+  "timed": 10000,
+  "recheck": [
+   250,
+   2500
+  ],
+  "pilot_s": 300,
+  "drift_max": 0.1,
+  "calibration_frames": 64,
+  "percentile": "nearest-rank p95"
+ },
+ "windows": [
+  {
+   "build": "fp32",
+   "position": 0,
+   "built": true,
+   "init_s": 0.02590155601501465,
+   "weights_sha256": "5338c088001c925e015d1bfdf6b9a58b54bfbff833e8e71a2ff55bed822d8cad",
+   "build_warnings": [],
+   "state_before": {
+    "utc": "2026-11-08T11:22:01Z",
+    "loadavg": [
+     "0.92",
+     "0.99",
+     "1.40"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     5699942,
+     800000,
+     5700000,
+     800000,
+     5700000,
+     800000,
+     5700000,
+     800000,
+     5700000,
+     800000,
+     5700000,
+     800000,
+     5700000,
+     800000,
+     5700057,
+     800000
+    ],
+    "gpu": "0, 2, 300, 405, 62, 25.43, P8",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1566     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1838   C+G      -      -      -      -      -      -    gnome-remote-de",
+     "    0       1876     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0     667181     G      -      -      -      -      -      -    Claude --gpu-pr"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "1350254 python3         36.0",
+     "   1876 gnome-shell     10.9",
+     "   1838 gnome-remote-de  1.9",
+     " 667295 claude-desktop   0.6",
+     " 670345 claude           0.6",
+     " 667181 claude-desktop   0.4",
+     " 667135 claude-desktop   0.2"
+    ],
+    "gpu_encoder": "0, 1, 0",
+    "compute_apps": [
+     "1838, /usr/libexec/gnome-remote-desktop-daemon"
+    ],
+    "time": 1794136921.4015756
+   },
+   "window_start_time": 1794136921.401577,
+   "runs": true,
+   "window_end_time": 1794137221.40415,
+   "n_calls": 53674,
+   "state_after": {
+    "utc": "2026-11-08T11:27:01Z",
+    "loadavg": [
+     "7.98",
+     "5.46",
+     "3.24"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     5100000,
+     5189534,
+     800000,
+     5100000,
+     5100000,
+     800000,
+     800000,
+     5100051,
+     5100000,
+     800000,
+     5100000,
+     800000,
+     5100000,
+     800000,
+     800000,
+     5100000
+    ],
+    "gpu": "0, 0, 1395, 6500, 46, 61.53, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1566     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1838   C+G      0      0      0      -      -      -    gnome-remote-de",
+     "    0       1876     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0     667181     G      -      -      -      -      -      -    Claude --gpu-pr"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "1350254 python3          784",
+     "   1876 gnome-shell     10.9",
+     "1350293 nvidia-smi       3.0",
+     "   1838 gnome-remote-de  1.9",
+     " 667295 claude-desktop   0.6",
+     " 670345 claude           0.6",
+     " 667181 claude-desktop   0.4"
+    ],
+    "gpu_encoder": "0, 1, 0",
+    "compute_apps": [
+     "1838, /usr/libexec/gnome-remote-desktop-daemon"
+    ],
+    "time": 1794137221.4945922
+   },
+   "execution_checks": {
+    "n_frames": 256,
+    "shape_ok": true,
+    "finite_ok": true,
+    "self_consistent": true,
+    "passes": true
+   }
+  },
+  {
+   "build": "cpu_compile",
+   "position": 1,
+   "built": true,
+   "init_s": 1.8363537788391113,
+   "weights_sha256": "5338c088001c925e015d1bfdf6b9a58b54bfbff833e8e71a2ff55bed822d8cad",
+   "build_warnings": [
+    "DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`."
+   ],
+   "state_before": {
+    "utc": "2026-11-08T11:27:04Z",
+    "loadavg": [
+     "7.98",
+     "5.50",
+     "3.27"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     5556869,
+     5616856,
+     800000,
+     5616680,
+     5506359,
+     5616756,
+     5356612,
+     5616699,
+     5616777,
+     5676398,
+     5616779,
+     800000,
+     5616765,
+     800000,
+     800000,
+     5616721
+    ],
+    "gpu": "0, 0, 1395, 6500, 48, 61.76, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1566     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1838   C+G      0      0      0      -      -      -    gnome-remote-de",
+     "    0       1876     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0     667181     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0    1350254     C      0      0      -      -      -      -    python3"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "1350254 python3          779",
+     "   1876 gnome-shell     10.9",
+     "1350293 nvidia-smi       3.0",
+     "   1838 gnome-remote-de  1.9",
+     " 667295 claude-desktop   0.6",
+     " 670345 claude           0.6",
+     " 667181 claude-desktop   0.4"
+    ],
+    "gpu_encoder": "0, 1, 0",
+    "compute_apps": [
+     "1350254, python3",
+     "1838, /usr/libexec/gnome-remote-desktop-daemon"
+    ],
+    "time": 1794137224.8757396
+   },
+   "window_start_time": 1794137224.8757424,
+   "runs": true,
+   "window_end_time": 1794137524.880832,
+   "n_calls": 54093,
+   "state_after": {
+    "utc": "2026-11-08T11:32:04Z",
+    "loadavg": [
+     "8.12",
+     "7.15",
+     "4.61"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     5099948,
+     5100000,
+     800000,
+     5099948,
+     800000,
+     5100000,
+     800000,
+     5100000,
+     5099948,
+     800000,
+     5100000,
+     800000,
+     800000,
+     5100000,
+     5100000,
+     800000
+    ],
+    "gpu": "0, 0, 1395, 6500, 46, 61.23, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1566     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1838   C+G      0      0      0      -      -      -    gnome-remote-de",
+     "    0       1876     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0     667181     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0    1350254     C      -      -      -      -      -      -    python3"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "1350254 python3          789",
+     "   1876 gnome-shell     10.9",
+     "1350293 nvidia-smi       2.9",
+     "   1838 gnome-remote-de  1.9",
+     " 667295 claude-desktop   0.6",
+     " 670345 claude           0.6",
+     " 667181 claude-desktop   0.4"
+    ],
+    "gpu_encoder": "0, 1, 0",
+    "compute_apps": [
+     "1350254, python3",
+     "1838, /usr/libexec/gnome-remote-desktop-daemon"
+    ],
+    "time": 1794137524.99203
+   },
+   "execution_checks": {
+    "n_frames": 256,
+    "shape_ok": true,
+    "finite_ok": true,
+    "self_consistent": true,
+    "passes": true,
+    "argmax_agreement_with_fp32": 1.0,
+    "max_abs_logit_difference_vs_fp32": 8.046627044677734e-07
+   },
+   "dynamo_counters": {
+    "stats": {
+     "calls_captured": 76,
+     "unique_graphs": 1
+    },
+    "aot_autograd": {
+     "total": 1,
+     "autograd_cache_hit": 1,
+     "ok": 1
+    },
+    "inductor": {
+     "extern_calls": 21,
+     "fxgraph_cache_hit": 1
+    }
+   }
+  },
+  {
+   "build": "int8",
+   "position": 2,
+   "built": true,
+   "init_s": 0.8662128448486328,
+   "weights_sha256": "5338c088001c925e015d1bfdf6b9a58b54bfbff833e8e71a2ff55bed822d8cad",
+   "build_warnings": [
+    "DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. \nFor migrations of users: \n1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead \n2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e) \n3. pt2e qua",
+    "UserWarning: Please use quant_min and quant_max to specify the range for observers.                     reduce_range will be deprecated in a future release of PyTorch."
+   ],
+   "state_before": {
+    "utc": "2026-11-08T11:32:07Z",
+    "loadavg": [
+     "8.12",
+     "7.15",
+     "4.61"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     5521317,
+     5700000,
+     800000,
+     5700000,
+     800000,
+     5700000,
+     5700000,
+     800000,
+     5700000,
+     800000,
+     5700000,
+     800000,
+     800000,
+     5700000,
+     5699942,
+     800000
+    ],
+    "gpu": "0, 0, 1395, 6500, 47, 61.67, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1566     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1838   C+G      -      -      -      -      -      -    gnome-remote-de",
+     "    0       1876     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0     667181     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0    1350254     C      -      -      -      -      -      -    python3"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "1350254 python3          789",
+     "   1876 gnome-shell     10.9",
+     "1350293 nvidia-smi       2.9",
+     "   1838 gnome-remote-de  1.9",
+     " 667295 claude-desktop   0.6",
+     " 670345 claude           0.6",
+     " 667181 claude-desktop   0.4"
+    ],
+    "gpu_encoder": "0, 1, 0",
+    "compute_apps": [
+     "1350254, python3",
+     "1838, /usr/libexec/gnome-remote-desktop-daemon"
+    ],
+    "time": 1794137527.4809735
+   },
+   "window_start_time": 1794137527.4809752,
+   "runs": true,
+   "window_end_time": 1794137827.4817963,
+   "n_calls": 122377,
+   "state_after": {
+    "utc": "2026-11-08T11:37:07Z",
+    "loadavg": [
+     "8.08",
+     "7.73",
+     "5.57"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     5079518,
+     5100051,
+     800000,
+     5100000,
+     800000,
+     5100000,
+     5100000,
+     800000,
+     5100000,
+     800000,
+     5100000,
+     800000,
+     800000,
+     5100000,
+     5100000,
+     800000
+    ],
+    "gpu": "0, 0, 1395, 6500, 47, 62.64, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1566     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1838   C+G      0      0      0      -      -      -    gnome-remote-de",
+     "    0       1876     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0     667181     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0    1350254     C      -      -      -      -      -      -    python3"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "1350254 python3          793",
+     "   1876 gnome-shell     10.9",
+     "1350293 nvidia-smi       2.9",
+     "   1838 gnome-remote-de  1.9",
+     " 667295 claude-desktop   0.6",
+     " 670345 claude           0.6",
+     " 667181 claude-desktop   0.4"
+    ],
+    "gpu_encoder": "0, 1, 0",
+    "compute_apps": [
+     "1350254, python3",
+     "1838, /usr/libexec/gnome-remote-desktop-daemon"
+    ],
+    "time": 1794137827.5735288
+   },
+   "execution_checks": {
+    "n_frames": 256,
+    "shape_ok": true,
+    "finite_ok": true,
+    "self_consistent": true,
+    "passes": true,
+    "argmax_agreement_with_fp32": 1.0,
+    "max_abs_logit_difference_vs_fp32": 0.05403017997741699
+   }
+  },
+  {
+   "build": "fp32",
+   "position": 3,
+   "built": true,
+   "init_s": 0.025388479232788086,
+   "weights_sha256": "5338c088001c925e015d1bfdf6b9a58b54bfbff833e8e71a2ff55bed822d8cad",
+   "build_warnings": [],
+   "state_before": {
+    "utc": "2026-11-08T11:37:08Z",
+    "loadavg": [
+     "8.08",
+     "7.74",
+     "5.58"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     800000,
+     5700000,
+     800000,
+     5700000,
+     800000,
+     5700000,
+     5699942,
+     800000,
+     5699942,
+     800000,
+     5600000,
+     800000,
+     800000,
+     5700059,
+     5700000,
+     800000
+    ],
+    "gpu": "0, 0, 1395, 6500, 47, 61.20, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1566     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1838   C+G      -      -      -      -      -      -    gnome-remote-de",
+     "    0       1876     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0     667181     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0    1350254     C      -      -      -      -      -      -    python3"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "1350254 python3          792",
+     "   1876 gnome-shell     10.9",
+     "1350293 nvidia-smi       2.9",
+     "   1838 gnome-remote-de  1.9",
+     " 667295 claude-desktop   0.6",
+     " 670345 claude           0.6",
+     " 667181 claude-desktop   0.4"
+    ],
+    "gpu_encoder": "0, 1, 0",
+    "compute_apps": [
+     "1350254, python3",
+     "1838, /usr/libexec/gnome-remote-desktop-daemon"
+    ],
+    "time": 1794137828.3238163
+   },
+   "window_start_time": 1794137828.3238175,
+   "runs": true,
+   "window_end_time": 1794138128.3248093,
+   "n_calls": 49575,
+   "state_after": {
+    "utc": "2026-11-08T11:42:08Z",
+    "loadavg": [
+     "8.00",
+     "7.94",
+     "6.28"
+    ],
+    "governor": "powersave",
+    "energy_performance_preference": "performance",
+    "no_turbo": "0",
+    "pinned_cpu_khz": [
+     5200000,
+     5195004,
+     800000,
+     5200000,
+     800000,
+     5200000,
+     800000,
+     5200052,
+     5200000,
+     800000,
+     5200000,
+     800000,
+     5200052,
+     800000,
+     800000,
+     5200052
+    ],
+    "gpu": "0, 0, 1395, 6500, 46, 61.69, P2",
+    "gpu_processes": [
+     "# gpu         pid   type     sm    mem    enc    dec    jpg    ofa    command ",
+     "# Idx           #    C/G      %      %      %      %      %      %    name ",
+     "    0       1566     G      -      -      -      -      -      -    Xorg           ",
+     "    0       1838   C+G      -      -      -      -      -      -    gnome-remote-de",
+     "    0       1876     G      -      -      -      -      -      -    gnome-shell    ",
+     "    0     667181     G      -      -      -      -      -      -    Claude --gpu-pr",
+     "    0    1350254     C      -      -      -      -      -      -    python3"
+    ],
+    "top_cpu": [
+     "PID COMMAND         %CPU",
+     "1350254 python3          794",
+     "   1876 gnome-shell     10.9",
+     "1350293 nvidia-smi       2.8",
+     "   1838 gnome-remote-de  1.9",
+     " 667295 claude-desktop   0.6",
+     " 670345 claude           0.6",
+     " 667181 claude-desktop   0.4"
+    ],
+    "gpu_encoder": "0, 1, 0",
+    "compute_apps": [
+     "1350254, python3",
+     "1838, /usr/libexec/gnome-remote-desktop-daemon"
+    ],
+    "time": 1794138128.4240654
+   },
+   "execution_checks": {
+    "n_frames": 256,
+    "shape_ok": true,
+    "finite_ok": true,
+    "self_consistent": true,
+    "passes": true,
+    "argmax_agreement_with_fp32": 1.0,
+    "max_abs_logit_difference_vs_fp32": 0.0
+   }
+  }
+ ],
+ "quiet_log": [
+  {
+   "utc": "2026-11-08T11:22:00Z",
+   "samples": [
+    [
+     0,
+     1.0
+    ],
+    [
+     0,
+     1.0
+    ],
+    [
+     0,
+     1.0
+    ],
+    [
+     0,
+     1.0
+    ],
+    [
+     0,
+     1.0
+    ],
+    [
+     0,
+     0.92
+    ],
+    [
+     0,
+     0.92
+    ],
+    [
+     0,
+     0.92
+    ],
+    [
+     0,
+     0.92
+    ],
+    [
+     5,
+     0.92
+    ]
+   ],
+   "quiet": true
+  }
+ ],
+ "weights_fp32_sha256": "5338c088001c925e015d1bfdf6b9a58b54bfbff833e8e71a2ff55bed822d8cad",
+ "ended_utc": "2026-11-08T11:42:10Z",
+ "compute_apps_at_end": [
+  "1350254, python3",
+  "1838, /usr/libexec/gnome-remote-desktop-daemon"
+ ],
+ "new_compute_apps": [],
+ "contended": false,
+ "failed": null,
+ "env": {
+  "profile": "deploy-rn_cpu",
+  "cpu": "Intel(R) Core(TM) i9-14900KF",
+  "governor": "powersave",
+  "affinity": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "torch_threads": 8,
+  "requested_threads": 8,
+  "torch": "2.12.0+cu130",
+  "python": "3.13.12",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "numpy": "2.5.3",
+  "gpu": "Quadro RTX 8000",
+  "omp": "8",
+  "timestamp": "2026-11-08T20:42:10+0900",
+  "torchvision": "0.27.0+cu130",
+  "triton": "3.7.0",
+  "cuda": "13.0",
+  "cudnn": 92000,
+  "quantized_engine": "x86",
+  "driver": "580.178.04",
+  "script_sha256": "95e63c3f7b5044f4511773ce191bb87c15257521feed718188a092b5288ea29f",
+  "profile_matched_sha256": "f3db1731629ef32ab3d7f6d2be15a0a054754530b1e1e814c92f022a1d866cba",
+  "models_sha256": "1819703b5203e83bdce77667f27878b711c7cc585797eec2335d22d551d4d20f",
+  "env_vars": {
+   "OMP_NUM_THREADS": "8",
+   "OPENBLAS_NUM_THREADS": "8",
+   "MKL_NUM_THREADS": "8",
+   "CUDA_VISIBLE_DEVICES": null,
+   "PYTHONWARNINGS": "ignore"
+  }
+ }
+}
