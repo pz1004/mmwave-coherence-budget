@@ -1,0 +1,1755 @@
+{
+ "rule": "R37",
+ "side": "auditor",
+ "script_sha256": "0093f031019479edfa0f9da4454210a1e5592b5758f81d10fa7429f2e79987d4",
+ "eps": 1e-06,
+ "H_us": 10000.0,
+ "gate": {
+  "D1_reproduced": true
+ },
+ "covpop_json_sha256": "6e749e2477f5e1906ca233632dce44b14de256d09e095ee64a9b660ea1690d5e",
+ "populations": {
+  "cqi1": {
+   "city_3_houston_28": {
+    "users": 12015,
+    "users_share": 0.6200010320449971,
+    "genie_share": 0.9960851984817424,
+    "eta_pop": {
+     "1000": 0.9998631199714995,
+     "2000": 0.9998768407772922,
+     "3000": 0.9998806553276828
+    }
+   },
+   "city_4_phoenix_28": {
+    "users": 4377,
+    "users_share": 0.32448661872636964,
+    "genie_share": 0.997600396936081,
+    "eta_pop": {
+     "1000": 0.999965748773749,
+     "2000": 0.9999710036546873,
+     "3000": 0.9999724699385012
+    }
+   }
+  },
+  "snr_m6": {
+   "city_3_houston_28": {
+    "users": 10544,
+    "users_share": 0.5440941225037411,
+    "genie_share": 0.9926989184659374,
+    "eta_pop": {
+     "1000": 0.9998730100522487,
+     "2000": 0.9998817537046457,
+     "3000": 0.9998838536261105
+    }
+   },
+   "city_4_phoenix_28": {
+    "users": 4280,
+    "users_share": 0.3172955741715472,
+    "genie_share": 0.9971098093663018,
+    "eta_pop": {
+     "1000": 0.999966488120718,
+     "2000": 0.9999713676211068,
+     "3000": 0.9999728161978496
+    }
+   }
+  }
+ },
+ "cells": {
+  "cqi1": {
+   "city_3_houston_28|1000|resnet18_ts": {
+    "city": "city_3_houston_28",
+    "samples": 1000,
+    "build": "resnet18_ts",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.9998631199714995,
+    "A_H": -0.024139326058986832,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.9,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00011503579804061914,
+      "max_overshoot_slack_us": 0.9960001857361356
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 199,
+      "unresolved": 0,
+      "not_excluded": 1,
+      "contradicted": 0,
+      "missed": 1,
+      "coverage": 0.89,
+      "failed_bounds": 1,
+      "max_overshoot": 0.00013688002850009706,
+      "max_overshoot_slack_us": 1.1851313776388563
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.975,
+      "failed_bounds": 0,
+      "max_overshoot": 4.460755163449015e-05,
+      "max_overshoot_slack_us": 0.3862200329805034
+     }
+    }
+   },
+   "city_3_houston_28|1000|vit_fp16_graph": {
+    "city": "city_3_houston_28",
+    "samples": 1000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.9998631199714995,
+    "A_H": -0.0855999031094935,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.9,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00011503579804061914,
+      "max_overshoot_slack_us": 0.9960001857361356
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 199,
+      "unresolved": 0,
+      "not_excluded": 1,
+      "contradicted": 0,
+      "missed": 1,
+      "coverage": 0.89,
+      "failed_bounds": 1,
+      "max_overshoot": 0.00013688002850009706,
+      "max_overshoot_slack_us": 1.1851313776388563
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.975,
+      "failed_bounds": 0,
+      "max_overshoot": 4.460755163449015e-05,
+      "max_overshoot_slack_us": 0.3862200329805034
+     }
+    }
+   },
+   "city_3_houston_28|1000|vit_fp32": {
+    "city": "city_3_houston_28",
+    "samples": 1000,
+    "build": "vit_fp32",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.9998631199714995,
+    "A_H": -0.4374290611007107,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.9,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00011503579804061914,
+      "max_overshoot_slack_us": 0.9960001857361356
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 199,
+      "unresolved": 0,
+      "not_excluded": 1,
+      "contradicted": 0,
+      "missed": 1,
+      "coverage": 0.89,
+      "failed_bounds": 1,
+      "max_overshoot": 0.00013688002850009706,
+      "max_overshoot_slack_us": 1.1851313776388563
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.975,
+      "failed_bounds": 0,
+      "max_overshoot": 4.460755163449015e-05,
+      "max_overshoot_slack_us": 0.3862200329805034
+     }
+    }
+   },
+   "city_3_houston_28|2000|resnet18_ts": {
+    "city": "city_3_houston_28",
+    "samples": 2000,
+    "build": "resnet18_ts",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9998768407772922,
+    "A_H": 0.03984091203561835,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.88,
+      "failed_bounds": 0,
+      "max_overshoot": 0.0001223962832548331,
+      "max_overshoot_slack_us": 0.9813949408831045
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.83,
+      "failed_bounds": 1,
+      "max_overshoot": 0.00012315922270733637,
+      "max_overshoot_slack_us": 0.9875123236906195
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.438315186632401e-05,
+      "max_overshoot_slack_us": 0.2756901630989144
+     }
+    }
+   },
+   "city_3_houston_28|2000|vit_fp16_graph": {
+    "city": "city_3_houston_28",
+    "samples": 2000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9998768407772922,
+    "A_H": -0.021619665014888323,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.88,
+      "failed_bounds": 0,
+      "max_overshoot": 0.0001223962832548331,
+      "max_overshoot_slack_us": 0.9813949408831045
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 199,
+      "unresolved": 0,
+      "not_excluded": 1,
+      "contradicted": 0,
+      "missed": 1,
+      "coverage": 0.83,
+      "failed_bounds": 1,
+      "max_overshoot": 0.00012315922270733637,
+      "max_overshoot_slack_us": 0.9875123236906195
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.438315186632401e-05,
+      "max_overshoot_slack_us": 0.2756901630989144
+     }
+    }
+   },
+   "city_3_houston_28|2000|vit_fp32": {
+    "city": "city_3_houston_28",
+    "samples": 2000,
+    "build": "vit_fp32",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9998768407772922,
+    "A_H": -0.37344882300610555,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.88,
+      "failed_bounds": 0,
+      "max_overshoot": 0.0001223962832548331,
+      "max_overshoot_slack_us": 0.9813949408831045
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 199,
+      "unresolved": 0,
+      "not_excluded": 1,
+      "contradicted": 0,
+      "missed": 1,
+      "coverage": 0.83,
+      "failed_bounds": 1,
+      "max_overshoot": 0.00012315922270733637,
+      "max_overshoot_slack_us": 0.9875123236906195
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.438315186632401e-05,
+      "max_overshoot_slack_us": 0.2756901630989144
+     }
+    }
+   },
+   "city_3_houston_28|3000|resnet18_ts": {
+    "city": "city_3_houston_28",
+    "samples": 3000,
+    "build": "resnet18_ts",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9998806553276828,
+    "A_H": 0.1038302154029509,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.85,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00011858173286427576,
+      "max_overshoot_slack_us": 0.8749168954576105
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.77,
+      "failed_bounds": 1,
+      "max_overshoot": 0.00011934467231677903,
+      "max_overshoot_slack_us": 0.8805459970155234
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.34193462577792e-05,
+      "max_overshoot_slack_us": 0.2465738184948363
+     }
+    }
+   },
+   "city_3_houston_28|3000|vit_fp16_graph": {
+    "city": "city_3_houston_28",
+    "samples": 3000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9998806553276828,
+    "A_H": 0.04236963835244423,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.85,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00011858173286427576,
+      "max_overshoot_slack_us": 0.8749168954576105
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.77,
+      "failed_bounds": 1,
+      "max_overshoot": 0.00011934467231677903,
+      "max_overshoot_slack_us": 0.8805459970155234
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.34193462577792e-05,
+      "max_overshoot_slack_us": 0.2465738184948363
+     }
+    }
+   },
+   "city_3_houston_28|3000|vit_fp32": {
+    "city": "city_3_houston_28",
+    "samples": 3000,
+    "build": "vit_fp32",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9998806553276828,
+    "A_H": -0.309459519638773,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.85,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00011858173286427576,
+      "max_overshoot_slack_us": 0.8749168954576105
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 199,
+      "unresolved": 0,
+      "not_excluded": 1,
+      "contradicted": 0,
+      "missed": 1,
+      "coverage": 0.77,
+      "failed_bounds": 1,
+      "max_overshoot": 0.00011934467231677903,
+      "max_overshoot_slack_us": 0.8805459970155234
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.34193462577792e-05,
+      "max_overshoot_slack_us": 0.2465738184948363
+     }
+    }
+   },
+   "city_4_phoenix_28|1000|resnet18_ts": {
+    "city": "city_4_phoenix_28",
+    "samples": 1000,
+    "build": "resnet18_ts",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.999965748773749,
+    "A_H": -0.02422818388224135,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.8,
+      "failed_bounds": 23,
+      "max_overshoot": 1.4579809518022735e-05,
+      "max_overshoot_slack_us": 0.126234556853516
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.41,
+      "failed_bounds": 109,
+      "max_overshoot": 1.4578542404497519e-05,
+      "max_overshoot_slack_us": 0.1262235859616027
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 6.124904779025719e-06,
+      "max_overshoot_slack_us": 0.05303050356004579
+     }
+    }
+   },
+   "city_4_phoenix_28|1000|vit_fp16_graph": {
+    "city": "city_4_phoenix_28",
+    "samples": 1000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.999965748773749,
+    "A_H": -0.08568876093274802,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.8,
+      "failed_bounds": 23,
+      "max_overshoot": 1.4579809518022735e-05,
+      "max_overshoot_slack_us": 0.126234556853516
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.41,
+      "failed_bounds": 109,
+      "max_overshoot": 1.4578542404497519e-05,
+      "max_overshoot_slack_us": 0.1262235859616027
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 6.124904779025719e-06,
+      "max_overshoot_slack_us": 0.05303050356004579
+     }
+    }
+   },
+   "city_4_phoenix_28|1000|vit_fp32": {
+    "city": "city_4_phoenix_28",
+    "samples": 1000,
+    "build": "vit_fp32",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.999965748773749,
+    "A_H": -0.43751791892396524,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.8,
+      "failed_bounds": 23,
+      "max_overshoot": 1.4579809518022735e-05,
+      "max_overshoot_slack_us": 0.126234556853516
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.41,
+      "failed_bounds": 109,
+      "max_overshoot": 1.4578542404497519e-05,
+      "max_overshoot_slack_us": 0.1262235859616027
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 6.124904779025719e-06,
+      "max_overshoot_slack_us": 0.05303050356004579
+     }
+    }
+   },
+   "city_4_phoenix_28|2000|resnet18_ts": {
+    "city": "city_4_phoenix_28",
+    "samples": 2000,
+    "build": "resnet18_ts",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9999710036546873,
+    "A_H": 0.03976541058325633,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.815,
+      "failed_bounds": 23,
+      "max_overshoot": 1.6851562261277486e-05,
+      "max_overshoot_slack_us": 0.13511879208588087
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.405,
+      "failed_bounds": 109,
+      "max_overshoot": 1.6850735134688044e-05,
+      "max_overshoot_slack_us": 0.13511216003931242
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 1.6133858139255608e-05,
+      "max_overshoot_slack_us": 0.12936411411958396
+     }
+    }
+   },
+   "city_4_phoenix_28|2000|vit_fp16_graph": {
+    "city": "city_4_phoenix_28",
+    "samples": 2000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9999710036546873,
+    "A_H": -0.021695166467250337,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.815,
+      "failed_bounds": 23,
+      "max_overshoot": 1.6851562261277486e-05,
+      "max_overshoot_slack_us": 0.13511879208588087
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.405,
+      "failed_bounds": 109,
+      "max_overshoot": 1.6850735134688044e-05,
+      "max_overshoot_slack_us": 0.13511216003931242
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 1.6133858139255608e-05,
+      "max_overshoot_slack_us": 0.12936411411958396
+     }
+    }
+   },
+   "city_4_phoenix_28|2000|vit_fp32": {
+    "city": "city_4_phoenix_28",
+    "samples": 2000,
+    "build": "vit_fp32",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9999710036546873,
+    "A_H": -0.37352432445846756,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.815,
+      "failed_bounds": 23,
+      "max_overshoot": 1.6851562261277486e-05,
+      "max_overshoot_slack_us": 0.13511879208588087
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.405,
+      "failed_bounds": 109,
+      "max_overshoot": 1.6850735134688044e-05,
+      "max_overshoot_slack_us": 0.13511216003931242
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 1.6133858139255608e-05,
+      "max_overshoot_slack_us": 0.12936411411958396
+     }
+    }
+   },
+   "city_4_phoenix_28|3000|resnet18_ts": {
+    "city": "city_4_phoenix_28",
+    "samples": 3000,
+    "build": "resnet18_ts",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9999724699385012,
+    "A_H": 0.1037624729671518,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.77,
+      "failed_bounds": 23,
+      "max_overshoot": 1.7857987912095474e-05,
+      "max_overshoot_slack_us": 0.13175937782131292
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.365,
+      "failed_bounds": 109,
+      "max_overshoot": 2.7530061498470815e-05,
+      "max_overshoot_slack_us": 0.2031216390265414
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 2.7530061498470815e-05,
+      "max_overshoot_slack_us": 0.2031216390265414
+     }
+    }
+   },
+   "city_4_phoenix_28|3000|vit_fp16_graph": {
+    "city": "city_4_phoenix_28",
+    "samples": 3000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9999724699385012,
+    "A_H": 0.04230189591664513,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.77,
+      "failed_bounds": 23,
+      "max_overshoot": 1.7857987912095474e-05,
+      "max_overshoot_slack_us": 0.13175937782131292
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.365,
+      "failed_bounds": 109,
+      "max_overshoot": 2.7530061498470815e-05,
+      "max_overshoot_slack_us": 0.2031216390265414
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 2.7530061498470815e-05,
+      "max_overshoot_slack_us": 0.2031216390265414
+     }
+    }
+   },
+   "city_4_phoenix_28|3000|vit_fp32": {
+    "city": "city_4_phoenix_28",
+    "samples": 3000,
+    "build": "vit_fp32",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9999724699385012,
+    "A_H": -0.3095272620745721,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.77,
+      "failed_bounds": 23,
+      "max_overshoot": 1.7857987912095474e-05,
+      "max_overshoot_slack_us": 0.13175937782131292
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.365,
+      "failed_bounds": 109,
+      "max_overshoot": 2.7530061498470815e-05,
+      "max_overshoot_slack_us": 0.2031216390265414
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 2.7530061498470815e-05,
+      "max_overshoot_slack_us": 0.2031216390265414
+     }
+    }
+   }
+  },
+  "snr_m6": {
+   "city_3_houston_28|1000|resnet18_ts": {
+    "city": "city_3_houston_28",
+    "samples": 1000,
+    "build": "resnet18_ts",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.9998730100522487,
+    "A_H": -0.0241478890649649,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.855,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00012622700829811873,
+      "max_overshoot_slack_us": 1.0928956537985723
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 189,
+      "unresolved": 0,
+      "not_excluded": 11,
+      "contradicted": 0,
+      "missed": 11,
+      "coverage": 0.77,
+      "failed_bounds": 11,
+      "max_overshoot": 0.00012622700829811873,
+      "max_overshoot_slack_us": 1.0928956537985723
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 4.3664369331120056e-05,
+      "max_overshoot_slack_us": 0.3780537945978397
+     }
+    }
+   },
+   "city_3_houston_28|1000|vit_fp16_graph": {
+    "city": "city_3_houston_28",
+    "samples": 1000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.9998730100522487,
+    "A_H": -0.08560846611547157,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.855,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00012622700829811873,
+      "max_overshoot_slack_us": 1.0928956537985723
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 189,
+      "unresolved": 0,
+      "not_excluded": 11,
+      "contradicted": 0,
+      "missed": 11,
+      "coverage": 0.77,
+      "failed_bounds": 11,
+      "max_overshoot": 0.00012622700829811873,
+      "max_overshoot_slack_us": 1.0928956537985723
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 4.3664369331120056e-05,
+      "max_overshoot_slack_us": 0.3780537945978397
+     }
+    }
+   },
+   "city_3_houston_28|1000|vit_fp32": {
+    "city": "city_3_houston_28",
+    "samples": 1000,
+    "build": "vit_fp32",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.9998730100522487,
+    "A_H": -0.4374376241066888,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.855,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00012622700829811873,
+      "max_overshoot_slack_us": 1.0928956537985723
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 189,
+      "unresolved": 0,
+      "not_excluded": 11,
+      "contradicted": 0,
+      "missed": 11,
+      "coverage": 0.77,
+      "failed_bounds": 11,
+      "max_overshoot": 0.00012622700829811873,
+      "max_overshoot_slack_us": 1.0928956537985723
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 4.3664369331120056e-05,
+      "max_overshoot_slack_us": 0.3780537945978397
+     }
+    }
+   },
+   "city_3_houston_28|2000|resnet18_ts": {
+    "city": "city_3_houston_28",
+    "samples": 2000,
+    "build": "resnet18_ts",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9998817537046457,
+    "A_H": 0.03983697276399878,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.865,
+      "failed_bounds": 0,
+      "max_overshoot": 0.0001174833559011157,
+      "max_overshoot_slack_us": 0.9420022246857842
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.76,
+      "failed_bounds": 11,
+      "max_overshoot": 0.0001174833559011157,
+      "max_overshoot_slack_us": 0.9420022246857842
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.665192258195393e-05,
+      "max_overshoot_slack_us": 0.29388156600048104
+     }
+    }
+   },
+   "city_3_houston_28|2000|vit_fp16_graph": {
+    "city": "city_3_houston_28",
+    "samples": 2000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9998817537046457,
+    "A_H": -0.02162360428650789,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.865,
+      "failed_bounds": 0,
+      "max_overshoot": 0.0001174833559011157,
+      "max_overshoot_slack_us": 0.9420022246857842
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 189,
+      "unresolved": 0,
+      "not_excluded": 11,
+      "contradicted": 0,
+      "missed": 11,
+      "coverage": 0.76,
+      "failed_bounds": 11,
+      "max_overshoot": 0.0001174833559011157,
+      "max_overshoot_slack_us": 0.9420022246857842
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.665192258195393e-05,
+      "max_overshoot_slack_us": 0.29388156600048104
+     }
+    }
+   },
+   "city_3_houston_28|2000|vit_fp32": {
+    "city": "city_3_houston_28",
+    "samples": 2000,
+    "build": "vit_fp32",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9998817537046457,
+    "A_H": -0.3734527622777251,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.865,
+      "failed_bounds": 0,
+      "max_overshoot": 0.0001174833559011157,
+      "max_overshoot_slack_us": 0.9420022246857842
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 189,
+      "unresolved": 0,
+      "not_excluded": 11,
+      "contradicted": 0,
+      "missed": 11,
+      "coverage": 0.76,
+      "failed_bounds": 11,
+      "max_overshoot": 0.0001174833559011157,
+      "max_overshoot_slack_us": 0.9420022246857842
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.665192258195393e-05,
+      "max_overshoot_slack_us": 0.29388156600048104
+     }
+    }
+   },
+   "city_3_houston_28|3000|resnet18_ts": {
+    "city": "city_3_houston_28",
+    "samples": 3000,
+    "build": "resnet18_ts",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9998838536261105,
+    "A_H": 0.10382785564208075,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.85,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00011538343443628918,
+      "max_overshoot_slack_us": 0.8513192867554022
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.755,
+      "failed_bounds": 11,
+      "max_overshoot": 0.00011538343443628918,
+      "max_overshoot_slack_us": 0.8513192867554022
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.509757478481479e-05,
+      "max_overshoot_slack_us": 0.2589560839355256
+     }
+    }
+   },
+   "city_3_houston_28|3000|vit_fp16_graph": {
+    "city": "city_3_houston_28",
+    "samples": 3000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9998838536261105,
+    "A_H": 0.042367278591574076,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.85,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00011538343443628918,
+      "max_overshoot_slack_us": 0.8513192867554022
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.755,
+      "failed_bounds": 11,
+      "max_overshoot": 0.00011538343443628918,
+      "max_overshoot_slack_us": 0.8513192867554022
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.509757478481479e-05,
+      "max_overshoot_slack_us": 0.2589560839355256
+     }
+    }
+   },
+   "city_3_houston_28|3000|vit_fp32": {
+    "city": "city_3_houston_28",
+    "samples": 3000,
+    "build": "vit_fp32",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9998838536261105,
+    "A_H": -0.30946187939964315,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.85,
+      "failed_bounds": 0,
+      "max_overshoot": 0.00011538343443628918,
+      "max_overshoot_slack_us": 0.8513192867554022
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 189,
+      "unresolved": 0,
+      "not_excluded": 11,
+      "contradicted": 0,
+      "missed": 11,
+      "coverage": 0.755,
+      "failed_bounds": 11,
+      "max_overshoot": 0.00011538343443628918,
+      "max_overshoot_slack_us": 0.8513192867554022
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 3.509757478481479e-05,
+      "max_overshoot_slack_us": 0.2589560839355256
+     }
+    }
+   },
+   "city_4_phoenix_28|1000|resnet18_ts": {
+    "city": "city_4_phoenix_28",
+    "samples": 1000,
+    "build": "resnet18_ts",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.999966488120718,
+    "A_H": -0.024228824021859552,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.8,
+      "failed_bounds": 23,
+      "max_overshoot": 1.384046254904181e-05,
+      "max_overshoot_slack_us": 0.11983316067101261
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.41,
+      "failed_bounds": 109,
+      "max_overshoot": 1.3839195435516594e-05,
+      "max_overshoot_slack_us": 0.11982218977909931
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 5.385557810044794e-06,
+      "max_overshoot_slack_us": 0.046629107377542396
+     }
+    }
+   },
+   "city_4_phoenix_28|1000|vit_fp16_graph": {
+    "city": "city_4_phoenix_28",
+    "samples": 1000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.999966488120718,
+    "A_H": -0.08568940107236622,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.8,
+      "failed_bounds": 23,
+      "max_overshoot": 1.384046254904181e-05,
+      "max_overshoot_slack_us": 0.11983316067101261
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.41,
+      "failed_bounds": 109,
+      "max_overshoot": 1.3839195435516594e-05,
+      "max_overshoot_slack_us": 0.11982218977909931
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 5.385557810044794e-06,
+      "max_overshoot_slack_us": 0.046629107377542396
+     }
+    }
+   },
+   "city_4_phoenix_28|1000|vit_fp32": {
+    "city": "city_4_phoenix_28",
+    "samples": 1000,
+    "build": "vit_fp32",
+    "d_S_us": 1341.824,
+    "eta_pop": 0.999966488120718,
+    "A_H": -0.43751855906358345,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.8,
+      "failed_bounds": 23,
+      "max_overshoot": 1.384046254904181e-05,
+      "max_overshoot_slack_us": 0.11983316067101261
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.41,
+      "failed_bounds": 109,
+      "max_overshoot": 1.3839195435516594e-05,
+      "max_overshoot_slack_us": 0.11982218977909931
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 5.385557810044794e-06,
+      "max_overshoot_slack_us": 0.046629107377542396
+     }
+    }
+   },
+   "city_4_phoenix_28|2000|resnet18_ts": {
+    "city": "city_4_phoenix_28",
+    "samples": 2000,
+    "build": "resnet18_ts",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9999713676211068,
+    "A_H": 0.03976511874857536,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.815,
+      "failed_bounds": 23,
+      "max_overshoot": 1.6487595841718772e-05,
+      "max_overshoot_slack_us": 0.13220044527576924
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.405,
+      "failed_bounds": 109,
+      "max_overshoot": 1.648676871512933e-05,
+      "max_overshoot_slack_us": 0.13219381322920082
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 1.5769891719696894e-05,
+      "max_overshoot_slack_us": 0.12644576730947235
+     }
+    }
+   },
+   "city_4_phoenix_28|2000|vit_fp16_graph": {
+    "city": "city_4_phoenix_28",
+    "samples": 2000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9999713676211068,
+    "A_H": -0.021695458301931314,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.815,
+      "failed_bounds": 23,
+      "max_overshoot": 1.6487595841718772e-05,
+      "max_overshoot_slack_us": 0.13220044527576924
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.405,
+      "failed_bounds": 109,
+      "max_overshoot": 1.648676871512933e-05,
+      "max_overshoot_slack_us": 0.13219381322920082
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 1.5769891719696894e-05,
+      "max_overshoot_slack_us": 0.12644576730947235
+     }
+    }
+   },
+   "city_4_phoenix_28|2000|vit_fp32": {
+    "city": "city_4_phoenix_28",
+    "samples": 2000,
+    "build": "vit_fp32",
+    "d_S_us": 1981.824,
+    "eta_pop": 0.9999713676211068,
+    "A_H": -0.37352461629314854,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.815,
+      "failed_bounds": 23,
+      "max_overshoot": 1.6487595841718772e-05,
+      "max_overshoot_slack_us": 0.13220044527576924
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.405,
+      "failed_bounds": 109,
+      "max_overshoot": 1.648676871512933e-05,
+      "max_overshoot_slack_us": 0.13219381322920082
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.995,
+      "failed_bounds": 0,
+      "max_overshoot": 1.5769891719696894e-05,
+      "max_overshoot_slack_us": 0.12644576730947235
+     }
+    }
+   },
+   "city_4_phoenix_28|3000|resnet18_ts": {
+    "city": "city_4_phoenix_28",
+    "samples": 3000,
+    "build": "resnet18_ts",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9999728161978496,
+    "A_H": 0.10376221749091041,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.77,
+      "failed_bounds": 23,
+      "max_overshoot": 1.751172856367944e-05,
+      "max_overshoot_slack_us": 0.1292046154070541
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.365,
+      "failed_bounds": 109,
+      "max_overshoot": 2.718380215005478e-05,
+      "max_overshoot_slack_us": 0.20056687661228256
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 2.718380215005478e-05,
+      "max_overshoot_slack_us": 0.20056687661228256
+     }
+    }
+   },
+   "city_4_phoenix_28|3000|vit_fp16_graph": {
+    "city": "city_4_phoenix_28",
+    "samples": 3000,
+    "build": "vit_fp16_graph",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9999728161978496,
+    "A_H": 0.04230164044040374,
+    "direct_label": "opportunity",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.77,
+      "failed_bounds": 23,
+      "max_overshoot": 1.751172856367944e-05,
+      "max_overshoot_slack_us": 0.1292046154070541
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.365,
+      "failed_bounds": 109,
+      "max_overshoot": 2.718380215005478e-05,
+      "max_overshoot_slack_us": 0.20056687661228256
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 0,
+      "unresolved": 0,
+      "not_excluded": 200,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 2.718380215005478e-05,
+      "max_overshoot_slack_us": 0.20056687661228256
+     }
+    }
+   },
+   "city_4_phoenix_28|3000|vit_fp32": {
+    "city": "city_4_phoenix_28",
+    "samples": 3000,
+    "build": "vit_fp32",
+    "d_S_us": 2621.824,
+    "eta_pop": 0.9999728161978496,
+    "A_H": -0.3095275175508135,
+    "direct_label": "dominated",
+    "screen": {
+     "8": {
+      "draws": 200,
+      "excluded": 177,
+      "unresolved": 0,
+      "not_excluded": 23,
+      "contradicted": 0,
+      "missed": 23,
+      "coverage": 0.77,
+      "failed_bounds": 23,
+      "max_overshoot": 1.751172856367944e-05,
+      "max_overshoot_slack_us": 0.1292046154070541
+     },
+     "4": {
+      "draws": 200,
+      "excluded": 91,
+      "unresolved": 0,
+      "not_excluded": 109,
+      "contradicted": 0,
+      "missed": 109,
+      "coverage": 0.365,
+      "failed_bounds": 109,
+      "max_overshoot": 2.718380215005478e-05,
+      "max_overshoot_slack_us": 0.20056687661228256
+     },
+     "12": {
+      "draws": 200,
+      "excluded": 200,
+      "unresolved": 0,
+      "not_excluded": 0,
+      "contradicted": 0,
+      "missed": 0,
+      "coverage": 0.965,
+      "failed_bounds": 0,
+      "max_overshoot": 2.718380215005478e-05,
+      "max_overshoot_slack_us": 0.20056687661228256
+     }
+    }
+   }
+  }
+ }
+}
