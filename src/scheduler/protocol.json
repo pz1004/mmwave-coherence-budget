@@ -2186,8 +2186,10 @@
    "criteria": {
     "boundary": "B1-B2 (rule R42)"
    },
-   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check",
-   "files_sha256": {}
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check; boundary.py ran once on 2026-11-09, gates B1-B2 holding",
+   "files_sha256": {
+    "boundary.json": "418a528205c568c46b1dd6be5d82ee7a83798d2eb423bff8295be01d2e2422ec"
+   }
   },
   {
    "key": "covtrain",
@@ -2221,8 +2223,10 @@
    "criteria": {
     "covtrain": "T1-T2 (rule R43)"
    },
-   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check",
-   "files_sha256": {}
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check; covtrain.py ran once on 2026-11-09, gates T1-T2 holding; its 100 retrained checkpoints are in models/ (untracked)",
+   "files_sha256": {
+    "covtrain.json": "b51392e5c5c652f14840f8614cbcc3d1e49df25f9e37e45fa5319828e43ab90a"
+   }
   },
   {
    "key": "uepairs",
@@ -2256,8 +2260,11 @@
    "criteria": {
     "uepairs": "U0, U1a-U1b, U2-U3 (rule R44)"
    },
-   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check",
-   "files_sha256": {}
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check; uepairs.py's first --gate run stopped at gate U1, whose single tolerance on the double-precision builder the dataset's own single-precision delay phases exceeded in Houston; the gate was split, before any result, into U1a-U1b (exact against build.py's arithmetic) with the double-precision departure recorded as U1c, and uepairs.py then ran once on 2026-11-09, every gate holding",
+   "files_sha256": {
+    "uepairs.json": "0a9dae847fc23ddc24cd3a2efd607b915a33091c055c28d06501f29a0f91dabc",
+    "uepairs.npz": "6ecfd75751b8a62a09d0c49685cac8c6bc9651a7dcf8836c7fd4d42f65ee509b"
+   }
   },
   {
    "key": "widepow",
@@ -2290,8 +2297,10 @@
    "criteria": {
     "widepow": "W1 (rule R45)"
    },
-   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check",
-   "files_sha256": {}
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check; widepow.py ran once on 2026-11-09, gate W1 holding",
+   "files_sha256": {
+    "widepow.json": "59861d10b895ec0b916497fd716a3ac6669d39998d7a73f7d005a6925c522cb8"
+   }
   },
   {
    "key": "rsrpacc",
@@ -2320,8 +2329,10 @@
    "criteria": {
     "rsrpacc": "A1 (rule R46)"
    },
-   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check",
-   "files_sha256": {}
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check; rsrpacc.py ran once on 2026-11-09, gate A1 holding",
+   "files_sha256": {
+    "rsrpacc.json": "fce0167a35c16824c90f50656a4a87e7be5a2068ec5908b6987c6ffbffa93319"
+   }
   }
  ],
  "changes": [

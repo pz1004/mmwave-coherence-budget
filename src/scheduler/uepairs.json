@@ -1,0 +1,669 @@
+{
+ "rule": "R44",
+ "script_sha256": "b6495a2785a5053f6cecae77cfbc0b2b3d5851135b6d7295645f9cf5541e1835",
+ "n_r": [
+  1,
+  2,
+  4
+ ],
+ "seeds": [
+  17,
+  29,
+  43,
+  53,
+  61,
+  71,
+  79,
+  89,
+  97,
+  107
+ ],
+ "alpha": 0.0071428571428571435,
+ "cqi1": 0.15234375,
+ "gate": {
+  "U0": {
+   "city_1_losangeles_28": true,
+   "city_2_chicago_28": true,
+   "city_3_houston_28": true,
+   "city_4_phoenix_28": true,
+   "city_5_philadelphia_28": true,
+   "city_6_miami_28": true,
+   "city_7_sandiego_28": true
+  },
+  "U1": {
+   "city_1_losangeles_28": {
+    "U1a": true,
+    "U1b": true,
+    "U1c_rel_to_strongest": 4.892954973075842e-05,
+    "U1c_rate_abs": 0.0008603071170512067,
+    "holds": true
+   },
+   "city_2_chicago_28": {
+    "U1a": true,
+    "U1b": true,
+    "U1c_rel_to_strongest": 3.5237070840860435e-05,
+    "U1c_rate_abs": 0.0010663775228270111,
+    "holds": true
+   },
+   "city_3_houston_28": {
+    "U1a": true,
+    "U1b": true,
+    "U1c_rel_to_strongest": 0.00011474262986291066,
+    "U1c_rate_abs": 0.0008513962151726062,
+    "holds": true
+   },
+   "city_4_phoenix_28": {
+    "U1a": true,
+    "U1b": true,
+    "U1c_rel_to_strongest": 2.1957370999673955e-05,
+    "U1c_rate_abs": 0.0011989571367228002,
+    "holds": true
+   },
+   "city_5_philadelphia_28": {
+    "U1a": true,
+    "U1b": true,
+    "U1c_rel_to_strongest": 3.83276960944154e-05,
+    "U1c_rate_abs": 0.0010267117941547,
+    "holds": true
+   },
+   "city_6_miami_28": {
+    "U1a": true,
+    "U1b": true,
+    "U1c_rel_to_strongest": 4.832818700328666e-05,
+    "U1c_rate_abs": 0.000741997545829598,
+    "holds": true
+   },
+   "city_7_sandiego_28": {
+    "U1a": true,
+    "U1b": true,
+    "U1c_rel_to_strongest": 4.790455063380723e-05,
+    "U1c_rate_abs": 0.0008203700229314492,
+    "holds": true
+   }
+  },
+  "U2": {
+   "city_1_losangeles_28": true,
+   "city_2_chicago_28": true,
+   "city_3_houston_28": true,
+   "city_4_phoenix_28": true,
+   "city_5_philadelphia_28": true,
+   "city_6_miami_28": true,
+   "city_7_sandiego_28": true
+  },
+  "U3": {
+   "city_1_losangeles_28": true,
+   "city_2_chicago_28": true,
+   "city_3_houston_28": true,
+   "city_4_phoenix_28": true,
+   "city_5_philadelphia_28": true,
+   "city_6_miami_28": true,
+   "city_7_sandiego_28": true
+  }
+ },
+ "per_scenario": {
+  "city_1_losangeles_28": {
+   "1": {
+    "all": {
+     "eta": 0.9995333076667134,
+     "users": 19911,
+     "blocks": 20,
+     "se_lin": 0.00016115180820386153,
+     "eta_lb": 0.9986582161139792,
+     "eta_lb_boot": 0.9986582161139792,
+     "eta_lb_t": 0.9990452899228368,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9998825536602679,
+     "users": 10757,
+     "blocks": 16,
+     "se_lin": 3.7399507489032554e-05,
+     "eta_lb": 0.9997627721661273,
+     "eta_lb_boot": 0.9997627721661273,
+     "eta_lb_t": 0.99976929633185,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "2": {
+    "all": {
+     "eta": 0.9995161121524411,
+     "users": 19911,
+     "blocks": 20,
+     "se_lin": 0.00016001865441324077,
+     "eta_lb": 0.9986417835391598,
+     "eta_lb_boot": 0.9986417835391598,
+     "eta_lb_t": 0.9990315259503046,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9998471362631813,
+     "users": 10757,
+     "blocks": 16,
+     "se_lin": 5.777316343726088e-05,
+     "eta_lb": 0.9996632678549782,
+     "eta_lb_boot": 0.9996632678549782,
+     "eta_lb_t": 0.9996721811746129,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "4": {
+    "all": {
+     "eta": 0.9995911146331679,
+     "users": 19911,
+     "blocks": 20,
+     "se_lin": 0.00013339093513773878,
+     "eta_lb": 0.9988731886077771,
+     "eta_lb_boot": 0.9988731886077771,
+     "eta_lb_t": 0.9991871654380265,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9998678976906575,
+     "users": 10757,
+     "blocks": 16,
+     "se_lin": 4.365341209562677e-05,
+     "eta_lb": 0.9997357015960504,
+     "eta_lb_boot": 0.9997374350441732,
+     "eta_lb_t": 0.9997357015960504,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   }
+  },
+  "city_2_chicago_28": {
+   "1": {
+    "all": {
+     "eta": 0.9996188455419801,
+     "users": 10451,
+     "blocks": 15,
+     "se_lin": 0.00016647249488478485,
+     "eta_lb": 0.9972308450536989,
+     "eta_lb_boot": 0.9972308450536989,
+     "eta_lb_t": 0.9991147151057369,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9998472349778162,
+     "users": 6224,
+     "blocks": 10,
+     "se_lin": 5.228249304669624e-05,
+     "eta_lb": 0.9995611326828944,
+     "eta_lb_boot": 0.9995611326828944,
+     "eta_lb_t": 0.9996889073450997,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "2": {
+    "all": {
+     "eta": 0.9996006888972216,
+     "users": 10451,
+     "blocks": 15,
+     "se_lin": 0.00019758919613455266,
+     "eta_lb": 0.9973118705378466,
+     "eta_lb_boot": 0.9973118705378466,
+     "eta_lb_t": 0.9990023274218729,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9998586952978277,
+     "users": 6224,
+     "blocks": 10,
+     "se_lin": 6.135487062600386e-05,
+     "eta_lb": 0.9994451821142339,
+     "eta_lb_boot": 0.9994451821142339,
+     "eta_lb_t": 0.9996728936870827,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "4": {
+    "all": {
+     "eta": 0.9995530039138083,
+     "users": 10451,
+     "blocks": 15,
+     "se_lin": 0.0002150623460004806,
+     "eta_lb": 0.9970452219313863,
+     "eta_lb_boot": 0.9970452219313863,
+     "eta_lb_t": 0.9989017283118914,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9998240242618047,
+     "users": 6224,
+     "blocks": 10,
+     "se_lin": 7.836644736628901e-05,
+     "eta_lb": 0.9992792854922734,
+     "eta_lb_boot": 0.9992792854922734,
+     "eta_lb_t": 0.9995867063113233,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   }
+  },
+  "city_3_houston_28": {
+   "1": {
+    "all": {
+     "eta": 0.9996530250601352,
+     "users": 19379,
+     "blocks": 22,
+     "se_lin": 0.00015448659180367956,
+     "eta_lb": 0.9986390785269321,
+     "eta_lb_boot": 0.9986390785269321,
+     "eta_lb_t": 0.9991851916623501,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9998658252275295,
+     "users": 12015,
+     "blocks": 18,
+     "se_lin": 6.317044303038524e-05,
+     "eta_lb": 0.9995896411454983,
+     "eta_lb_boot": 0.9995896411454983,
+     "eta_lb_t": 0.9996745254994596,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "2": {
+    "all": {
+     "eta": 0.9995912331195329,
+     "users": 19379,
+     "blocks": 22,
+     "se_lin": 0.000141156768881013,
+     "eta_lb": 0.9987634438128923,
+     "eta_lb_boot": 0.9987634438128923,
+     "eta_lb_t": 0.9991637665670318,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9997944441008524,
+     "users": 12015,
+     "blocks": 18,
+     "se_lin": 7.004504060927356e-05,
+     "eta_lb": 0.9995480146574931,
+     "eta_lb_boot": 0.9995480146574931,
+     "eta_lb_t": 0.9995823259554286,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "4": {
+    "all": {
+     "eta": 0.999505741536097,
+     "users": 19379,
+     "blocks": 22,
+     "se_lin": 0.00016123827317976778,
+     "eta_lb": 0.9986680340165657,
+     "eta_lb_boot": 0.9986680340165657,
+     "eta_lb_t": 0.9990174619494093,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9996856934008664,
+     "users": 12015,
+     "blocks": 18,
+     "se_lin": 0.00011461339751316446,
+     "eta_lb": 0.9992843872485228,
+     "eta_lb_boot": 0.9992843872485228,
+     "eta_lb_t": 0.9993386084236898,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   }
+  },
+  "city_4_phoenix_28": {
+   "1": {
+    "all": {
+     "eta": 0.999311059589629,
+     "users": 13489,
+     "blocks": 21,
+     "se_lin": 0.0004897239181449946,
+     "eta_lb": 0.9722228943064257,
+     "eta_lb_boot": 0.9722228943064257,
+     "eta_lb_t": 0.9978280234120068,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9999652176765752,
+     "users": 4377,
+     "blocks": 8,
+     "se_lin": 7.238109413042738e-06,
+     "eta_lb": 0.9999179154304815,
+     "eta_lb_boot": 0.9999179154304815,
+     "eta_lb_t": 0.9999432984324472,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "2": {
+    "all": {
+     "eta": 0.9992214124612352,
+     "users": 13489,
+     "blocks": 21,
+     "se_lin": 0.0005498598422949042,
+     "eta_lb": 0.9672183912210008,
+     "eta_lb_boot": 0.9672183912210008,
+     "eta_lb_t": 0.9975562660215151,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9999745360430299,
+     "users": 4377,
+     "blocks": 8,
+     "se_lin": 1.3645731924000172e-05,
+     "eta_lb": 0.9999028197344361,
+     "eta_lb_boot": 0.9999028197344361,
+     "eta_lb_t": 0.9999332125271394,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "4": {
+    "all": {
+     "eta": 0.9991469587027296,
+     "users": 13489,
+     "blocks": 21,
+     "se_lin": 0.0005660576339041533,
+     "eta_lb": 0.9699820722281203,
+     "eta_lb_boot": 0.9699820722281203,
+     "eta_lb_t": 0.9974327603174866,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9999741222264699,
+     "users": 4377,
+     "blocks": 8,
+     "se_lin": 6.717528018227179e-06,
+     "eta_lb": 0.999953779464546,
+     "eta_lb_boot": 0.9999596263768606,
+     "eta_lb_t": 0.999953779464546,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   }
+  },
+  "city_5_philadelphia_28": {
+   "1": {
+    "all": {
+     "eta": 0.9996137660708305,
+     "users": 11302,
+     "blocks": 22,
+     "se_lin": 0.00019562458848266178,
+     "eta_lb": 0.9938222926821587,
+     "eta_lb_boot": 0.9938222926821587,
+     "eta_lb_t": 0.9990213540378403,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9999510098567499,
+     "users": 4993,
+     "blocks": 14,
+     "se_lin": 1.6519913029701522e-05,
+     "eta_lb": 0.9998747159114374,
+     "eta_lb_boot": 0.9998747159114374,
+     "eta_lb_t": 0.9999009824274853,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "2": {
+    "all": {
+     "eta": 0.9995783127645457,
+     "users": 11302,
+     "blocks": 22,
+     "se_lin": 0.00020807890657067427,
+     "eta_lb": 0.9938928879598583,
+     "eta_lb_boot": 0.9938928879598583,
+     "eta_lb_t": 0.9989481851869235,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9999429187207056,
+     "users": 4993,
+     "blocks": 14,
+     "se_lin": 1.559559658538923e-05,
+     "eta_lb": 0.9998208484082056,
+     "eta_lb_boot": 0.9998208484082056,
+     "eta_lb_t": 0.9998956904088124,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "4": {
+    "all": {
+     "eta": 0.9996130564413386,
+     "users": 11302,
+     "blocks": 22,
+     "se_lin": 0.00020009297589861937,
+     "eta_lb": 0.9954519846639948,
+     "eta_lb_boot": 0.9954519846639948,
+     "eta_lb_t": 0.999007112742959,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9999599388824194,
+     "users": 4993,
+     "blocks": 14,
+     "se_lin": 1.7004698545279026e-05,
+     "eta_lb": 0.9998172692046849,
+     "eta_lb_boot": 0.9998172692046849,
+     "eta_lb_t": 0.9999084433719944,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   }
+  },
+  "city_6_miami_28": {
+   "1": {
+    "all": {
+     "eta": 0.9993005355187783,
+     "users": 27061,
+     "blocks": 24,
+     "se_lin": 0.00013436754274637596,
+     "eta_lb": 0.9988114913293251,
+     "eta_lb_boot": 0.9988114913293251,
+     "eta_lb_t": 0.9988936288523735,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9995085804023002,
+     "users": 18281,
+     "blocks": 20,
+     "se_lin": 0.000123069747802694,
+     "eta_lb": 0.9991358869691235,
+     "eta_lb_boot": 0.9992026416815971,
+     "eta_lb_t": 0.9991358869691235,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "2": {
+    "all": {
+     "eta": 0.9992476869670596,
+     "users": 27061,
+     "blocks": 24,
+     "se_lin": 0.00014699044702522234,
+     "eta_lb": 0.9987540651408877,
+     "eta_lb_boot": 0.9987540651408877,
+     "eta_lb_t": 0.9988025542246586,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.999464973226389,
+     "users": 18281,
+     "blocks": 20,
+     "se_lin": 0.0001372265497129196,
+     "eta_lb": 0.999049408598618,
+     "eta_lb_boot": 0.9991185987146702,
+     "eta_lb_t": 0.999049408598618,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "4": {
+    "all": {
+     "eta": 0.9993643168719939,
+     "users": 27061,
+     "blocks": 24,
+     "se_lin": 0.00013337696574825723,
+     "eta_lb": 0.9988493327411345,
+     "eta_lb_boot": 0.9988493327411345,
+     "eta_lb_t": 0.9989604099805042,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9995718800629264,
+     "users": 18281,
+     "blocks": 20,
+     "se_lin": 0.00011557146120591139,
+     "eta_lb": 0.9992218937712251,
+     "eta_lb_boot": 0.9992621266449577,
+     "eta_lb_t": 0.9992218937712251,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   }
+  },
+  "city_7_sandiego_28": {
+   "1": {
+    "all": {
+     "eta": 0.9997564626004152,
+     "users": 22681,
+     "blocks": 24,
+     "se_lin": 0.00010593059104320954,
+     "eta_lb": 0.9989225697781496,
+     "eta_lb_boot": 0.9989225697781496,
+     "eta_lb_t": 0.9994356718589112,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9999200504510142,
+     "users": 15581,
+     "blocks": 21,
+     "se_lin": 2.7575744803222893e-05,
+     "eta_lb": 0.9997552555291391,
+     "eta_lb_boot": 0.9997552555291391,
+     "eta_lb_t": 0.9998365425281769,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "2": {
+    "all": {
+     "eta": 0.9997493923811565,
+     "users": 22681,
+     "blocks": 24,
+     "se_lin": 0.00010911455912643981,
+     "eta_lb": 0.9989154995588909,
+     "eta_lb_boot": 0.9989154995588909,
+     "eta_lb_t": 0.9994189595950619,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9999213614642095,
+     "users": 15581,
+     "blocks": 21,
+     "se_lin": 3.071587033683372e-05,
+     "eta_lb": 0.9997466483294437,
+     "eta_lb_boot": 0.9997466483294437,
+     "eta_lb_t": 0.9998283442656434,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   },
+   "4": {
+    "all": {
+     "eta": 0.9997703143852099,
+     "users": 22681,
+     "blocks": 24,
+     "se_lin": 0.0001057569761629015,
+     "eta_lb": 0.9990317889945849,
+     "eta_lb_boot": 0.9990317889945849,
+     "eta_lb_t": 0.9994500494035043,
+     "scan_transitions": 1,
+     "window": 0.25
+    },
+    "covered": {
+     "eta": 0.9999425542959947,
+     "users": 15581,
+     "blocks": 21,
+     "se_lin": 2.4765489226964713e-05,
+     "eta_lb": 0.9998204839834947,
+     "eta_lb_boot": 0.9998204839834947,
+     "eta_lb_t": 0.9998675567001671,
+     "scan_transitions": 1,
+     "window": 0.25
+    }
+   }
+  }
+ },
+ "summary": {
+  "1|all": {
+   "eta_min": 0.9993005355187783,
+   "eta_max": 0.9997564626004152,
+   "eta_lb_min": 0.9722228943064257,
+   "eta_lb_t_min": 0.9978280234120068,
+   "argmin_lb": "city_4_phoenix_28"
+  },
+  "1|covered": {
+   "eta_min": 0.9995085804023002,
+   "eta_max": 0.9999652176765752,
+   "eta_lb_min": 0.9991358869691235,
+   "eta_lb_t_min": 0.9991358869691235,
+   "argmin_lb": "city_6_miami_28"
+  },
+  "2|all": {
+   "eta_min": 0.9992214124612352,
+   "eta_max": 0.9997493923811565,
+   "eta_lb_min": 0.9672183912210008,
+   "eta_lb_t_min": 0.9975562660215151,
+   "argmin_lb": "city_4_phoenix_28"
+  },
+  "2|covered": {
+   "eta_min": 0.999464973226389,
+   "eta_max": 0.9999745360430299,
+   "eta_lb_min": 0.999049408598618,
+   "eta_lb_t_min": 0.999049408598618,
+   "argmin_lb": "city_6_miami_28"
+  },
+  "4|all": {
+   "eta_min": 0.9991469587027296,
+   "eta_max": 0.9997703143852099,
+   "eta_lb_min": 0.9699820722281203,
+   "eta_lb_t_min": 0.9974327603174866,
+   "argmin_lb": "city_4_phoenix_28"
+  },
+  "4|covered": {
+   "eta_min": 0.9995718800629264,
+   "eta_max": 0.9999741222264699,
+   "eta_lb_min": 0.9992218937712251,
+   "eta_lb_t_min": 0.9992218937712251,
+   "argmin_lb": "city_6_miami_28"
+  }
+ },
+ "seconds": 133.4,
+ "npz_sha256": "6ecfd75751b8a62a09d0c49685cac8c6bc9651a7dcf8836c7fd4d42f65ee509b"
+}

@@ -1,0 +1,847 @@
+{
+ "rule": "R45",
+ "script_sha256": "dc0a65ccdd25194a01b1051c4cfa6fca9c9f83dd09aed6221cabd1d5407c2d6f",
+ "seeds": [
+  17,
+  29,
+  43,
+  53,
+  61,
+  71,
+  79,
+  89,
+  97,
+  107
+ ],
+ "cqi1": 0.15234375,
+ "gate": {
+  "W1": {
+   "city_1_losangeles_28": true,
+   "city_2_chicago_28": true,
+   "city_3_houston_28": true,
+   "city_4_phoenix_28": true,
+   "city_5_philadelphia_28": true,
+   "city_6_miami_28": true,
+   "city_7_sandiego_28": true
+  }
+ },
+ "per_scenario": {
+  "city_1_losangeles_28": {
+   "hier6": {
+    "eta_all": 0.6297266343121527,
+    "eta_covered": 0.6320468456384422,
+    "eta_all_unscaled": 0.6331204135422586,
+    "eta_covered_unscaled": 0.6350737239165658
+   },
+   "guided3|coherent|1000": {
+    "eta_all": 0.976543761330398,
+    "eta_covered": 0.9798006338813724,
+    "eta_all_unscaled": 0.9886492147069409,
+    "eta_covered_unscaled": 0.9904137177570557
+   },
+   "guided4|coherent|1000": {
+    "eta_all": 0.9537322753331328,
+    "eta_covered": 0.9567258552047087,
+    "eta_all_unscaled": 0.9572428696276679,
+    "eta_covered_unscaled": 0.9588791849729477
+   },
+   "guided3|coherent|198": {
+    "eta_all": 0.9761212431769302,
+    "eta_covered": 0.9795839494200752,
+    "eta_all_unscaled": 0.9879643906789023,
+    "eta_covered_unscaled": 0.9902012296995333
+   },
+   "guided4|coherent|198": {
+    "eta_all": 0.9534313191524896,
+    "eta_covered": 0.9565783630296638,
+    "eta_all_unscaled": 0.9567308859821332,
+    "eta_covered_unscaled": 0.9587276806039664
+   },
+   "guided3|coherent|66": {
+    "eta_all": 0.9749402269338714,
+    "eta_covered": 0.9786729678443351,
+    "eta_all_unscaled": 0.9856434543489159,
+    "eta_covered_unscaled": 0.9886887560562277
+   },
+   "guided4|coherent|66": {
+    "eta_all": 0.9523350983675165,
+    "eta_covered": 0.9557311387637446,
+    "eta_all_unscaled": 0.9550572449283704,
+    "eta_covered_unscaled": 0.9576565480181406
+   },
+   "guided3|coherent|33": {
+    "eta_all": 0.9732504015389744,
+    "eta_covered": 0.9770830572242414,
+    "eta_all_unscaled": 0.9825765001427672,
+    "eta_covered_unscaled": 0.985939824704606
+   },
+   "guided4|coherent|33": {
+    "eta_all": 0.9505720159077641,
+    "eta_covered": 0.954082319745404,
+    "eta_all_unscaled": 0.9527514385585134,
+    "eta_covered_unscaled": 0.9556262005403472
+   },
+   "guided3|per_re|198": {
+    "eta_all": 0.9750119484482758,
+    "eta_covered": 0.9787716233824516,
+    "eta_all_unscaled": 0.9857393822298706,
+    "eta_covered_unscaled": 0.9888597182184995
+   },
+   "guided4|per_re|198": {
+    "eta_all": 0.9524537134025709,
+    "eta_covered": 0.9558763438828157,
+    "eta_all_unscaled": 0.9551611297496102,
+    "eta_covered_unscaled": 0.957815914649678
+   },
+   "guided3|per_re|66": {
+    "eta_all": 0.9736565468433968,
+    "eta_covered": 0.9774868092809216,
+    "eta_all_unscaled": 0.9831598509521656,
+    "eta_covered_unscaled": 0.9865196900429011
+   },
+   "guided4|per_re|66": {
+    "eta_all": 0.9509101564021276,
+    "eta_covered": 0.9544255727160095,
+    "eta_all_unscaled": 0.9531184063528924,
+    "eta_covered_unscaled": 0.956010449157942
+   },
+   "guided3|per_re|33": {
+    "eta_all": 0.9721772715172403,
+    "eta_covered": 0.9760401443352031,
+    "eta_all_unscaled": 0.9807728973328466,
+    "eta_covered_unscaled": 0.9842298727566171
+   },
+   "guided4|per_re|33": {
+    "eta_all": 0.9494394895231227,
+    "eta_covered": 0.952984131814494,
+    "eta_all_unscaled": 0.9513996256313182,
+    "eta_covered_unscaled": 0.9543592246002047
+   }
+  },
+  "city_2_chicago_28": {
+   "hier6": {
+    "eta_all": 0.8279872443819809,
+    "eta_covered": 0.828824849797585,
+    "eta_all_unscaled": 0.8301386846541096,
+    "eta_covered_unscaled": 0.8306872844630201
+   },
+   "guided3|coherent|1000": {
+    "eta_all": 0.9887020510683832,
+    "eta_covered": 0.9896421642205828,
+    "eta_all_unscaled": 0.9918921932444118,
+    "eta_covered_unscaled": 0.9923754105195075
+   },
+   "guided4|coherent|1000": {
+    "eta_all": 0.9794222120058151,
+    "eta_covered": 0.980228820394414,
+    "eta_all_unscaled": 0.9801565488758696,
+    "eta_covered_unscaled": 0.9805265504407742
+   },
+   "guided3|coherent|198": {
+    "eta_all": 0.9886198595006999,
+    "eta_covered": 0.989609851968089,
+    "eta_all_unscaled": 0.9917135785268569,
+    "eta_covered_unscaled": 0.9923339584926044
+   },
+   "guided4|coherent|198": {
+    "eta_all": 0.9793513407378093,
+    "eta_covered": 0.9801999655523537,
+    "eta_all_unscaled": 0.9800115549938618,
+    "eta_covered_unscaled": 0.9804974117070072
+   },
+   "guided3|coherent|66": {
+    "eta_all": 0.9883792214573149,
+    "eta_covered": 0.9894281553461831,
+    "eta_all_unscaled": 0.9911780342665579,
+    "eta_covered_unscaled": 0.9920149451117269
+   },
+   "guided4|coherent|66": {
+    "eta_all": 0.9790484559637885,
+    "eta_covered": 0.9799846587470019,
+    "eta_all_unscaled": 0.9795592639706114,
+    "eta_covered_unscaled": 0.9802538742263144
+   },
+   "guided3|coherent|33": {
+    "eta_all": 0.9878533650850273,
+    "eta_covered": 0.9889238357000499,
+    "eta_all_unscaled": 0.9903554018636621,
+    "eta_covered_unscaled": 0.9912741418783774
+   },
+   "guided4|coherent|33": {
+    "eta_all": 0.9785064799980709,
+    "eta_covered": 0.979483096041231,
+    "eta_all_unscaled": 0.978928431320228,
+    "eta_covered_unscaled": 0.9797139489690591
+   },
+   "guided3|per_re|198": {
+    "eta_all": 0.9884381054382877,
+    "eta_covered": 0.989491647622213,
+    "eta_all_unscaled": 0.9912634424751887,
+    "eta_covered_unscaled": 0.9921070857076337
+   },
+   "guided4|per_re|198": {
+    "eta_all": 0.97911093439653,
+    "eta_covered": 0.9800454753037598,
+    "eta_all_unscaled": 0.9796251405718647,
+    "eta_covered_unscaled": 0.9803184623393724
+   },
+   "guided3|per_re|66": {
+    "eta_all": 0.9880152202056772,
+    "eta_covered": 0.9890911373898936,
+    "eta_all_unscaled": 0.9905630524763692,
+    "eta_covered_unscaled": 0.9914759082059057
+   },
+   "guided4|per_re|66": {
+    "eta_all": 0.9786154595629254,
+    "eta_covered": 0.9795918543501232,
+    "eta_all_unscaled": 0.9790500458332649,
+    "eta_covered_unscaled": 0.9798315760245861
+   },
+   "guided3|per_re|33": {
+    "eta_all": 0.9874349384832349,
+    "eta_covered": 0.9885143708578097,
+    "eta_all_unscaled": 0.9897766017760251,
+    "eta_covered_unscaled": 0.9907148579074989
+   },
+   "guided4|per_re|33": {
+    "eta_all": 0.9780586028401759,
+    "eta_covered": 0.9790502123757275,
+    "eta_all_unscaled": 0.9784634270696722,
+    "eta_covered_unscaled": 0.9792822112854052
+   }
+  },
+  "city_3_houston_28": {
+   "hier6": {
+    "eta_all": 0.6707617156624672,
+    "eta_covered": 0.6729598796961466,
+    "eta_all_unscaled": 0.6812816650209836,
+    "eta_covered_unscaled": 0.682803596912323
+   },
+   "guided3|coherent|1000": {
+    "eta_all": 0.9837683594487863,
+    "eta_covered": 0.986776983409775,
+    "eta_all_unscaled": 0.9904545467756364,
+    "eta_covered_unscaled": 0.9915347902960902
+   },
+   "guided4|coherent|1000": {
+    "eta_all": 0.96951663472967,
+    "eta_covered": 0.9720546324732896,
+    "eta_all_unscaled": 0.9726507175055134,
+    "eta_covered_unscaled": 0.9734435910114728
+   },
+   "guided3|coherent|198": {
+    "eta_all": 0.983497817158168,
+    "eta_covered": 0.9866720171261223,
+    "eta_all_unscaled": 0.9898819710229558,
+    "eta_covered_unscaled": 0.9914085878055906
+   },
+   "guided4|coherent|198": {
+    "eta_all": 0.9692858361175045,
+    "eta_covered": 0.9719892555202871,
+    "eta_all_unscaled": 0.9722119259247984,
+    "eta_covered_unscaled": 0.9733781664786874
+   },
+   "guided3|coherent|66": {
+    "eta_all": 0.9827020365342541,
+    "eta_covered": 0.986153927794809,
+    "eta_all_unscaled": 0.9879082209818295,
+    "eta_covered_unscaled": 0.9903935152684183
+   },
+   "guided4|coherent|66": {
+    "eta_all": 0.968419447903015,
+    "eta_covered": 0.9714550957055588,
+    "eta_all_unscaled": 0.9706263577777453,
+    "eta_covered_unscaled": 0.972637275171215
+   },
+   "guided3|coherent|33": {
+    "eta_all": 0.9816354940221312,
+    "eta_covered": 0.9851947644086847,
+    "eta_all_unscaled": 0.9858676170357765,
+    "eta_covered_unscaled": 0.988746431545082
+   },
+   "guided4|coherent|33": {
+    "eta_all": 0.9671557560489196,
+    "eta_covered": 0.97036111658647,
+    "eta_all_unscaled": 0.9688424600278034,
+    "eta_covered_unscaled": 0.9712778899948759
+   },
+   "guided3|per_re|198": {
+    "eta_all": 0.9828060837246974,
+    "eta_covered": 0.9862818154179934,
+    "eta_all_unscaled": 0.987969357255218,
+    "eta_covered_unscaled": 0.9905340288000198
+   },
+   "guided4|per_re|198": {
+    "eta_all": 0.968460209746063,
+    "eta_covered": 0.9715286990386108,
+    "eta_all_unscaled": 0.970651382771975,
+    "eta_covered_unscaled": 0.9727227158853116
+   },
+   "guided3|per_re|66": {
+    "eta_all": 0.9819506251901127,
+    "eta_covered": 0.985512895621162,
+    "eta_all_unscaled": 0.986220910891982,
+    "eta_covered_unscaled": 0.9891095421483661
+   },
+   "guided4|per_re|66": {
+    "eta_all": 0.9674357662328769,
+    "eta_covered": 0.9706419489117744,
+    "eta_all_unscaled": 0.969151538920794,
+    "eta_covered_unscaled": 0.9715739999143371
+   },
+   "guided3|per_re|33": {
+    "eta_all": 0.9809703560249088,
+    "eta_covered": 0.9845649384116224,
+    "eta_all_unscaled": 0.9847748313637955,
+    "eta_covered_unscaled": 0.9877857117780321
+   },
+   "guided4|per_re|33": {
+    "eta_all": 0.9664739713570418,
+    "eta_covered": 0.9697448131162439,
+    "eta_all_unscaled": 0.9679911595895002,
+    "eta_covered_unscaled": 0.9705602209977314
+   }
+  },
+  "city_4_phoenix_28": {
+   "hier6": {
+    "eta_all": 0.500263995541406,
+    "eta_covered": 0.5013011260559752,
+    "eta_all_unscaled": 0.49704160412696297,
+    "eta_covered_unscaled": 0.49799253074326516
+   },
+   "guided3|coherent|1000": {
+    "eta_all": 0.9762915654283323,
+    "eta_covered": 0.9782541947593741,
+    "eta_all_unscaled": 0.9784548996918592,
+    "eta_covered_unscaled": 0.979925289036901
+   },
+   "guided4|coherent|1000": {
+    "eta_all": 0.9652071410411015,
+    "eta_covered": 0.9670853899660087,
+    "eta_all_unscaled": 0.9660857694856962,
+    "eta_covered_unscaled": 0.9673424658191866
+   },
+   "guided3|coherent|198": {
+    "eta_all": 0.9760825750759505,
+    "eta_covered": 0.9781886219422146,
+    "eta_all_unscaled": 0.978128192818629,
+    "eta_covered_unscaled": 0.9798676859082881
+   },
+   "guided4|coherent|198": {
+    "eta_all": 0.965083994452309,
+    "eta_covered": 0.9670540851187747,
+    "eta_all_unscaled": 0.9658449700018436,
+    "eta_covered_unscaled": 0.9673128714276172
+   },
+   "guided3|coherent|66": {
+    "eta_all": 0.9758325657363578,
+    "eta_covered": 0.9780291597721219,
+    "eta_all_unscaled": 0.9776528308725299,
+    "eta_covered_unscaled": 0.9796532671989133
+   },
+   "guided4|coherent|66": {
+    "eta_all": 0.9648404939120313,
+    "eta_covered": 0.966910809179337,
+    "eta_all_unscaled": 0.9654077891323798,
+    "eta_covered_unscaled": 0.9671465269451357
+   },
+   "guided3|coherent|33": {
+    "eta_all": 0.975578279107434,
+    "eta_covered": 0.9778030799435712,
+    "eta_all_unscaled": 0.9772630971716494,
+    "eta_covered_unscaled": 0.9793447685151514
+   },
+   "guided4|coherent|33": {
+    "eta_all": 0.9645076158354615,
+    "eta_covered": 0.9666227504024546,
+    "eta_all_unscaled": 0.9649597965293113,
+    "eta_covered_unscaled": 0.9668153755650767
+   },
+   "guided3|per_re|198": {
+    "eta_all": 0.9758925159729579,
+    "eta_covered": 0.9780975398021583,
+    "eta_all_unscaled": 0.9777092687410902,
+    "eta_covered_unscaled": 0.9797214482772659
+   },
+   "guided4|per_re|198": {
+    "eta_all": 0.9648738220107589,
+    "eta_covered": 0.966952694417867,
+    "eta_all_unscaled": 0.9654224588018044,
+    "eta_covered_unscaled": 0.967184178234151
+   },
+   "guided3|per_re|66": {
+    "eta_all": 0.97565827180667,
+    "eta_covered": 0.9778849348763164,
+    "eta_all_unscaled": 0.977341769689326,
+    "eta_covered_unscaled": 0.9794260252132894
+   },
+   "guided4|per_re|66": {
+    "eta_all": 0.9645741587541173,
+    "eta_covered": 0.966695013223416,
+    "eta_all_unscaled": 0.9650311453560778,
+    "eta_covered_unscaled": 0.9668915945252448
+   },
+   "guided3|per_re|33": {
+    "eta_all": 0.9754319920223081,
+    "eta_covered": 0.9776617121736519,
+    "eta_all_unscaled": 0.9770336272495281,
+    "eta_covered_unscaled": 0.9791308016349624
+   },
+   "guided4|per_re|33": {
+    "eta_all": 0.9643238666750428,
+    "eta_covered": 0.9664520230909978,
+    "eta_all_unscaled": 0.9647538384518732,
+    "eta_covered_unscaled": 0.9666345228526719
+   }
+  },
+  "city_5_philadelphia_28": {
+   "hier6": {
+    "eta_all": 0.5564253296681262,
+    "eta_covered": 0.5588387627976525,
+    "eta_all_unscaled": 0.557564670698671,
+    "eta_covered_unscaled": 0.559897215768711
+   },
+   "guided3|coherent|1000": {
+    "eta_all": 0.9701038211379437,
+    "eta_covered": 0.9739286106903794,
+    "eta_all_unscaled": 0.9778507142645253,
+    "eta_covered_unscaled": 0.9799180345978152
+   },
+   "guided4|coherent|1000": {
+    "eta_all": 0.9586572208775612,
+    "eta_covered": 0.9622360425319774,
+    "eta_all_unscaled": 0.9620523775134032,
+    "eta_covered_unscaled": 0.963661223719576
+   },
+   "guided3|coherent|198": {
+    "eta_all": 0.9698284152536556,
+    "eta_covered": 0.9738599093362518,
+    "eta_all_unscaled": 0.9772815498989942,
+    "eta_covered_unscaled": 0.979862622419695
+   },
+   "guided4|coherent|198": {
+    "eta_all": 0.9584748180269906,
+    "eta_covered": 0.9621983580873795,
+    "eta_all_unscaled": 0.9616376279519896,
+    "eta_covered_unscaled": 0.9636226533335632
+   },
+   "guided3|coherent|66": {
+    "eta_all": 0.9691301028910854,
+    "eta_covered": 0.9735115616819765,
+    "eta_all_unscaled": 0.9754857213511993,
+    "eta_covered_unscaled": 0.9790970849130035
+   },
+   "guided4|coherent|66": {
+    "eta_all": 0.9578734637950543,
+    "eta_covered": 0.9619021341864016,
+    "eta_all_unscaled": 0.9602957710592795,
+    "eta_covered_unscaled": 0.9631672983636892
+   },
+   "guided3|coherent|33": {
+    "eta_all": 0.9683577014699948,
+    "eta_covered": 0.9728589073089633,
+    "eta_all_unscaled": 0.9736062596143307,
+    "eta_covered_unscaled": 0.9775952652392064
+   },
+   "guided4|coherent|33": {
+    "eta_all": 0.9569806162154582,
+    "eta_covered": 0.9611622696909887,
+    "eta_all_unscaled": 0.9588615856557693,
+    "eta_covered_unscaled": 0.9621368960075183
+   },
+   "guided3|per_re|198": {
+    "eta_all": 0.9691520116512652,
+    "eta_covered": 0.9735631898419861,
+    "eta_all_unscaled": 0.9754231616848258,
+    "eta_covered_unscaled": 0.9791310925448212
+   },
+   "guided4|per_re|198": {
+    "eta_all": 0.9578798289576627,
+    "eta_covered": 0.9619387017944202,
+    "eta_all_unscaled": 0.960250214194273,
+    "eta_covered_unscaled": 0.9631957433732595
+   },
+   "guided3|per_re|66": {
+    "eta_all": 0.9684811341211188,
+    "eta_covered": 0.9729811579775572,
+    "eta_all_unscaled": 0.9737568358765644,
+    "eta_covered_unscaled": 0.9777555540299641
+   },
+   "guided4|per_re|66": {
+    "eta_all": 0.9571339685132524,
+    "eta_covered": 0.9612970027091998,
+    "eta_all_unscaled": 0.9590112470079647,
+    "eta_covered_unscaled": 0.9622827733149905
+   },
+   "guided3|per_re|33": {
+    "eta_all": 0.9678596789888658,
+    "eta_covered": 0.9723916803215994,
+    "eta_all_unscaled": 0.9725686089946312,
+    "eta_covered_unscaled": 0.9766487167959141
+   },
+   "guided4|per_re|33": {
+    "eta_all": 0.9564120258078685,
+    "eta_covered": 0.9606265223008245,
+    "eta_all_unscaled": 0.9580799257873225,
+    "eta_covered_unscaled": 0.9614760948133789
+   }
+  },
+  "city_6_miami_28": {
+   "hier6": {
+    "eta_all": 0.6295492947413084,
+    "eta_covered": 0.6303974751241956,
+    "eta_all_unscaled": 0.6418188183366239,
+    "eta_covered_unscaled": 0.642439764337401
+   },
+   "guided3|coherent|1000": {
+    "eta_all": 0.9818867208254282,
+    "eta_covered": 0.9830994720616854,
+    "eta_all_unscaled": 0.9881226535620055,
+    "eta_covered_unscaled": 0.9887448656106159
+   },
+   "guided4|coherent|1000": {
+    "eta_all": 0.9732383705712206,
+    "eta_covered": 0.9742858996407037,
+    "eta_all_unscaled": 0.9746806100969974,
+    "eta_covered_unscaled": 0.9751686181276075
+   },
+   "guided3|coherent|198": {
+    "eta_all": 0.9815816495453616,
+    "eta_covered": 0.9828783547459587,
+    "eta_all_unscaled": 0.9876973723673222,
+    "eta_covered_unscaled": 0.9885048942246135
+   },
+   "guided4|coherent|198": {
+    "eta_all": 0.9729631445484063,
+    "eta_covered": 0.9740801679819929,
+    "eta_all_unscaled": 0.9743119808353289,
+    "eta_covered_unscaled": 0.9749564974986021
+   },
+   "guided3|coherent|66": {
+    "eta_all": 0.9806581496195593,
+    "eta_covered": 0.9820590387116729,
+    "eta_all_unscaled": 0.9862217959139368,
+    "eta_covered_unscaled": 0.9873282220157693
+   },
+   "guided4|coherent|66": {
+    "eta_all": 0.9719979454936788,
+    "eta_covered": 0.9732339294237536,
+    "eta_all_unscaled": 0.9731192799872609,
+    "eta_covered_unscaled": 0.9740260500292887
+   },
+   "guided3|coherent|33": {
+    "eta_all": 0.9788946165848722,
+    "eta_covered": 0.9803333377960433,
+    "eta_all_unscaled": 0.9836362183158566,
+    "eta_covered_unscaled": 0.9848654379639736
+   },
+   "guided4|coherent|33": {
+    "eta_all": 0.97039236088947,
+    "eta_covered": 0.9716851961455744,
+    "eta_all_unscaled": 0.9713784532266082,
+    "eta_covered_unscaled": 0.9724055049991152
+   },
+   "guided3|per_re|198": {
+    "eta_all": 0.9809122147476736,
+    "eta_covered": 0.9823172400316103,
+    "eta_all_unscaled": 0.9864946644956583,
+    "eta_covered_unscaled": 0.9876167120356788
+   },
+   "guided4|per_re|198": {
+    "eta_all": 0.972186600707438,
+    "eta_covered": 0.9734263326509678,
+    "eta_all_unscaled": 0.9732959445254574,
+    "eta_covered_unscaled": 0.97421216960487
+   },
+   "guided3|per_re|66": {
+    "eta_all": 0.9794407050284616,
+    "eta_covered": 0.9808802094289798,
+    "eta_all_unscaled": 0.9843142515549232,
+    "eta_covered_unscaled": 0.985538937632945
+   },
+   "guided4|per_re|66": {
+    "eta_all": 0.9708407658285748,
+    "eta_covered": 0.9721324345145593,
+    "eta_all_unscaled": 0.9718000184206479,
+    "eta_covered_unscaled": 0.9728237504231272
+   },
+   "guided3|per_re|33": {
+    "eta_all": 0.9777380093227461,
+    "eta_covered": 0.9791891016516645,
+    "eta_all_unscaled": 0.9820342474433503,
+    "eta_covered_unscaled": 0.983303738875169
+   },
+   "guided4|per_re|33": {
+    "eta_all": 0.9694136710898296,
+    "eta_covered": 0.9707270897740323,
+    "eta_all_unscaled": 0.9703041037649857,
+    "eta_covered_unscaled": 0.9713804750729846
+   }
+  },
+  "city_7_sandiego_28": {
+   "hier6": {
+    "eta_all": 0.4931202587059042,
+    "eta_covered": 0.4937418669853552,
+    "eta_all_unscaled": 0.49507272764887134,
+    "eta_covered_unscaled": 0.4956441628741724
+   },
+   "guided3|coherent|1000": {
+    "eta_all": 0.9753974298105057,
+    "eta_covered": 0.9765063813785887,
+    "eta_all_unscaled": 0.9792494441074379,
+    "eta_covered_unscaled": 0.9798410568621218
+   },
+   "guided4|coherent|1000": {
+    "eta_all": 0.9578329043058125,
+    "eta_covered": 0.9588322354651327,
+    "eta_all_unscaled": 0.9588981756908783,
+    "eta_covered_unscaled": 0.959393449056481
+   },
+   "guided3|coherent|198": {
+    "eta_all": 0.9752214321388845,
+    "eta_covered": 0.9764051758754589,
+    "eta_all_unscaled": 0.9789802075456057,
+    "eta_covered_unscaled": 0.9797381836249379
+   },
+   "guided4|coherent|198": {
+    "eta_all": 0.9576980241232663,
+    "eta_covered": 0.9587521168905528,
+    "eta_all_unscaled": 0.9586778971263403,
+    "eta_covered_unscaled": 0.9593047776345712
+   },
+   "guided3|coherent|66": {
+    "eta_all": 0.9747960018961735,
+    "eta_covered": 0.9760727034444608,
+    "eta_all_unscaled": 0.9782035707929357,
+    "eta_covered_unscaled": 0.9792351762198139
+   },
+   "guided4|coherent|66": {
+    "eta_all": 0.9572969576002252,
+    "eta_covered": 0.9584392925867373,
+    "eta_all_unscaled": 0.9580962855974666,
+    "eta_covered_unscaled": 0.9589348713591155
+   },
+   "guided3|coherent|33": {
+    "eta_all": 0.9741139270431715,
+    "eta_covered": 0.975422909941568,
+    "eta_all_unscaled": 0.9771032737128962,
+    "eta_covered_unscaled": 0.9782385929869217
+   },
+   "guided4|coherent|33": {
+    "eta_all": 0.9566102070682632,
+    "eta_covered": 0.9577929330732662,
+    "eta_all_unscaled": 0.957262753799047,
+    "eta_covered_unscaled": 0.9581971414599192
+   },
+   "guided3|per_re|198": {
+    "eta_all": 0.9748913030378301,
+    "eta_covered": 0.9761748921216704,
+    "eta_all_unscaled": 0.9783024686932764,
+    "eta_covered_unscaled": 0.979354190376503
+   },
+   "guided4|per_re|198": {
+    "eta_all": 0.9573615032925544,
+    "eta_covered": 0.9585138635974119,
+    "eta_all_unscaled": 0.9581469482700724,
+    "eta_covered_unscaled": 0.9590028513979887
+   },
+   "guided3|per_re|66": {
+    "eta_all": 0.974346381945666,
+    "eta_covered": 0.9756566757664705,
+    "eta_all_unscaled": 0.9773785576746533,
+    "eta_covered_unscaled": 0.9785197315236684
+   },
+   "guided4|per_re|66": {
+    "eta_all": 0.9568026535954283,
+    "eta_covered": 0.957986011833795,
+    "eta_all_unscaled": 0.957477669320793,
+    "eta_covered_unscaled": 0.958412908801288
+   },
+   "guided3|per_re|33": {
+    "eta_all": 0.9736405068348593,
+    "eta_covered": 0.9749590872796485,
+    "eta_all_unscaled": 0.9764167078929276,
+    "eta_covered_unscaled": 0.9775818588474346
+   },
+   "guided4|per_re|33": {
+    "eta_all": 0.9561745183948644,
+    "eta_covered": 0.9573691146315249,
+    "eta_all_unscaled": 0.9567753691023295,
+    "eta_covered_unscaled": 0.9577389224235032
+   }
+  }
+ },
+ "summary": {
+  "guided3|coherent|1000|all": {
+   "eta_min": 0.9701038211379437,
+   "eta_min_unscaled": 0.9778507142645253,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|coherent|1000|covered": {
+   "eta_min": 0.9739286106903794,
+   "eta_min_unscaled": 0.9798410568621218,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|coherent|198|all": {
+   "eta_min": 0.9698284152536556,
+   "eta_min_unscaled": 0.9772815498989942,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|coherent|198|covered": {
+   "eta_min": 0.9738599093362518,
+   "eta_min_unscaled": 0.9797381836249379,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|coherent|33|all": {
+   "eta_min": 0.9683577014699948,
+   "eta_min_unscaled": 0.9736062596143307,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|coherent|33|covered": {
+   "eta_min": 0.9728589073089633,
+   "eta_min_unscaled": 0.9775952652392064,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|coherent|66|all": {
+   "eta_min": 0.9691301028910854,
+   "eta_min_unscaled": 0.9754857213511993,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|coherent|66|covered": {
+   "eta_min": 0.9735115616819765,
+   "eta_min_unscaled": 0.9790970849130035,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|per_re|198|all": {
+   "eta_min": 0.9691520116512652,
+   "eta_min_unscaled": 0.9754231616848258,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|per_re|198|covered": {
+   "eta_min": 0.9735631898419861,
+   "eta_min_unscaled": 0.9791310925448212,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|per_re|33|all": {
+   "eta_min": 0.9678596789888658,
+   "eta_min_unscaled": 0.9725686089946312,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|per_re|33|covered": {
+   "eta_min": 0.9723916803215994,
+   "eta_min_unscaled": 0.9766487167959141,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|per_re|66|all": {
+   "eta_min": 0.9684811341211188,
+   "eta_min_unscaled": 0.9737568358765644,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided3|per_re|66|covered": {
+   "eta_min": 0.9729811579775572,
+   "eta_min_unscaled": 0.9777555540299641,
+   "argmin": "city_5_philadelphia_28"
+  },
+  "guided4|coherent|1000|all": {
+   "eta_min": 0.9537322753331328,
+   "eta_min_unscaled": 0.9572428696276679,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|coherent|1000|covered": {
+   "eta_min": 0.9567258552047087,
+   "eta_min_unscaled": 0.9588791849729477,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|coherent|198|all": {
+   "eta_min": 0.9534313191524896,
+   "eta_min_unscaled": 0.9567308859821332,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|coherent|198|covered": {
+   "eta_min": 0.9565783630296638,
+   "eta_min_unscaled": 0.9587276806039664,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|coherent|33|all": {
+   "eta_min": 0.9505720159077641,
+   "eta_min_unscaled": 0.9527514385585134,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|coherent|33|covered": {
+   "eta_min": 0.954082319745404,
+   "eta_min_unscaled": 0.9556262005403472,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|coherent|66|all": {
+   "eta_min": 0.9523350983675165,
+   "eta_min_unscaled": 0.9550572449283704,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|coherent|66|covered": {
+   "eta_min": 0.9557311387637446,
+   "eta_min_unscaled": 0.9576565480181406,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|per_re|198|all": {
+   "eta_min": 0.9524537134025709,
+   "eta_min_unscaled": 0.9551611297496102,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|per_re|198|covered": {
+   "eta_min": 0.9558763438828157,
+   "eta_min_unscaled": 0.957815914649678,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|per_re|33|all": {
+   "eta_min": 0.9494394895231227,
+   "eta_min_unscaled": 0.9513996256313182,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|per_re|33|covered": {
+   "eta_min": 0.952984131814494,
+   "eta_min_unscaled": 0.9543592246002047,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|per_re|66|all": {
+   "eta_min": 0.9509101564021276,
+   "eta_min_unscaled": 0.9531184063528924,
+   "argmin": "city_1_losangeles_28"
+  },
+  "guided4|per_re|66|covered": {
+   "eta_min": 0.9544255727160095,
+   "eta_min_unscaled": 0.956010449157942,
+   "argmin": "city_1_losangeles_28"
+  },
+  "hier6|all": {
+   "eta_min": 0.4931202587059042,
+   "eta_min_unscaled": 0.49507272764887134,
+   "argmin": "city_7_sandiego_28"
+  },
+  "hier6|covered": {
+   "eta_min": 0.4937418669853552,
+   "eta_min_unscaled": 0.4956441628741724,
+   "argmin": "city_7_sandiego_28"
+  },
+  "guided3|lowest_law|all": {
+   "eta_min": 0.9678596789888658,
+   "eta_min_unscaled": 0.9725686089946312
+  },
+  "guided3|lowest_law|covered": {
+   "eta_min": 0.9723916803215994,
+   "eta_min_unscaled": 0.9766487167959141
+  },
+  "guided4|lowest_law|all": {
+   "eta_min": 0.9494394895231227,
+   "eta_min_unscaled": 0.9513996256313182
+  },
+  "guided4|lowest_law|covered": {
+   "eta_min": 0.952984131814494,
+   "eta_min_unscaled": 0.9543592246002047
+  }
+ },
+ "inputs_sha256": {
+  "refbounds.json": "602a551a08882172f06142e3405909481540f042f8a7be0d31a2f67f5398c942",
+  "ssbref.json": "5bec54c820f68932f0320fdf2aaf9890add14ddb18a118e83cd0716e8614a3c4"
+ },
+ "seconds": 19.8
+}
