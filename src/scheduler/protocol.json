@@ -1,5 +1,5 @@
 {
- "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R36, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
+ "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R40, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
  "amendments": [
   {
    "changes": "predictor.input",
@@ -1695,6 +1695,467 @@
    },
    "state": "declared before it ran, except that gates T and P had run alone with --gate",
    "files_sha256": {}
+  },
+  {
+   "key": "covpop",
+   "declared": "2026-11-08",
+   "title": "the bounds and the decision audit on the operating population, set post hoc",
+   "description": "one reading rule (R37), set post hoc, and the scripts that apply it, declared before they ran (src/scheduler/covpop.py, covpop_direct.py): every efficiency bound the paper reports and rule R26's audit, recomputed on the users whose genie-aided rate reaches CQI 1 and, as a sensitivity, on those above -6 dB effective SNR.  Nothing is timed or trained; no stored file changes",
+   "rules": [
+    "R37"
+   ],
+   "post_hoc": [
+    "R37"
+   ],
+   "scripts": [
+    "covpop.py",
+    "covpop_direct.py"
+   ],
+   "scripts_sha256": {
+    "covpop.py": "08773552a6a654a9fbb6d4d4c2463cc471227dd37965d23e46fe8fbc591848e3",
+    "covpop_direct.py": "0093f031019479edfa0f9da4454210a1e5592b5758f81d10fa7429f2e79987d4",
+    "csirs.py": "8836ff723b6cf47c6b12af28ebc62e7b235edcc5b62b9ce4d18be37e4c9184d1",
+    "csirs_cfg.py": "969741004f04da3b595cb070d2cfc66697a347c2c2cd547b9c9a4a1d2a66c71e",
+    "refbounds.py": "0ead79d2bbcb5f7bd9b1e00b1a342e3b86a37dc57fae787149d4a9c975e6c3c9",
+    "ssbref.py": "b636b925fbd818cd97b48e048caf1c2e3219721e0799775152413669f9d81c73",
+    "effbound.py": "b947b77c2268953f6b775b0deec69c6cdef2b503a6d7fb308aa792dfcb57f18c",
+    "audit_screen.py": "838cdd9bb554600867aab5d610ae430be81a5e745399285ce93a59e2504a7d12",
+    "audit_direct.py": "08bc3121879db93e09f34a6e4abb457bfcddd2d59edc736e597ac4ed69610c86"
+   },
+   "inputs_sha256": {
+    "csirs.json": "9c89539e73082c1e01516ab54b5d4d5e07c46f7e07ea0be7f3d2246e4ea698b1",
+    "csirs_cfg.json": "92ae169439095d4c2b751c4cb521c40690299b9d3579385befaefeef5baa4ee1",
+    "refbounds.json": "602a551a08882172f06142e3405909481540f042f8a7be0d31a2f67f5398c942",
+    "ssbref.json": "5bec54c820f68932f0320fdf2aaf9890add14ddb18a118e83cd0716e8614a3c4",
+    "audit_bounds.json": "34ed02969acb7599d6b4efedd7994bda3cc02d25fc17797d63d93b35f5ce1a8b",
+    "audit_decisions.json": "4eec438c01578db141750aea2c4233c4d808202897444de0fe77279100b2ed26",
+    "audit_direct.json": "cd5501ea97b62cb4cb9f55675d8930abec766c95da285ce253a598c6d5d823bd",
+    "audit_rates.npz": "b959598914d9bb72f2f13f4b17981cf7dca30d096a894531aac7f0b0e0405805",
+    "audit_pop.npz": "862cc9f3075c366cc7ddca42c7bbbcdedd95a057ddaca8e6b18cb36b7e5bf8e9"
+   },
+   "analyses": {
+    "covpop": "covpop.py simulates each pipeline's selections in the seven non-training scenarios with the 10 seeds and bounds every efficiency on all users (gate C1) and on each population, and recomputes the audit's screen; it refuses to overwrite covpop.json; --gate runs C1 and C3",
+    "covpop_direct": "covpop_direct.py, the auditor's side, after covpop.py: eta_pop, A(H) and the labels on each population, and the screen read against them; --gate runs D1"
+   },
+   "criteria": {
+    "covpop": "C1 all users reproduce the stored bounds and the audit exactly; C2 bound <= eta < 1; C3 the population from the simulation equals the stored one",
+    "covpop_direct": "D1 all users reproduce audit_direct.json, A(H) to 1e-12"
+   },
+   "state": "declared before it ran, except that gates C1, C3 and D1 had run alone with --gate and the review that prompted rule R37 had computed some of its quantities at -6 and -10 dB; covpop.py's first run stopped at gate C2 and wrote nothing, the gate was corrected (amended), and covpop.py then ran once on 2026-11-08, every gate holding; covpop_direct.py ran once after it, gate D1 holding",
+   "files_sha256": {
+    "covpop.json": "6e749e2477f5e1906ca233632dce44b14de256d09e095ee64a9b660ea1690d5e",
+    "covpop_direct.json": "e35f59c10f5cceb9f74e2a9868fa0e5f5a005d9635426d68c37aeb2dd1d1e80e"
+   },
+   "amended": {
+    "changed": "covpop.py's gate C2 corrected: every bound lies at or below its efficiency; a pipeline's efficiency is below one, and a drawn calibration's at most one (to 1e-12), one where every user of its blocks selects its genie-aided beam in every realization.  No population, statistic, level, window, stream, draw or threshold of the analysis changes",
+    "criteria": {
+     "covpop": "C1 and C3 as declared; C2: bound <= eta < 1 for the four pipelines, bound <= eta <= 1 (to 1e-12) for the audit's drawn calibrations"
+    },
+    "date": "2026-11-08",
+    "scripts_sha256": {
+     "covpop.py": "2b22d2b884a10e09cf1de5e2ee4766628e4a9ca4be7c9ef885b08e39cefa8ff0"
+    },
+    "why": "the first run of covpop.py stopped at its own check C2, before writing anything: on the population, some drawn calibrations (in Houston, among others) have an efficiency of one to rounding, every user of their blocks selecting its genie-aided beam in all ten realizations, which C2's eta < 1 did not anticipate; the cause was located by recomputing two of those draws' bounds, and no other statistic of the analysis was seen"
+   }
+  },
+  {
+   "key": "deploy",
+   "declared": "2026-11-08",
+   "title": "compiled reduced-precision builds of the excluded vision models, prespecified",
+   "description": "one rule (R38), set before any of its timings existed, and the scripts that apply it (src/latency/profile_deploy.py, run_profile_deploy.sh; src/scheduler/deploy.py): a pilot, frozen choices and three main sessions per group, timed and read as rule R22's study.  No stored file changes",
+   "rules": [
+    "R38"
+   ],
+   "post_hoc": [],
+   "scripts": [
+    "../latency/profile_deploy.py",
+    "../latency/run_profile_deploy.sh",
+    "deploy.py"
+   ],
+   "scripts_sha256": {
+    "../latency/profile_deploy.py": "95e63c3f7b5044f4511773ce191bb87c15257521feed718188a092b5288ea29f",
+    "../latency/run_profile_deploy.sh": "156a7dfce2526f6c59f27bb5327d1147372c268fe7aee708bb83cfd67c1f2ebb",
+    "../latency/profile_matched.py": "f3db1731629ef32ab3d7f6d2be15a0a054754530b1e1e814c92f022a1d866cba",
+    "../latency/models.py": "1819703b5203e83bdce77667f27878b711c7cc585797eec2335d22d551d4d20f",
+    "../latency/trace_decisive.py": "08aa5c2fc5484397aff702c8e8408c703e9ed58e7d6fd2fb523b835a30321651",
+    "../latency/calibrate.py": "b24299782672abb68eedeb86e01d9902c8611f2857b2aa12896b10fc271c2646",
+    "deploy.py": "2839835cbed96389a7d648c696aef173605746d91f6acf9f2a7a3d7b2fd8b244",
+    "matched.py": "9bbb7141688aa709dd95f52bd0a761e48989c5b32315457ed349f902f17af195"
+   },
+   "inputs_sha256": {
+    "margins.json": "3f194c9eadda1407638c077c17e03109515610fa0fe41539ee6325c0cb667457"
+   },
+   "analyses": {
+    "profile_deploy": "profile_deploy.py times each group's builds: --pilot G, --session k G; run_profile_deploy.sh runs the pilots and the sessions in turn",
+    "deploy": "deploy.py --freeze applies R38 (ii) to the pilots and writes the frozen record here; deploy.py reads the sessions into deploy.json"
+   },
+   "criteria": {
+    "profile_deploy": "execution checks per build (logits of shape (1, 64), finite, the index the argmax of its own logits); a quiet machine at the start; a session contended on a recheck drifting over 10% or a new GPU compute process",
+    "deploy": "R38 (ii)-(v)"
+   },
+   "state": "declared before it ran, except a smoke test of every build (--smoke) that timed no call; ran on 2026-11-08: the three pilots, deploy.py --freeze at 11:42:30Z, then 9 of 9 main sessions read, 9 attempts, none contended, failed or replaced; deploy.py read them once",
+   "files_sha256": {
+    "../latency/profile_deploy/pilot_rn_cpu.json": "4f1af30a4795c2b47bd30b04806684cd18da5c1c849591b18c7d85a222ee3500",
+    "../latency/profile_deploy/pilot_rn_cpu.npz": "f95ae949b498ea2bb72f49969a6b98fb3daa20e6c4ea1a4d83d78a37b117296a",
+    "../latency/profile_deploy/pilot_rn_cpu_gpu.csv": "34ced48676efb2b322588fb3510fc9d009a92d560bf17031ca57bcd813af5535",
+    "../latency/profile_deploy/pilot_rn_gpu.json": "c3c21b1265692ea1f327d939b7a665126d416d7f9e8d4fe9313f113be903554e",
+    "../latency/profile_deploy/pilot_rn_gpu.npz": "8a5b8288e6cf7dd49731482f026397bb81182fd2738e9ab9fad03539e4860659",
+    "../latency/profile_deploy/pilot_rn_gpu_gpu.csv": "167b0a67e3eaae08e6683fecd6eeaa9d9c0637493e5f18701e6f702b6cf037f6",
+    "../latency/profile_deploy/pilot_vit_gpu.json": "5a647468af394ef4d0e42b00ede57ac2fb290223d1849b9419c0c4a6a86f6ac5",
+    "../latency/profile_deploy/pilot_vit_gpu.npz": "d76a9dba056a7cbd5fef322e50c435a5ed687688636d5fbe93118c517e78efb7",
+    "../latency/profile_deploy/pilot_vit_gpu_gpu.csv": "a450a2599eea12fda5e09742b5679d710ef5262bb5c5e42d913b714530133e22",
+    "../latency/profile_deploy/s1_rn_cpu.json": "eb66055956823bef49e8769e20b688c5b3e1e6b051ad60de0fff1c8923e97ef5",
+    "../latency/profile_deploy/s1_rn_cpu.npz": "bd9517c59a9ae5e1d59330e9191ccf2dd9a70cfef5f824cd65a3e9664d786863",
+    "../latency/profile_deploy/s1_rn_cpu_gpu.csv": "ff9a9621143910126441b2e77461f353977d448a7ef0a2db65d718de3918c392",
+    "../latency/profile_deploy/s1_rn_gpu.json": "0056410c96f5b2e4e2375f0e6a68b9abf80df06e000b2f65f2ee19e1efac8b76",
+    "../latency/profile_deploy/s1_rn_gpu.npz": "cc80f77463c42a8a5a43670052074020c3bba2e5f002a1ee227ef01116329ab8",
+    "../latency/profile_deploy/s1_rn_gpu_gpu.csv": "c3a60561e9064a4160ebfe7c910b0fe707a9c6a5417b5838914a998ea09875ff",
+    "../latency/profile_deploy/s1_vit_gpu.json": "0fe748debe0781784609009e95082b94cad1c65712a8209af1a7308f9488d27c",
+    "../latency/profile_deploy/s1_vit_gpu.npz": "7b9f206b4cf18c02a3f6e9b3cd8b8c18fb558c8d2d05367fbd0fccb22caee36e",
+    "../latency/profile_deploy/s1_vit_gpu_gpu.csv": "c89976fc6c518f2060457ad31aa21cccdee90b2e2f9d989ac21e03d8c9dd0404",
+    "../latency/profile_deploy/s2_rn_cpu.json": "9863c1b4f06c0159bef116c4780bdd69a8df79ad2aedb3d0e4833742e722f981",
+    "../latency/profile_deploy/s2_rn_cpu.npz": "ae7238d4c1e4f4a8b898c642fd9122273938cee593778a6dd485b6b0c1c9f1e5",
+    "../latency/profile_deploy/s2_rn_cpu_gpu.csv": "80056626cbe68863c7638e3e9c1ce844c19d1dd6821d90257225bd5be6d04b11",
+    "../latency/profile_deploy/s2_rn_gpu.json": "05bd061f86bee56f84353745b570cb224ebffa13c44ceec359e702310f5a91b5",
+    "../latency/profile_deploy/s2_rn_gpu.npz": "7ba3ddf6f51c37a2fbe0c662502d2d71b48b692a05a4d47d476e3094de20b5c1",
+    "../latency/profile_deploy/s2_rn_gpu_gpu.csv": "1e9e725a4de2cd367753e165c595f2fe13f91b5b73d6cfc99b3ba92ef916052d",
+    "../latency/profile_deploy/s2_vit_gpu.json": "b0904e6eebd1de368d9cb692a858b7625182d57c6952fc8c7dc7414d9464216f",
+    "../latency/profile_deploy/s2_vit_gpu.npz": "8be3179e5261bb2e58c349eb96038b8aeba317d598da0f98c8925fe9f3e6c3fe",
+    "../latency/profile_deploy/s2_vit_gpu_gpu.csv": "c0404b2185dbeefe4d6bd519367042b9bb3ea018d32092a79111c993c4f49629",
+    "../latency/profile_deploy/s3_rn_cpu.json": "944b933c85b0d949bc236a84f21574552852a6dfe5f2a69279176e73baf28780",
+    "../latency/profile_deploy/s3_rn_cpu.npz": "f4d6670d6bd9a50177b360cf47a4ab2d0498dbd3dfb07c7081bdfcf7a91da712",
+    "../latency/profile_deploy/s3_rn_cpu_gpu.csv": "b88a2889e7dae5ef7475beef2cd8406e73536180a72822a8ee6a81b8607a3268",
+    "../latency/profile_deploy/s3_rn_gpu.json": "72a0d0cbe6f5b58b972193df7750a044745f88ea359fff4be44f0c9d0769d47a",
+    "../latency/profile_deploy/s3_rn_gpu.npz": "66a12e8bfcee70de46049ab8a80a26031f72684545fcd75814e933fe83d4e7a1",
+    "../latency/profile_deploy/s3_rn_gpu_gpu.csv": "8803cf19f4b98a84ac0b5dc51ec36468cf3caa5854fbc075cb814968c43cdbda",
+    "../latency/profile_deploy/s3_vit_gpu.json": "ac2db6df66d75e973d3a26de3880131bee8f78b8fc12cd9099ecc46f7392053a",
+    "../latency/profile_deploy/s3_vit_gpu.npz": "07f752c8ad98e02b3e2a37faffd88fb1f94590e09bec403694b79d0979e80990",
+    "../latency/profile_deploy/s3_vit_gpu_gpu.csv": "66c53a78777698798f04f477851eeb3a9a45c9c1f7a210b6d1bdea429d755265",
+    "deploy.json": "c035c30efeb17bae236ae70ccf00c94d6069bdf4161424706d4b26fa2b0c5a20"
+   },
+   "frozen": {
+    "rn_gpu": {
+     "build": "fp16_cmax",
+     "warmup_s": 60,
+     "batch": 500,
+     "selection": {
+      "fp16_eager": {
+       "built": true,
+       "runs": true,
+       "execution_checks_pass": true,
+       "eligible": true,
+       "mean_us_last_10000": 847.3170703
+      },
+      "fp16_graph": {
+       "built": true,
+       "runs": true,
+       "execution_checks_pass": true,
+       "eligible": true,
+       "mean_us_last_10000": 849.0325498999999
+      },
+      "fp16_cmax": {
+       "built": true,
+       "runs": true,
+       "execution_checks_pass": true,
+       "graph_breaks": 0,
+       "unique_graphs": 1,
+       "single_graph": true,
+       "eligible": true,
+       "mean_us_last_10000": 516.5038136
+      }
+     },
+     "warmup_by_window": {
+      "0.fp32": {
+       "block_means_c": [
+        82.7,
+        86.03333333333333,
+        86.0,
+        86.06896551724138,
+        86.0,
+        86.0,
+        86.0,
+        86.03448275862068,
+        86.03333333333333,
+        86.06666666666666
+       ],
+       "warmup_s": 60
+      },
+      "4.fp32": {
+       "block_means_c": [
+        86.03333333333333,
+        86.0,
+        86.0,
+        86.0,
+        86.03333333333333,
+        86.03333333333333,
+        86.03448275862068,
+        86.1,
+        86.03333333333333,
+        86.03333333333333
+       ],
+       "warmup_s": 60
+      },
+      "3.fp16_cmax": {
+       "block_means_c": [
+        85.86666666666666,
+        86.03333333333333,
+        86.0,
+        86.0,
+        86.0,
+        86.0,
+        86.0,
+        86.0,
+        86.0,
+        86.0
+       ],
+       "warmup_s": 60
+      }
+     },
+     "lag1_by_window": {
+      "0.fp32": {
+       "100": -0.29854401281655407,
+       "200": -0.3292203798018467,
+       "500": -0.19314396116353724,
+       "1000": -0.2705237832745924
+      },
+      "4.fp32": {
+       "100": -0.25204620345935325,
+       "200": -0.6610798178763749,
+       "500": -0.754523474011086,
+       "1000": 0.0017803092274469399
+      },
+      "3.fp16_cmax": {
+       "100": 0.6146666193680461,
+       "200": 0.10470898987945787,
+       "500": -0.7125011106829128,
+       "1000": 0.35747745654387575
+      }
+     },
+     "pilot_sha256": {
+      "../latency/profile_deploy/pilot_rn_gpu.json": "c3c21b1265692ea1f327d939b7a665126d416d7f9e8d4fe9313f113be903554e",
+      "../latency/profile_deploy/pilot_rn_gpu.npz": "8a5b8288e6cf7dd49731482f026397bb81182fd2738e9ab9fad03539e4860659",
+      "../latency/profile_deploy/pilot_rn_gpu_gpu.csv": "167b0a67e3eaae08e6683fecd6eeaa9d9c0637493e5f18701e6f702b6cf037f6"
+     }
+    },
+    "vit_gpu": {
+     "build": "fp16_graph",
+     "warmup_s": 60,
+     "batch": 100,
+     "selection": {
+      "fp16_graph": {
+       "built": true,
+       "runs": true,
+       "execution_checks_pass": true,
+       "eligible": true,
+       "mean_us_last_10000": 1898.5053971
+      },
+      "fp16_cmax": {
+       "built": true,
+       "runs": true,
+       "execution_checks_pass": true,
+       "graph_breaks": 0,
+       "unique_graphs": 1,
+       "single_graph": true,
+       "eligible": true,
+       "mean_us_last_10000": 1957.0749724
+      }
+     },
+     "warmup_by_window": {
+      "0.fp32": {
+       "block_means_c": [
+        86.06666666666666,
+        87.96551724137932,
+        88.06666666666666,
+        87.76666666666667,
+        87.03333333333333,
+        87.0,
+        87.0,
+        87.0,
+        87.0,
+        87.03333333333333
+       ],
+       "warmup_s": 60
+      },
+      "3.fp32": {
+       "block_means_c": [
+        87.0,
+        87.06896551724138,
+        87.06666666666666,
+        87.0,
+        87.0,
+        87.03448275862068,
+        87.0,
+        87.06666666666666,
+        87.03448275862068,
+        87.03333333333333
+       ],
+       "warmup_s": 60
+      },
+      "1.fp16_graph": {
+       "block_means_c": [
+        86.36666666666666,
+        86.36666666666666,
+        86.37931034482759,
+        86.46666666666667,
+        86.3,
+        86.36666666666666,
+        86.41379310344827,
+        86.46666666666667,
+        86.36666666666666,
+        86.46666666666667
+       ],
+       "warmup_s": 60
+      }
+     },
+     "lag1_by_window": {
+      "0.fp32": {
+       "100": -0.5621895745209252,
+       "200": -0.10246846319370019,
+       "500": 0.047652262450740314,
+       "1000": 0.2508288991251022
+      },
+      "3.fp32": {
+       "100": -0.8317020672702526,
+       "200": 0.13043912139099295,
+       "500": -0.13757430819156224,
+       "1000": 0.3729079617306828
+      },
+      "1.fp16_graph": {
+       "100": -0.7400445396472835,
+       "200": -0.14649524404040434,
+       "500": -0.3025637482747826,
+       "1000": -0.5631974689826479
+      }
+     },
+     "pilot_sha256": {
+      "../latency/profile_deploy/pilot_vit_gpu.json": "5a647468af394ef4d0e42b00ede57ac2fb290223d1849b9419c0c4a6a86f6ac5",
+      "../latency/profile_deploy/pilot_vit_gpu.npz": "d76a9dba056a7cbd5fef322e50c435a5ed687688636d5fbe93118c517e78efb7",
+      "../latency/profile_deploy/pilot_vit_gpu_gpu.csv": "a450a2599eea12fda5e09742b5679d710ef5262bb5c5e42d913b714530133e22"
+     }
+    },
+    "rn_cpu": {
+     "build": "int8",
+     "warmup_s": 60,
+     "batch": 1000,
+     "selection": {
+      "cpu_compile": {
+       "built": true,
+       "runs": true,
+       "execution_checks_pass": true,
+       "graph_breaks": 0,
+       "unique_graphs": 1,
+       "single_graph": true,
+       "eligible": true,
+       "mean_us_last_10000": 5540.4836037000005
+      },
+      "int8": {
+       "built": true,
+       "runs": true,
+       "execution_checks_pass": true,
+       "eligible": true,
+       "mean_us_last_10000": 2450.0101866
+      }
+     },
+     "warmup_by_window": {},
+     "lag1_by_window": {
+      "0.fp32": {
+       "100": 0.5374702024641944,
+       "200": 0.554023094030513,
+       "500": 0.2758566000572648,
+       "1000": 0.2607287722197338
+      },
+      "3.fp32": {
+       "100": 0.07463385349283129,
+       "200": 0.14129436099788928,
+       "500": -0.044587616061684245,
+       "1000": 0.03505485536370472
+      },
+      "2.int8": {
+       "100": 0.2549073734880028,
+       "200": 0.020643047986365008,
+       "500": 0.12773796090307776,
+       "1000": 0.2975590308032054
+      }
+     },
+     "pilot_sha256": {
+      "../latency/profile_deploy/pilot_rn_cpu.json": "4f1af30a4795c2b47bd30b04806684cd18da5c1c849591b18c7d85a222ee3500",
+      "../latency/profile_deploy/pilot_rn_cpu.npz": "f95ae949b498ea2bb72f49969a6b98fb3daa20e6c4ea1a4d83d78a37b117296a",
+      "../latency/profile_deploy/pilot_rn_cpu_gpu.csv": "34ced48676efb2b322588fb3510fc9d009a92d560bf17031ca57bcd813af5535"
+     }
+    },
+    "_utc": "2026-11-08T11:42:30Z",
+    "_script_sha256": "2839835cbed96389a7d648c696aef173605746d91f6acf9f2a7a3d7b2fd8b244"
+   }
+  },
+  {
+   "key": "nr_r19",
+   "declared": "2026-11-08",
+   "title": "Release 19's predicted-beam report timing and a confirmation step, set post hoc",
+   "description": "one reading rule (R39), set post hoc, and the modules that apply it (src/scheduler/nrue19.py, nrconf.py), declared before their values ran.  Nothing is timed, trained or simulated; no stored file changes",
+   "rules": [
+    "R39"
+   ],
+   "post_hoc": [
+    "R39"
+   ],
+   "scripts": [
+    "nrue19.py",
+    "nrconf.py"
+   ],
+   "scripts_sha256": {
+    "nrue19.py": "f5535c4ceeddaf768cafe2ebdc62727a7a9709f14ea33ac94f0521a2e10aa81b",
+    "nrconf.py": "c08db4a451cf1c29bbb4aec99af6c784af7b5245399dfad1b233eb24624d4aa3",
+    "nrue.py": "76c6b0e833cf068ae787778e98b92aee653f3abd4c6402c3b6c09f63ee99b3dd",
+    "nrtdd.py": "1b8bfe2f1a9bbd3d45726b98cadffa59092fc2a44ee8a04ece7778489b283f3d",
+    "nrtime.py": "8501735f556f328ebc2ae311dbb7f7fd4c17c3ddc8c51d197314e0ff36b186a8",
+    "nrtddmu.py": "97fb66a61fa6f55a004a2172db8d668da989550626f53ab9373f15724cfd3a3e",
+    "nrmu.py": "f389e93249337cf6c31a16f3669de454243da161619fe3b5b3e80c74eddb2b22"
+   },
+   "inputs_sha256": {},
+   "analyses": {
+    "nrue19": "nrue19.py, a module that make_draft.py imports, gives R32's UE-side candidate's predicted-beam report under Release 19's relaxed timeline",
+    "nrconf": "nrconf.py, a module that make_draft.py imports, gives the CSI-RS budgets with a confirmation step after network-side inference"
+   },
+   "criteria": {
+    "nrue19": "gate V: no relaxation reproduces nrue.py's report at tau = 0 and at the free window, and the report never decreases in the relaxation",
+    "nrconf": "gates K1-K3: the first trigger reproduces nrtddmu's report for K_c resources; on paired spectrum the report shifts with the trigger slot; it never decreases in the trigger slot and shifts by a period"
+   },
+   "state": "declared before it ran, except that gates V and K1-K3 had run alone with --gate",
+   "files_sha256": {}
+  },
+  {
+   "key": "robust",
+   "declared": "2026-11-08",
+   "title": "report error, band-averaged calibration and a rate cap, set post hoc",
+   "description": "one reading rule (R40), set post hoc, and the script that applies it (src/scheduler/robust.py), declared before it ran.  Nothing is timed or trained; no stored file changes",
+   "rules": [
+    "R40"
+   ],
+   "post_hoc": [
+    "R40"
+   ],
+   "scripts": [
+    "robust.py"
+   ],
+   "scripts_sha256": {
+    "robust.py": "05f453202990795a4aaf7dfa511804a82e3910bdcd58de47a84fafb3d0493c7c",
+    "sim.py": "34f22ae854e36e2e87d401adbc370dc1e7f245431504e87622da9b50740bd65f",
+    "methods.py": "7d2cc198b882be8192af21034716cb1e4ffb50a48904e930925367846c91c952",
+    "csirs.py": "8836ff723b6cf47c6b12af28ebc62e7b235edcc5b62b9ce4d18be37e4c9184d1"
+   },
+   "inputs_sha256": {
+    "csirs.json": "9c89539e73082c1e01516ab54b5d4d5e07c46f7e07ea0be7f3d2246e4ea698b1"
+   },
+   "analyses": {
+    "robust": "robust.py reads the stored channels of the seven non-training scenarios and, for the cap, simulates the per-probe sweep's selections with the evaluation's generators; it refuses to overwrite robust.json; --gate runs R1-R3"
+   },
+   "criteria": {
+    "robust": "R1-R3 (rule R40)"
+   },
+   "state": "declared before it ran, except that gates R1-R3 had run alone with --gate and the review that prompted rule R40 had computed variants of its quantities; robust.py ran once on 2026-11-08, every gate holding",
+   "files_sha256": {
+    "robust.json": "7be154b2ad864e12be35c67cdfd70fae5b7c8ff56fc9ba21daff017079637e5d"
+   }
   }
  ],
  "changes": [
@@ -2165,6 +2626,30 @@
    "post_hoc": true,
    "set": "2026-11-08",
    "text": "(i) R36 times rule R30's time-division CSI-RS procedure (nrtdd.py) with both carriers at 60 kHz (nrtddmu.py), on TS 38.101-2 V18.14.0's 60 kHz test patterns: DDDSU every 1.25 ms (Table A.3.3.1-1, the downlink reference channels) and DDDSUUUU every 2 ms (Table A.2.3-1, the uplink ones), both with S = 4D+6G+4U.  (Z, Z') and the declarable timings are rule R35's at mu = 2; 12 and 8 resources per slot; every other rule of nrtdd.py is kept, the control carrier sharing the target's slot format; the budget is s_S - s_L + W.  Gate T: at 120 kHz the schedules reproduce nrtdd.times for both of its patterns, every phase, 12 and 8 resources per slot and every declarable timing (s_S, s_L, W, the budget, both guided references and the SS-input candidate) to 1e-9.  Gate P: on paired spectrum at 60 kHz they reproduce nrmu.times.  (ii) The paper states, at 12 resources per slot, each pattern's budget range over the phases and declarable timings; the efficiencies that the two vision-model exclusions finishing within T_max need at each pattern's phase and timing most favorable to the candidate; their margins at adverse inputs at the measured efficiencies, density 3's coherent bound and the smallest bound, and which of them, if any, is lost; and whether ResNet-18 on the GPU is excluded at any efficiency, read at the 120 kHz CSI-RS measurement's efficiencies and bounds (not simulated at 60 kHz), as rule R30 reads them at 120 kHz.  (iii) R36 is post hoc: it was set after every earlier result, rule R35's included, at the authors' request; nrtddmu.py's gates ran alone (--gate) before this declaration, computing no 60 kHz time-division value.  It changes no earlier output, threshold or verdict",
+   "when": "set after every earlier result had been seen; it changes no earlier output"
+  },
+  "R37": {
+   "post_hoc": true,
+   "set": "2026-11-08",
+   "text": "(i) R37 defines an operating population: in each scenario, the eligible users whose genie-aided rate C* (the best narrow beam's frequency-averaged rate, as stored) reaches CQI 1 of TS 38.214 V19.5.0's 4-bit CQI Table 2 (Table 5.2.2.1-3), 2 x 78/1024 = 0.15234375 bit/s/Hz, below which a UE reports CQI index 0, 'out of range' (an effective SNR 2^C* - 1 of at least -9.53 dB); and, as a sensitivity, an effective SNR of at least -6 dB.  The rule reads each user's channel alone, never a method's selection.  (ii) covpop.py recomputes on each population every efficiency bound the paper reports from csirs.py (every configuration, level 0.05/7, window 0.25), csirs_cfg.py (both configured variants, window 1), refbounds.py (Top-8, Top-16, Top-32, Hier-6, 0.05/28) and ssbref.py (both layers, seven laws, 0.05/14), with each pipeline's own selections, streams, tags, levels and windows, blocks without a user of the population dropped and the rest renumbered; and rule R26's screen, audit_screen.one's draws, streams and estimator on the population's users of the drawn blocks (a draw with fewer than two such blocks has no bound and excludes nothing), then audit_screen.phi and label on the frozen calibration record.  covpop_direct.py recomputes the auditor's side on the population with the auditor's own rates and code (eta_pop, A(H), the labels) and reads the screen against it: the draws excluded, the contradictions and misses, the coverage and the largest overshoot of a bound above eta_pop, also as the slack it hides at H.  Descriptive: the population's shares of users and of G; the per-probe sweep's efficiency per prespecified SNR stratum on each population; per block of Phoenix and Philadelphia, its share of G and efficiency.  Gates: C1 on all users every stored efficiency, standard error and bound (both halves) of the four pipelines and the audit's bounds, phi and labels are reproduced exactly; C2 bound <= eta < 1 on each population; C3 the population from the simulation equals the stored one; D1 on all users the auditor's arithmetic reproduces audit_direct.json (A(H) to 1e-12, its dot product's last bits following the BLAS threads).  (iii) The paper states the population's shares and, beside each prespecified bound and audit result it reports, the population's, and every verdict the population's bounds change, each marked post hoc; the prespecified all-user results remain the paper's primary results.  (iv) R37 is post hoc: it was set after every earlier result and after a review had computed, on all users and on users above -6 and -10 dB effective SNR, the smallest CSI-RS bound, density 3's coherent bound, an approximation of the per-probe bound and the audit's 8-block exclusions in Houston and Phoenix; nothing at this rule's threshold had been computed, and gates C1, C3 and D1 ran alone (--gate) before this declaration.  It changes no earlier output, threshold or verdict",
+   "when": "set after every earlier result had been seen; it changes no earlier output"
+  },
+  "R38": {
+   "post_hoc": false,
+   "set": "2026-11-08",
+   "text": "(i) R38 times compiled reduced-precision builds of the two vision models the screen excludes, each against its FP32 build, with profile_deploy.py: group rn_gpu, ResNet-18 on the GPU (fp32; fp16_eager; fp16_graph, the whole timed path in one CUDA graph; fp16_cmax, torch.compile in Inductor's max-autotune mode, fullgraph, static shapes); vit_gpu, ViT-B/16 on the GPU (fp32; rule R22's fp16_graph; fp16_cmax); rn_cpu, ResNet-18 on eight P-core threads (fp32; cpu_compile, torch.compile in Inductor's default mode; int8, eager-mode post-training static quantization of torchvision's quantizable ResNet-18 with the same weights, fused, the x86 engine's default qconfig, calibrated on the 64 ring frames).  Each build is timed from the frame to the beam index on the host, batch one, back to back, as rule R22 times ViT-B/16; PyTorch 2.12 as installed, no other runtime added.  (ii) The pilot (300 s per window: FP32 from idle, the candidates, FP32 again) chooses per group the eligible candidate (built, ran, passed the execution checks, at least 10,000 calls, compiled to one graph if compiled) with the lowest mean over its window's last 10,000 calls; the warm-up and the batch size follow R22 (ii) for the GPU groups, and 60 s and R22's batch rule for the CPU group; deploy.py --freeze writes the choices into this analysis before any main session.  (iii) Three main sessions per group, FP32 first in sessions 1 and 3; per build the warm-up, 10,000 timed calls and a recheck; a session is read if it is neither contended (a recheck drifting over 10% or a new GPU compute process) nor failed, else its second attempt.  (iv) Per session, build and period, R22's expected-rate reading against the per-probe sweep at adverse inputs; per group and period, whether the optimized build removes or preserves FP32's exclusion there.  (v) The paper screens each frozen build at its fastest session's 95th percentile against every reference of Table IV, by the efficiency it needs at adverse inputs against the measured, density-3, smallest and rule R37's bounds, and states which exclusions survive a compiled reduced-precision build and, for each other, the speed-up over its FP32 build at which it is lost.  (vi) Before this declaration every build ran in a smoke test (--smoke) that timed no call, during which Inductor printed its own kernel-autotuning benchmarks; the first smoke test's CUDA-graph builds computed wrong logits (their normalization tensors were freed after capture) and the harness was corrected before this declaration",
+   "when": "set before any timing of the study; it changes no earlier output"
+  },
+  "R39": {
+   "post_hoc": true,
+   "set": "2026-11-08",
+   "text": "(i) Release 19's report timing for predicted beams (nrue19.py).  TS 38.214 V19.5.0 5.4 gives a report whose reportQuantity-r19 is 'p-CRI-r19', 'p-CRI-RSRP-r19', 'p-SSB-Index-r19' or 'p-SSB-Index-RSRP-r19' (Z, Z') = (Z3 + d, Z'3 + d'), with (Z3, Z'3) of Table 5.4-2 and d, d' UE-reported capabilities, TS 38.306 V19.4.0 4.2.7.2 (aiml-BM-Case1-r19: relaxationTimelineD-r19, relaxationTimelineD1-r19); their declarable values were not read.  For rule R32's UE-side candidate (nrue.table(): paired, DDDSU and 7DS8U at 120 kHz, every phase and declarable timing, 12 resources per slot, K = 4), the least relaxation d = d' (and d alone, d' alone) at which its predicted-beam report reaches the sweep's report plus W, and the SS-guided refinement's.  Gate V: with no relaxation the report is nrue.py's at tau = 0 and at R32's free window, and it never decreases in d.  (ii) A confirmation step (nrconf.py): TR 38.843 V18.0.0 6.3.1 counts additional measurements before or after the prediction; after network-side inference one aperiodic CSI-RS set of K_c = 1 or 4 resources, triggered in the first downlink-opening slot at or after inference ends and reported under nrtddmu.py's rules, precedes data.  Its budget against the sweep and against the refinement (four and eight resources) at 120 kHz (paired, DDDSU, 7DS8U) and 60 kHz (paired, DDDSU, DDDSUUUU), every phase and declarable timing, 12 and 8 resources per slot, both carriers at one spacing; gates K1-K3.  (iii) The paper states the relaxation and the confirmation's budgets as ranges over timings and phases, whether a confirming candidate has any budget against the refinement, and the margins of the two vision-model exclusions under them, each post hoc.  (iv) R39 is post hoc: set after every earlier result, after a review; gates V and K1-K3 ran alone (--gate) before this declaration, computing no budget.  It changes no earlier output, threshold or verdict",
+   "when": "set after every earlier result had been seen; it changes no earlier output"
+  },
+  "R40": {
+   "post_hoc": true,
+   "set": "2026-11-08",
+   "text": "(i) robust.py, on the stored channels of the seven non-training scenarios, on all eligible users and on rule R37's population: (a) report error, the sweep selecting the largest of the 64 narrow beams' band-averaged powers, each with an independent Gaussian error of sigma = 0, 1, 2 or 3 dB and reported in 1 dB steps (the floor of the dB value), ties to the lowest rate, ten realizations; its efficiency and the per-probe sweep's slack (1 - eta)(T_max - 64 t_p); (b) band-averaged calibration, G_J = mean_u max_b log2(1 + P_TX pbar / sigma_d^2) and G_J1 from the upper edges of 1 dB report ranges, upper bounds on G by Jensen's inequality, and x = G_J/G - 1, x1 = G_J1/G - 1; (c) a rate cap at 948/1024 x 8 = 7.4063 bit/s/Hz, the highest entry of CQI Table 2: the per-probe sweep's efficiency with every rate capped against uncapped, the share of users above the cap and of G it removes.  Gates R1 (uncapped, csirs.json's efficiency to 1e-12), R2 (no error and no steps: the band-power argmax) and R3 (G_J >= G - 1e-6 per user, the stored single-precision rounding; G_J1 >= G_J).  (ii) The paper states the efficiency and slack ranges at each sigma, x and x1, the cap's shifts, and the verdicts at the bounds scaled by 1/(1 + x1), each post hoc.  (iii) R40 is post hoc: before this declaration a review computed (a) with another generator and three realizations, (b) with a noise power other than sigma_d^2, and (c) in two scenarios from the audit's arrays; gates R1-R3 ran alone (--gate).  It changes no earlier output, threshold or verdict",
    "when": "set after every earlier result had been seen; it changes no earlier output"
   }
  },
