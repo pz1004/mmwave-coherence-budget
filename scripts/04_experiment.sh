@@ -238,4 +238,15 @@ fi
 # overwrite its output.
 [ -f robust.json ] || python3 robust.py
 
+# Rules R42-R46, set post hoc: the audit's screen at its decision boundary (boundary.py, from stored
+# calibration draws), the trained predictors on covered users (covtrain.py, which retrains on the GPU),
+# transmit-receive pairs with multi-antenna users (uepairs.py), wide beams under a per-element power
+# limit (widepow.py) and report errors at RAN4's accuracy (rsrpacc.py).  Each refuses to overwrite its
+# output; rule R41's readings are the paper generator's, on stored outputs.
+[ -f boundary.json ] || python3 boundary.py
+[ -f covtrain.json ] || python3 covtrain.py
+[ -f uepairs.json ] || python3 uepairs.py
+[ -f widepow.json ] || python3 widepow.py
+[ -f rsrpacc.json ] || python3 rsrpacc.py
+
 python3 make_manifest.py       # -> manifest.json: the datasets', models' and environment's hashes
