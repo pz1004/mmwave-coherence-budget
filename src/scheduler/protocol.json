@@ -2156,6 +2156,172 @@
    "files_sha256": {
     "robust.json": "7be154b2ad864e12be35c67cdfd70fae5b7c8ff56fc9ba21daff017079637e5d"
    }
+  },
+  {
+   "key": "boundary",
+   "declared": "2026-11-09",
+   "title": "the decision audit's screen at its decision boundary, set post hoc",
+   "description": "one reading rule (R42), set post hoc, and the script that applies it (src/scheduler/boundary.py), declared before it ran.  Nothing is simulated, timed or trained; it reads stored calibration draws",
+   "rules": [
+    "R42"
+   ],
+   "post_hoc": [
+    "R42"
+   ],
+   "scripts": [
+    "boundary.py"
+   ],
+   "scripts_sha256": {
+    "boundary.py": "eae9f1e54ec4995391048dabc59384885bb6c03f70a7585f242f470095f85499"
+   },
+   "inputs_sha256": {
+    "audit_bounds.json": "34ed02969acb7599d6b4efedd7994bda3cc02d25fc17797d63d93b35f5ce1a8b",
+    "audit_direct.json": "cd5501ea97b62cb4cb9f55675d8930abec766c95da285ce253a598c6d5d823bd",
+    "covpop.json": "6e749e2477f5e1906ca233632dce44b14de256d09e095ee64a9b660ea1690d5e",
+    "covpop_direct.json": "e35f59c10f5cceb9f74e2a9868fa0e5f5a005d9635426d68c37aeb2dd1d1e80e"
+   },
+   "analyses": {
+    "boundary": "boundary.py reads the 200 stored calibration bounds of every audit cell on both populations; it refuses to overwrite boundary.json; --gate runs B1-B2"
+   },
+   "criteria": {
+    "boundary": "B1-B2 (rule R42)"
+   },
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check",
+   "files_sha256": {}
+  },
+  {
+   "key": "covtrain",
+   "declared": "2026-11-09",
+   "title": "the trained predictors on the covered population, set post hoc",
+   "description": "one reading rule (R43), set post hoc, and the script that applies it (src/scheduler/covtrain.py), declared before it ran.  It retrains the two architectures on covered users; no stored checkpoint or file changes",
+   "rules": [
+    "R43"
+   ],
+   "post_hoc": [
+    "R43"
+   ],
+   "scripts": [
+    "covtrain.py"
+   ],
+   "scripts_sha256": {
+    "covtrain.py": "13b3f5bcc30a3c5ff063eb88fe74f4f482a123187cb87b13c7514b7a94d7e350",
+    "train_base.py": "e7f4ac6841a107c270a3ce451e8f7fb266815be3eb51929bf40eacf98e014d4f",
+    "train.py": "8239847dba7d5b55aca50adbabecb1cda028befd909acc35c84c4cdb7fa14ef4",
+    "methods.py": "7d2cc198b882be8192af21034716cb1e4ffb50a48904e930925367846c91c952",
+    "sim.py": "34f22ae854e36e2e87d401adbc370dc1e7f245431504e87622da9b50740bd65f",
+    "profile_pred.py": "f1bee520f5ed2d611c626f21ae5555c954411940a0df401e3a0959cb829304fa"
+   },
+   "inputs_sha256": {
+    "predictor_profile.json": "6ee379edda0ba08345c6a9d19fd10308c0cdf44356968ff1fa7b1013d5f2f902",
+    "covpop.json": "6e749e2477f5e1906ca233632dce44b14de256d09e095ee64a9b660ea1690d5e"
+   },
+   "analyses": {
+    "covtrain": "covtrain.py evaluates the stored networks and Top-K on the validation scenario's users and covered users, then retrains on covered users (models/cov_*.pt, untracked); it refuses to overwrite covtrain.json; --gate runs T1-T2"
+   },
+   "criteria": {
+    "covtrain": "T1-T2 (rule R43)"
+   },
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check",
+   "files_sha256": {}
+  },
+  {
+   "key": "uepairs",
+   "declared": "2026-11-09",
+   "title": "transmit-receive beam pairs with multi-antenna users, set post hoc",
+   "description": "one reading rule (R44), set post hoc, and the script that applies it (src/scheduler/uepairs.py), declared before it ran.  Nothing is timed or trained; no stored file changes",
+   "rules": [
+    "R44"
+   ],
+   "post_hoc": [
+    "R44"
+   ],
+   "scripts": [
+    "uepairs.py"
+   ],
+   "scripts_sha256": {
+    "uepairs.py": "b6495a2785a5053f6cecae77cfbc0b2b3d5851135b6d7295645f9cf5541e1835",
+    "audit_direct.py": "08bc3121879db93e09f34a6e4abb457bfcddd2d59edc736e597ac4ed69610c86",
+    "g1.py": "10e7ceeb2aa665a8aac30f2d64506c638e9715ccd59365c41d739e0c57e6e53c",
+    "sim.py": "34f22ae854e36e2e87d401adbc370dc1e7f245431504e87622da9b50740bd65f",
+    "methods.py": "7d2cc198b882be8192af21034716cb1e4ffb50a48904e930925367846c91c952",
+    "csirs.py": "8836ff723b6cf47c6b12af28ebc62e7b235edcc5b62b9ce4d18be37e4c9184d1",
+    "effbound.py": "b947b77c2268953f6b775b0deec69c6cdef2b503a6d7fb308aa792dfcb57f18c"
+   },
+   "inputs_sha256": {
+    "csirs.json": "9c89539e73082c1e01516ab54b5d4d5e07c46f7e07ea0be7f3d2246e4ea698b1"
+   },
+   "analyses": {
+    "uepairs": "uepairs.py builds pair channels from the stored paths with arrival angles, simulates the pair sweep with the protocol's seeds and bounds its efficiency; it refuses to overwrite uepairs.json and uepairs.npz; --gate runs U0-U3"
+   },
+   "criteria": {
+    "uepairs": "U0, U1a-U1b, U2-U3 (rule R44)"
+   },
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check",
+   "files_sha256": {}
+  },
+  {
+   "key": "widepow",
+   "declared": "2026-11-09",
+   "title": "wide beams under a per-element power limit, set post hoc",
+   "description": "one reading rule (R45), set post hoc, and the script that applies it (src/scheduler/widepow.py), declared before it ran.  Nothing is timed or trained; no stored file changes",
+   "rules": [
+    "R45"
+   ],
+   "post_hoc": [
+    "R45"
+   ],
+   "scripts": [
+    "widepow.py"
+   ],
+   "scripts_sha256": {
+    "widepow.py": "dc0a65ccdd25194a01b1051c4cfa6fca9c9f83dd09aed6221cabd1d5407c2d6f",
+    "ssbref.py": "b636b925fbd818cd97b48e048caf1c2e3219721e0799775152413669f9d81c73",
+    "csirs.py": "8836ff723b6cf47c6b12af28ebc62e7b235edcc5b62b9ce4d18be37e4c9184d1",
+    "methods.py": "7d2cc198b882be8192af21034716cb1e4ffb50a48904e930925367846c91c952",
+    "sim.py": "34f22ae854e36e2e87d401adbc370dc1e7f245431504e87622da9b50740bd65f"
+   },
+   "inputs_sha256": {
+    "refbounds.json": "602a551a08882172f06142e3405909481540f042f8a7be0d31a2f67f5398c942",
+    "ssbref.json": "5bec54c820f68932f0320fdf2aaf9890add14ddb18a118e83cd0716e8614a3c4"
+   },
+   "analyses": {
+    "widepow": "widepow.py simulates Hier-6 and the SS-guided refinement with scaled wide codewords on the unscaled readings' draws; it refuses to overwrite widepow.json; --gate runs W1"
+   },
+   "criteria": {
+    "widepow": "W1 (rule R45)"
+   },
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check",
+   "files_sha256": {}
+  },
+  {
+   "key": "rsrpacc",
+   "declared": "2026-11-09",
+   "title": "report errors at RAN4's L1-RSRP accuracy and Release 19's declarable relaxations, set post hoc",
+   "description": "one reading rule (R46), set post hoc, and the script that applies its first reading (src/scheduler/rsrpacc.py), declared before it ran; its second reading compares stored values in make_draft.py.  Nothing is timed or trained; no stored file changes",
+   "rules": [
+    "R46"
+   ],
+   "post_hoc": [
+    "R46"
+   ],
+   "scripts": [
+    "rsrpacc.py"
+   ],
+   "scripts_sha256": {
+    "rsrpacc.py": "ce891f8538fa86ed607d908177cd1a99cc328c5a87bce35ea71d91a2fe1bb757",
+    "robust.py": "05f453202990795a4aaf7dfa511804a82e3910bdcd58de47a84fafb3d0493c7c"
+   },
+   "inputs_sha256": {
+    "robust.json": "7be154b2ad864e12be35c67cdfd70fae5b7c8ff56fc9ba21daff017079637e5d"
+   },
+   "analyses": {
+    "rsrpacc": "rsrpacc.py applies robust.py's report-error reading at the two RAN4-derived sigma; it refuses to overwrite rsrpacc.json; --gate runs A1"
+   },
+   "criteria": {
+    "rsrpacc": "A1 (rule R46)"
+   },
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check",
+   "files_sha256": {}
   }
  ],
  "changes": [
@@ -2651,6 +2817,42 @@
    "set": "2026-11-08",
    "text": "(i) robust.py, on the stored channels of the seven non-training scenarios, on all eligible users and on rule R37's population: (a) report error, the sweep selecting the largest of the 64 narrow beams' band-averaged powers, each with an independent Gaussian error of sigma = 0, 1, 2 or 3 dB and reported in 1 dB steps (the floor of the dB value), ties to the lowest rate, ten realizations; its efficiency and the per-probe sweep's slack (1 - eta)(T_max - 64 t_p); (b) band-averaged calibration, G_J = mean_u max_b log2(1 + P_TX pbar / sigma_d^2) and G_J1 from the upper edges of 1 dB report ranges, upper bounds on G by Jensen's inequality, and x = G_J/G - 1, x1 = G_J1/G - 1; (c) a rate cap at 948/1024 x 8 = 7.4063 bit/s/Hz, the highest entry of CQI Table 2: the per-probe sweep's efficiency with every rate capped against uncapped, the share of users above the cap and of G it removes.  Gates R1 (uncapped, csirs.json's efficiency to 1e-12), R2 (no error and no steps: the band-power argmax) and R3 (G_J >= G - 1e-6 per user, the stored single-precision rounding; G_J1 >= G_J).  (ii) The paper states the efficiency and slack ranges at each sigma, x and x1, the cap's shifts, and the verdicts at the bounds scaled by 1/(1 + x1), each post hoc.  (iii) R40 is post hoc: before this declaration a review computed (a) with another generator and three realizations, (b) with a noise power other than sigma_d^2, and (c) in two scenarios from the audit's arrays; gates R1-R3 ran alone (--gate).  It changes no earlier output, threshold or verdict",
    "when": "set after every earlier result had been seen; it changes no earlier output"
+  },
+  "R41": {
+   "post_hoc": true,
+   "set": "2026-11-09",
+   "when": "set after every earlier result and an editor-in-chief review of the paper had been seen; it changes no earlier output",
+   "text": "(i) Readings of stored outputs alone, computed in make_draft.py.  (a) The lowest exclusion threshold over the budget table's references, tau* plus the slack at the measured efficiencies, against the trained FC-K and CNN-K networks' 95th-percentile latencies on one P-core (Table III).  (b) Inference started a lead time ell before the acquisition, on inputs available then (historic measurements, as in TR 38.843's BM-Case2, or a camera frame): the implementation completes at K t_p + (tau - ell)^+, so Proposition 1(a) applies with tau - ell and each exclusion holds exactly for leads below its margin m_excl of (4); the margins of the table's exclusions at adverse inputs and the smallest bounds, and per probe at the bound.  (c) Proposition 3's sufficient part with any beam carried during inference, a serving beam included, of efficiency eta_0 in place of Top-K's: an exclusion with margin m holds while eta_0 <= m / tau; the largest such eta_0 for the two FP32 exclusions per probe and against the paired CSI-RS sweep, at adverse inputs and the smallest bound.  (d) A candidate given the SS blocks that the SS-guided refinement uses, probing nothing (K = 0) and inferring from the acquisition's start: its data start no earlier than tau after it, the refinement's no later than s_S + delta + h, delta the refinement's report transmission and decoding; the largest delta at which each vision-model build in the table stays excluded against the 8- and 16-block refinements, paired, at the measured, density-3, smallest and covered bounds.  (e) The horizon (d_L - eta d_S) / (1 - eta) up to which each of the table's exclusions holds at adverse inputs and the smallest bounds.  (f) Each of the table's exclusions at the smallest bounds re-read at the fastest recorded call of its implementation's stored timing records, the per-call reading of Proposition 1(a) (every call excluded at every T <= T_max).  (ii) The paper states (a)-(f) as post hoc readings.  (iii) R41 is post hoc and changes no earlier output, threshold or verdict"
+  },
+  "R42": {
+   "post_hoc": true,
+   "set": "2026-11-09",
+   "when": "set after every earlier result and an editor-in-chief review of the paper had been seen; it changes no earlier output",
+   "text": "(i) boundary.py: the decision audit's screen at its decision boundary.  For each audit cell (city, pilot, number of blocks) and population (all eligible users; rule R37's covered population), a perfect predictor with a deterministic completion time has the auditor's advantage A at H = 10 ms and the screen's statistic A - Delta on each stored calibration draw, Delta = (eta_lb - eta_pop)(1 - d_S/H), a draw without a bound excluding nothing; per cell: the largest opportunity any draw excludes, the share of draws excluding an opportunity just above zero, the smallest loss excluded in at least 95% of draws and the exclusion shares at A = +-1e-5 to +-0.1.  (ii) Gates B1 (coverage reproduces audit_direct.json and covpop_direct.json) and B2 (the covered cells' largest overshoot reproduces covpop_direct.json).  (iii) The paper states, at the primary eight blocks, the largest opportunity a calibration excludes and the loss excluded in 95% of calibrations, per city and population, post hoc.  (iv) R42 is post hoc and changes no earlier output, threshold or verdict"
+  },
+  "R43": {
+   "post_hoc": true,
+   "set": "2026-11-09",
+   "when": "set after every earlier result and an editor-in-chief review of the paper had been seen; it changes no earlier output",
+   "text": "(i) covtrain.py, on the validation scenario: the stored FC-K and CNN-K networks (K = 4, 8, 16, 32, 64, the ten seeds) and Top-K with profile_pred.py's streams, top-1 accuracy and efficiency on all users and on rule R37's covered population; and the same architectures retrained with train_base.run unchanged on the training scenario's covered users, epochs chosen on the validation scenario's covered users, evaluated likewise.  (ii) Gates T1 (all users reproduce predictor_profile.json) and T2 (the covered users are covpop.json's).  (iii) The paper states the covered users' top-1 accuracies of the stored and the retrained networks beside Top-K's, post hoc, as a test of the cause Section VII names.  (iv) R43 is post hoc and changes no earlier output, threshold or verdict; no stored checkpoint is replaced"
+  },
+  "R44": {
+   "post_hoc": true,
+   "set": "2026-11-09",
+   "when": "set after every earlier result and an editor-in-chief review of the paper had been seen; it changes no earlier output",
+   "text": "(i) uepairs.py: users with horizontal half-wavelength ULAs of 2 and 4 elements at a uniformly drawn orientation, from the stored paths' arrival angles; the exhaustive transmit-receive pair sweep under the probe law (64 N_r probes); its efficiency and its lower bound at 0.05/7, simultaneous over the seven non-training scenarios for each N_r and population (all users, the covered population); and per-user efficiencies for N_r = 1, 2 and 4.  (ii) Gates U0 (users and order), U1a-U1b (the pair builder is build.py's arithmetic at N_r = 1), U2-U3 (N_r = 1 reproduces csirs.json's coherent|1000 efficiency and bounds).  (iii) The paper replaces the receive-beam rows' borrowed efficiencies with these and states the share of users for whom each FP32 per-probe exclusion holds user by user (a user's efficiency at least the exclusion's threshold at the measured inputs), post hoc.  (iv) R44 is post hoc and changes no earlier output, threshold or verdict"
+  },
+  "R45": {
+   "post_hoc": true,
+   "set": "2026-11-09",
+   "when": "set after every earlier result and an editor-in-chief review of the paper had been seen; it changes no earlier output",
+   "text": "(i) widepow.py: Hier-6 and the SS-guided refinement with every layer-l codeword's band-averaged power scaled by 2^l / 64 before its measurement (a per-element power limit at the narrow beams' level), their measured efficiencies per non-training scenario on all users and the covered population, on the unscaled readings' draws.  (ii) Gate W1 (unscaled, refbounds.json's Hier-6 and ssbref.json's efficiencies are reproduced).  (iii) The paper states the lowest efficiencies and the slack they imply beside the unscaled ones, post hoc; no bound is computed.  (iv) R45 is post hoc and changes no earlier output, threshold or verdict"
+  },
+  "R46": {
+   "post_hoc": true,
+   "set": "2026-11-09",
+   "when": "set after every earlier result and an editor-in-chief review of the paper had been seen; it changes no earlier output",
+   "text": "(i) rsrpacc.py: rule R40's report-error reading at sigma = 2.794 and 4.084 dB, the per-beam Gaussian errors whose pairwise difference meets TS 38.133 V19.6.0's FR2 relative CSI-RS based L1-RSRP accuracy of 6.5 dB (normal conditions) and 9.5 dB (extreme conditions), Table 10.1.20.2.2-1, in 90% of reported cases, A.7.7.  (ii) In make_draft.py: TS 38.331 V19.4.0's declarable relaxations for BM-Case1 at 120 kHz (6.3.3, relaxationTimelineD-r19 and relaxationTimelineD1-r19: 56, 112, 168, 224, 280, 336 and 448 symbols) against rule R39's least relaxations: per pattern, whether the smallest declarable value leaves a budget at any timing and phase, and the smallest declarable value that leaves none at every timing and phase, for the UE-side candidate and against the refinement.  (iii) Gate A1 (at sigma = 3 dB robust.json's realizations are reproduced).  Sources: the 3GPP archive's 38331-j40.zip (sha256 908f5db632f8a999e078a404791ed739a3a1004f619bf2fc20c1ffd9747718b3) and 38133-j60.zip (sha256 a4203e77fe0d44d7375f06a751da64915b36176d3562f22c8684e7fbec8e2e9c), downloaded 2026-11-09.  (iv) R46 is post hoc and changes no earlier output, threshold or verdict"
   }
  },
  "seeds": {
