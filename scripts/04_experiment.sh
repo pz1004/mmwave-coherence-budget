@@ -249,4 +249,12 @@ fi
 [ -f widepow.json ] || python3 widepow.py
 [ -f rsrpacc.json ] || python3 rsrpacc.py
 
+# Rules R47-R50, set post hoc: a panel shared by users acquiring together (multiuser.py), the audit
+# bound's coverage against the number of calibration blocks (covcurve.py) and the latency spread
+# between timing sessions (timespread.py), all from stored outputs.  Each refuses to overwrite its
+# output; rule R47's NR period anchors are the paper generator's.
+[ -f covcurve.json ] || python3 covcurve.py
+[ -f multiuser.json ] || python3 multiuser.py
+[ -f timespread.json ] || python3 timespread.py
+
 python3 make_manifest.py       # -> manifest.json: the datasets', models' and environment's hashes

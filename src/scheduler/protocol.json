@@ -2607,6 +2607,14 @@
    },
    "to": "margins_post.json, written by margins_post.py from the stored outputs with the released nrtime.py: nrtime.py's report times at every declarable timing; the efficiencies and bounds rules R16, R18 and R19 read; per implementation, at reconcile.json's runtimes (rule R21), the CSI-RS thresholds and the margins of (4) with a 120 or 30 kHz control carrier and 12 or 8 resources per slot, at adverse inputs and at the latency of record, and the horizon at the smallest bound; the delay limits of ResNet-18 on the GPU; and each exclusion's excess under aging at those runtimes against aging_bound.json's largest slack",
    "why": "a review of the released repository on 2026-10-30 found that the stored fields differ from the values the paper states, and that no stored file held those: the sweep's last report at 678.57 us where the paper states 875.0 us; ResNet-18 on the GPU's margin at density 3's bound -40.76 us where it states -35.0 us (-34.91 us, its size rounded up); ViT-B/16 on the GPU's margins 3907.0-5016.4 us where it states 3.583 ms at the smallest bound; and an excess at ResNet-18 on eight threads' stored 5289.57 us where the paper reads its repeated runs' 4782.25 us"
+  },
+  {
+   "date": "2026-11-10",
+   "changed": "paper: readings that rules R39 (iii), R40 (ii), R41 (ii) for (d), R44 (iii) and R45 (iii) direct it to state, and the crossover-period proposition",
+   "from": "stated in the paper's Section VI (round 101), with the crossover period as Proposition 2",
+   "to": "left out of the paper to meet TWC's 13-page limit, by the author's decision of 2026-11-10: R39's relaxation budgets, R40's slack at each report error and its 1 dB-scaled verdicts, R41's SS-informed candidate, R44's per-user shares and R45's per-element power readings; one clause keeps rule R46's report-error reading. Their outputs and the generator's computations remain",
+   "reason": "rules R47-R50 and Proposition 3 (users acquiring together) were added for an editor-in-chief review, and the paper exceeded the journal's 13 pages",
+   "effect": "no stored output, rule, threshold or verdict changes. The paper's propositions are renumbered: rules R47-R50's 'Proposition 4' is the paper's Proposition 3 and their 'Table IV' its Table III, a four-input table having left the body too. Rule R48 (ii)'s 'exactly when' holds per probe; at an NR reference's bounding inputs only its 'only if' holds, so the paper states those counts as upper bounds at the timing most favorable to the candidate, a correction made after a fresh-eyes review and before the text was final"
   }
  ],
  "coherence_grid_us": [
