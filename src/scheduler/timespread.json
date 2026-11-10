@@ -1,0 +1,1509 @@
+{
+ "rule": "R50",
+ "script_sha256": "1c43b67e3f9cb16e7599dffb1d72e333ef10c24d64ea3b217984460a2cf3808a",
+ "gate": {
+  "S1_paper_charges_read": true,
+  "S2_audit_sessions_match": true,
+  "holds": true
+ },
+ "sessions": [
+  {
+   "impl": "rn_cpu8t_fp32",
+   "harness": "atlas",
+   "runtime": "eager, Phase-1 counts",
+   "condition": "",
+   "session": "1",
+   "p95_us": 5289.57,
+   "min_us": null
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "atlas",
+   "runtime": "eager, Phase-1 counts",
+   "condition": "",
+   "session": "1",
+   "p95_us": 1344.464,
+   "min_us": null
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "atlas",
+   "runtime": "eager, full counts",
+   "condition": "",
+   "session": "1",
+   "p95_us": 1753.783,
+   "min_us": null
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "atlas",
+   "runtime": "TorchScript, whole decision",
+   "condition": "",
+   "session": "1",
+   "p95_us": 1218.876,
+   "min_us": null
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "atlas",
+   "runtime": "eager, Phase-1 counts",
+   "condition": "",
+   "session": "1",
+   "p95_us": 6331.027,
+   "min_us": null
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "atlas",
+   "runtime": "eager, full counts",
+   "condition": "",
+   "session": "1",
+   "p95_us": 7691.273,
+   "min_us": null
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "atlas",
+   "runtime": "TorchScript, whole decision",
+   "condition": "",
+   "session": "1",
+   "p95_us": 7148.229,
+   "min_us": null
+  },
+  {
+   "impl": "rn_cpu8t_fp32",
+   "harness": "trace",
+   "runtime": "eager",
+   "condition": "",
+   "session": "1",
+   "p95_us": 5829.058,
+   "min_us": null
+  },
+  {
+   "impl": "rn_cpu8t_fp32",
+   "harness": "trace",
+   "runtime": "eager",
+   "condition": "",
+   "session": "2",
+   "p95_us": 5959.283,
+   "min_us": null
+  },
+  {
+   "impl": "rn_cpu8t_fp32",
+   "harness": "trace",
+   "runtime": "eager",
+   "condition": "",
+   "session": "3",
+   "p95_us": 5805.439,
+   "min_us": null
+  },
+  {
+   "impl": "rn_cpu8t_fp32",
+   "harness": "trace",
+   "runtime": "TorchScript",
+   "condition": "",
+   "session": "1",
+   "p95_us": 4929.346,
+   "min_us": null
+  },
+  {
+   "impl": "rn_cpu8t_fp32",
+   "harness": "trace",
+   "runtime": "TorchScript",
+   "condition": "",
+   "session": "2",
+   "p95_us": 4833.929,
+   "min_us": null
+  },
+  {
+   "impl": "rn_cpu8t_fp32",
+   "harness": "trace",
+   "runtime": "TorchScript",
+   "condition": "",
+   "session": "3",
+   "p95_us": 4782.254,
+   "min_us": null,
+   "fastest_call_us": 4451.007
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "trace",
+   "runtime": "eager",
+   "condition": "",
+   "session": "1",
+   "p95_us": 1461.67,
+   "min_us": null
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "trace",
+   "runtime": "eager",
+   "condition": "",
+   "session": "2",
+   "p95_us": 1471.601,
+   "min_us": null
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "trace",
+   "runtime": "eager",
+   "condition": "",
+   "session": "3",
+   "p95_us": 1468.991,
+   "min_us": null
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "trace",
+   "runtime": "TorchScript",
+   "condition": "",
+   "session": "1",
+   "p95_us": 1339.977,
+   "min_us": null
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "trace",
+   "runtime": "TorchScript",
+   "condition": "",
+   "session": "2",
+   "p95_us": 1343.738,
+   "min_us": null
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "trace",
+   "runtime": "TorchScript",
+   "condition": "",
+   "session": "3",
+   "p95_us": 1352.072,
+   "min_us": null,
+   "fastest_call_us": 1231.293
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "trace",
+   "runtime": "eager",
+   "condition": "",
+   "session": "1",
+   "p95_us": 7043.174,
+   "min_us": null
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "trace",
+   "runtime": "eager",
+   "condition": "",
+   "session": "2",
+   "p95_us": 7225.327,
+   "min_us": null
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "trace",
+   "runtime": "eager",
+   "condition": "",
+   "session": "3",
+   "p95_us": 7184.212,
+   "min_us": null
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "trace",
+   "runtime": "TorchScript",
+   "condition": "",
+   "session": "1",
+   "p95_us": 6790.358,
+   "min_us": null
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "trace",
+   "runtime": "TorchScript",
+   "condition": "",
+   "session": "2",
+   "p95_us": 6772.959,
+   "min_us": null
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "trace",
+   "runtime": "TorchScript",
+   "condition": "",
+   "session": "3",
+   "p95_us": 6616.224,
+   "min_us": null,
+   "fastest_call_us": 5487.272
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "matched",
+   "runtime": "fp32",
+   "condition": "",
+   "session": "1",
+   "p95_us": 6518.615,
+   "min_us": 6121.51
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "matched",
+   "runtime": "fp16_graph",
+   "condition": "",
+   "session": "1",
+   "p95_us": 1987.242,
+   "min_us": 1853.903
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "matched",
+   "runtime": "fp16_graph",
+   "condition": "",
+   "session": "2",
+   "p95_us": 2062.177,
+   "min_us": 1944.121
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "matched",
+   "runtime": "fp32",
+   "condition": "",
+   "session": "2",
+   "p95_us": 6513.942,
+   "min_us": 6142.842
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "matched",
+   "runtime": "fp32",
+   "condition": "",
+   "session": "3",
+   "p95_us": 6647.477,
+   "min_us": 6140.869
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "matched",
+   "runtime": "fp16_graph",
+   "condition": "",
+   "session": "3",
+   "p95_us": 1975.138,
+   "min_us": 1881.253
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "cadence",
+   "runtime": "fp32",
+   "condition": "10 ms",
+   "session": "1",
+   "p95_us": 6058.826,
+   "min_us": 5444.994
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "cadence",
+   "runtime": "fp32",
+   "condition": "0 ms",
+   "session": "2",
+   "p95_us": 6673.201,
+   "min_us": 6043.315
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "cadence",
+   "runtime": "fp16_graph",
+   "condition": "50 ms",
+   "session": "3",
+   "p95_us": 2320.801,
+   "min_us": 2103.572
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "cadence",
+   "runtime": "fp32",
+   "condition": "50 ms",
+   "session": "4",
+   "p95_us": 6658.201,
+   "min_us": 6196.124
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "cadence",
+   "runtime": "fp16_graph",
+   "condition": "0 ms",
+   "session": "5",
+   "p95_us": 2049.423,
+   "min_us": 1901.064
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "cadence",
+   "runtime": "fp16_graph",
+   "condition": "10 ms",
+   "session": "6",
+   "p95_us": 2273.335,
+   "min_us": 2092.678
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "cadence",
+   "runtime": "fp32",
+   "condition": "50 ms",
+   "session": "7",
+   "p95_us": 6695.975,
+   "min_us": 6204.078
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "cadence",
+   "runtime": "fp32",
+   "condition": "0 ms",
+   "session": "8",
+   "p95_us": 6408.499,
+   "min_us": 6125.408
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "cadence",
+   "runtime": "fp32",
+   "condition": "10 ms",
+   "session": "9",
+   "p95_us": 6116.063,
+   "min_us": 5513.89
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "cadence",
+   "runtime": "fp16_graph",
+   "condition": "50 ms",
+   "session": "10",
+   "p95_us": 2263.607,
+   "min_us": 2096.277
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "cadence",
+   "runtime": "fp16_graph",
+   "condition": "0 ms",
+   "session": "11",
+   "p95_us": 2041.558,
+   "min_us": 1912.524
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "cadence",
+   "runtime": "fp16_graph",
+   "condition": "10 ms",
+   "session": "12",
+   "p95_us": 2263.001,
+   "min_us": 2091.079
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "cadence",
+   "runtime": "fp32",
+   "condition": "0 ms",
+   "session": "13",
+   "p95_us": 6413.588,
+   "min_us": 6073.905
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "cadence",
+   "runtime": "fp32",
+   "condition": "50 ms",
+   "session": "14",
+   "p95_us": 6706.947,
+   "min_us": 6194.104
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "cadence",
+   "runtime": "fp32",
+   "condition": "10 ms",
+   "session": "15",
+   "p95_us": 6094.373,
+   "min_us": 5448.277
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "cadence",
+   "runtime": "fp16_graph",
+   "condition": "50 ms",
+   "session": "16",
+   "p95_us": 2263.307,
+   "min_us": 2098.373
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "cadence",
+   "runtime": "fp16_graph",
+   "condition": "0 ms",
+   "session": "17",
+   "p95_us": 2037.412,
+   "min_us": 1898.195
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "cadence",
+   "runtime": "fp16_graph",
+   "condition": "10 ms",
+   "session": "18",
+   "p95_us": 2260.463,
+   "min_us": 2096.051
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "1",
+   "p95_us": 1701.682,
+   "min_us": 1423.125,
+   "n": 11814,
+   "stem": "a01"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "1",
+   "p95_us": 2262.112,
+   "min_us": 2083.695,
+   "n": 11792,
+   "stem": "a02"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "1",
+   "p95_us": 5992.039,
+   "min_us": 5321.879,
+   "n": 11795,
+   "stem": "a03"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "2",
+   "p95_us": 1705.176,
+   "min_us": 1423.228,
+   "n": 11797,
+   "stem": "a04"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "2",
+   "p95_us": 2270.16,
+   "min_us": 2087.182,
+   "n": 11787,
+   "stem": "a05"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "2",
+   "p95_us": 5991.227,
+   "min_us": 5313.29,
+   "n": 11796,
+   "stem": "a06"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "3",
+   "p95_us": 2273.712,
+   "min_us": 2093.05,
+   "n": 11790,
+   "stem": "a07"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "3",
+   "p95_us": 1702.325,
+   "min_us": 1418.086,
+   "n": 11795,
+   "stem": "a08"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "3",
+   "p95_us": 5980.135,
+   "min_us": 5354.76,
+   "n": 11796,
+   "stem": "a09"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "4",
+   "p95_us": 1712.913,
+   "min_us": 1425.969,
+   "n": 11794,
+   "stem": "a10"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "4",
+   "p95_us": 5982.886,
+   "min_us": 5359.661,
+   "n": 11793,
+   "stem": "a11"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "4",
+   "p95_us": 2270.805,
+   "min_us": 2092.567,
+   "n": 11791,
+   "stem": "a12"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "5",
+   "p95_us": 5968.897,
+   "min_us": 5309.027,
+   "n": 11801,
+   "stem": "a13"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "5",
+   "p95_us": 2267.276,
+   "min_us": 2084.497,
+   "n": 11787,
+   "stem": "a14"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "5",
+   "p95_us": 1703.366,
+   "min_us": 1421.329,
+   "n": 11795,
+   "stem": "a15"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "6",
+   "p95_us": 1717.329,
+   "min_us": 1426.976,
+   "n": 11807,
+   "stem": "a16"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "6",
+   "p95_us": 5962.268,
+   "min_us": 5356.668,
+   "n": 11803,
+   "stem": "a17"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "6",
+   "p95_us": 2271.824,
+   "min_us": 2091.087,
+   "n": 11790,
+   "stem": "a18"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "7",
+   "p95_us": 1711.037,
+   "min_us": 1422.84,
+   "n": 11796,
+   "stem": "a19"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "7",
+   "p95_us": 5972.622,
+   "min_us": 5357.118,
+   "n": 11793,
+   "stem": "a20"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "7",
+   "p95_us": 2269.732,
+   "min_us": 2089.003,
+   "n": 11787,
+   "stem": "a21"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "8",
+   "p95_us": 1714.424,
+   "min_us": 1424.135,
+   "n": 11792,
+   "stem": "a22"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "8",
+   "p95_us": 5964.981,
+   "min_us": 5352.63,
+   "n": 11790,
+   "stem": "a23"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "8",
+   "p95_us": 2269.527,
+   "min_us": 2091.082,
+   "n": 11789,
+   "stem": "a24"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "9",
+   "p95_us": 5984.863,
+   "min_us": 5322.014,
+   "n": 11798,
+   "stem": "a25"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "9",
+   "p95_us": 1690.643,
+   "min_us": 1417.204,
+   "n": 11792,
+   "stem": "a26"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "9",
+   "p95_us": 2270.713,
+   "min_us": 2089.307,
+   "n": 11792,
+   "stem": "a27"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "10",
+   "p95_us": 2264.6,
+   "min_us": 2085.445,
+   "n": 11788,
+   "stem": "a28"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "10",
+   "p95_us": 5967.131,
+   "min_us": 5315.36,
+   "n": 11809,
+   "stem": "a29"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "10",
+   "p95_us": 1709.579,
+   "min_us": 1426.647,
+   "n": 11794,
+   "stem": "a30"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "11",
+   "p95_us": 2266.856,
+   "min_us": 2087.601,
+   "n": 11790,
+   "stem": "a31"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "11",
+   "p95_us": 5968.002,
+   "min_us": 5392.754,
+   "n": 11793,
+   "stem": "a32"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "11",
+   "p95_us": 1706.965,
+   "min_us": 1424.867,
+   "n": 11797,
+   "stem": "a33"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "12",
+   "p95_us": 5999.83,
+   "min_us": 5336.259,
+   "n": 11792,
+   "stem": "a34"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "12",
+   "p95_us": 2271.256,
+   "min_us": 2090.243,
+   "n": 11788,
+   "stem": "a35"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "12",
+   "p95_us": 1703.262,
+   "min_us": 1415.993,
+   "n": 11793,
+   "stem": "a36"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "13",
+   "p95_us": 2269.887,
+   "min_us": 2090.6,
+   "n": 11790,
+   "stem": "a37"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "13",
+   "p95_us": 5967.056,
+   "min_us": 5317.451,
+   "n": 11800,
+   "stem": "a38"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "13",
+   "p95_us": 1703.951,
+   "min_us": 1420.026,
+   "n": 11799,
+   "stem": "a39"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "14",
+   "p95_us": 2271.74,
+   "min_us": 2089.343,
+   "n": 11791,
+   "stem": "a40"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "14",
+   "p95_us": 1708.601,
+   "min_us": 1421.596,
+   "n": 11789,
+   "stem": "a41"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "14",
+   "p95_us": 5955.012,
+   "min_us": 5279.687,
+   "n": 11795,
+   "stem": "a42"
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "audit",
+   "runtime": "eager",
+   "condition": "10 ms",
+   "session": "15",
+   "p95_us": 5985.283,
+   "min_us": 5368.437,
+   "n": 11790,
+   "stem": "a43"
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "audit",
+   "runtime": "CUDA graph",
+   "condition": "10 ms",
+   "session": "15",
+   "p95_us": 2271.56,
+   "min_us": 2087.925,
+   "n": 11790,
+   "stem": "a44"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "audit",
+   "runtime": "TorchScript",
+   "condition": "10 ms",
+   "session": "15",
+   "p95_us": 1711.968,
+   "min_us": 1422.091,
+   "n": 11795,
+   "stem": "a45"
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "deploy",
+   "runtime": "eager",
+   "condition": "",
+   "session": "1",
+   "p95_us": 1393.698,
+   "min_us": 1300.244
+  },
+  {
+   "impl": "rn_gpu_fp16c",
+   "harness": "deploy",
+   "runtime": "torch.compile",
+   "condition": "",
+   "session": "1",
+   "p95_us": 547.578,
+   "min_us": 512.083
+  },
+  {
+   "impl": "rn_gpu_fp16c",
+   "harness": "deploy",
+   "runtime": "torch.compile",
+   "condition": "",
+   "session": "2",
+   "p95_us": 520.813,
+   "min_us": 488.794
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "deploy",
+   "runtime": "eager",
+   "condition": "",
+   "session": "2",
+   "p95_us": 1411.14,
+   "min_us": 1315.054
+  },
+  {
+   "impl": "rn_gpu_fp32",
+   "harness": "deploy",
+   "runtime": "eager",
+   "condition": "",
+   "session": "3",
+   "p95_us": 1389.664,
+   "min_us": 1288.399
+  },
+  {
+   "impl": "rn_gpu_fp16c",
+   "harness": "deploy",
+   "runtime": "torch.compile",
+   "condition": "",
+   "session": "3",
+   "p95_us": 538.025,
+   "min_us": 504.38
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "deploy",
+   "runtime": "eager",
+   "condition": "",
+   "session": "1",
+   "p95_us": 6275.042,
+   "min_us": 5882.4
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "deploy",
+   "runtime": "CUDA graph",
+   "condition": "",
+   "session": "1",
+   "p95_us": 1943.283,
+   "min_us": 1820.511
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "deploy",
+   "runtime": "CUDA graph",
+   "condition": "",
+   "session": "2",
+   "p95_us": 1990.6,
+   "min_us": 1895.191
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "deploy",
+   "runtime": "eager",
+   "condition": "",
+   "session": "2",
+   "p95_us": 6254.828,
+   "min_us": 5975.142
+  },
+  {
+   "impl": "vit_gpu_fp32",
+   "harness": "deploy",
+   "runtime": "eager",
+   "condition": "",
+   "session": "3",
+   "p95_us": 6274.511,
+   "min_us": 5925.512
+  },
+  {
+   "impl": "vit_gpu_fp16",
+   "harness": "deploy",
+   "runtime": "CUDA graph",
+   "condition": "",
+   "session": "3",
+   "p95_us": 1959.775,
+   "min_us": 1803.971
+  },
+  {
+   "impl": "rn_cpu8t_fp32",
+   "harness": "deploy",
+   "runtime": "eager",
+   "condition": "",
+   "session": "1",
+   "p95_us": 5721.884,
+   "min_us": 5580.587
+  },
+  {
+   "impl": "rn_cpu8t_int8",
+   "harness": "deploy",
+   "runtime": "int8",
+   "condition": "",
+   "session": "1",
+   "p95_us": 2460.837,
+   "min_us": 2398.837
+  },
+  {
+   "impl": "rn_cpu8t_int8",
+   "harness": "deploy",
+   "runtime": "int8",
+   "condition": "",
+   "session": "2",
+   "p95_us": 2458.261,
+   "min_us": 2390.757
+  },
+  {
+   "impl": "rn_cpu8t_fp32",
+   "harness": "deploy",
+   "runtime": "eager",
+   "condition": "",
+   "session": "2",
+   "p95_us": 6039.102,
+   "min_us": 5903.982
+  },
+  {
+   "impl": "rn_cpu8t_fp32",
+   "harness": "deploy",
+   "runtime": "eager",
+   "condition": "",
+   "session": "3",
+   "p95_us": 5713.725,
+   "min_us": 5572.281
+  },
+  {
+   "impl": "rn_cpu8t_int8",
+   "harness": "deploy",
+   "runtime": "int8",
+   "condition": "",
+   "session": "3",
+   "p95_us": 2469.706,
+   "min_us": 2399.223
+  }
+ ],
+ "implementations": {
+  "rn_cpu8t_fp32": {
+   "groups": {
+    "atlas|eager, Phase-1 counts|": {
+     "sessions": 1,
+     "p95_us": [
+      5289.57
+     ],
+     "ratio": 1.0
+    },
+    "trace|eager|": {
+     "sessions": 3,
+     "p95_us": [
+      5829.058,
+      5959.283,
+      5805.439
+     ],
+     "ratio": 1.026499977004323
+    },
+    "trace|TorchScript|": {
+     "sessions": 3,
+     "p95_us": [
+      4929.346,
+      4833.929,
+      4782.254
+     ],
+     "ratio": 1.0307578811163103
+    },
+    "deploy|eager|": {
+     "sessions": 3,
+     "p95_us": [
+      5721.884,
+      6039.102,
+      5713.725
+     ],
+     "ratio": 1.0569465628814827
+    }
+   },
+   "within_ratio_max": 1.0569465628814827,
+   "lowest_p95_us": 4782.254,
+   "lowest_at": {
+    "harness": "trace",
+    "runtime": "TorchScript",
+    "condition": "",
+    "session": "3"
+   },
+   "highest_p95_us": 6039.102,
+   "overall_ratio": 1.2628149822238635,
+   "fastest_call_us": 4451.007,
+   "n_sessions": 10
+  },
+  "rn_cpu8t_int8": {
+   "groups": {
+    "deploy|int8|": {
+     "sessions": 3,
+     "p95_us": [
+      2460.837,
+      2458.261,
+      2469.706
+     ],
+     "ratio": 1.0046557302092822
+    }
+   },
+   "within_ratio_max": 1.0046557302092822,
+   "lowest_p95_us": 2458.261,
+   "lowest_at": {
+    "harness": "deploy",
+    "runtime": "int8",
+    "condition": "",
+    "session": "2"
+   },
+   "highest_p95_us": 2469.706,
+   "overall_ratio": 1.0046557302092822,
+   "fastest_call_us": 2390.757,
+   "n_sessions": 3
+  },
+  "rn_gpu_fp16c": {
+   "groups": {
+    "deploy|torch.compile|": {
+     "sessions": 3,
+     "p95_us": [
+      547.578,
+      520.813,
+      538.025
+     ],
+     "ratio": 1.0513908062970778
+    }
+   },
+   "within_ratio_max": 1.0513908062970778,
+   "lowest_p95_us": 520.813,
+   "lowest_at": {
+    "harness": "deploy",
+    "runtime": "torch.compile",
+    "condition": "",
+    "session": "2"
+   },
+   "highest_p95_us": 547.578,
+   "overall_ratio": 1.0513908062970778,
+   "fastest_call_us": 488.794,
+   "n_sessions": 3
+  },
+  "rn_gpu_fp32": {
+   "groups": {
+    "atlas|eager, Phase-1 counts|": {
+     "sessions": 1,
+     "p95_us": [
+      1344.464
+     ],
+     "ratio": 1.0
+    },
+    "atlas|eager, full counts|": {
+     "sessions": 1,
+     "p95_us": [
+      1753.783
+     ],
+     "ratio": 1.0
+    },
+    "atlas|TorchScript, whole decision|": {
+     "sessions": 1,
+     "p95_us": [
+      1218.876
+     ],
+     "ratio": 1.0
+    },
+    "trace|eager|": {
+     "sessions": 3,
+     "p95_us": [
+      1461.67,
+      1471.601,
+      1468.991
+     ],
+     "ratio": 1.0067942832513495
+    },
+    "trace|TorchScript|": {
+     "sessions": 3,
+     "p95_us": [
+      1339.977,
+      1343.738,
+      1352.072
+     ],
+     "ratio": 1.009026274331574
+    },
+    "audit|TorchScript|10 ms": {
+     "sessions": 15,
+     "p95_us": [
+      1701.682,
+      1705.176,
+      1702.325,
+      1712.913,
+      1703.366,
+      1717.329,
+      1711.037,
+      1714.424,
+      1690.643,
+      1709.579,
+      1706.965,
+      1703.262,
+      1703.951,
+      1708.601,
+      1711.968
+     ],
+     "ratio": 1.0157845269521715
+    },
+    "deploy|eager|": {
+     "sessions": 3,
+     "p95_us": [
+      1393.698,
+      1411.14,
+      1389.664
+     ],
+     "ratio": 1.0154540953784512
+    }
+   },
+   "within_ratio_max": 1.0157845269521715,
+   "lowest_p95_us": 1218.876,
+   "lowest_at": {
+    "harness": "atlas",
+    "runtime": "TorchScript, whole decision",
+    "condition": "",
+    "session": "1"
+   },
+   "highest_p95_us": 1753.783,
+   "overall_ratio": 1.4388526806664501,
+   "fastest_call_us": 1231.293,
+   "n_sessions": 27
+  },
+  "vit_gpu_fp16": {
+   "groups": {
+    "matched|fp16_graph|": {
+     "sessions": 3,
+     "p95_us": [
+      1987.242,
+      2062.177,
+      1975.138
+     ],
+     "ratio": 1.0440673006139318
+    },
+    "cadence|fp16_graph|50 ms": {
+     "sessions": 3,
+     "p95_us": [
+      2320.801,
+      2263.607,
+      2263.307
+     ],
+     "ratio": 1.025402651960163
+    },
+    "cadence|fp16_graph|0 ms": {
+     "sessions": 3,
+     "p95_us": [
+      2049.423,
+      2041.558,
+      2037.412
+     ],
+     "ratio": 1.0058952239409602
+    },
+    "cadence|fp16_graph|10 ms": {
+     "sessions": 3,
+     "p95_us": [
+      2273.335,
+      2263.001,
+      2260.463
+     ],
+     "ratio": 1.0056944086233661
+    },
+    "audit|CUDA graph|10 ms": {
+     "sessions": 15,
+     "p95_us": [
+      2262.112,
+      2270.16,
+      2273.712,
+      2270.805,
+      2267.276,
+      2271.824,
+      2269.732,
+      2269.527,
+      2270.713,
+      2264.6,
+      2266.856,
+      2271.256,
+      2269.887,
+      2271.74,
+      2271.56
+     ],
+     "ratio": 1.0051279512243425
+    },
+    "deploy|CUDA graph|": {
+     "sessions": 3,
+     "p95_us": [
+      1943.283,
+      1990.6,
+      1959.775
+     ],
+     "ratio": 1.0243490011490863
+    }
+   },
+   "within_ratio_max": 1.0440673006139318,
+   "lowest_p95_us": 1943.283,
+   "lowest_at": {
+    "harness": "deploy",
+    "runtime": "CUDA graph",
+    "condition": "",
+    "session": "1"
+   },
+   "highest_p95_us": 2320.801,
+   "overall_ratio": 1.1942681534290167,
+   "fastest_call_us": 1803.971,
+   "n_sessions": 30
+  },
+  "vit_gpu_fp32": {
+   "groups": {
+    "atlas|eager, Phase-1 counts|": {
+     "sessions": 1,
+     "p95_us": [
+      6331.027
+     ],
+     "ratio": 1.0
+    },
+    "atlas|eager, full counts|": {
+     "sessions": 1,
+     "p95_us": [
+      7691.273
+     ],
+     "ratio": 1.0
+    },
+    "atlas|TorchScript, whole decision|": {
+     "sessions": 1,
+     "p95_us": [
+      7148.229
+     ],
+     "ratio": 1.0
+    },
+    "trace|eager|": {
+     "sessions": 3,
+     "p95_us": [
+      7043.174,
+      7225.327,
+      7184.212
+     ],
+     "ratio": 1.0258623455845333
+    },
+    "trace|TorchScript|": {
+     "sessions": 3,
+     "p95_us": [
+      6790.358,
+      6772.959,
+      6616.224
+     ],
+     "ratio": 1.026319241912003
+    },
+    "matched|fp32|": {
+     "sessions": 3,
+     "p95_us": [
+      6518.615,
+      6513.942,
+      6647.477
+     ],
+     "ratio": 1.0204998754978167
+    },
+    "cadence|fp32|10 ms": {
+     "sessions": 3,
+     "p95_us": [
+      6058.826,
+      6116.063,
+      6094.373
+     ],
+     "ratio": 1.00944687964302
+    },
+    "cadence|fp32|0 ms": {
+     "sessions": 3,
+     "p95_us": [
+      6673.201,
+      6408.499,
+      6413.588
+     ],
+     "ratio": 1.04130483596861
+    },
+    "cadence|fp32|50 ms": {
+     "sessions": 3,
+     "p95_us": [
+      6658.201,
+      6695.975,
+      6706.947
+     ],
+     "ratio": 1.0073211968217841
+    },
+    "audit|eager|10 ms": {
+     "sessions": 15,
+     "p95_us": [
+      5992.039,
+      5991.227,
+      5980.135,
+      5982.886,
+      5968.897,
+      5962.268,
+      5972.622,
+      5964.981,
+      5984.863,
+      5967.131,
+      5968.002,
+      5999.83,
+      5967.056,
+      5955.012,
+      5985.283
+     ],
+     "ratio": 1.0075260973445561
+    },
+    "deploy|eager|": {
+     "sessions": 3,
+     "p95_us": [
+      6275.042,
+      6254.828,
+      6274.511
+     ],
+     "ratio": 1.003231743542748
+    }
+   },
+   "within_ratio_max": 1.04130483596861,
+   "lowest_p95_us": 5955.012,
+   "lowest_at": {
+    "harness": "audit",
+    "runtime": "eager",
+    "condition": "10 ms",
+    "session": "14"
+   },
+   "highest_p95_us": 7691.273,
+   "overall_ratio": 1.291562972501147,
+   "fastest_call_us": 5279.687,
+   "n_sessions": 39
+  }
+ },
+ "inputs_sha256": {
+  "reconcile.json": "3b72af550d99ac052e41d20675e37aaaf4b68c2534520bc7e59e4a311494edd4",
+  "matched.json": "339d3f708f8146266889f2505fd28f433b85e7af2d60b2c3ea49661fcdfe4b4e",
+  "cadence.json": "350cf2c43d9cd66b15b6bfaa0fa1958499e3e0b70fc13d749561ac2757f04159",
+  "deploy.json": "c035c30efeb17bae236ae70ccf00c94d6069bdf4161424706d4b26fa2b0c5a20",
+  "audit_direct.json": "cd5501ea97b62cb4cb9f55675d8930abec766c95da285ce253a598c6d5d823bd"
+ }
+}

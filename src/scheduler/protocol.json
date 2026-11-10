@@ -2367,7 +2367,10 @@
    "criteria": {
     "multiuser": "M1-M3 (rule R48)"
    },
-   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check"
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check; multiuser.py ran once on 2026-11-10, gates M1-M3 holding",
+   "files_sha256": {
+    "multiuser.json": "49828b9695ac8d31fc9162a2fdc4df66e185695fb020392dc4740cd72eb7d68a"
+   }
   },
   {
    "key": "covcurve",
@@ -2404,7 +2407,10 @@
    "criteria": {
     "covcurve": "V1-V2 (rule R49)"
    },
-   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check"
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check; covcurve.py ran once on 2026-11-10, gates V1-V2 holding",
+   "files_sha256": {
+    "covcurve.json": "936e0f46ea5dce60e6f9cedd36430957f9ec6fbf6b7756431312e230ddaa1f08"
+   }
   },
   {
    "key": "timespread",
@@ -2437,7 +2443,10 @@
    "criteria": {
     "timespread": "S1-S2 (rule R50)"
    },
-   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check"
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check; timespread.py ran once on 2026-11-10, gates S1-S2 holding",
+   "files_sha256": {
+    "timespread.json": "d5b4eddd0e0055c26f800a731fdb5e9569f80fa9878571d8ce2fe1e2756b1bad"
+   }
   }
  ],
  "changes": [
