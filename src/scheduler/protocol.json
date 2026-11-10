@@ -2333,6 +2333,111 @@
    "files_sha256": {
     "rsrpacc.json": "fce0167a35c16824c90f50656a4a87e7be5a2068ec5908b6987c6ffbffa93319"
    }
+  },
+  {
+   "key": "multiuser",
+   "declared": "2026-11-10",
+   "title": "a panel shared by users acquiring together, set post hoc",
+   "description": "one reading rule (R48), set post hoc, and the script that applies its simulation (src/scheduler/multiuser.py), declared before it ran; its closed forms are computed in make_draft.py.  Nothing is timed or trained; it reads stored rates and latencies",
+   "rules": [
+    "R48"
+   ],
+   "post_hoc": [
+    "R48"
+   ],
+   "scripts": [
+    "multiuser.py"
+   ],
+   "scripts_sha256": {
+    "multiuser.py": "5726d653a0b0b192d5b2175b4ae671e0df30385a55e06ae66509b0ee0f550e65",
+    "covcurve.py": "f47c291b2d7b9f6313515c996d38b1f75322f3fc76a44474d6e1f7f2009354c8",
+    "covpop.py": "2b22d2b884a10e09cf1de5e2ee4766628e4a9ca4be7c9ef885b08e39cefa8ff0",
+    "audit_screen.py": "838cdd9bb554600867aab5d610ae430be81a5e745399285ce93a59e2504a7d12",
+    "evaluate.py": "49d89deaefcefe1eca2e2d7fa537f93f60e204c1933f4704ac28b2e58818c132"
+   },
+   "inputs_sha256": {
+    "reconcile.json": "3b72af550d99ac052e41d20675e37aaaf4b68c2534520bc7e59e4a311494edd4",
+    "matched.json": "339d3f708f8146266889f2505fd28f433b85e7af2d60b2c3ea49661fcdfe4b4e",
+    "deploy.json": "c035c30efeb17bae236ae70ccf00c94d6069bdf4161424706d4b26fa2b0c5a20",
+    "audit_pop.npz": "862cc9f3075c366cc7ddca42c7bbbcdedd95a057ddaca8e6b18cb36b7e5bf8e9"
+   },
+   "analyses": {
+    "multiuser": "multiuser.py simulates Proposition 4's panel on the audit cities' covered users for every U, W, draw and latency; it refuses to overwrite multiuser.json; --gate runs M1-M3"
+   },
+   "criteria": {
+    "multiuser": "M1-M3 (rule R48)"
+   },
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check"
+  },
+  {
+   "key": "covcurve",
+   "declared": "2026-11-10",
+   "title": "the audit bound's coverage against the number of calibration blocks, set post hoc",
+   "description": "one reading rule (R49), set post hoc, and the script that applies it (src/scheduler/covcurve.py), declared before it ran.  Only the audit's two cities carry a population efficiency computed by code independent of the screen's, so the curve is theirs.  Nothing is simulated, timed or trained beyond the bounds",
+   "rules": [
+    "R49"
+   ],
+   "post_hoc": [
+    "R49"
+   ],
+   "scripts": [
+    "covcurve.py"
+   ],
+   "scripts_sha256": {
+    "covcurve.py": "f47c291b2d7b9f6313515c996d38b1f75322f3fc76a44474d6e1f7f2009354c8",
+    "covpop.py": "2b22d2b884a10e09cf1de5e2ee4766628e4a9ca4be7c9ef885b08e39cefa8ff0",
+    "audit_screen.py": "838cdd9bb554600867aab5d610ae430be81a5e745399285ce93a59e2504a7d12",
+    "csirs.py": "8836ff723b6cf47c6b12af28ebc62e7b235edcc5b62b9ce4d18be37e4c9184d1",
+    "effbound.py": "b947b77c2268953f6b775b0deec69c6cdef2b503a6d7fb308aa792dfcb57f18c",
+    "evaluate.py": "49d89deaefcefe1eca2e2d7fa537f93f60e204c1933f4704ac28b2e58818c132"
+   },
+   "inputs_sha256": {
+    "audit_bounds.json": "34ed02969acb7599d6b4efedd7994bda3cc02d25fc17797d63d93b35f5ce1a8b",
+    "covpop.json": "6e749e2477f5e1906ca233632dce44b14de256d09e095ee64a9b660ea1690d5e",
+    "audit_direct.json": "cd5501ea97b62cb4cb9f55675d8930abec766c95da285ce253a598c6d5d823bd",
+    "covpop_direct.json": "e35f59c10f5cceb9f74e2a9868fa0e5f5a005d9635426d68c37aeb2dd1d1e80e",
+    "audit_pop.npz": "862cc9f3075c366cc7ddca42c7bbbcdedd95a057ddaca8e6b18cb36b7e5bf8e9"
+   },
+   "analyses": {
+    "covcurve": "covcurve.py computes the bound on the audit's draws of 16 and N - 1 blocks and the coverage at every k; it refuses to overwrite covcurve.json; --gate runs V1-V2"
+   },
+   "criteria": {
+    "covcurve": "V1-V2 (rule R49)"
+   },
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check"
+  },
+  {
+   "key": "timespread",
+   "declared": "2026-11-10",
+   "title": "latency spread between timing sessions and each verdict's robustness, set post hoc",
+   "description": "one reading rule (R50), set post hoc, and the script that applies its first reading (src/scheduler/timespread.py), declared before it ran; its second reading compares stored values in make_draft.py.  Nothing is timed; it reads stored timing records",
+   "rules": [
+    "R50"
+   ],
+   "post_hoc": [
+    "R50"
+   ],
+   "scripts": [
+    "timespread.py"
+   ],
+   "scripts_sha256": {
+    "timespread.py": "1c43b67e3f9cb16e7599dffb1d72e333ef10c24d64ea3b217984460a2cf3808a",
+    "audit_screen.py": "838cdd9bb554600867aab5d610ae430be81a5e745399285ce93a59e2504a7d12"
+   },
+   "inputs_sha256": {
+    "reconcile.json": "3b72af550d99ac052e41d20675e37aaaf4b68c2534520bc7e59e4a311494edd4",
+    "matched.json": "339d3f708f8146266889f2505fd28f433b85e7af2d60b2c3ea49661fcdfe4b4e",
+    "cadence.json": "350cf2c43d9cd66b15b6bfaa0fa1958499e3e0b70fc13d749561ac2757f04159",
+    "deploy.json": "c035c30efeb17bae236ae70ccf00c94d6069bdf4161424706d4b26fa2b0c5a20",
+    "audit_direct.json": "cd5501ea97b62cb4cb9f55675d8930abec766c95da285ce253a598c6d5d823bd"
+   },
+   "analyses": {
+    "timespread": "timespread.py reads every stored session's 95th percentile, computing the audit sessions' from their calls; it refuses to overwrite timespread.json; --gate runs S1-S2"
+   },
+   "criteria": {
+    "timespread": "S1-S2 (rule R50)"
+   },
+   "state": "declared before it ran, except that its gates had run alone with --gate, computing nothing they do not check"
   }
  ],
  "changes": [
@@ -2864,6 +2969,30 @@
    "set": "2026-11-09",
    "when": "set after every earlier result and an editor-in-chief review of the paper had been seen; it changes no earlier output",
    "text": "(i) rsrpacc.py: rule R40's report-error reading at sigma = 2.794 and 4.084 dB, the per-beam Gaussian errors whose pairwise difference meets TS 38.133 V19.6.0's FR2 relative CSI-RS based L1-RSRP accuracy of 6.5 dB (normal conditions) and 9.5 dB (extreme conditions), Table 10.1.20.2.2-1, in 90% of reported cases, A.7.7.  (ii) In make_draft.py: TS 38.331 V19.4.0's declarable relaxations for BM-Case1 at 120 kHz (6.3.3, relaxationTimelineD-r19 and relaxationTimelineD1-r19: 56, 112, 168, 224, 280, 336 and 448 symbols) against rule R39's least relaxations: per pattern, whether the smallest declarable value leaves a budget at any timing and phase, and the smallest declarable value that leaves none at every timing and phase, for the UE-side candidate and against the refinement.  (iii) Gate A1 (at sigma = 3 dB robust.json's realizations are reproduced).  Sources: the 3GPP archive's 38331-j40.zip (sha256 908f5db632f8a999e078a404791ed739a3a1004f619bf2fc20c1ffd9747718b3) and 38133-j60.zip (sha256 a4203e77fe0d44d7375f06a751da64915b36176d3562f22c8684e7fbec8e2e9c), downloaded 2026-11-09.  (iv) R46 is post hoc and changes no earlier output, threshold or verdict"
+  },
+  "R47": {
+   "post_hoc": true,
+   "set": "2026-11-10",
+   "when": "set after every earlier result and a second editor-in-chief review of the paper had been seen; it changes no earlier output, threshold or verdict",
+   "text": "(i) Readings of stored values alone, computed in make_draft.py.  (a) The period's anchors in NR: TS 38.331 V19.4.0, 6.3.2, a periodic CSI report every 4-320 slots (CSI-ReportPeriodicityAndOffset, slots4-slots320: 0.5-40 ms at 120 kHz, T_max = 10 ms being 80 slots) and SS bursts every 5, 10, 20, 40, 80 or 160 ms (ssb-periodicityServingCell, 5 ms if absent).  (b) Each exclusion of Table IV that finishes within T_max, at adverse inputs: its horizon (rule R41 (e)) at the smallest bounds and at the measured efficiencies, and the configured report and SS-burst periods it covers at each.  (ii) The paper states (a)-(b) as post hoc readings.  (iii) R47 is post hoc and changes no earlier output, threshold or verdict"
+  },
+  "R48": {
+   "post_hoc": true,
+   "set": "2026-11-10",
+   "when": "set after every earlier result and a second editor-in-chief review of the paper had been seen; it changes no earlier output, threshold or verdict",
+   "text": "(i) multiuser.py: Proposition 4's model (one analog panel serving one beam at a time; U cold users measuring shared probes, a K-probe method inferring for one after another on one processor; W warm users ready when the probes end; the panel shared equally among the ready users) on the decision audit's two cities' covered users (rule R37) with the audit's reference timing: per U in (1, 2, 4, 8, 16), W in (0, 1, 8) and 200 draws, whether a perfect predictor's cell, and its cold users alone, deliver at most the sweep's at every T up to T_max, at the paper's implementations' latencies and on a grid.  (ii) In make_draft.py, Proposition 4's closed forms on Table IV's references: the u-th cold user's beam is chosen before the reference's exactly when u tau < tau*; per implementation, the largest such u.  (iii) Gates M1 (one user: Proposition 1(a)'s per-link data and verdict), M2 (equal methods, equal data) and M3 (the panel's idle time).  (iv) The paper states Proposition 4 with (i)-(ii), post hoc.  (v) R48 is post hoc and changes no earlier output, threshold or verdict"
+  },
+  "R49": {
+   "post_hoc": true,
+   "set": "2026-11-10",
+   "when": "set after every earlier result and a second editor-in-chief review of the paper had been seen; it changes no earlier output, threshold or verdict",
+   "text": "(i) covcurve.py: the decision audit's efficiency bound (rule R26's estimator and level 0.05/7) on calibrations of k = 4, 8 and 12 blocks (the audit's stored draws), 16 blocks (200 draws by the audit's rule) and N - 1 blocks (the N leave-one-block-out draws) in Houston and Phoenix, on every eligible user and on rule R37's covered population; per city, pilot and population: the coverage (the share of draws whose bound is at most the auditor's population efficiency, a failed bound not covering), the largest overshoot and the smallest k whose coverage reaches the nominal 1 - 0.05/7.  (ii) Gates V1 (the stored coverage at k = 4, 8, 12 reproduced) and V2 (ten stored draws of every cell recomputed bit for bit).  (iii) The paper states the coverage against k and the smallest k at the nominal level, post hoc.  (iv) R49 is post hoc and changes no earlier output, threshold or verdict"
+  },
+  "R50": {
+   "post_hoc": true,
+   "set": "2026-11-10",
+   "when": "set after every earlier result and a second editor-in-chief review of the paper had been seen; it changes no earlier output, threshold or verdict",
+   "text": "(i) timespread.py: per implementation (ResNet-18 on eight P-core threads, FP32 and INT8; ResNet-18 on the GPU, FP32 and compiled FP16; ViT-B/16 on the GPU, FP32 and FP16), the 95th-percentile latency of every stored session of every timing study (the stored timings, rule R20's repeated runs, rules R22, R24, R25-R26 and R38): per study, runtime and spacing, the ratio of the largest to the smallest; over all, the lowest, its record, the ratio of the largest to it and the fastest stored call.  (ii) In make_draft.py, every verdict of Table IV re-read at its implementation's lowest session 95th percentile: robust when (4) excludes it at the smallest bound there.  (iii) Gates S1 (every charge Table IV uses is among the sessions read) and S2 (the audit's sessions recomputed match audit_direct.json's counts and minima).  (iv) The paper states the spread, marks the robust verdicts in Table IV and states only robust exclusions in the abstract and the conclusion, post hoc.  (v) R50 is post hoc and changes no earlier output, threshold or verdict"
   }
  },
  "seeds": {
