@@ -1,5 +1,5 @@
 {
- "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R40, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
+ "about": "The protocol as frozen on 2026-09-15, before any dataset was built (self_sha256 is the sha256 of its fields, json.dumps(indent=1, sort_keys=True)); its three amendments; the changes made after results existed; the interpretation rules R1-R50, which state what each result permits the paper to claim; and the analyses declared later, each before it ran.  files_sha256 lists stored files that src/scheduler/protocol.py checks; scripts_sha256 the scripts as they ran.",
  "amendments": [
   {
    "changes": "predictor.input",
@@ -2615,6 +2615,25 @@
    "to": "left out of the paper to meet TWC's 13-page limit, by the author's decision of 2026-11-10: R39's relaxation budgets, R40's slack at each report error and its 1 dB-scaled verdicts, R41's SS-informed candidate, R44's per-user shares and R45's per-element power readings; one clause keeps rule R46's report-error reading. Their outputs and the generator's computations remain",
    "reason": "rules R47-R50 and Proposition 3 (users acquiring together) were added for an editor-in-chief review, and the paper exceeded the journal's 13 pages",
    "effect": "no stored output, rule, threshold or verdict changes. The paper's propositions are renumbered: rules R47-R50's 'Proposition 4' is the paper's Proposition 3 and their 'Table IV' its Table III, a four-input table having left the body too. Rule R48 (ii)'s 'exactly when' holds per probe; at an NR reference's bounding inputs only its 'only if' holds, so the paper states those counts as upper bounds at the timing most favorable to the candidate, a correction made after a fresh-eyes review and before the text was final"
+  },
+  {
+   "date": "2026-11-10",
+   "changed": "letter.py stores, in letter.json, every number the IEEE Wireless Communications Letters version prints (budgets, slacks, efficiencies and their bounds, the efficiency each exclusion needs, the verdicts, horizons, fastest-call readings and the readings that explain the smallest bound), recomputed from stored outputs and the NR timing modules",
+   "from": "the paper's numbers were computed by the scripts that typeset it, which the repository does not hold; its Table III printed each time-division and 60 kHz row's inputs at the largest-budget timing beside needs maximized over every timing, which those inputs do not reproduce (found in the review of 2026-11-10); the SS-guided refinement under the two time-division patterns was stated (tau* = W) but not read",
+   "to": "a letter, after an editor-in-chief assessment of 2026-11-10, states a subset of the study with every number computed by released code. Its Table I gives each reference's budget as a range over declarable timings and first-trigger slots and each need as the largest over them, with no single row of inputs; it adds the refinement under DDDSU and 7DS8U, read as the paper states it (reported with the candidate's resources, tau* = W), and reads each exclusion at the fastest stored call (timespread.json, rule R50) and its horizon over the letter's references",
+   "why": "the author chose IEEE Wireless Communications Letters with no companion long version (2026-11-10), so the letter's numbers must be computable from the repository alone",
+   "effect": "no stored output, rule, threshold or verdict of the paper changes: gates G1-G8 pin the timing modules and reproduce the paper's budgets, per-probe margins, unresolved entries and fastest-call losses, and a private check reproduces every number the paper's generator shares with letter.py, with no mismatch. New readings, post hoc on 2026-11-10: under 7DS8U the INT8 build is not excluded against the 8-block refinement, as it is under DDDSU and on paired spectrum; ResNet-18's exclusion against 60 kHz DDDSU does not hold at its fastest stored call; and over the letter's references the horizons at the measured efficiencies are at least 94.7 and 177.4 ms",
+   "not_affected": "every stored timing, simulation, bound and verdict, every rule, and every value the paper states",
+   "scripts_sha256": {
+    "letter.py": "6bef2be5bf4a8d751e1fd773020ab92ccef6c11cd37cc9788b1796f892b04978",
+    "nrtime.py": "8501735f556f328ebc2ae311dbb7f7fd4c17c3ddc8c51d197314e0ff36b186a8",
+    "nrtdd.py": "1b8bfe2f1a9bbd3d45726b98cadffa59092fc2a44ee8a04ece7778489b283f3d",
+    "nrmu.py": "f389e93249337cf6c31a16f3669de454243da161619fe3b5b3e80c74eddb2b22",
+    "nrtddmu.py": "97fb66a61fa6f55a004a2172db8d668da989550626f53ab9373f15724cfd3a3e"
+   },
+   "files_sha256": {
+    "letter.json": "5417295a7f8d7798422978338fb91b8ff73acb1a64fc072f7e478e57b8ae24b6"
+   }
   }
  ],
  "coherence_grid_us": [

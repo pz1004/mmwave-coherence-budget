@@ -12,7 +12,7 @@
 #     re-timing fails protocol.py until the record says so.
 #   * The later analyses refuse to overwrite their outputs, and the long ones run only
 #     when their flag is set (RERANK, EXACT, SCREEN, CALIB, NRCFG, LEVELS, TRACE,
-#     MATCHED, CADENCE, AUDIT).
+#     MATCHED, CADENCE, AUDIT, DEPLOY).
 #
 # The seed list (ten seeds) comes from protocol.json; `--seeds 17 29 43` re-runs the
 # prespecified three.
@@ -256,5 +256,10 @@ fi
 [ -f covcurve.json ] || python3 covcurve.py
 [ -f multiuser.json ] || python3 multiuser.py
 [ -f timespread.json ] || python3 timespread.py
+
+# The letter's numbers (letter.py, recorded in protocol.json as a change of 2026-11-10): budgets,
+# slacks, efficiencies, each implementation's needed efficiency and the horizons, recomputed from
+# the stored outputs and the NR timing modules.  It refuses to overwrite its output.
+[ -f letter.json ] || python3 letter.py
 
 python3 make_manifest.py       # -> manifest.json: the datasets', models' and environment's hashes
